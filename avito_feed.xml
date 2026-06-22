@@ -16,4 +16,18 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>1235</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Аэрозоль от клещей Gardex Extreme 150мл</Title>
+    <Description><![CDATA[Аэрозоль от клещей Gardex Extreme 150мл]]></Description>
+    <Price>2000</Price>
+  <Category>Растения</Category>
+  <GoodsType>Товары для ухода за растениями</GoodsType>
+  <ProductPlantsType>Средства от вредителей и сорняков</ProductPlantsType>
+  <AdType>Товар приобретен на продажу</AdType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1235/1.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
