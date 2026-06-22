@@ -32,6 +32,7 @@
   <GoodsType>Товары для ухода за растениями</GoodsType>
   <ProductPlantsType>Средства от вредителей и сорняков</ProductPlantsType>
   <AdType>Товар приобретен на продажу</AdType>
+  <WholesaleType>Нет</WholesaleType>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1235/ozon_1.jpg"/>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1235/user_photo.jpg"/>
