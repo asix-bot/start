@@ -12,7 +12,13 @@
   <AdType>Товар приобретен на продажу</AdType>
   <Condition>Новое</Condition>
     <Images>
-    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/ozon_7.jpg"/>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1234/user_photo.jpg"/>
     </Images>
   </Ad>
