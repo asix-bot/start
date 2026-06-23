@@ -57,4 +57,26 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/10855ки/restored_1.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>19747ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Мяч для футзала TORRES FUTSAL TRAINING FS323674, р</Title>
+    <Description><![CDATA[Тренировочный футзальный мяч серии School - залог успешного тренировочного и игрового процесса в учебных заведениях. Рекомендуется для игроков начального уровня и любителей. Износостойкая матовая синтетическая кожа (полиуретан) толщиной 1,0 мм на тонкой нетканой основе, 4 подкладочных слоя из вискозы, латексная камера с наполнителем для создания низкого отскока, бутиловый ниппель. Ручная сшивка, 32 панели.]]></Description>
+    <Price>2350</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Игры с мячом</GoodsType>
+  <GoodsSubCategory>Футбол</GoodsSubCategory>
+  <GoodsSubType>Мячи</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_0.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_6.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
