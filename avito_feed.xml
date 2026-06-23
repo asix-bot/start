@@ -305,4 +305,30 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19553ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8534ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Мяч футб. TORRES Junior-5, F323805, р.5,глянц.ПУ,4</Title>
+    <Description><![CDATA[Серия TORRES Youth, к которой принадлежит модель Junior-5, разработана для тренировок и игр детей и подростков. Мяч имеет размер стандартной "пятерки" (длина окружности 68-69 см), но меньший вес - 390-410 г по сравнению со стандартным 410-450 г, что облегчает тренировки и способствует выработке правильных игровых навыков. 
+Предназначен для игроков до 13 лет. Подходит для игры на любых поверхностях, для игры в любых погодных условиях (при соблюдении условий эксплуатации и ухода).
+Каркас из глянцевого полиуретана толщиной 1,0 мм на нетканой основе и 4-х подкладочных слоев (2 слоя хлопка, 2 слой вискозы), бутиловая камера с бутиловым ниппелем. Ручная сшивка, 32 панели. Размер 5. 
+
+В комплект входит игла для накачивания, инструкция по эксплуатации и уходу за мячом.
+
+ На мяч наносятся пиктограммы, рекомендующие его для игры в тех или иных погодных условиях и на тех или иных типах поверхностей.]]></Description>
+    <Price>2120</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Игры с мячом</GoodsType>
+  <GoodsSubCategory>Футбол</GoodsSubCategory>
+  <GoodsSubType>Мячи</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8534ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8534ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8534ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8534ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8534ки/ozon_5.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
