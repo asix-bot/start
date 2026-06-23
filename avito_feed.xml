@@ -122,4 +122,24 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19812ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>19808ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Мяч футзальный PUMA Futsal 1 08434201, размер 4, F</Title>
+    <Description><![CDATA[Мяч футзальный матчевый PUMA Futsal 1 предназначен для игр и тренировок профессиональных команд и клубов. 
+Бутиловая камера с наполнителем для создания низкого отскока, армированная синтетической нитью. Благодаря яркому дизайну хорошо заметен на поле.
+Мяч одобрен FIFA для проведения матчей высшего уровня - сертификат FIFA Quality Pro (FIFA Approved). 
+Матовая синтетическая кожа (полиуретан), четыре подкладочных слоя из синтетической ткани, термосшивка.]]></Description>
+    <Price>3260</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Игры с мячом</GoodsType>
+  <GoodsSubCategory>Футбол</GoodsSubCategory>
+  <GoodsSubType>Мячи</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19808ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19808ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
