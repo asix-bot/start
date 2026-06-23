@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Ads formatVersion="3" target="Avito.ru">
-  <Ad>
-    <Id>123456789ки</Id>
-    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
-    <Title>Строительная машинка Бетономешалка 1:26 инерционна</Title>
-    <Description><![CDATA[]]></Description>
-    <Price>1000</Price>
-  <Category>Товары для детей и игрушки</Category>
-  <GoodsType>Игрушки</GoodsType>
-  <Toys>Игрушечный транспорт</Toys>
-  <Condition>Новый</Condition>
-  <AdType>Товар приобретен на продажу</AdType>
-  <WholesaleType>Нет</WholesaleType>
-    <Images>
-    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/123456789ки/ozon_1.jpg"/>
-    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/123456789ки/user_photo.jpg"/>
-    </Images>
-  </Ad>
+
 </Ads>
