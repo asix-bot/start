@@ -254,4 +254,30 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/3617ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>11931ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Катушка Nautilus Verona 2500</Title>
+    <Description><![CDATA[NAUTILUS VERONA— Прочный углепластиковый корпус. — Облегченная алюминиевая шпуля, изготовленная с помощью ЧПУ. — Алюминиевая рукоятка. — Эргономичный кноб с нескользящим Soft-touch покрытием. — Система Anti – Reverse.]]></Description>
+    <Price>2390</Price>
+  <Category>Охота и рыбалка</Category>
+  <EquipmentType>Рыбалка</EquipmentType>
+  <EquipmentSubType>Удочки, спиннинги и катушки</EquipmentSubType>
+  <GoodsSubType>Катушки</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <Brand>Nautilus</Brand>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_7.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_8.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_9.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
