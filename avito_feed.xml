@@ -437,4 +437,29 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/20000ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8728ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Кресло для рыбалки58X58X112 см</Title>
+    <Description><![CDATA[Складной стул для отдыха на природе, рыбалки, пикника и кемпинга. Лёгкий, компактный, надёжный. Быстро складывается и раскладывается. Подходит для дома, дачи, поездок и туризма. Удобный и прочный. Нескользящие ножки. Выдерживает нагрузку до 120 кг.]]></Description>
+    <Price>4500</Price>
+  <Category>Охота и рыбалка</Category>
+  <EquipmentType>Рыбалка</EquipmentType>
+  <EquipmentSubType>Эхолоты и снаряжение</EquipmentSubType>
+  <GoodsSubType>Походная мебель</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_7.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_8.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/ozon_9.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
