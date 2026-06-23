@@ -24,4 +24,20 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/10355ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8676ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Кресло-шезлонг "Альберто-2"</Title>
+    <Description><![CDATA[Кресло шезлонг Альберто 2 идеально подойдет для отдыха на даче и дома. Кресло шезлонг Альберто 2 имеет 5 фиксированных положений наклона спинки, ножная секция складывается и раскладывается независимо от спинки.]]></Description>
+    <Price>5700</Price>
+  <Category>Мебель и интерьер</Category>
+  <GoodsType>Садовая мебель</GoodsType>
+  <GoodsSubType>Лежаки и шезлонги</GoodsSubType>
+  <AdType>Товар куплен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8676ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
