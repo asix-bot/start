@@ -394,4 +394,27 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11995ки/ozon_1.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>6639ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Фонарь прожектор, фонарик аккумуляторный светодиод</Title>
+    <Description><![CDATA[Яркий помощник для любого приключения!Портативный тактический фонарь  обеспечивает максимальную видимость в любых ситуациях. Благодаря мощному светодиоду COB и 2000 люменам светового потока он создаёт яркое освещение на расстоянии до нескольких сот метров. Семь режимов работы, включая дневной белый и красный свет, а также аварийный маячок, позволяют адаптироваться к любой задаче – будь то ночёвка в тундре или поиск пути после темноты.Прочный корпус с защитой IP45 воды и пыли, а встроенный аккумулятор гарантирует работу до 16 часов. Индикатор заряда всегда покажет уровень энергии, а быстрая зарядка через USB и наличие солнечной батареи делает устройство полностью автономным. Легкий и компактный дизайн дополняется регулируемым ремешком для удобного ношения. Идеальный выбор для туриста, рыбака или просто человека, который ценит надежность в сложных условиях.]]></Description>
+    <Price>2600</Price>
+  <Category>Аудио и видео</Category>
+  <GoodsType>Аксессуары</GoodsType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_7.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_8.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/ozon_9.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/6639ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
