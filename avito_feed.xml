@@ -79,4 +79,27 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19747ки/restored_6.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>1825ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Электросамокат Kugoo EC 02 Новинка 2025</Title>
+    <Description><![CDATA[Kugoo EC 02 — мощный, стильный и надёжный электросамокат для активных людей, которые ценят комфорт, скорость и уверенность на дороге. Легко справится как с городским трафиком, так и с загородными маршрутами. Внедорожные возможности, прочная конструкция и амортизаторы обеспечат мягкую и стабильную езду даже по неровной поверхности. Удобное сиденье, складной механизм, задний привод и ёмкий аккумулятор.]]></Description>
+    <Price>69500</Price>
+  <Category>Аудио и видео</Category>
+  <GoodsType>Аксессуары</GoodsType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_0.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_7.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_8.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1825ки/restored_9.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
