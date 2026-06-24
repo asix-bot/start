@@ -462,4 +462,23 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8728ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>19574ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Мяч футб. TORRES Freestyle Grip, F323765, р.5, 32 </Title>
+    <Description><![CDATA[Мяч TORRES Freestyle серии Street. Современный дизайн из эмбосированной, рифленой кожи. Такой эффект достигается благодаря применению технологии RiflexPlay - печать на мяче матричного рисунка при повышенных температурах. Но помимо чисто внешнего эффекта применение этой технологии оказывает значительное влияние на технические характеристики мяча, а именно повышает его устойчивость к трению и износу. Поэтому TORRES Freestyle особенно рекомендуется для игры на жестких и очень жестких поверхностях: гаревые площадки, твердые синтетические покрытия и т.п. По игровым характеристикам относится к тренировочным мячам. Рекомендуется для поставок в общеобразовательные учреждения, а также для формирования ассортимента розничных точек продаж (в силу своей исключительности как по материалу, так и по внешнему виду). Сверхпрочный каркас из износостойкого матового полиуретана "под натуральную кожу" толщиной 1,2 мм на нетканой основе, 4 подкладочных слоя из хлопка, латексная камера с бутиловым ниппелем. Ручная сшивка, 32 панели]]></Description>
+    <Price>2320</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Игры с мячом</GoodsType>
+  <GoodsSubCategory>Футбол</GoodsSubCategory>
+  <GoodsSubType>Мячи</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/ozon_5.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
