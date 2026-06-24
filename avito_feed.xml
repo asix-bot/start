@@ -609,4 +609,40 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/32943З/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8408ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Сейф оружейный AIKO Чирок 1020 на 2 ствола, 1000х3</Title>
+    <Description><![CDATA[ 
+Соответствует требованиям ст.59 Постановления правительства РФ №814 от 21 июля 1998 года «О мерах по регулированию гражданского и служебного оружия и патронов к нему на территории РФ»; 
+Комплектуются двумя ключевыми замками; 
+Сертификат соответствия Ростест; 
+Cейф соответствует (по заключению НИЦ «Охрана» МВД РФ) требованиям МВД РФ к хранению огнестрельного оружия; 
+Объем трейзера - 4 литра; 
+Объем основного отделения - 48 литров; 
+Количество стволов - 2; 
+Цвет сейфа AIKO Чирок 1020 S11299102241 - графит структурированный; 
+Порошковое покрытие. 
+]]></Description>
+    <Price>11890</Price>
+  <Category>Мебель и интерьер</Category>
+  <GoodsType>Шкафы, комоды и стеллажи</GoodsType>
+  <GoodsSubType>Другое</GoodsSubType>
+  <AdType>Товар куплен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <Availability>В наличии</Availability>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_7.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_8.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/ozon_9.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8408ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
