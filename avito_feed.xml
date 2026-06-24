@@ -591,4 +591,22 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1635З/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>32943З</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Воздуходувка-пылесос бензиновая "Мототехника Нева"</Title>
+    <Description><![CDATA[Двигатель: 2-х тактный, одноцилиндровый, с воздушным охлаждениемМасса, кг: 4.6Вибрация, м/с2: < 5,7Максимальная мощность, к Вт: 900 Вт при 7500 об/минМаксимальная скорость воздушного потока, м/с: 22Максимальная скорость продувки, м/с: 67Мешок для сбора мусора, л: 50Объем воздуха, м3/ч: 800Объем двигателя, м3/см: 25,4Соотношение мульчирования: 10:1Топливный бак, мл: 400Топливо: смесь для двухтактных двигателей	40:1, бензин/маслоУровень шума, Дб (А): 110Гарантийный срок: 1 годВ комплект входит:Защитные очкиМешокРуководство по эксплуатацииУниверсальный инструментЕмкость для подготовки топливной смеси]]></Description>
+    <Price>13950</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Для сада и дачи</GoodsType>
+  <ProductGardenType>Садовая техника</ProductGardenType>
+  <GardenEquipmentSubType>Воздуходувки и пылесосы</GardenEquipmentSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/32943З/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/32943З/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
