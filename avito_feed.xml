@@ -1006,8 +1006,8 @@
   <Brand>НИЗ</Brand>
   <SetType>Автоинструмент</SetType>
   <WholesaleType>Нет</WholesaleType>
-  <ToolSetComplectation>57</ToolSetComplectation>
-  <Quantity>Набор</Quantity>
+  <ToolSetComplectation>Ключи гаечные, Отвёртки, Трещотка, Биты, Пассатижи</ToolSetComplectation>
+  <Quantity>57</Quantity>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_1.jpg"/>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_2.jpg"/>
@@ -1029,7 +1029,7 @@
   <Condition>Новое</Condition>
   <Brand>Вихрь</Brand>
   <SetType>Автоинструмент</SetType>
-  <ToolSetComplectation>6-гранные головки, Е-тип головки, биты, комбинированные ключи, клещи, трещотка, Т-образный вороток, свечные головки</ToolSetComplectation>
+  <ToolSetComplectation>Биты, Клещи, Трещотка</ToolSetComplectation>
   <Quantity>151</Quantity>
   <WholesaleType>Нет</WholesaleType>
     <Images>
