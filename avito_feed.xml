@@ -869,4 +869,23 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2218ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8765ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Набор для настольного тенниса Start line (2 ракетк</Title>
+    <Description><![CDATA[Набор станет отличным выбором для игроков, которые только начинают осваивать настольный теннис. В комплекте предоставляются две ракетки Home, они имеют повышенный показатель контроля. Такие ракетки позволяют неопытному спортсмену лучше управлять мячом, повышая точность ударов и оттачивать свое мастерство. Для моделей серии Home используется 5-слойное основание из прочной фанеры, качественные накладки шипами наружу. Три мяча для игры выполнены из качественного пластика и прекрасно выдерживают даже сильные удары. В комплекте нейлоновая сетка с креплением. Упаковка блистер.]]></Description>
+    <Price>1270</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Теннис и бадминтон</GoodsType>
+  <GoodsSubCategory>Настольный теннис</GoodsSubCategory>
+  <GoodsSubType>Наборы</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8765ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8765ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8765ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8765ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
