@@ -1,6 +1,5 @@
 {
   "_комментарий": "Скопируй этот файл в config.json и заполни своими значениями. config.json в .gitignore — туда же положи токен, не коммитя его никуда.",
-
   "github": {
     "repo_path": "C:\\1c-export-tool\\repo",
     "repo_url": "https://github.com/USERNAME/REPO.git",
@@ -10,9 +9,7 @@
     "commit_author_name": "1C Export Bot",
     "commit_author_email": "bot@example.com"
   },
-
   "encoding": "cp866",
-
   "bases": [
     {
       "name": "Base1",
@@ -25,9 +22,12 @@
       "stock_table": "RG_OST.DBF",
       "stock_item_field": "SP1019",
       "stock_qty_field": "OSTAT",
-      "price_table": "SC42.DBF",
-      "price_item_field": "PARENTEXT",
-      "price_value_field": "CENA"
+      "avg_cost_table": "SC42.DBF",
+      "avg_cost_item_field": "PARENTEXT",
+      "avg_cost_value_field": "SEBEST",
+      "sale_price_table": "SC42.DBF",
+      "sale_price_item_field": "PARENTEXT",
+      "sale_price_value_field": "CENA"
     },
     {
       "name": "Base2",
@@ -40,9 +40,12 @@
       "stock_table": "RG_OST.DBF",
       "stock_item_field": "SP1019",
       "stock_qty_field": "OSTAT",
-      "price_table": "SC42.DBF",
-      "price_item_field": "PARENTEXT",
-      "price_value_field": "CENA"
+      "avg_cost_table": "SC42.DBF",
+      "avg_cost_item_field": "PARENTEXT",
+      "avg_cost_value_field": "SEBEST",
+      "sale_price_table": "SC42.DBF",
+      "sale_price_item_field": "PARENTEXT",
+      "sale_price_value_field": "CENA"
     },
     {
       "name": "Base3",
@@ -55,9 +58,12 @@
       "stock_table": "RG_OST.DBF",
       "stock_item_field": "SP1019",
       "stock_qty_field": "OSTAT",
-      "price_table": "SC42.DBF",
-      "price_item_field": "PARENTEXT",
-      "price_value_field": "CENA"
+      "avg_cost_table": "SC42.DBF",
+      "avg_cost_item_field": "PARENTEXT",
+      "avg_cost_value_field": "SEBEST",
+      "sale_price_table": "SC42.DBF",
+      "sale_price_item_field": "PARENTEXT",
+      "sale_price_value_field": "CENA"
     },
     {
       "name": "Base4",
@@ -70,9 +76,12 @@
       "stock_table": "RG_OST.DBF",
       "stock_item_field": "SP1019",
       "stock_qty_field": "OSTAT",
-      "price_table": "SC42.DBF",
-      "price_item_field": "PARENTEXT",
-      "price_value_field": "CENA"
+      "avg_cost_table": "SC42.DBF",
+      "avg_cost_item_field": "PARENTEXT",
+      "avg_cost_value_field": "SEBEST",
+      "sale_price_table": "SC42.DBF",
+      "sale_price_item_field": "PARENTEXT",
+      "sale_price_value_field": "CENA"
     }
   ]
 }

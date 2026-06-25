@@ -8,9 +8,10 @@ bases_mapping.json — список объектов вида:
   {
     "name": "Base1",
     "items_table": "...", "items_article_field": "...", "items_id_field": "...",
-    "items_name_field": "...", "stock_table": "...", "stock_item_field": "...",
-    "stock_qty_field": "...", "price_table": "...", "price_item_field": "...",
-    "price_value_field": "..."
+    "items_name_field": "...",
+    "stock_table": "...", "stock_item_field": "...", "stock_qty_field": "...",
+    "avg_cost_table": "...", "avg_cost_item_field": "...", "avg_cost_value_field": "...",
+    "sale_price_table": "...", "sale_price_item_field": "...", "sale_price_value_field": "..."
   },
   ...
 ]
@@ -37,9 +38,12 @@ MAPPING_FIELDS = (
     "stock_table",
     "stock_item_field",
     "stock_qty_field",
-    "price_table",
-    "price_item_field",
-    "price_value_field",
+    "avg_cost_table",
+    "avg_cost_item_field",
+    "avg_cost_value_field",
+    "sale_price_table",
+    "sale_price_item_field",
+    "sale_price_value_field",
 )
 
 

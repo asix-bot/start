@@ -49,13 +49,16 @@ def read_table(base_path: Path, table_name: str, encoding: str) -> DBF:
     return DBF(str(table_path), encoding=encoding, ignore_missing_memofile=True)
 
 
+def read_value_map(base_path: Path, table_name: str, item_field: str, value_field: str, encoding: str) -> dict:
+    table = read_table(base_path, table_name, encoding)
+    return {row[item_field]: row[value_field] for row in table}
+
+
 def export_base(base_cfg: dict, encoding: str) -> list[dict]:
     base_path = Path(base_cfg["path"])
     suffix = base_cfg.get("suffix", "")
 
     items = read_table(base_path, base_cfg["items_table"], encoding)
-    stock = read_table(base_path, base_cfg["stock_table"], encoding)
-    price = read_table(base_path, base_cfg["price_table"], encoding)
 
     id_field = base_cfg["items_id_field"]
     article_field = base_cfg["items_article_field"]
@@ -63,17 +66,23 @@ def export_base(base_cfg: dict, encoding: str) -> list[dict]:
 
     item_by_id = {row[id_field]: row for row in items}
 
-    stock_item_field = base_cfg["stock_item_field"]
-    stock_qty_field = base_cfg["stock_qty_field"]
-    stock_by_id: dict = {}
-    for row in stock:
-        stock_by_id[row[stock_item_field]] = row[stock_qty_field]
-
-    price_item_field = base_cfg["price_item_field"]
-    price_value_field = base_cfg["price_value_field"]
-    price_by_id: dict = {}
-    for row in price:
-        price_by_id[row[price_item_field]] = row[price_value_field]
+    stock_by_id = read_value_map(
+        base_path, base_cfg["stock_table"], base_cfg["stock_item_field"], base_cfg["stock_qty_field"], encoding
+    )
+    sale_price_by_id = read_value_map(
+        base_path,
+        base_cfg["sale_price_table"],
+        base_cfg["sale_price_item_field"],
+        base_cfg["sale_price_value_field"],
+        encoding,
+    )
+    avg_cost_by_id = read_value_map(
+        base_path,
+        base_cfg["avg_cost_table"],
+        base_cfg["avg_cost_item_field"],
+        base_cfg["avg_cost_value_field"],
+        encoding,
+    )
 
     out_rows = []
     for item_id, item_row in item_by_id.items():
@@ -85,7 +94,8 @@ def export_base(base_cfg: dict, encoding: str) -> list[dict]:
                 "article": f"{raw_article}{suffix}",
                 "name": str(item_row.get(name_field, "")).strip() if name_field else "",
                 "stock": stock_by_id.get(item_id, 0),
-                "price": price_by_id.get(item_id, ""),
+                "avg_cost": avg_cost_by_id.get(item_id, ""),
+                "sale_price": sale_price_by_id.get(item_id, ""),
                 "base": base_cfg["name"],
             }
         )
@@ -95,7 +105,9 @@ def export_base(base_cfg: dict, encoding: str) -> list[dict]:
 def write_csv(rows: list[dict], csv_path: Path) -> None:
     csv_path.parent.mkdir(parents=True, exist_ok=True)
     with csv_path.open("w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(f, fieldnames=["article", "name", "stock", "price", "base"])
+        writer = csv.DictWriter(
+            f, fieldnames=["article", "name", "stock", "avg_cost", "sale_price", "base"]
+        )
         writer.writeheader()
         writer.writerows(rows)
 
