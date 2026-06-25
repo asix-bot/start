@@ -20,6 +20,9 @@ bases_mapping.json — список объектов вида:
 в локальном config.json не трогаются, берутся только перечисленные выше
 поля сопоставления (если какого-то поля нет в записи — оставляем как было).
 
+Совместимо с Python 3.4: без f-строк, без subprocess.run (появился в 3.5),
+без современных аннотаций типов.
+
 Использование:
     python merge_field_mapping.py
 """
@@ -47,15 +50,22 @@ MAPPING_FIELDS = (
 )
 
 
-def run(cmd: list[str], cwd: Path | None = None) -> None:
-    result = subprocess.run(cmd, cwd=str(cwd) if cwd else None, capture_output=True, text=True)
-    if result.returncode != 0:
-        sys.exit(f"Команда {' '.join(cmd)} провалилась:\n{result.stdout}\n{result.stderr}")
+def run(cmd, cwd=None):
+    process = subprocess.Popen(
+        cmd,
+        cwd=str(cwd) if cwd else None,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        universal_newlines=True,
+    )
+    stdout, stderr = process.communicate()
+    if process.returncode != 0:
+        sys.exit("Команда {0} провалилась:\n{1}\n{2}".format(" ".join(cmd), stdout, stderr))
 
 
-def main() -> None:
+def main():
     if not CONFIG_PATH.exists():
-        sys.exit(f"Не найден {CONFIG_PATH}. Сначала запусти setup.bat хотя бы до шага 4.")
+        sys.exit("Не найден {0}. Сначала запусти setup.bat хотя бы до шага 4.".format(CONFIG_PATH))
 
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     github_cfg = config["github"]
@@ -64,7 +74,7 @@ def main() -> None:
     repo_url = github_cfg["repo_url"]
     branch = github_cfg.get("branch", "main")
     token = github_cfg["token"]
-    auth_url = repo_url.replace("https://", f"https://{token}@", 1)
+    auth_url = repo_url.replace("https://", "https://{0}@".format(token), 1)
 
     if not (repo_path / ".git").exists():
         repo_path.mkdir(parents=True, exist_ok=True)
@@ -76,12 +86,15 @@ def main() -> None:
     mapping_path = repo_path / "bases_mapping.json"
     if not mapping_path.exists():
         sys.exit(
-            f"В репозитории не найден bases_mapping.json (ожидался путь {mapping_path}).\n"
-            "Сначала нужно, чтобы он был туда запушен с сопоставлением таблиц/полей."
+            "В репозитории не найден bases_mapping.json (ожидался путь {0}).\n"
+            "Сначала нужно, чтобы он был туда запушен с сопоставлением таблиц/полей.".format(mapping_path)
         )
 
     mapping_list = json.loads(mapping_path.read_text(encoding="utf-8"))
-    mapping_by_name = {entry["name"]: entry for entry in mapping_list if "name" in entry}
+    mapping_by_name = {}
+    for entry in mapping_list:
+        if "name" in entry:
+            mapping_by_name[entry["name"]] = entry
 
     if not mapping_by_name:
         sys.exit("bases_mapping.json пуст или у записей нет поля \"name\" (Base1..Base4).")
@@ -90,7 +103,7 @@ def main() -> None:
     for base_cfg in config["bases"]:
         entry = mapping_by_name.get(base_cfg["name"])
         if not entry:
-            print(f"Предупреждение: для {base_cfg['name']} нет записи в bases_mapping.json — пропускаю.")
+            print("Предупреждение: для {0} нет записи в bases_mapping.json — пропускаю.".format(base_cfg["name"]))
             continue
         for field in MAPPING_FIELDS:
             if field in entry:
@@ -98,7 +111,7 @@ def main() -> None:
         updated += 1
 
     CONFIG_PATH.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Обновлено сопоставление полей для {updated} баз(ы). config.json сохранён.")
+    print("Обновлено сопоставление полей для {0} баз(ы). config.json сохранён.".format(updated))
 
 
 if __name__ == "__main__":

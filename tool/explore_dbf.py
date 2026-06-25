@@ -18,6 +18,8 @@
 блоком "github", то report.txt после генерации также закоммитится и
 запушится в репозиторий (полезно, чтобы разобрать структуру баз удалённо,
 не копируя report.txt руками).
+
+Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 """
 
 import json
@@ -39,13 +41,14 @@ SAMPLE_ROWS = 5
 INTERESTING_HINTS = ("SC", "RG", "1SC", "DH", "DT")
 
 
-def looks_interesting(filename: str) -> bool:
+def looks_interesting(filename):
     name = filename.upper()
     return any(name.startswith(h) for h in INTERESTING_HINTS)
 
 
-def explore_base(base_path: Path, out_lines: list[str]) -> None:
-    out_lines.append(f"\n{'=' * 80}\nБАЗА: {base_path}\n{'=' * 80}")
+def explore_base(base_path, out_lines):
+    separator = "=" * 80
+    out_lines.append("\n{0}\nБАЗА: {1}\n{0}".format(separator, base_path))
 
     dbf_files = sorted(base_path.glob("*.DBF")) + sorted(base_path.glob("*.dbf"))
     if not dbf_files:
@@ -53,7 +56,7 @@ def explore_base(base_path: Path, out_lines: list[str]) -> None:
                           " или таблицы лежат в подпапке).")
         return
 
-    out_lines.append(f"  Найдено DBF-файлов: {len(dbf_files)}")
+    out_lines.append("  Найдено DBF-файлов: {0}".format(len(dbf_files)))
 
     # Сортируем так, чтобы "интересные" таблицы (товары/остатки/цены) шли первыми.
     dbf_files.sort(key=lambda p: (not looks_interesting(p.name), p.name))
@@ -62,31 +65,33 @@ def explore_base(base_path: Path, out_lines: list[str]) -> None:
         try:
             table = DBF(str(dbf_path), encoding=ENCODING, ignore_missing_memofile=True)
         except Exception as exc:
-            out_lines.append(f"\n  [{dbf_path.name}] -- ошибка открытия: {exc}")
+            out_lines.append("\n  [{0}] -- ошибка открытия: {1}".format(dbf_path.name, exc))
             continue
 
         marker = " <-- возможно интересна" if looks_interesting(dbf_path.name) else ""
-        out_lines.append(f"\n  [{dbf_path.name}] записей: {len(table)}{marker}")
-        fields = ", ".join(f"{f.name}({f.type}{f.length})" for f in table.fields)
-        out_lines.append(f"    Поля: {fields}")
+        out_lines.append("\n  [{0}] записей: {1}{2}".format(dbf_path.name, len(table), marker))
+        field_descriptions = []
+        for f in table.fields:
+            field_descriptions.append("{0}({1}{2})".format(f.name, f.type, f.length))
+        out_lines.append("    Поля: {0}".format(", ".join(field_descriptions)))
 
         try:
             records = iter(table)
             for i in range(SAMPLE_ROWS):
                 row = next(records)
-                out_lines.append(f"    Пример {i + 1}: {dict(row)}")
+                out_lines.append("    Пример {0}: {1}".format(i + 1, dict(row)))
         except StopIteration:
             pass
         except Exception as exc:
-            out_lines.append(f"    Ошибка чтения строк: {exc}")
+            out_lines.append("    Ошибка чтения строк: {0}".format(exc))
 
 
-def main() -> None:
+def main():
     if len(sys.argv) < 2:
         print("Использование: python explore_dbf.py <путь_к_базе_1> [путь_к_базе_2 ...]")
         sys.exit(1)
 
-    out_lines: list[str] = []
+    out_lines = []
     for raw_path in sys.argv[1:]:
         explore_base(Path(raw_path), out_lines)
 
@@ -95,7 +100,7 @@ def main() -> None:
 
     report_path = Path(__file__).parent / "report.txt"
     report_path.write_text(report, encoding="utf-8")
-    print(f"\n\nОтчёт также сохранён в {report_path}")
+    print("\n\nОтчёт также сохранён в {0}".format(report_path))
 
     if CONFIG_PATH.exists():
         config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))

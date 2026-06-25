@@ -17,7 +17,7 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 EXAMPLE_PATH = Path(__file__).parent / "config.example.json"
 
 
-def main() -> None:
+def main():
     if len(sys.argv) != 9:
         sys.exit("Нужно ровно 8 аргументов: path1 suffix1 path2 suffix2 path3 suffix3 path4 suffix4")
 
@@ -28,14 +28,14 @@ def main() -> None:
 
     bases = config["bases"]
     if len(bases) != len(pairs):
-        sys.exit(f"В config.json сейчас {len(bases)} баз, а передано {len(pairs)} пар путь/суффикс.")
+        sys.exit("В config.json сейчас {0} баз, а передано {1} пар путь/суффикс.".format(len(bases), len(pairs)))
 
-    for base_cfg, (path, suffix) in zip(bases, pairs):
-        base_cfg["path"] = path
-        base_cfg["suffix"] = suffix
+    for base_cfg, pair in zip(bases, pairs):
+        base_cfg["path"] = pair[0]
+        base_cfg["suffix"] = pair[1]
 
     CONFIG_PATH.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"config.json обновлён: {CONFIG_PATH}")
+    print("config.json обновлён: {0}".format(CONFIG_PATH))
 
 
 if __name__ == "__main__":

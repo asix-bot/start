@@ -75,13 +75,21 @@ pause
 
 :: ------------------------------------------------------------------
 echo.
-echo [Шаг 4/6] Установка зависимости dbfread...
-pip install dbfread
-if errorlevel 1 (
-    echo.
-    echo ОШИБКА при установке dbfread. Проверь подключение к интернету и повтори.
-    pause
-    exit /b 1
+echo [Шаг 4/6] Проверка dbfread...
+echo dbfread уже идет вместе с проектом (папка dbfread/), отдельно ставить
+echo не нужно. Если вдруг папки нет - пробуем поставить через pip как запасной
+echo вариант (может не сработать на очень старых ОС без TLS 1.2 в pip).
+if not exist "%~dp0dbfread\__init__.py" (
+    echo Папка dbfread/ не найдена, пробую pip install dbfread...
+    pip install dbfread
+    if errorlevel 1 (
+        echo.
+        echo ОШИБКА: не удалось ни найти папку dbfread/, ни поставить через pip.
+        echo Скопируй папку dbfread/ из репозитория (tool/dbfread) рядом с этим
+        echo bat-файлом и запусти заново.
+        pause
+        exit /b 1
+    )
 )
 echo Готово.
 pause
