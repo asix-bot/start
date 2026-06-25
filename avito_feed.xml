@@ -750,4 +750,22 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5563ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>1581ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Нож перочинный Victorinox Super Tinker 1.4703 91 м</Title>
+    <Description><![CDATA[]]></Description>
+    <Price>6920</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Инструменты</GoodsType>
+  <ToolType>Ручные инструменты</ToolType>
+  <ToolSubType>Режущие инструменты</ToolSubType>
+  <CutSubType>Ножи</CutSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+
+    </Images>
+  </Ad>
 </Ads>
