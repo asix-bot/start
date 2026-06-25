@@ -807,4 +807,23 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19949ки/ozon_5.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8330ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Salvas Маска для плавания</Title>
+    <Description><![CDATA[Маска для снорклинга (сноркелинга), плавания, дайвинга, подводного плавания и охоты. "Domino" junior детская маска (4-7 лет) из самой популярной модели масок среди любителей отдыха на море. Плавательная маска предназначена для купания в море и бассейне, для плавания с трубкой, для погружения под воду и ныряния. Изготовлена из мягкого и гипоаллергенного материала силфлекс (silflex) , оправа из поликарбоната, предлагает наилучший компромисс между качеством и стоимостью, удобный ремешок для регулировки и пластиковая линза гарантируют комфорт и безопасность в воде даже для самых маленьких. Размерный ряд модели "Domino" состоит из LARGE (взрослая) / MEDIUM (подростковая 8-14 лет) / SMALL (детская 4-7 лет). Продукция компании "Salvas" Италия.]]></Description>
+    <Price>1570</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Дайвинг и водный спорт</GoodsType>
+  <WaterSportType>Аксессуары для плавания</WaterSportType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
