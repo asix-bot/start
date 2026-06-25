@@ -20,6 +20,8 @@
 import csv
 import json
 import sys
+import time
+from datetime import datetime
 from pathlib import Path
 
 from dbfread import DBF
@@ -112,27 +114,52 @@ def write_csv(rows: list[dict], csv_path: Path) -> None:
         writer.writerows(rows)
 
 
+def write_log(log_lines: list[str], log_path: Path) -> None:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+
+
 def main() -> None:
+    run_started_at = datetime.now()
     config = load_config()
     encoding = config.get("encoding", "cp866")
 
     all_rows: list[dict] = []
+    log_lines = [f"Запуск экспорта: {run_started_at:%Y-%m-%d %H:%M:%S}"]
+
     for base_cfg in config["bases"]:
         print(f"Читаю базу {base_cfg['name']} ({base_cfg['path']})...")
+        base_started_at = time.perf_counter()
         try:
             rows = export_base(base_cfg, encoding)
         except Exception as exc:
+            elapsed = time.perf_counter() - base_started_at
             print(f"  Ошибка при чтении базы {base_cfg['name']}: {exc}")
+            log_lines.append(f"{base_cfg['name']}: ОШИБКА за {elapsed:.2f} сек — {exc}")
             continue
-        print(f"  Найдено товаров: {len(rows)}")
+        elapsed = time.perf_counter() - base_started_at
+        print(f"  Найдено товаров: {len(rows)} за {elapsed:.2f} сек")
+        log_lines.append(f"{base_cfg['name']}: {len(rows)} товаров за {elapsed:.2f} сек")
         all_rows.extend(rows)
+
+    total_elapsed = (datetime.now() - run_started_at).total_seconds()
+    log_lines.append(f"Итого товаров: {len(all_rows)}")
+    log_lines.append(f"Общее время выполнения: {total_elapsed:.2f} сек")
 
     github_cfg = config["github"]
     csv_path = Path(github_cfg["repo_path"]) / github_cfg["csv_path_in_repo"]
     write_csv(all_rows, csv_path)
     print(f"CSV записан: {csv_path} ({len(all_rows)} строк)")
 
-    push_files(github_cfg, [github_cfg["csv_path_in_repo"]], "Обновление остатков и цен из 1С")
+    log_path = Path(github_cfg["repo_path"]) / github_cfg.get("log_path_in_repo", "export_log.txt")
+    write_log(log_lines, log_path)
+    print(f"Лог записан: {log_path}")
+
+    push_files(
+        github_cfg,
+        [github_cfg["csv_path_in_repo"], github_cfg.get("log_path_in_repo", "export_log.txt")],
+        "Обновление остатков и цен из 1С",
+    )
 
 
 if __name__ == "__main__":

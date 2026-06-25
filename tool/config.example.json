@@ -7,7 +7,8 @@
     "csv_path_in_repo": "stock_prices.csv",
     "token": "ВСТАВЬ_СЮДА_PERSONAL_ACCESS_TOKEN",
     "commit_author_name": "1C Export Bot",
-    "commit_author_email": "bot@example.com"
+    "commit_author_email": "bot@example.com",
+    "log_path_in_repo": "export_log.txt"
   },
   "encoding": "cp866",
   "bases": [
