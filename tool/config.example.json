@@ -1,0 +1,78 @@
+{
+  "_комментарий": "Скопируй этот файл в config.json и заполни своими значениями. config.json в .gitignore — туда же положи токен, не коммитя его никуда.",
+
+  "github": {
+    "repo_path": "C:\\1c-export-tool\\repo",
+    "repo_url": "https://github.com/USERNAME/REPO.git",
+    "branch": "main",
+    "csv_path_in_repo": "stock_prices.csv",
+    "token": "ВСТАВЬ_СЮДА_PERSONAL_ACCESS_TOKEN",
+    "commit_author_name": "1C Export Bot",
+    "commit_author_email": "bot@example.com"
+  },
+
+  "encoding": "cp866",
+
+  "bases": [
+    {
+      "name": "Base1",
+      "path": "C:\\Bases\\Base1",
+      "suffix": "-B1",
+      "items_table": "SC41.DBF",
+      "items_article_field": "ARTICUL",
+      "items_id_field": "ID",
+      "items_name_field": "NAME",
+      "stock_table": "RG_OST.DBF",
+      "stock_item_field": "SP1019",
+      "stock_qty_field": "OSTAT",
+      "price_table": "SC42.DBF",
+      "price_item_field": "PARENTEXT",
+      "price_value_field": "CENA"
+    },
+    {
+      "name": "Base2",
+      "path": "C:\\Bases\\Base2",
+      "suffix": "-B2",
+      "items_table": "SC41.DBF",
+      "items_article_field": "ARTICUL",
+      "items_id_field": "ID",
+      "items_name_field": "NAME",
+      "stock_table": "RG_OST.DBF",
+      "stock_item_field": "SP1019",
+      "stock_qty_field": "OSTAT",
+      "price_table": "SC42.DBF",
+      "price_item_field": "PARENTEXT",
+      "price_value_field": "CENA"
+    },
+    {
+      "name": "Base3",
+      "path": "C:\\Bases\\Base3",
+      "suffix": "-B3",
+      "items_table": "SC41.DBF",
+      "items_article_field": "ARTICUL",
+      "items_id_field": "ID",
+      "items_name_field": "NAME",
+      "stock_table": "RG_OST.DBF",
+      "stock_item_field": "SP1019",
+      "stock_qty_field": "OSTAT",
+      "price_table": "SC42.DBF",
+      "price_item_field": "PARENTEXT",
+      "price_value_field": "CENA"
+    },
+    {
+      "name": "Base4",
+      "path": "C:\\Bases\\Base4",
+      "suffix": "-B4",
+      "items_table": "SC41.DBF",
+      "items_article_field": "ARTICUL",
+      "items_id_field": "ID",
+      "items_name_field": "NAME",
+      "stock_table": "RG_OST.DBF",
+      "stock_item_field": "SP1019",
+      "stock_qty_field": "OSTAT",
+      "price_table": "SC42.DBF",
+      "price_item_field": "PARENTEXT",
+      "price_value_field": "CENA"
+    }
+  ]
+}
