@@ -849,4 +849,24 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1934ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>2218ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Набор для игры в дартс</Title>
+    <Description><![CDATA[Это круглая сетчатая мишень для дартса диаметром 18 дюймов (45 см), умеренного размера и простая в сборке, идеально подходящая для семейного отдыха или игры в дартс с друзьями. Ее диаметр составляет приблизительно 45,7 см, а толщина — 3,8 см (эквивалентно 1,5 дюймам). Она изготовлена ​​из односторонне напечатанной круглой сетки, обеспечивающей хорошую прочность. В комплекте 6 медных дротиков весом 18 г, которые кажутся прочными и быстро собираются и используются сразу после получения. Упаковка выполнена в элегантной цветной коробке, что делает ее подходящей как для личного использования, так и в качестве подарка.]]></Description>
+    <Price>4590</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Бильярд и боулинг</GoodsType>
+  <GoodsSubCategory>Бильярд</GoodsSubCategory>
+  <GoodsSubType>Аксессуары</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2218ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2218ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2218ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2218ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2218ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
