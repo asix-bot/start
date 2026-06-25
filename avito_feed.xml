@@ -1151,4 +1151,30 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/18681ки/ozon_9.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8673ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Кровать раскладная Nika РК4-M</Title>
+    <Description><![CDATA[Кровать раскладная Nika РК4‑M — удобная и компактная модель для временного размещения гостей или для малогабаритных помещений. Конструкция легко раскладывается и складывается, обеспечивая экономию пространства при хранении. Прочная металлическая рама гарантирует устойчивость и долговечность, а ортопедическое основание поддерживает правильное положение тела во время сна.]]></Description>
+    <Price>5990</Price>
+  <Category>Мебель и интерьер</Category>
+  <GoodsType>Кровати, диваны и кресла</GoodsType>
+  <GoodsSubType>Кровати</GoodsSubType>
+  <AdType>Товар куплен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <LiftingMechanismIncluded>Нет</LiftingMechanismIncluded>
+  <MattressIncluded>Есть</MattressIncluded>
+  <WholesaleType>Нет</WholesaleType>
+  <Availability>В наличии</Availability>
+  <Upholstery>Без повреждений</Upholstery>
+  <FrameAndHeadboard>Всё в порядке</FrameAndHeadboard>
+  <BedBase>Всё в порядке</BedBase>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8673ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8673ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8673ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8673ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8673ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
