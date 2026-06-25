@@ -1009,4 +1009,28 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2066ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>2248з</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Набор шоферского инструмента НИЗ 4А 57081025</Title>
+    <Description><![CDATA[Набор шоферского инструмента НИЗ 4А 57081025 представлен в оптимальной комплектации и предназначен для использования в автомастерских или гаражах.Рабочие части инструмента изготовлены из высокопрочной стали и отличаются стойкостью к износу.Эргономичная рукоятка не скользит в руке и обеспечивает надежный захват при работе.Особенности набора шоферского инструмента НИЗ 57081025Удобное хранение Набор поставляется в пластиковом кейсе с двойным замком. Это обеспечивает надежное хранение и удобную транспортировку инструмента.]]></Description>
+    <Price>3450</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Инструменты</GoodsType>
+  <ToolType>Ручные инструменты</ToolType>
+  <ToolSubType>Наборы инструментов</ToolSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <Brand>НИЗ</Brand>
+  <SetType>Автоинструмент</SetType>
+  <WholesaleType>Нет</WholesaleType>
+  <ToolSetComplectation>Да</ToolSetComplectation>
+  <Quantity>Набор</Quantity>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_4.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
