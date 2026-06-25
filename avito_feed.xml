@@ -788,4 +788,23 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2118ки/ozon_6.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>19949ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Salvas Маска для плавания</Title>
+    <Description><![CDATA["Neptun" это взрослая маска для дайвинга, снорклинга (сноркелинга), плавания, подводной охоты. Профессиональная маска с двумя калеными линзами, двойной обтюратор из черного силикона, подходящая как для подводного плавания, так и для фридайвинга, пряжки с сантиметровой регулировкой ремня. Плавательная маска "Neptun" итальянской компании "Salvas" предназначена для погружения под воду, ныряния и подводной охоты, для плавания с трубкой в море и бассейне. Продукция компании "Salvas" Италия.]]></Description>
+    <Price>3460</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Дайвинг и водный спорт</GoodsType>
+  <WaterSportType>Аксессуары для плавания</WaterSportType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19949ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19949ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19949ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19949ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19949ки/ozon_5.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
