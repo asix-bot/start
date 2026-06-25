@@ -888,4 +888,23 @@
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8765ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>19816ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Ракетка для настольного тенниса Double Fish 7A+C, </Title>
+    <Description><![CDATA[]]></Description>
+    <Price>3690</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Теннис и бадминтон</GoodsType>
+  <GoodsSubCategory>Настольный теннис</GoodsSubCategory>
+  <GoodsSubType>Ракетки</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19816ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19816ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19816ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19816ки/user_photo.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
