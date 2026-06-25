@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-06-25T14:42:54">
+<yml_catalog date="2026-06-25T14:58:14">
   <shop>
     <name>Магазин Старт</name>
     <company>Магазин Старт</company>
@@ -824,24 +824,6 @@ Cейф соответствует (по заключению НИЦ «Охра�
         <param name="Шаг цепи">3/8</param>
         <param name="Мощность, л.с.">2.7</param>
         <param name="Бренд">Huter</param>
-      </offer>
-      <offer id="19747ки-Мяч_футзал_TORRES_Fu">
-        <name>Мяч для футзала TORRES FUTSAL TRAINING FS323674, размер 4 (Мяч футзал TORRES Futsal Training)</name>
-        <vendorCode>19747ки-Мяч_футзал_TORRES_Fu</vendorCode>
-        <categoryId>12</categoryId>
-        <price>2350.00</price>
-        <currencyId>RUR</currencyId>
-        <count>2</count>
-        <barcode>2000000012162</barcode>
-      </offer>
-      <offer id="19747ки-Ракетка_н/т_Sprinter">
-        <name>Мяч для футзала TORRES FUTSAL TRAINING FS323674, размер 4 (Ракетка н/т Sprinter 6******)</name>
-        <vendorCode>19747ки-Ракетка_н/т_Sprinter</vendorCode>
-        <categoryId>12</categoryId>
-        <price>810.00</price>
-        <currencyId>RUR</currencyId>
-        <count>1</count>
-        <barcode>2000000018898</barcode>
       </offer>
     </offers>
   </shop>
