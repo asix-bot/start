@@ -35,6 +35,7 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 ENCODING = "cp866"
 SAMPLE_ROWS = 5
 SAMPLE_ROWS_INTERESTING = 60
+SCAN_LIMIT = 20000
 
 # Таблицы 1С 7.7, в которых обычно есть смысл искать артикул/остаток/цену.
 # Это не жёсткое правило (конфигурация нестандартная), но помогает быстрее
@@ -82,11 +83,16 @@ def explore_base(base_path, out_lines, encoding=ENCODING):
         # Для больших "интересных" таблиц берём записи равномерно по всей
         # таблице (а не только первые N) - так в выборку попадают разные
         # документы/периоды (и приходы, и расходы), а не только самые старые
-        # записи подряд.
-        stride = max(1, total_records // sample_rows) if interesting and total_records > sample_rows else 1
+        # записи подряд. SCAN_LIMIT ограничивает, сколько записей реально
+        # читаем - иначе на огромных таблицах (сотни тысяч строк) на
+        # медленном/сетевом диске разведчик мог зависать на несколько минут.
+        scan_limit = min(total_records, SCAN_LIMIT) if interesting else total_records
+        stride = max(1, scan_limit // sample_rows) if interesting and scan_limit > sample_rows else 1
         try:
             shown = 0
             for i, row in enumerate(table):
+                if i >= scan_limit:
+                    break
                 if i % stride != 0:
                     continue
                 shown += 1
