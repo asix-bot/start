@@ -42,7 +42,11 @@ SYNCED_FILES = (
     "update_config.py",
     "merge_field_mapping.py",
     "update_scripts.py",
+    "update_all.bat",
     "run_export.bat",
+    "setup.bat",
+    "continue_from_step6.bat",
+    "enable_tls12.bat",
     "config.example.json",
 )
 
