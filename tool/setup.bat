@@ -87,11 +87,22 @@ echo     Администрирование информационной базы, поля Сервер баз данных
 echo     и База данных. Пример сервера: SQLSRV01 или SQLSRV01\SQLEXPRESS
 echo После ввода данных скрипт сразу проверит, что база реально читается -
 echo если нет, спросит данные этой же базы заново, остальные базы не тронет.
+echo Уже настроенные и проверенные ранее базы пропускаются автоматически.
+echo После каждой успешной проверки сразу запускается экспорт по всем
+echo на данный момент настроенным базам - можно прервать setup.bat после
+echo любой базы, и экспорт уже будет идти по ней.
 echo.
 
 set "SQLUSER=sa"
 set /p SQLUSER=Логин SQL Server общий для всех SQL-баз, Enter для sa:
 set /p SQLPASS=Пароль SQL Server:
+
+:BASE1_CHECK
+python is_base_verified.py 1
+if not errorlevel 1 (
+    echo База Шишина уже настроена и проверена ранее, пропускаю.
+    goto BASE1_DONE
+)
 
 :BASE1_INPUT
 echo.
@@ -120,8 +131,17 @@ if errorlevel 1 (
     pause
     goto BASE1_INPUT
 )
-echo База Шишина проверена успешно.
+echo База Шишина проверена успешно. Запускаю экспорт по уже настроенным базам...
+call run_export.bat
 pause
+
+:BASE1_DONE
+:BASE2_CHECK
+python is_base_verified.py 2
+if not errorlevel 1 (
+    echo База Киселев уже настроена и проверена ранее, пропускаю.
+    goto BASE2_DONE
+)
 
 :BASE2_INPUT
 echo.
@@ -150,8 +170,17 @@ if errorlevel 1 (
     pause
     goto BASE2_INPUT
 )
-echo База Киселев проверена успешно.
+echo База Киселев проверена успешно. Запускаю экспорт по уже настроенным базам...
+call run_export.bat
 pause
+
+:BASE2_DONE
+:BASE3_CHECK
+python is_base_verified.py 3
+if not errorlevel 1 (
+    echo База Захарина уже настроена и проверена ранее, пропускаю.
+    goto BASE3_DONE
+)
 
 :BASE3_INPUT
 echo.
@@ -180,8 +209,17 @@ if errorlevel 1 (
     pause
     goto BASE3_INPUT
 )
-echo База Захарина проверена успешно.
+echo База Захарина проверена успешно. Запускаю экспорт по уже настроенным базам...
+call run_export.bat
 pause
+
+:BASE3_DONE
+:BASE4_CHECK
+python is_base_verified.py 4
+if not errorlevel 1 (
+    echo База Кукушкина уже настроена и проверена ранее, пропускаю.
+    goto BASE4_DONE
+)
 
 :BASE4_INPUT
 echo.
@@ -210,13 +248,17 @@ if errorlevel 1 (
     pause
     goto BASE4_INPUT
 )
-echo База Кукушкина проверена успешно.
+echo База Кукушкина проверена успешно. Запускаю экспорт по уже настроенным базам...
+call run_export.bat
 pause
+
+:BASE4_DONE
 
 :: ------------------------------------------------------------------
 echo.
 echo ============================================================
-echo  Готово! Все 4 базы проверены, report.txt опубликован в репозитории.
+echo  Готово! Все 4 базы проверены, report.txt опубликован в репозитории,
+echo  экспорт по всем базам уже выполнен.
 echo.
 echo  Дальше: сообщи в чат, что report.txt готов в репозитории -
 echo  по нему подготовят bases_mapping.json с сопоставлением таблиц/полей

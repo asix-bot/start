@@ -1,12 +1,16 @@
 """
 Проверяет ОДНУ базу (по индексу 1-4) из config.json: пытается прочитать её
 структуру (DBF-файлы или таблицы SQL Server через sqlcmd), и если успешно -
-дописывает результат в накопительный report.txt и пушит его в GitHub.
+дописывает результат в накопительный report.txt, пушит его в GitHub и
+помечает базу как "verified": true в config.json.
 
 Используется в новом потоке setup.bat: для каждой базы по очереди -
 ввели данные, проверили именно эту базу, и только при успехе переходят
 к следующей. Если проверка не прошла (exit code 1), setup.bat должен
 повторно запросить данные для той же базы.
+
+Флаг "verified" в config.json позволяет при повторном запуске setup.bat
+пропускать уже настроенные и проверенные базы (см. is_base_verified.py).
 
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
@@ -90,6 +94,9 @@ def main():
 
     print("База {0} проверена успешно.".format(base_cfg["name"]))
     print(report_text)
+
+    base_cfg["verified"] = True
+    CONFIG_PATH.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if LOCAL_REPORT_PATH.exists():
         existing = LOCAL_REPORT_PATH.read_text(encoding="utf-8")

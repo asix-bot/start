@@ -37,6 +37,7 @@ SYNCED_FILES = (
     "explore_sql.py",
     "sqlcmd_client.py",
     "check_base.py",
+    "is_base_verified.py",
     "github_publish.py",
     "update_config.py",
     "merge_field_mapping.py",
