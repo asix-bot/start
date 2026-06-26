@@ -77,8 +77,13 @@ def read_dbf_value_map(base_path, table_name, item_field, value_field, encoding)
 
 def read_dbf_latest_period_map(base_path, table_name, item_field, period_field, value_field, encoding):
     """Для каждого товара берёт сумму value_field по строкам с максимальным
-    period_field - так получается актуальный остаток из периодического
-    регистра 1С 7.7 (RGxxxx.DBF), а не сумма движений за всю историю."""
+    period_field - так получается остаток за самый свежий период из
+    периодического регистра 1С 7.7 (RGxxxx.DBF).
+
+    В некоторых базах одна и та же строка физически встречается в DBF
+    дважды (известная проблема старых 1С 7.7 баз) - чтобы не задвоить
+    остаток, перед суммированием убираем полные дубликаты строк (когда
+    у двух строк совпадают абсолютно все поля)."""
     latest_period = {}
     for row in read_dbf_table(base_path, table_name, encoding):
         item = row[item_field]
@@ -87,10 +92,16 @@ def read_dbf_latest_period_map(base_path, table_name, item_field, period_field, 
             latest_period[item] = period
 
     result = {}
+    seen_rows = set()
     for row in read_dbf_table(base_path, table_name, encoding):
         item = row[item_field]
-        if row[period_field] == latest_period.get(item):
-            result[item] = result.get(item, 0) + (row[value_field] or 0)
+        if row[period_field] != latest_period.get(item):
+            continue
+        row_key = tuple(sorted((k, str(v)) for k, v in row.items()))
+        if row_key in seen_rows:
+            continue
+        seen_rows.add(row_key)
+        result[item] = result.get(item, 0) + (row[value_field] or 0)
     return result
 
 
@@ -165,9 +176,11 @@ def read_sql_value_map(server, database, user, password, table, item_field, valu
 
 def read_sql_latest_period_map(server, database, user, password, table, item_field, period_field, value_field):
     """SQL-аналог read_dbf_latest_period_map - сумма value_field по строкам
-    с максимальным period_field для каждого товара."""
+    с максимальным period_field для каждого товара. SELECT DISTINCT убирает
+    полные дубликаты строк (известная проблема старых 1С 7.7 баз), чтобы
+    остаток не задваивался."""
     query = (
-        "SELECT t1.{0}, SUM(t1.{1}) FROM {2} t1 "
+        "SELECT t1.{0}, SUM(t1.{1}) FROM (SELECT DISTINCT * FROM {2}) t1 "
         "WHERE t1.{3} = (SELECT MAX(t2.{3}) FROM {2} t2 WHERE t2.{0} = t1.{0}) "
         "GROUP BY t1.{0}"
     ).format(item_field, value_field, table, period_field)
@@ -253,11 +266,17 @@ def export_base(base_cfg, default_encoding, sql_auth):
         raw_article = str(item_info.get("article", "")).strip()
         if not raw_article:
             continue
+        stock_value = stock_by_id.get(item_id, 0)
+        try:
+            if float(stock_value) <= 0:
+                continue
+        except (TypeError, ValueError):
+            continue
         out_rows.append(
             {
                 "article": "{0}{1}".format(raw_article, suffix),
                 "name": str(item_info.get("name", "")).strip(),
-                "stock": stock_by_id.get(item_id, 0),
+                "stock": stock_value,
                 "avg_cost": avg_cost_by_id.get(item_id, ""),
                 "sale_price": sale_price_by_id.get(item_id, ""),
                 "base": base_cfg["name"],
