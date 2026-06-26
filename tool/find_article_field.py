@@ -22,6 +22,7 @@ import sys
 from pathlib import Path
 
 from dbfread import DBF
+from diagnostic_log import run_with_log
 from sqlcmd_client import run_query_raw
 
 CONFIG_PATH = Path(__file__).parent / "config.json"
@@ -96,13 +97,7 @@ def search_sql(base_cfg, config, targets):
         print(run_query_raw(server, database, user, password, query))
 
 
-def main():
-    if len(sys.argv) < 3:
-        sys.exit("Использование: python find_article_field.py <индекс_базы 1-4> <число1> [число2 ...]")
-
-    index = int(sys.argv[1])
-    targets = sys.argv[2:]
-
+def run(index, targets):
     config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
     base_cfg = config["bases"][index - 1]
     print("База: {0} ({1})".format(base_cfg["name"], base_cfg.get("type", "dbf")))
@@ -111,6 +106,18 @@ def main():
         search_sql(base_cfg, config, targets)
     else:
         search_dbf(base_cfg, config, targets)
+
+
+def main():
+    if len(sys.argv) < 3:
+        sys.exit("Использование: python find_article_field.py <индекс_базы 1-4> <число1> [число2 ...]")
+
+    index = int(sys.argv[1])
+    targets = sys.argv[2:]
+
+    log_filename = "find_article_field_log.txt"
+    commit_message = "Поиск поля артикула: база {0}, значения {1}".format(index, ", ".join(targets))
+    run_with_log(log_filename, commit_message, lambda: run(index, targets))
 
 
 if __name__ == "__main__":

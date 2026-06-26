@@ -5,6 +5,10 @@
 или это разные строки с одинаковым количеством (тогда дедуп по строке не
 поможет, и проблема в другом измерении регистра).
 
+Весь вывод сохраняется локально в diagnose_stock_log.txt и пушится в
+GitHub (если в config.json настроен токен) - результат можно скачать из
+репозитория, не делая скриншоты терминала.
+
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
 Использование:
@@ -19,6 +23,7 @@ import sys
 from pathlib import Path
 
 from dbfread import DBF
+from diagnostic_log import run_with_log
 from sqlcmd_client import run_query_raw
 
 CONFIG_PATH = Path(__file__).parent / "config.json"
@@ -34,13 +39,7 @@ def read_dbf_table(base_path, table_name, encoding):
     return DBF(str(table_path), encoding=encoding, ignore_missing_memofile=True)
 
 
-def main():
-    if len(sys.argv) != 3:
-        sys.exit("Использование: python diagnose_stock.py <индекс_базы 1-4> <артикул_без_суффикса>")
-
-    index = int(sys.argv[1])
-    article = sys.argv[2]
-
+def run(index, article):
     config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
     base_cfg = config["bases"][index - 1]
     print("База: {0} ({1})".format(base_cfg["name"], base_cfg.get("type", "dbf")))
@@ -97,6 +96,18 @@ def main():
                 count += 1
                 print(count, dict(row))
         print("\nВсего найдено строк:", count)
+
+
+def main():
+    if len(sys.argv) != 3:
+        sys.exit("Использование: python diagnose_stock.py <индекс_базы 1-4> <артикул_без_суффикса>")
+
+    index = int(sys.argv[1])
+    article = sys.argv[2]
+
+    log_filename = "diagnose_stock_log.txt"
+    commit_message = "Диагностика остатка: база {0}, артикул {1}".format(index, article)
+    run_with_log(log_filename, commit_message, lambda: run(index, article))
 
 
 if __name__ == "__main__":

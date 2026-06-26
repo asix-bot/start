@@ -22,6 +22,7 @@ import json
 import sys
 from pathlib import Path
 
+from diagnostic_log import run_with_log
 from main import (
     CONFIG_PATH,
     export_base_dbf,
@@ -38,12 +39,7 @@ def split_suffix(article, suffixes):
     return article, None
 
 
-def main():
-    if len(sys.argv) < 2:
-        sys.exit("Использование: python diagnose_missing_articles.py арт1 [арт2 ...]")
-
-    articles_to_check = sys.argv[1:]
-
+def run(articles_to_check):
     if not CONFIG_PATH.exists():
         sys.exit("Не найден {0}.".format(CONFIG_PATH))
 
@@ -102,6 +98,16 @@ def main():
             print("{0} (база {1}): найден, ID='{2}', название='{3}', сырой остаток={4}".format(
                 article, base_name, found_id, found_name, raw_stock
             ))
+
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit("Использование: python diagnose_missing_articles.py арт1 [арт2 ...]")
+
+    articles_to_check = sys.argv[1:]
+    log_filename = "diagnose_missing_articles_log.txt"
+    commit_message = "Диагностика отсутствующих артикулов ({0} шт.)".format(len(articles_to_check))
+    run_with_log(log_filename, commit_message, lambda: run(articles_to_check))
 
 
 if __name__ == "__main__":
