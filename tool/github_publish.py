@@ -5,10 +5,27 @@
 нет до Python 3.9/3.10).
 """
 
+import os
 import shutil
+import stat
 import subprocess
 import sys
 from pathlib import Path
+
+
+def _on_rmtree_error(func, path, exc_info):
+    """Обработчик для shutil.rmtree: git на Windows хранит файлы в .git/objects
+    как "только для чтения" - os.unlink/os.rmdir падают с PermissionError
+    (WinError 5). Снимаем атрибут read-only и повторяем попытку."""
+    try:
+        os.chmod(path, stat.S_IWRITE)
+    except OSError:
+        pass
+    func(path)
+
+
+def rmtree(path):
+    shutil.rmtree(path, onerror=_on_rmtree_error)
 
 
 def run(cmd, cwd=None):
@@ -42,7 +59,7 @@ def fresh_clone(repo_path, branch, repo_url, auth_url):
     """
     tmp_clone = repo_path.parent / (repo_path.name + "_fresh_clone_tmp")
     if tmp_clone.exists():
-        shutil.rmtree(str(tmp_clone))
+        rmtree(str(tmp_clone))
     run(["git", "clone", "-b", branch, auth_url, str(tmp_clone)])
 
     if repo_path.exists():
@@ -52,11 +69,11 @@ def fresh_clone(repo_path, branch, repo_url, auth_url):
             dest = tmp_clone / item.name
             if item.is_dir():
                 if dest.exists():
-                    shutil.rmtree(str(dest))
+                    rmtree(str(dest))
                 shutil.copytree(str(item), str(dest))
             else:
                 shutil.copyfile(str(item), str(dest))
-        shutil.rmtree(str(repo_path))
+        rmtree(str(repo_path))
 
     tmp_clone.rename(repo_path)
 
