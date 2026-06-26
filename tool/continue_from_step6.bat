@@ -2,6 +2,17 @@
 chcp 866 >nul
 setlocal enabledelayedexpansion
 
+set "PYTHON=C:\Python34\python.exe"
+
+if not exist "%PYTHON%" (
+    echo.
+    echo ОШИБКА: не найден Python по пути %PYTHON%
+    echo Поправь путь в строке set "PYTHON=..." в начале этого файла.
+    echo.
+    pause
+    exit /b 1
+)
+
 echo ============================================================
 echo  1C 7.7 -^> CSV -^> GitHub.  Продолжение с шага 6 сопоставление полей.
 echo  Используй этот файл, если уже прогонял setup.bat создан report.txt,
@@ -25,7 +36,7 @@ echo [Шаг 6/7] Скачиваю bases_mapping.json из репозитория GitHub
 echo и подмешиваю сопоставление таблиц/полей в config.json
 echo пути и суффиксы баз, а также токен ? не трогаются.
 echo.
-python merge_field_mapping.py
+%PYTHON% merge_field_mapping.py
 if errorlevel 1 (
     echo.
     echo Не удалось подтянуть сопоставление полей. Прочитай сообщение выше:

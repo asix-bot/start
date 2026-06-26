@@ -2,6 +2,17 @@
 chcp 866 >nul
 setlocal enabledelayedexpansion
 
+set "PYTHON=C:\Python34\python.exe"
+
+if not exist "%PYTHON%" (
+    echo.
+    echo ОШИБКА: не найден Python по пути %PYTHON%
+    echo Поправь путь в строке set "PYTHON=..." в начале этого файла.
+    echo.
+    pause
+    exit /b 1
+)
+
 echo ============================================================
 echo  1C 7.7 -^> CSV -^> GitHub.  Пошаговый запуск.
 echo  На каждом шаге читай текст и нажимай Enter, чтобы продолжить.
@@ -96,7 +107,7 @@ echo любой базы, и экспорт уже будет идти по ней.
 echo.
 
 :BASE1_CHECK
-python is_base_verified.py 1
+%PYTHON% is_base_verified.py 1
 if not errorlevel 1 (
     echo База Шишина уже настроена и проверена ранее, пропускаю.
     goto BASE1_DONE
@@ -115,13 +126,13 @@ if /i "%TYPE1%"=="S" (
 ) else (
     set /p LOC1_1=Путь к папке с DBF-файлами базы Шишина:
 )
-python update_config.py 1 "%TYPE1%" "%LOC1_1%" "%LOC1_2%"
+%PYTHON% update_config.py 1 "%TYPE1%" "%LOC1_1%" "%LOC1_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Шишина заново.
     goto BASE1_INPUT
 )
 echo Проверяю базу Шишина...
-python check_base.py 1
+%PYTHON% check_base.py 1
 if errorlevel 1 (
     echo.
     echo Проверка базы Шишина не прошла. Прочитай сообщение выше,
@@ -135,7 +146,7 @@ pause
 
 :BASE1_DONE
 :BASE2_CHECK
-python is_base_verified.py 2
+%PYTHON% is_base_verified.py 2
 if not errorlevel 1 (
     echo База Киселев уже настроена и проверена ранее, пропускаю.
     goto BASE2_DONE
@@ -154,13 +165,13 @@ if /i "%TYPE2%"=="S" (
 ) else (
     set /p LOC2_1=Путь к папке с DBF-файлами базы Киселев:
 )
-python update_config.py 2 "%TYPE2%" "%LOC2_1%" "%LOC2_2%"
+%PYTHON% update_config.py 2 "%TYPE2%" "%LOC2_1%" "%LOC2_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Киселев заново.
     goto BASE2_INPUT
 )
 echo Проверяю базу Киселев...
-python check_base.py 2
+%PYTHON% check_base.py 2
 if errorlevel 1 (
     echo.
     echo Проверка базы Киселев не прошла. Прочитай сообщение выше,
@@ -174,7 +185,7 @@ pause
 
 :BASE2_DONE
 :BASE3_CHECK
-python is_base_verified.py 3
+%PYTHON% is_base_verified.py 3
 if not errorlevel 1 (
     echo База Захарина уже настроена и проверена ранее, пропускаю.
     goto BASE3_DONE
@@ -193,13 +204,13 @@ if /i "%TYPE3%"=="S" (
 ) else (
     set /p LOC3_1=Путь к папке с DBF-файлами базы Захарина:
 )
-python update_config.py 3 "%TYPE3%" "%LOC3_1%" "%LOC3_2%"
+%PYTHON% update_config.py 3 "%TYPE3%" "%LOC3_1%" "%LOC3_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Захарина заново.
     goto BASE3_INPUT
 )
 echo Проверяю базу Захарина...
-python check_base.py 3
+%PYTHON% check_base.py 3
 if errorlevel 1 (
     echo.
     echo Проверка базы Захарина не прошла. Прочитай сообщение выше,
@@ -213,7 +224,7 @@ pause
 
 :BASE3_DONE
 :BASE4_CHECK
-python is_base_verified.py 4
+%PYTHON% is_base_verified.py 4
 if not errorlevel 1 (
     echo База Кукушкина уже настроена и проверена ранее, пропускаю.
     goto BASE4_DONE
@@ -232,13 +243,13 @@ if /i "%TYPE4%"=="S" (
 ) else (
     set /p LOC4_1=Путь к папке с DBF-файлами базы Кукушкина:
 )
-python update_config.py 4 "%TYPE4%" "%LOC4_1%" "%LOC4_2%"
+%PYTHON% update_config.py 4 "%TYPE4%" "%LOC4_1%" "%LOC4_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Кукушкина заново.
     goto BASE4_INPUT
 )
 echo Проверяю базу Кукушкина...
-python check_base.py 4
+%PYTHON% check_base.py 4
 if errorlevel 1 (
     echo.
     echo Проверка базы Кукушкина не прошла. Прочитай сообщение выше,
