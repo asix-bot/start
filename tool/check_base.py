@@ -65,10 +65,21 @@ def main():
         if not server or not database:
             print("Не заданы sql_server/sql_database для базы {0}.".format(base_cfg["name"]))
             sys.exit(1)
+        if not sql_auth.get("user") or not sql_auth.get("password"):
+            print("ОШИБКА: в config.json не заполнен sql_auth (логин/пароль SQL Server).")
+            sys.exit(1)
         try:
             explore_base_sql(base_cfg, sql_auth, out_lines)
         except Exception as exc:
-            print("Ошибка подключения к SQL Server: {0}".format(exc))
+            exc_text = str(exc)
+            if "Login failed" in exc_text or "18456" in exc_text:
+                print(
+                    "ОШИБКА ЛОГИНА/ПАРОЛЯ SQL Server для базы {0} (пользователь '{1}'):\n{2}".format(
+                        base_cfg["name"], sql_auth.get("user"), exc_text
+                    )
+                )
+            else:
+                print("Ошибка подключения к SQL Server: {0}".format(exc_text))
             sys.exit(1)
     else:
         base_path_raw = base_cfg.get("path", "")
@@ -86,6 +97,16 @@ def main():
             sys.exit(1)
 
     report_text = "\n".join(out_lines)
+
+    if "Login failed" in report_text or "18456" in report_text:
+        print(
+            "ОШИБКА ЛОГИНА/ПАРОЛЯ SQL Server для базы {0} (пользователь '{1}'):".format(
+                base_cfg["name"], sql_auth.get("user")
+            )
+        )
+        print(report_text)
+        sys.exit(1)
+
     for marker in FAILURE_MARKERS:
         if marker in report_text:
             print("Проверка базы {0} не прошла:".format(base_cfg["name"]))

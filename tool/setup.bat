@@ -85,17 +85,15 @@ echo   - для SQL: имя сервера и имя базы данных
 echo     подсказка - смотри в 1С: Конфигуратор -^> Администрирование -^>
 echo     Администрирование информационной базы, поля Сервер баз данных
 echo     и База данных. Пример сервера: SQLSRV01 или SQLSRV01\SQLEXPRESS
-echo После ввода данных скрипт сразу проверит, что база реально читается -
-echo если нет, спросит данные этой же базы заново, остальные базы не тронет.
-echo Уже настроенные и проверенные ранее базы пропускаются автоматически.
+echo Логин и пароль SQL Server уже зашиты в config.json, спрашивать их
+echo не нужно. После ввода данных скрипт сразу проверит, что база реально
+echo читается - если нет, спросит данные этой же базы заново, остальные
+echo базы не тронет. Уже настроенные и проверенные ранее базы пропускаются
+echo автоматически.
 echo После каждой успешной проверки сразу запускается экспорт по всем
 echo на данный момент настроенным базам - можно прервать setup.bat после
 echo любой базы, и экспорт уже будет идти по ней.
 echo.
-
-set "SQLUSER=sa"
-set /p SQLUSER=Логин SQL Server общий для всех SQL-баз, Enter для sa:
-set /p SQLPASS=Пароль SQL Server:
 
 :BASE1_CHECK
 python is_base_verified.py 1
@@ -117,7 +115,7 @@ if /i "%TYPE1%"=="S" (
 ) else (
     set /p LOC1_1=Путь к папке с DBF-файлами базы Шишина:
 )
-python update_config.py 1 "%TYPE1%" "%LOC1_1%" "%LOC1_2%" "%SQLUSER%" "%SQLPASS%"
+python update_config.py 1 "%TYPE1%" "%LOC1_1%" "%LOC1_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Шишина заново.
     goto BASE1_INPUT
@@ -156,7 +154,7 @@ if /i "%TYPE2%"=="S" (
 ) else (
     set /p LOC2_1=Путь к папке с DBF-файлами базы Киселев:
 )
-python update_config.py 2 "%TYPE2%" "%LOC2_1%" "%LOC2_2%" "%SQLUSER%" "%SQLPASS%"
+python update_config.py 2 "%TYPE2%" "%LOC2_1%" "%LOC2_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Киселев заново.
     goto BASE2_INPUT
@@ -195,7 +193,7 @@ if /i "%TYPE3%"=="S" (
 ) else (
     set /p LOC3_1=Путь к папке с DBF-файлами базы Захарина:
 )
-python update_config.py 3 "%TYPE3%" "%LOC3_1%" "%LOC3_2%" "%SQLUSER%" "%SQLPASS%"
+python update_config.py 3 "%TYPE3%" "%LOC3_1%" "%LOC3_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Захарина заново.
     goto BASE3_INPUT
@@ -234,7 +232,7 @@ if /i "%TYPE4%"=="S" (
 ) else (
     set /p LOC4_1=Путь к папке с DBF-файлами базы Кукушкина:
 )
-python update_config.py 4 "%TYPE4%" "%LOC4_1%" "%LOC4_2%" "%SQLUSER%" "%SQLPASS%"
+python update_config.py 4 "%TYPE4%" "%LOC4_1%" "%LOC4_2%"
 if errorlevel 1 (
     echo ОШИБКА при записи config.json. Введи данные базы Кукушкина заново.
     goto BASE4_INPUT
