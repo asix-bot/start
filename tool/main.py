@@ -135,11 +135,13 @@ def export_base_dbf(base_cfg, encoding):
     item_by_id = {}
     for row in items:
         article_value = str(row.get(article_field, "")).strip()
-        if not article_value and fallback_field:
-            article_value = str(row.get(fallback_field, "")).strip()
+        fallback_value = str(row.get(fallback_field, "")).strip() if fallback_field else ""
+        if not article_value:
+            article_value = fallback_value
         item_by_id[row[id_field]] = {
             "article": article_value,
             "name": row.get(name_field, "") if name_field else "",
+            "disambiguator": fallback_value,
         }
 
     stock_by_id = read_dbf_latest_period_map(
@@ -252,12 +254,15 @@ def export_base_sql(base_cfg, sql_auth):
         item_id = row[0].strip()
         article = row[1].strip()
         next_idx = 2
+        fallback_value = ""
         if fallback_field:
-            if not article and len(row) > next_idx:
-                article = row[next_idx].strip()
+            if len(row) > next_idx:
+                fallback_value = row[next_idx].strip()
+            if not article:
+                article = fallback_value
             next_idx += 1
         name = row[next_idx].strip() if name_field and len(row) > next_idx else ""
-        item_by_id[item_id] = {"article": article, "name": name}
+        item_by_id[item_id] = {"article": article, "name": name, "disambiguator": fallback_value}
 
     stock_by_id = read_sql_latest_period_map(
         server, database, user, password,
@@ -339,8 +344,26 @@ def export_base(base_cfg, default_encoding, sql_auth, exclude_zero_stock=False):
                 "avg_cost": avg_cost_by_id.get(item_id, ""),
                 "sale_price": sale_price_by_id.get(item_id, ""),
                 "base": base_cfg["name"],
+                "_item_id": item_id,
+                "_disambiguator": str(item_info.get("disambiguator", "")).strip(),
             }
         )
+
+    # Если в названии нет распознаваемого размера (или он одинаковый у
+    # нескольких разных товаров, например цвета одной модели), несколько
+    # разных внутренних товаров 1С могут получить ОДИНАКОВЫЙ итоговый
+    # артикул - они бы перезатирали друг друга у любого потребителя,
+    # читающего CSV в словарь по артикулу. Различаем такие дубликаты
+    # внутренним кодом товара (CODE/ID).
+    article_counts = {}
+    for row in out_rows:
+        article_counts[row["article"]] = article_counts.get(row["article"], 0) + 1
+    for row in out_rows:
+        if article_counts[row["article"]] > 1:
+            disambiguator = row["_disambiguator"] or str(row["_item_id"]).strip()
+            row["article"] = "{0}-{1}".format(row["article"], disambiguator)
+        del row["_item_id"]
+        del row["_disambiguator"]
     return out_rows
 
 
