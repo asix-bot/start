@@ -25793,3 +25793,5344 @@
       1 98
       
       (1 rows affected)
+
+================================================================================
+БАЗА (SQL): Кукушкина - сервер 1CSrv, база Profi
+================================================================================
+  Найдено таблиц: 211
+
+  [DH10013] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP9999 char 9
+      SP10000 char 20
+      SP10001 char 9
+      SP10002 numeric NULL
+      SP10003 char 9
+      SP10004 char 9
+      SP10005 char 9
+      SP10006 char 9
+      SP10007 datetime NULL
+      SP10008 datetime NULL
+      SP10148 char 20
+      SP10716 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP10711 text 2147483647
+      SP3852 text 2147483647
+      
+      (18 rows affected)
+    Примеры строк:
+      IDDOC SP9999 SP10000 SP10001 SP10002 SP10003 SP10004 SP10005 SP10006 SP10007 SP10008 SP10148 SP10716 SP1008 SP9856 SP10313 SP10711 SP3852
+      ----- ------ ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------ ------ ------- ------- ------
+      
+      (0 rows affected)
+
+  [DH10057] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10049 char 9
+      SP10275 numeric NULL
+      SP10276 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC SP10049 SP10275 SP10276 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------- ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH10202] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10186 char 9
+      SP10187 char 9
+      SP10188 datetime NULL
+      SP10189 numeric NULL
+      SP10190 char 9
+      SP10191 char 9
+      SP10192 char 9
+      SP10198 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC SP10186 SP10187 SP10188 SP10189 SP10190 SP10191 SP10192 SP10198 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------- ------- ------- ------- ------- ------- ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH10238] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10242 datetime NULL
+      SP10243 numeric NULL
+      SP10245 char 9
+      SP10248 char 9
+      SP10250 numeric NULL
+      SP10255 numeric NULL
+      SP10270 char 13
+      SP10271 numeric NULL
+      SP10288 char 9
+      SP10261 numeric NULL
+      SP10262 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (16 rows affected)
+    Примеры строк:
+      IDDOC SP10242 SP10243 SP10245 SP10248 SP10250 SP10255 SP10270 SP10271 SP10288 SP10261 SP10262 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH10341] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (5 rows affected)
+    Примеры строк:
+      IDDOC SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH10354] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10376 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC SP10376 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH10377] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10378 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC SP10378 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH10499] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10505 char 9
+      SP10506 numeric NULL
+      SP10508 char 9
+      SP10510 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC SP10505 SP10506 SP10508 SP10510 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------- ------- ------- ------ ------ ------- ------
+         368      1 0      0      0       0      0 
+        23TO      1 0    145      0       0      0 
+        26JZ      1 0    145      0       0      0 
+        29AF      1 0      0      0       0      0 
+        2KXF      1 0      0      0       0      0 
+      
+      (5 rows affected)
+
+  [DH10904] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10905 datetime NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC SP10905 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------ ------ ------- ------
+        2RVL 2019-05-29 00:00:00.000       0      0 
+        2RVM 2019-05-30 00:00:00.000       0      0 
+        2RZ3 2019-05-31 00:00:00.000       0      0 
+        2RZ4 2019-06-01 00:00:00.000       0      0 
+        2RZ5 2019-06-02 00:00:00.000       0      0 
+      
+      (5 rows affected)
+
+  [DH10920] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP10917 numeric NULL
+      SP10918 datetime NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC SP10917 SP10918 SP1008 SP9856 SP10313 SP3852
+      ----- ------- ------- ------ ------ ------- ------
+        2WAH 500 1753-01-01 00:00:00.000       0      0 
+        2WPZ -500 2020-02-13 00:00:00.000       0      0 
+        32L1 500 1753-01-01 00:00:00.000       0      0 
+        32XV -500 2021-02-16 00:00:00.000       0      0 
+        39QV 0 1753-01-01 00:00:00.000       0      0 000
+      
+      (5 rows affected)
+
+  [DH196] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7635 char 9
+      SP199 char 9
+      SP3807 char 9
+      SP201 datetime NULL
+      SP202 numeric NULL
+      SP633 datetime NULL
+      SP950 char 9
+      SP1197 char 9
+      SP3656 numeric NULL
+      SP3860 char 9
+      SP5023 char 13
+      SP5558 numeric NULL
+      SP6820 numeric NULL
+      SP6916 numeric NULL
+      SP6928 numeric NULL
+      SP6952 numeric NULL
+      SP7068 numeric NULL
+      SP10325 datetime NULL
+      SP211 numeric NULL
+      SP609 numeric NULL
+      SP3657 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (26 rows affected)
+    Примеры строк:
+      IDDOC SP7635 SP199 SP3807 SP201 SP202 SP633 SP950 SP1197 SP3656 SP3860 SP5023 SP5558 SP6820 SP6916 SP6928 SP6952 SP7068 SP10325 SP211 SP609 SP3657 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ----- ------ ----- ----- ----- ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ----- ----- ------ ------ ------ ------- ------
+         4L5      0     C9      0 2009-05-12 00:00:00.000 1.0000 1753-01-01 00:00:00.000      1      1 0      3    0     0 1 28.6500 0 0 0 0 1753-01-01 00:00:00.000 4342.17 .00 .00     7YP      0 
+         72C      0     CG      0 2009-09-21 00:00:00.000 1.0000 1753-01-01 00:00:00.000      1      1 0      3    0     0 1 28.6500 0 0 0 0 1753-01-01 00:00:00.000 11555.00 .00 .00     7YP      0 
+         72F      0     CH      0 2009-09-21 00:00:00.000 1.0000 1753-01-01 00:00:00.000      1      1 0      3    0     0 1 28.6500 0 0 0 0 1753-01-01 00:00:00.000 2980.00 .00 .00     7YP      0 
+         BHB      0     QM      0 2009-09-21 00:00:00.000 1.0000 1753-01-01 00:00:00.000      1      1 0      3    0     0 1 28.6500 0 0 0 0 1753-01-01 00:00:00.000 11830.00 .00 .00     7YP      0 
+         BPF      0     QP      0 2010-05-21 00:00:00.000 1.0000 1753-01-01 00:00:00.000      1      1 0      3    0     0 1 28.6500 0 0 0 0 1753-01-01 00:00:00.000 2280.00 .00 .00     7YP      0 
+      
+      (5 rows affected)
+
+  [DH239] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP242 char 9
+      SP5168 numeric NULL
+      SP5435 char 13
+      SP7629 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC SP242 SP5168 SP5435 SP7629 SP1008 SP9856 SP10313 SP3852
+      ----- ----- ------ ------ ------ ------ ------ ------- ------
+        1KSE      3 1    0     0 0       0      0 
+        1KSH      3 1    0     0 0       0      0 
+        1KSK      3 1    0     0 0       0      0 
+        1KSR      3 1    0     0 0       0      0 
+        1KSZ      3 1    0     0 0       0      0 
+      
+      (5 rows affected)
+
+  [DH2964] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5189 char 9
+      SP2974 char 9
+      SP5152 numeric NULL
+      SP3397 char 9
+      SP3801 char 9
+      SP2975 char 13
+      SP2965 char 9
+      SP4609 numeric NULL
+      SP2971 char 150
+      SP2967 char 80
+      SP4174 char 9
+      SP2976 char 9
+      SP3658 char 9
+      SP2968 numeric NULL
+      SP4974 numeric NULL
+      SP7326 numeric NULL
+      SP7588 char 13
+      SP7614 numeric NULL
+      SP7637 numeric NULL
+      SP9700 char 23
+      TSP9700 char 3
+      SP9701 char 23
+      TSP9701 char 3
+      SP9702 char 23
+      TSP9702 char 3
+      SP9706 char 9
+      SP9896 numeric NULL
+      SP9897 numeric NULL
+      SP10894 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (34 rows affected)
+    Примеры строк:
+      IDDOC SP5189 SP2974 SP5152 SP3397 SP3801 SP2975 SP2965 SP4609 SP2971 SP2967 SP4174 SP2976 SP3658 SP2968 SP4974 SP7326 SP7588 SP7614 SP7637 SP9700 TSP9700 SP9701 TSP9701 SP9702 TSP9702 SP9706 SP9896 SP9897 SP10894 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------ ------- ------ ------- ------ ------ ------ ------- ------ ------ ------- ------
+         X39      0      1 0    2M9      0   BE   WHH     RA 0  ООО "Санаторий-Профилакторий "ЦО и З"    36I      0      0 20.00 0 1  6EK    39 0 0 B1  1A    RA 1 B1 2VG    1Q 1 U       1 1 7224 0 Расходная накл. № RYB0000022 от 15.06.12    7YO      0 
+         X6P      0      1 0    2M9      0   BE   X6O     RZ 0  МОУДО "Центр детских и молодежных клубов "Максимум"    36I      0      0 390.00 0 1  6EK    39 0 0 B1  1A    RZ 1 B1 2VG    29 1 U       1 1 7357 0 Расходная накл. № RYB0000026 от 04.07.12    7YO      0 
+      
+      (2 rows affected)
+
+  [DH297] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP4093 char 13
+      SP300 char 9
+      SP5170 numeric NULL
+      SP7342 char 9
+      SP7350 numeric NULL
+      SP7351 char 9
+      SP7631 numeric NULL
+      SP10234 char 9
+      SP10318 numeric NULL
+      SP10868 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (15 rows affected)
+    Примеры строк:
+      IDDOC SP4093 SP300 SP5170 SP7342 SP7350 SP7351 SP7631 SP10234 SP10318 SP10868 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ----- ------ ------ ------ ------ ------ ------- ------- ------- ------ ------ ------- ------
+         41M    0     0      1 0      6 21257.28      1 0    7W7 1      0       0      0 
+         5O7    0     0      1 1      6 1201.20      1 0    7W7 0      0       0      0 
+         81F  2RG   7N6      1 0      6 22323.80      1 0    7W7 0      0 Инвентаризация № RYB0000002 от 19.10.09      0      0 
+         8NI  2RG   8MM      1 1      6 2456.06      1 0      0 0      0 Инвентаризация № RYB0000003 от 09.12.09      0      0 
+         980  2RG   96P      1 0      6 2677.41      1 0      0 0      0 Инвентаризация № RYB0000001 от 03.01.10      0      0 
+      
+      (5 rows affected)
+
+  [DH2978] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5190 char 9
+      SP2984 char 9
+      SP3398 char 9
+      SP2987 char 80
+      SP3805 char 9
+      SP2985 char 13
+      SP2979 char 9
+      SP2986 char 150
+      SP2982 char 150
+      SP4175 char 9
+      SP3642 char 9
+      SP3659 char 9
+      SP2981 numeric NULL
+      SP5382 numeric NULL
+      SP7327 numeric NULL
+      SP7589 char 13
+      SP7628 numeric NULL
+      SP7634 numeric NULL
+      SP9703 char 23
+      TSP9703 char 3
+      SP9704 char 23
+      TSP9704 char 3
+      SP9705 char 23
+      TSP9705 char 3
+      SP9708 char 9
+      SP9900 numeric NULL
+      SP9901 numeric NULL
+      SP10893 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (33 rows affected)
+    Примеры строк:
+      IDDOC SP5190 SP2984 SP3398 SP2987 SP3805 SP2985 SP2979 SP2986 SP2982 SP4175 SP3642 SP3659 SP2981 SP5382 SP7327 SP7589 SP7628 SP7634 SP9703 TSP9703 SP9704 TSP9704 SP9705 TSP9705 SP9708 SP9900 SP9901 SP10893 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------ ------- ------ ------- ------ ------ ------ ------- ------ ------ ------- ------
+         X3A      0      1    2MA ООО "Санаторий-Профилакторий "ЦО и З"      0  2AC   X39     RA      36I      0      0 20.00 0 1  6EK    39 0 0 B1  1A    RA 1 B1 2VG    1Q 1 U       1 1 7225 0 ПКО № RYB0000001 от 02.07.12    7YO      0 
+         X6Q      0      1    2MA МОУДО "Центр детских и молодежных клубов "Максимум"      0  2AC   X6P     RZ      36I      0      0 390.00 0 1  6EK    39 0 0 B1  1A    RZ 1 B1 2VG    29 1 U       1 1 7359 0 ПКО № RYB0000002 от 04.07.12    7YO      0 
+      
+      (2 rows affected)
+
+  [DH2989] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP2990 char 9
+      SP3110 char 9
+      SP5495 numeric NULL
+      SP7266 numeric NULL
+      SP7617 numeric NULL
+      SP2995 numeric NULL
+      SP2996 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC SP2990 SP3110 SP5495 SP7266 SP7617 SP2995 SP2996 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH3287] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP3296 char 9
+      SP3299 char 9
+      SP3293 char 9
+      SP4197 char 9
+      SP3298 char 13
+      SP3289 char 9
+      SP3292 numeric NULL
+      SP3295 numeric NULL
+      SP4588 char 9
+      SP3288 char 9
+      SP3297 char 200
+      SP3294 datetime NULL
+      SP3291 char 9
+      SP3290 numeric NULL
+      SP3300 char 9
+      SP7136 numeric NULL
+      SP7137 char 2
+      SP7138 char 20
+      SP7139 char 11
+      SP7140 char 2
+      SP7141 char 10
+      SP7142 char 18
+      SP7143 datetime NULL
+      SP7144 char 2
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (29 rows affected)
+    Примеры строк:
+      IDDOC SP3296 SP3299 SP3293 SP4197 SP3298 SP3289 SP3292 SP3295 SP4588 SP3288 SP3297 SP3294 SP3291 SP3290 SP3300 SP7136 SP7137 SP7138 SP7139 SP7140 SP7141 SP7142 SP7143 SP7144 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH3538] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP6837 char 9
+      SP6838 char 9
+      SP6841 datetime NULL
+      SP6842 numeric NULL
+      SP6845 char 9
+      SP10458 datetime NULL
+      SP10459 datetime NULL
+      SP10731 char 13
+      SP6844 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (14 rows affected)
+    Примеры строк:
+      IDDOC SP6837 SP6838 SP6841 SP6842 SP6845 SP10458 SP10459 SP10731 SP6844 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------- ------- ------- ------ ------ ------ ------- ------
+         1L1      3      1 2008-10-07 00:00:00.000 1.0000      1 1753-01-01 00:00:00.000 1753-01-01 00:00:00.000    0     0 -64068.50       0      0 
+         1LK      3      1 2008-10-08 00:00:00.000 1.0000      1 1753-01-01 00:00:00.000 1753-01-01 00:00:00.000    0     0 -3240.00       0      0 
+         1LW      3      1 2008-10-09 00:00:00.000 1.0000      1 1753-01-01 00:00:00.000 1753-01-01 00:00:00.000    0     0 1467.00       0      0 
+         1MY      3      1 2008-10-11 00:00:00.000 1.0000      1 1753-01-01 00:00:00.000 1753-01-01 00:00:00.000    0     0 -4126.00       0      0 
+         1U1      3      1 2008-10-31 00:00:00.000 1.0000      1 1753-01-01 00:00:00.000 1753-01-01 00:00:00.000    0     0 -371.20       0      0 
+      
+      (5 rows affected)
+
+  [DH3580] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP3582 char 9
+      SP3583 datetime NULL
+      SP3584 numeric NULL
+      SP3620 char 9
+      SP3621 char 9
+      SP6823 char 9
+      SP6925 numeric NULL
+      SP7341 char 13
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC SP3582 SP3583 SP3584 SP3620 SP3621 SP6823 SP6925 SP7341 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+         335      1 2009-02-16 00:00:00.000 1.0000      1      0      3 0    0     0       0      0 
+         7N6      1 2009-10-19 00:00:00.000 1.0000      1      0      3 0    0     0       0      0 
+         8MM      1 2009-12-09 00:00:00.000 1.0000      1      0      3 0    0     0       0      0 
+         96P      1 2010-01-03 00:00:00.000 1.0000      1      0      3 0    0     0       0      0 
+         DD7      1 2010-07-19 00:00:00.000 1.0000      1      0      3 0    0     0       0      0 
+      
+      (5 rows affected)
+
+  [DH3831] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP3818 char 9
+      SP3819 datetime NULL
+      SP3821 char 13
+      SP4095 char 9
+      SP3820 numeric NULL
+      SP3817 char 9
+      SP5169 numeric NULL
+      SP7353 char 9
+      SP7630 numeric NULL
+      SP3827 numeric NULL
+      SP3828 numeric NULL
+      SP3829 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (17 rows affected)
+    Примеры строк:
+      IDDOC SP3818 SP3819 SP3821 SP4095 SP3820 SP3817 SP5169 SP7353 SP7630 SP3827 SP3828 SP3829 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+        1RH0      1 2014-11-19 00:00:00.000  2RG  1RGZ      3 1.0000      3 0     BY 0 230.00 .00 .00 Инвентаризация № RYB0000004 от 19.11.14      0      0 
+        1V4T      1 2015-04-20 00:00:00.000  2RG  1V3H      4 1.0000      3 0     BY 0 6643.23 .00 .00 Инвентаризация № RYB0000002 от 20.04.15      0      0 
+        1W8C      1 2015-06-02 00:00:00.000    0     0      0 1.0000      1 1     BY 0 3180.00 .00 .00       0      0 Бразукевич прислал 2 пары сандалий взамен кроссовок 71490 и 219089
+        1XKY      1 2015-06-28 00:00:00.000  2RG  1XKV      3 1.0000      1 0      0 0 830.00 .00 .00 Инвентаризация № RYB0000004 от 28.06.15      0      0 
+        2XY5      1 2015-06-02 00:00:00.000    0     0      0 1.0000      1 1     BY 0 406500.00 .00 .00       0      0 возврат обуви по спортивной школе
+      
+      (5 rows affected)
+
+  [DH410] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP4962 char 9
+      SP5209 numeric NULL
+      SP415 char 9
+      SP907 numeric NULL
+      SP416 datetime NULL
+      SP909 datetime NULL
+      SP3802 char 9
+      SP911 char 13
+      SP3903 numeric NULL
+      SP4176 numeric NULL
+      SP3788 char 9
+      SP413 char 9
+      SP417 numeric NULL
+      SP5211 numeric NULL
+      SP422 char 9
+      SP3669 numeric NULL
+      SP5119 numeric NULL
+      SP3654 numeric NULL
+      SP5163 numeric NULL
+      SP6797 numeric NULL
+      SP7065 numeric NULL
+      SP7191 numeric NULL
+      SP7279 char 9
+      SP7603 numeric NULL
+      SP10041 char 13
+      SP10512 char 9
+      SP10526 char 13
+      SP10672 datetime NULL
+      SP10751 char 5
+      SP10752 char 5
+      SP428 numeric NULL
+      SP604 numeric NULL
+      SP3655 numeric NULL
+      SP6957 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (39 rows affected)
+    Примеры строк:
+      IDDOC SP4962 SP5209 SP415 SP907 SP416 SP909 SP3802 SP911 SP3903 SP4176 SP3788 SP413 SP417 SP5211 SP422 SP3669 SP5119 SP3654 SP5163 SP6797 SP7065 SP7191 SP7279 SP7603 SP10041 SP10512 SP10526 SP10672 SP10751 SP10752 SP428 SP604 SP3655 SP6957 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ----- ----- ----- ----- ------ ----- ------ ------ ------ ----- ----- ------ ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------- ------- ------- ------- ------- ----- ----- ------ ------ ------ ------ ------- ------
+         10I      1 0      1 0 2008-07-02 00:00:00.000 1753-01-01 00:00:00.000      0   C2    H6 0 0      4      4 1.0000 0     43 0 0 0 0 28.6500 0 0      1 0  6EK    33      0  6EK    63 2008-08-14 00:00:00.000   238.00 36.31 .00 238.00 Приходная накл. № RYB0000027 от 02.07.08      0      0 На основании акта приемки от 04.07.2008
+         10K      1 0      1 0 2008-07-02 00:00:00.000 1753-01-01 00:00:00.000      0   C2    H3 0 0      4      4 1.0000 0     43 0 0 0 1 28.6500 0 0      1 0  6EK    33      0  6EK    63 2008-08-14 00:00:00.000   383.98 58.57 .00 288.02 Приходная накл. № RYB0000024 от 02.07.08      0      0 
+         10M      1 0      1 0 2008-05-15 00:00:00.000 1753-01-01 00:00:00.000      0   C2     H 0 0      4      4 1.0000 0     43 0 0 0 1 28.6500 0 0      1 0  6EK    33      0  6EK    63 2008-07-03 00:00:00.000   736.82 112.40 .00 663.18 Приходная накл. № RYB0000011 от 15.05.08      0      0 
+         10N      1 0      1 0 2008-05-15 00:00:00.000 1753-01-01 00:00:00.000      0   C2     C 0 0      4      4 1.0000 0     43 0 0 0 1 28.6500 0 0      1 0  6EK    33      0  6EK    63 2008-08-14 00:00:00.000   1179.44 179.91 .00 767.56 Приходная накл. № RYB0000008 от 15.05.08      0      0 
+         11W      1 0      1 0 2008-08-07 00:00:00.000 1753-01-01 00:00:00.000      0   C2    XW 0 0      4      4 1.0000 0     43 0 0 0 0 28.6500 0 0      1 0  6EK    33      0  6EK    63 2008-08-12 00:00:00.000   683.38 104.25 .00 546.62 Приходная накл. № RYB0000036 от 07.08.08      0      0 
+      
+      (5 rows affected)
+
+  [DH434] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5188 char 9
+      SP5210 numeric NULL
+      SP439 char 9
+      SP908 numeric NULL
+      SP440 datetime NULL
+      SP910 datetime NULL
+      SP3799 char 9
+      SP2698 char 13
+      SP5217 numeric NULL
+      SP4181 numeric NULL
+      SP3867 char 9
+      SP437 char 9
+      SP441 numeric NULL
+      SP446 char 9
+      SP5330 numeric NULL
+      SP5166 numeric NULL
+      SP7057 numeric NULL
+      SP7354 char 20
+      SP7618 numeric NULL
+      SP10037 char 13
+      SP10513 char 9
+      SP10747 char 5
+      SP10748 char 5
+      SP10749 datetime NULL
+      SP10757 char 50
+      SP453 numeric NULL
+      SP605 numeric NULL
+      SP3664 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP10758 text 2147483647
+      SP3852 text 2147483647
+      
+      (34 rows affected)
+    Примеры строк:
+      IDDOC SP5188 SP5210 SP439 SP908 SP440 SP910 SP3799 SP2698 SP5217 SP4181 SP3867 SP437 SP441 SP446 SP5330 SP5166 SP7057 SP7354 SP7618 SP10037 SP10513 SP10747 SP10748 SP10749 SP10757 SP453 SP605 SP3664 SP1008 SP9856 SP10313 SP10758 SP3852
+      ----- ------ ------ ----- ----- ----- ----- ------ ------ ------ ------ ------ ----- ----- ----- ------ ------ ------ ------ ------ ------- ------- ------- ------- ------- ------- ----- ----- ------ ------ ------ ------- ------- ------
+           3      0 0      1 0 2008-04-19 00:00:00.000 1753-01-01 00:00:00.000      0    0     0 0 0      4      4 1.0000     3L 0 1 0 P-00000091 0  6EK    33      0   1753-01-01 00:00:00.000  10656.00 1625.51 .00       0      0  
+           4      0 0      1 0 2008-04-23 00:00:00.000 1753-01-01 00:00:00.000      0    0     0 0 0      4      4 1.0000     3L 0 1 0 P-00000087 0  6EK    33      0   1753-01-01 00:00:00.000  196299.97 29944.05 .00       0      0  
+           5      0 0      1 0 2008-04-23 00:00:00.000 1753-01-01 00:00:00.000      0    0     0 0 0      4      4 1.0000     3L 0 1 0 P-00000088 0  6EK    33      0   1753-01-01 00:00:00.000  287271.89 43821.18 .00       0      0  
+           6      0 0      1 0 2008-04-23 00:00:00.000 1753-01-01 00:00:00.000      0    0     0 0 0      4      4 1.0000     3L 0 1 0 P-00000089 0  6EK    33      0   1753-01-01 00:00:00.000  10286.03 1569.10 .00       0      0  
+           9      0 0      1 0 2008-05-15 00:00:00.000 1753-01-01 00:00:00.000      0    0     0 0 0      4      4 1.0000     3L 0 1 0 P-0000138 0  6EK    33      0   1753-01-01 00:00:00.000  204202.41 31149.49 .00       0      0  
+      
+      (5 rows affected)
+
+  [DH4929] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP4932 char 9
+      SP7298 char 13
+      SP10622 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC SP4932 SP7298 SP10622 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH5026] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5027 char 9
+      SP5034 char 13
+      SP10068 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC SP5027 SP5034 SP10068 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------- ------ ------ ------- ------
+        1KSF      3   6N  1KSE 1 НачалоПеремещения №RYB0000002 от 15.04.14      0      0 
+        1KSI      3   6N  1KSH 1 НачалоПеремещения №RYB0000003 от 15.04.14      0      0 
+        1KSL      3   6N  1KSK 1 НачалоПеремещения №RYB0000004 от 15.04.14      0      0 
+        1KSS      3   6N  1KSR 1 НачалоПеремещения №RYB0000005 от 16.04.14      0      0 
+        1KT1      3   6N  1KSZ 1 НачалоПеремещения №RYB0000006 от 16.04.14      0      0 
+      
+      (5 rows affected)
+
+  [DH5126] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5127 char 9
+      SP10623 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC SP5127 SP10623 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH5384] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5393 char 9
+      SP5391 char 9
+      SP5413 numeric NULL
+      SP5505 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC SP5393 SP5391 SP5413 SP5505 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH5424] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5417 numeric NULL
+      SP5418 numeric NULL
+      SP5419 numeric NULL
+      SP5421 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC SP5417 SP5418 SP5419 SP5421 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH5448] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5449 char 9
+      SP5450 char 9
+      SP5458 numeric NULL
+      SP5459 numeric NULL
+      SP5506 char 9
+      SP6763 char 9
+      SP5462 numeric NULL
+      SP5461 numeric NULL
+      SP5460 numeric NULL
+      SP5463 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (15 rows affected)
+    Примеры строк:
+      IDDOC SP5449 SP5450 SP5458 SP5459 SP5506 SP6763 SP5462 SP5461 SP5460 SP5463 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH5475] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP5476 char 9
+      SP6748 char 9
+      SP6749 datetime NULL
+      SP6750 numeric NULL
+      SP6751 char 9
+      SP10564 numeric NULL
+      SP5483 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC SP5476 SP6748 SP6749 SP6750 SP6751 SP10564 SP5483 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------- ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH627] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP6951 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC SP6951 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH6778] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP6779 char 9
+      SP6780 datetime NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC SP6779 SP6780 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7080] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7092 char 9
+      SP9571 char 9
+      SP9572 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC SP7092 SP9571 SP9572 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7153] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7154 char 9
+      SP7155 char 9
+      SP7156 numeric NULL
+      SP7157 char 9
+      SP7158 char 9
+      SP7159 char 13
+      SP7160 char 9
+      SP7161 numeric NULL
+      SP7162 char 150
+      SP7163 char 80
+      SP7164 char 9
+      SP7165 char 9
+      SP7166 char 9
+      SP7167 numeric NULL
+      SP7169 numeric NULL
+      SP7329 numeric NULL
+      SP9546 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (22 rows affected)
+    Примеры строк:
+      IDDOC SP7154 SP7155 SP7156 SP7157 SP7158 SP7159 SP7160 SP7161 SP7162 SP7163 SP7164 SP7165 SP7166 SP7167 SP7169 SP7329 SP9546 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7194] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7199 char 9
+      SP7200 char 13
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC SP7199 SP7200 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7245] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7246 char 9
+      SP7247 char 9
+      SP7248 numeric NULL
+      SP7261 char 9
+      SP7267 numeric NULL
+      SP7616 numeric NULL
+      SP7254 numeric NULL
+      SP7255 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC SP7246 SP7247 SP7248 SP7261 SP7267 SP7616 SP7254 SP7255 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7284] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (5 rows affected)
+    Примеры строк:
+      IDDOC SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH730] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP1102 char 9
+      SP742 datetime NULL
+      SP3808 char 9
+      SP756 char 13
+      SP734 char 64
+      SP732 char 9
+      SP743 numeric NULL
+      SP762 numeric NULL
+      SP761 numeric NULL
+      SP1035 numeric NULL
+      SP759 numeric NULL
+      SP758 numeric NULL
+      SP760 numeric NULL
+      SP3674 numeric NULL
+      SP7066 numeric NULL
+      SP9622 char 50
+      SP740 numeric NULL
+      SP741 numeric NULL
+      SP3673 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (24 rows affected)
+    Примеры строк:
+      IDDOC SP1102 SP742 SP3808 SP756 SP734 SP732 SP743 SP762 SP761 SP1035 SP759 SP758 SP760 SP3674 SP7066 SP9622 SP740 SP741 SP3673 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ----- ------ ----- ----- ----- ----- ----- ----- ------ ----- ----- ----- ------ ------ ------ ----- ----- ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7386] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7387 char 9
+      SP7388 char 9
+      SP7389 char 9
+      SP10227 char 13
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC SP7387 SP7388 SP7389 SP10227 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7415] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7417 char 9
+      SP7423 char 9
+      SP7424 char 9
+      SP7425 char 9
+      SP7428 char 9
+      SP10349 numeric NULL
+      SP7426 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC SP7417 SP7423 SP7424 SP7425 SP7428 SP10349 SP7426 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------- ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7442] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7444 char 9
+      SP10433 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC SP7444 SP10433 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7490] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7478 char 9
+      SP7479 char 9
+      SP7510 char 9
+      SP7481 char 9
+      SP7504 numeric NULL
+      SP7505 numeric NULL
+      SP7506 numeric NULL
+      SP7514 char 25
+      SP7694 char 9
+      SP7584 numeric NULL
+      SP7622 char 13
+      SP7712 numeric NULL
+      SP9553 char 9
+      SP9828 char 9
+      SP10146 numeric NULL
+      SP10298 numeric NULL
+      SP10316 numeric NULL
+      SP10436 numeric NULL
+      SP10674 datetime NULL
+      SP10754 char 5
+      SP10755 char 5
+      SP10910 numeric NULL
+      SP10921 numeric NULL
+      SP7488 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (29 rows affected)
+    Примеры строк:
+      IDDOC SP7478 SP7479 SP7510 SP7481 SP7504 SP7505 SP7506 SP7514 SP7694 SP7584 SP7622 SP7712 SP9553 SP9828 SP10146 SP10298 SP10316 SP10436 SP10674 SP10754 SP10755 SP10910 SP10921 SP7488 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------- ------- ------- ------- ------- ------- ------- ------- ------ ------ ------ ------- ------
+           M     3W      1      2      1 2300.00 1 10       3 0    0     0 0      2      1 .00 0 0 .00 2008-05-24 00:00:00.000   0 0 2300.00       0      0 
+           N     3W      1      2      1 560.00 1 12       3 0    0     0 0      4      1 .00 0 0 .00 2008-05-24 00:00:00.000   0 0 560.00       0      0 
+           O     3W      1      2      1 2400.00 1 13       3 0    0     0 0      2      1 .00 0 0 .00 2008-05-24 00:00:00.000   0 0 2400.00       0      0 
+           P     3W      1      2      1 799.00 1 14       3 0    0     0 0      8      1 .00 0 0 .00 2008-05-24 00:00:00.000   0 0 799.00       0      0 
+           Q     3W      1      2      1 5000.00 1 15       3 0    0     0 0      8      1 .00 0 0 .00 2008-05-24 00:00:00.000   0 0 1456.00       0      0 
+      
+      (5 rows affected)
+
+  [DH7540] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7543 char 9
+      SP7545 datetime NULL
+      SP7548 char 13
+      SP7552 char 9
+      SP7553 numeric NULL
+      SP7559 numeric NULL
+      SP7560 numeric NULL
+      SP7561 numeric NULL
+      SP7569 numeric NULL
+      SP7620 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (15 rows affected)
+    Примеры строк:
+      IDDOC SP7543 SP7545 SP7548 SP7552 SP7553 SP7559 SP7560 SP7561 SP7569 SP7620 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7676] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP7677 char 9
+      SP7700 char 9
+      SP7707 numeric NULL
+      SP10127 char 50
+      SP10128 numeric NULL
+      SP10129 numeric NULL
+      SP10157 numeric NULL
+      SP7682 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC SP7677 SP7700 SP7707 SP10127 SP10128 SP10129 SP10157 SP7682 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------- ------- ------- ------- ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH773] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP774 char 9
+      SP3806 char 9
+      SP781 char 10
+      SP782 datetime NULL
+      SP785 datetime NULL
+      SP783 datetime NULL
+      SP784 datetime NULL
+      SP775 numeric NULL
+      SP776 numeric NULL
+      SP777 numeric NULL
+      SP778 numeric NULL
+      SP779 numeric NULL
+      SP780 numeric NULL
+      SP941 char 13
+      SP1106 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (20 rows affected)
+    Примеры строк:
+      IDDOC SP774 SP3806 SP781 SP782 SP785 SP783 SP784 SP775 SP776 SP777 SP778 SP779 SP780 SP941 SP1106 SP1008 SP9856 SP10313 SP3852
+      ----- ----- ------ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH7779] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (5 rows affected)
+    Примеры строк:
+      IDDOC SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH844] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP846 datetime NULL
+      SP848 char 48
+      SP849 char 14
+      SP850 char 14
+      SP851 datetime NULL
+      SP852 char 56
+      SP853 char 64
+      SP1198 char 9
+      SP1199 char 13
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (14 rows affected)
+    Примеры строк:
+      IDDOC SP846 SP848 SP849 SP850 SP851 SP852 SP853 SP1198 SP1199 SP1008 SP9856 SP10313 SP3852
+      ----- ----- ----- ----- ----- ----- ----- ----- ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH9713] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP9841 char 13
+      SP9714 char 9
+      SP9715 char 9
+      SP9716 char 9
+      SP9717 char 13
+      SP9721 numeric NULL
+      SP9723 char 9
+      SP9724 char 13
+      SP9726 char 23
+      TSP9726 char 3
+      SP9727 char 23
+      TSP9727 char 3
+      SP9728 char 23
+      TSP9728 char 3
+      SP9990 numeric NULL
+      SP10030 numeric NULL
+      SP10151 numeric NULL
+      SP10522 char 9
+      SP10523 numeric NULL
+      SP10565 numeric NULL
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (25 rows affected)
+    Примеры строк:
+      IDDOC SP9841 SP9714 SP9715 SP9716 SP9717 SP9721 SP9723 SP9724 SP9726 TSP9726 SP9727 TSP9727 SP9728 TSP9728 SP9990 SP10030 SP10151 SP10522 SP10523 SP10565 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------ ------- ------ ------- ------ ------- ------- ------- ------- ------- ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH9751] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP9745 char 9
+      SP9746 char 9
+      SP9747 numeric NULL
+      SP9748 char 9
+      SP9749 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP3852 text 2147483647
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC SP9745 SP9746 SP9747 SP9748 SP9749 SP1008 SP9856 SP10313 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------- ------
+      
+      (0 rows affected)
+
+  [DH9769] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP9752 char 13
+      SP9753 char 9
+      SP9754 numeric NULL
+      SP9755 char 9
+      SP9756 char 9
+      SP9757 char 9
+      SP9758 char 9
+      SP9759 char 9
+      SP9760 numeric NULL
+      SP9761 char 13
+      SP9762 char 23
+      TSP9762 char 3
+      SP9763 char 23
+      TSP9763 char 3
+      SP9764 char 23
+      TSP9764 char 3
+      SP9765 numeric NULL
+      SP9766 char 10
+      SP9767 datetime NULL
+      SP10138 numeric NULL
+      SP10139 numeric NULL
+      SP10166 numeric NULL
+      SP10633 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP10491 text 2147483647
+      SP10492 text 2147483647
+      SP3852 text 2147483647
+      
+      (30 rows affected)
+    Примеры строк:
+      IDDOC SP9752 SP9753 SP9754 SP9755 SP9756 SP9757 SP9758 SP9759 SP9760 SP9761 SP9762 TSP9762 SP9763 TSP9763 SP9764 TSP9764 SP9765 SP9766 SP9767 SP10138 SP10139 SP10166 SP10633 SP1008 SP9856 SP10313 SP10491 SP10492 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------ ------- ------ ------- ------ ------ ------ ------- ------- ------- ------- ------ ------ ------- ------- ------- ------
+      
+      (0 rows affected)
+
+  [DH9787] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      SP9770 char 13
+      SP9771 char 9
+      SP9772 numeric NULL
+      SP9773 char 9
+      SP9774 char 9
+      SP9775 char 9
+      SP9776 char 9
+      SP9777 char 9
+      SP9778 numeric NULL
+      SP9779 char 13
+      SP9780 char 23
+      TSP9780 char 3
+      SP9781 char 23
+      TSP9781 char 3
+      SP9782 char 23
+      TSP9782 char 3
+      SP9783 numeric NULL
+      SP9784 char 10
+      SP9785 datetime NULL
+      SP10167 numeric NULL
+      SP10635 char 9
+      SP1008 char 64
+      SP9856 char 9
+      SP10313 char 9
+      SP10496 text 2147483647
+      SP10497 text 2147483647
+      SP3852 text 2147483647
+      
+      (28 rows affected)
+    Примеры строк:
+      IDDOC SP9770 SP9771 SP9772 SP9773 SP9774 SP9775 SP9776 SP9777 SP9778 SP9779 SP9780 TSP9780 SP9781 TSP9781 SP9782 TSP9782 SP9783 SP9784 SP9785 SP10167 SP10635 SP1008 SP9856 SP10313 SP10496 SP10497 SP3852
+      ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------ ------- ------ ------- ------ ------ ------ ------- ------- ------ ------ ------- ------- ------- ------
+      
+      (0 rows affected)
+
+  [DT10013] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10009 datetime NULL
+      SP10010 char 9
+      SP10011 char 9
+      SP10712 char 999
+      SP10713 char 20
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10009 SP10010 SP10011 SP10712 SP10713
+      ----- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT10057] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10050 char 9
+      SP10051 char 9
+      SP10052 char 9
+      SP10053 numeric NULL
+      SP10054 numeric NULL
+      SP10055 char 13
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10050 SP10051 SP10052 SP10053 SP10054 SP10055
+      ----- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT10202] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10193 char 9
+      SP10194 char 9
+      SP10195 numeric NULL
+      SP10196 numeric NULL
+      SP10197 numeric NULL
+      SP10198 numeric NULL
+      SP10199 char 9
+      SP10200 char 13
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10193 SP10194 SP10195 SP10196 SP10197 SP10198 SP10199 SP10200
+      ----- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT10238] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10256 char 9
+      SP10257 numeric NULL
+      SP10258 char 9
+      SP10259 numeric NULL
+      SP10260 numeric NULL
+      SP10261 numeric NULL
+      SP10262 numeric NULL
+      SP10264 char 9
+      SP10265 char 10
+      SP10292 char 1
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10256 SP10257 SP10258 SP10259 SP10260 SP10261 SP10262 SP10264 SP10265 SP10292
+      ----- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT10354] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10355 char 13
+      SP10356 char 13
+      SP10357 char 13
+      SP10358 char 25
+      SP10359 char 9
+      SP10360 datetime NULL
+      SP10361 numeric NULL
+      SP10362 numeric NULL
+      SP10363 numeric NULL
+      SP10364 numeric NULL
+      SP10365 numeric NULL
+      SP10366 numeric NULL
+      SP10367 numeric NULL
+      SP10368 numeric NULL
+      SP10369 char 9
+      
+      (17 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10355 SP10356 SP10357 SP10358 SP10359 SP10360 SP10361 SP10362 SP10363 SP10364 SP10365 SP10366 SP10367 SP10368 SP10369
+      ----- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT10377] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10379 char 13
+      SP10384 datetime NULL
+      SP10383 char 9
+      SP10385 numeric NULL
+      SP10386 numeric NULL
+      SP10387 numeric NULL
+      SP10388 numeric NULL
+      SP10389 numeric NULL
+      SP10390 numeric NULL
+      SP10391 numeric NULL
+      SP10392 numeric NULL
+      SP10396 char 9
+      
+      (14 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10379 SP10384 SP10383 SP10385 SP10386 SP10387 SP10388 SP10389 SP10390 SP10391 SP10392 SP10396
+      ----- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT10499] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP10500 char 9
+      SP10501 char 9
+      SP10502 numeric NULL
+      SP10504 numeric NULL
+      SP10507 char 13
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP10500 SP10501 SP10502 SP10504 SP10507
+      ----- ------- ------- ------- ------- ------- -------
+         368 1    1PK    1PJ 1.000 600.60  6EK    1W
+         368 2    1PP    1ON 1.000 669.90  6EK    1W
+        23TO 1    AYD    A9Y 1.000 1493.80  6EK    1W
+        26JZ 1    ARO    36T 11.000 225.00  6EK    1W
+        26JZ 2    9PT    5S4 1.000 743.40  6EK    1W
+      
+      (5 rows affected)
+
+  [DT196] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP206 char 9
+      SP207 numeric NULL
+      SP208 char 9
+      SP209 numeric NULL
+      SP210 numeric NULL
+      SP211 numeric NULL
+      SP609 numeric NULL
+      SP3657 numeric NULL
+      SP5557 char 9
+      SP5559 char 10
+      SP6757 numeric NULL
+      SP6930 numeric NULL
+      SP7269 char 1
+      SP10324 datetime NULL
+      
+      (16 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP206 SP207 SP208 SP209 SP210 SP211 SP609 SP3657 SP5557 SP5559 SP6757 SP6930 SP7269 SP10324
+      ----- ------- ----- ----- ----- ----- ----- ----- ----- ------ ------ ------ ------ ------ ------ -------
+         4L5 1    33Q 1.000    2VQ 348.75 1.000 348.75 .00 .00      1 1 .00 348.75  1753-01-01 00:00:00.000
+         4L5 2    33Y 1.000    2VY 314.34 1.000 314.34 .00 .00      1 1 .00 314.34  1753-01-01 00:00:00.000
+         4L5 3    33Z 3.000    2VZ 411.99 1.000 1235.97 .00 .00      1 3 .00 411.99  1753-01-01 00:00:00.000
+         4L5 4    2YR 3.000    2R9 404.55 1.000 1213.65 .00 .00      1 3 .00 404.55  1753-01-01 00:00:00.000
+         4L5 5    33K 2.000    2VK 300.39 1.000 600.78 .00 .00      1 2 .00 300.39  1753-01-01 00:00:00.000
+      
+      (5 rows affected)
+
+  [DT239] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP249 char 9
+      SP250 numeric NULL
+      SP251 char 9
+      SP1034 numeric NULL
+      SP4972 char 9
+      SP10033 char 13
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP249 SP250 SP251 SP1034 SP4972 SP10033
+      ----- ------- ----- ----- ----- ------ ------ -------
+        1KSE 1    9P7 1.000    9AL 1.000      1  6EK    1W
+        1KSE 2    90L 1.000    8LZ 1.000      1  6EK    1W
+        1KSE 3    90D 1.000    8LR 1.000      1  6EK    1W
+        1KSE 4    8NC 1.000    88Q 1.000      1  6EK    1W
+        1KSE 5    9ON 1.000    9A1 1.000      1  6EK    1W
+      
+      (5 rows affected)
+
+  [DT297] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP303 char 9
+      SP304 numeric NULL
+      SP305 char 9
+      SP306 numeric NULL
+      SP7594 numeric NULL
+      SP10045 char 13
+      SP10539 char 23
+      TSP10539 char 3
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP303 SP304 SP305 SP306 SP7594 SP10045 SP10539 TSP10539
+      ----- ------- ----- ----- ----- ----- ------ ------- ------- --------
+         41M 1    1ON 1.000    1JB 1.000 669.900  6EK    1W U 
+         41M 2    1OR 1.000    1JF 1.000 669.900  6EK    1W U 
+         41M 3    2HT 1.000    2BB 1.000 668.300  6EK    1W U 
+         41M 4    2HG 1.000    2AY 1.000 668.300  6EK    1W U 
+         41M 5    2G0 1.000    29I 1.000 481.180  6EK    1W U 
+      
+      (5 rows affected)
+
+  [DT2989] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP2991 char 9
+      SP3796 char 9
+      SP2992 char 9
+      SP2993 char 13
+      SP2994 char 9
+      SP2995 numeric NULL
+      SP2996 numeric NULL
+      SP3395 char 9
+      SP3427 char 10
+      SP3428 datetime NULL
+      SP4173 char 9
+      SP7591 char 13
+      
+      (14 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP2991 SP3796 SP2992 SP2993 SP2994 SP2995 SP2996 SP3395 SP3427 SP3428 SP4173 SP7591
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT3538] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP3544 char 9
+      SP3546 char 9
+      SP6843 numeric NULL
+      SP6839 numeric NULL
+      SP3550 numeric NULL
+      SP3551 numeric NULL
+      SP6844 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP3544 SP3546 SP6843 SP6839 SP3550 SP3551 SP6844
+      ----- ------- ------ ------ ------ ------ ------ ------ ------
+         1L1 1     FO     FE 1.000 2.000 1456.000 1248.000 -416.00
+         1L1 2     FP     FF 1.000 1.000 1456.000 1248.000 -208.00
+         1L1 3    1HD    1CJ 1.000 2.000 1820.000 1560.000 -520.00
+         1L1 4    1HE    1CK 1.000 1.000 1820.000 1560.000 -260.00
+         1L1 5    1RT    1MH 1.000 1.000 1617.000 1348.000 -269.00
+      
+      (5 rows affected)
+
+  [DT3580] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP3586 char 9
+      SP3587 numeric NULL
+      SP3594 numeric NULL
+      SP3591 numeric NULL
+      SP4423 char 9
+      SP4424 numeric NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP3586 SP3587 SP3594 SP3591 SP4423 SP4424
+      ----- ------- ------ ------ ------ ------ ------ ------
+         335 1     H4 1.000 1.000 364.000     GU 1.000
+         335 2    2PT 1.000 1.000 780.000    2IW 1.000
+         335 3    2PR 1.000 1.000 616.000    2IU 1.000
+         335 4    2PQ 1.000 1.000 600.000    2IT 1.000
+         335 5    1Y2 1.000 1.000 450.000    1SI 1.000
+      
+      (5 rows affected)
+
+  [DT3831] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP3822 char 9
+      SP3823 numeric NULL
+      SP3824 char 9
+      SP3825 numeric NULL
+      SP3826 numeric NULL
+      SP3827 numeric NULL
+      SP3828 numeric NULL
+      SP3829 numeric NULL
+      SP5066 datetime NULL
+      SP10035 char 13
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP3822 SP3823 SP3824 SP3825 SP3826 SP3827 SP3828 SP3829 SP5066 SP10035
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ -------
+        1RH0 1    7DS 1.000    6Z0 230.00 1.000 230.00 .00 .00 1753-01-01 00:00:00.000  6EK    1W
+        1V4T 1    APG 1.000    AAU 409.30 1.000 409.30 .00 .00 1753-01-01 00:00:00.000  6EK    1W
+        1V4T 2    918 7.000    8MM 101.27 1.000 708.89 .00 .00 1753-01-01 00:00:00.000  6EK    1W
+        1V4T 3    9QO 1.000    9C2 734.63 1.000 734.63 .00 .00 1753-01-01 00:00:00.000  6EK    1W
+        1V4T 4    9LZ 1.000    97D 1205.69 1.000 1205.69 .00 .00 1753-01-01 00:00:00.000  6EK    1W
+      
+      (5 rows affected)
+
+  [DT410] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP423 char 9
+      SP424 numeric NULL
+      SP425 char 9
+      SP426 numeric NULL
+      SP427 numeric NULL
+      SP428 numeric NULL
+      SP604 numeric NULL
+      SP3655 numeric NULL
+      SP4856 char 9
+      SP5231 numeric NULL
+      SP5315 char 10
+      SP6957 numeric NULL
+      SP6958 numeric NULL
+      SP6831 numeric NULL
+      SP7070 char 9
+      SP7073 numeric NULL
+      SP7074 numeric NULL
+      SP7207 char 1
+      SP10042 char 13
+      
+      (21 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP423 SP424 SP425 SP426 SP427 SP428 SP604 SP3655 SP4856 SP5231 SP5315 SP6957 SP6958 SP6831 SP7070 SP7073 SP7074 SP7207 SP10042
+      ----- ------- ----- ----- ----- ----- ----- ----- ----- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ -------
+         10I 1    1LD 1.000    1GA 238.00 1.000 238.00 36.31 .00      1 0 1 238.00 238.00 476.00    5OK 0 0   6EK    1W
+         10K 1     GX 1.000     GN 383.98 1.000 383.98 58.57 .00      1 0 1 288.02 383.98 672.00    5OK 0 0   6EK    1W
+         10M 1     ML 1.000     MB 736.82 1.000 736.82 112.40 .00      1 0 1 663.18 736.82 1400.00    5OK 0 0   6EK    1W
+         10N 1    108 1.000     ZY 1179.44 1.000 1179.44 179.91 .00      1 0 1 767.56 1179.44 1947.00    5OK 0 0   6EK    1W
+         11W 1    1UA 1.000    1OX 683.38 1.000 683.38 104.25 .00      1 0 1 546.62 683.38 1230.00    5OK 0 0   6EK    1W
+      
+      (5 rows affected)
+
+  [DT434] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP448 char 9
+      SP449 numeric NULL
+      SP450 char 9
+      SP451 numeric NULL
+      SP452 numeric NULL
+      SP453 numeric NULL
+      SP6986 char 9
+      SP605 numeric NULL
+      SP3664 numeric NULL
+      SP4853 char 9
+      SP4868 datetime NULL
+      SP5071 numeric NULL
+      SP5316 char 10
+      SP7496 numeric NULL
+      SP7497 numeric NULL
+      SP7710 char 50
+      SP10038 char 13
+      
+      (19 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP448 SP449 SP450 SP451 SP452 SP453 SP6986 SP605 SP3664 SP4853 SP4868 SP5071 SP5316 SP7496 SP7497 SP7710 SP10038
+      ----- ------- ----- ----- ----- ----- ----- ----- ------ ----- ------ ------ ------ ------ ------ ------ ------ ------ -------
+           3 1      I 2.000      B 224.00 1.000 448.00    5OK 68.34 .00      1 1753-01-01 00:00:00.000 224.000 2 0 0   6EK    1W
+           3 2      J 2.000      C 308.00 1.000 616.00    5OK 93.97 .00      1 1753-01-01 00:00:00.000 308.000 2 0 0   6EK    1W
+           3 3      K 2.000      D 112.00 1.000 224.00    5OK 34.17 .00      1 1753-01-01 00:00:00.000 112.000 2 0 0   6EK    1W
+           3 4      L 2.000      E 308.00 1.000 616.00    5OK 93.97 .00      1 1753-01-01 00:00:00.000 308.000 2 0 0   6EK    1W
+           3 5      M 2.000      F 308.00 1.000 616.00    5OK 93.97 .00      1 1753-01-01 00:00:00.000 308.000 2 0 0   6EK    1W
+      
+      (5 rows affected)
+
+  [DT4929] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP4930 char 13
+      SP5113 char 1
+      
+      (4 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP4930 SP5113
+      ----- ------- ------ ------
+      
+      (0 rows affected)
+
+  [DT5026] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP5028 char 9
+      SP5029 numeric NULL
+      SP5030 char 9
+      SP5031 numeric NULL
+      SP5032 char 9
+      SP5060 datetime NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP5028 SP5029 SP5030 SP5031 SP5032 SP5060
+      ----- ------- ------ ------ ------ ------ ------ ------
+        1KSF 1    9P7 1.000    9AL 1.000      1 1753-01-01 00:00:00.000
+        1KSF 2    90L 1.000    8LZ 1.000      1 1753-01-01 00:00:00.000
+        1KSF 3    90D 1.000    8LR 1.000      1 1753-01-01 00:00:00.000
+        1KSF 4    8NC 1.000    88Q 1.000      1 1753-01-01 00:00:00.000
+        1KSF 5    9ON 1.000    9A1 1.000      1 1753-01-01 00:00:00.000
+      
+      (5 rows affected)
+
+  [DT5126] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP5128 char 9
+      SP5129 char 1
+      
+      (4 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP5128 SP5129
+      ----- ------- ------ ------
+      
+      (0 rows affected)
+
+  [DT5384] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP5386 char 9
+      SP5387 numeric NULL
+      SP5399 char 9
+      SP5402 numeric NULL
+      SP5400 char 9
+      SP6713 char 9
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP5386 SP5387 SP5399 SP5402 SP5400 SP6713
+      ----- ------- ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT5424] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP5417 numeric NULL
+      SP5418 numeric NULL
+      SP5419 numeric NULL
+      SP5420 char 9
+      SP5421 numeric NULL
+      SP5422 char 9
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP5417 SP5418 SP5419 SP5420 SP5421 SP5422
+      ----- ------- ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT5448] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP5452 char 9
+      SP5453 numeric NULL
+      SP5454 char 9
+      SP5455 numeric NULL
+      SP5456 char 9
+      SP5462 numeric NULL
+      SP5461 numeric NULL
+      SP5460 numeric NULL
+      SP5463 numeric NULL
+      SP6715 char 9
+      SP7466 numeric NULL
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP5452 SP5453 SP5454 SP5455 SP5456 SP5462 SP5461 SP5460 SP5463 SP6715 SP7466
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT5475] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP5477 char 9
+      SP5486 char 9
+      SP5478 numeric NULL
+      SP5479 char 9
+      SP5480 numeric NULL
+      SP5481 numeric NULL
+      SP5482 numeric NULL
+      SP5483 numeric NULL
+      SP5484 numeric NULL
+      SP5487 datetime NULL
+      SP9616 char 13
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP5477 SP5486 SP5478 SP5479 SP5480 SP5481 SP5482 SP5483 SP5484 SP5487 SP9616
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT627] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP629 char 9
+      
+      (3 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP629
+      ----- ------- -----
+      
+      (0 rows affected)
+
+  [DT6778] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP6771 char 9
+      SP6772 numeric NULL
+      SP6773 char 9
+      SP6774 numeric NULL
+      SP6776 char 9
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP6771 SP6772 SP6773 SP6774 SP6776
+      ----- ------- ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7080] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7119 char 9
+      SP7129 char 9
+      SP7121 numeric NULL
+      SP9572 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7119 SP7129 SP7121 SP9572
+      ----- ------- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7194] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7196 char 9
+      SP7198 char 20
+      SP7201 char 10
+      SP7272 char 1
+      SP10278 numeric NULL
+      SP10279 numeric NULL
+      SP10280 char 9
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7196 SP7198 SP7201 SP7272 SP10278 SP10279 SP10280
+      ----- ------- ------ ------ ------ ------ ------- ------- -------
+      
+      (0 rows affected)
+
+  [DT7245] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7251 char 9
+      SP7252 char 13
+      SP7253 char 9
+      SP7254 numeric NULL
+      SP7255 numeric NULL
+      SP7256 char 9
+      SP7257 char 10
+      SP7258 datetime NULL
+      SP7259 char 9
+      SP7467 char 9
+      SP7590 char 13
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7251 SP7252 SP7253 SP7254 SP7255 SP7256 SP7257 SP7258 SP7259 SP7467 SP7590
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7284] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7285 char 9
+      SP7286 char 9
+      SP7287 numeric NULL
+      SP7289 char 9
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7285 SP7286 SP7287 SP7289
+      ----- ------- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT730] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP735 char 9
+      SP736 numeric NULL
+      SP737 char 9
+      SP739 numeric NULL
+      SP738 numeric NULL
+      SP740 numeric NULL
+      SP741 numeric NULL
+      SP3673 numeric NULL
+      SP3042 char 9
+      SP6955 char 60
+      SP7271 char 1
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP735 SP736 SP737 SP739 SP738 SP740 SP741 SP3673 SP3042 SP6955 SP7271
+      ----- ------- ----- ----- ----- ----- ----- ----- ----- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7386] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7390 char 9
+      SP7391 numeric NULL
+      SP7397 char 9
+      SP7399 numeric NULL
+      SP7392 numeric NULL
+      SP7393 numeric NULL
+      SP7394 char 9
+      SP7395 numeric NULL
+      SP7398 char 9
+      SP7400 numeric NULL
+      SP7396 numeric NULL
+      
+      (13 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7390 SP7391 SP7397 SP7399 SP7392 SP7393 SP7394 SP7395 SP7398 SP7400 SP7396
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7415] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7418 char 9
+      SP9618 char 9
+      SP7419 numeric NULL
+      SP7420 char 9
+      SP7421 numeric NULL
+      SP7427 numeric NULL
+      SP7426 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7418 SP9618 SP7419 SP7420 SP7421 SP7427 SP7426
+      ----- ------- ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7442] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7443 char 9
+      
+      (3 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7443
+      ----- ------- ------
+      
+      (0 rows affected)
+
+  [DT7490] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7482 char 9
+      SP7483 numeric NULL
+      SP7484 char 10
+      SP7485 char 9
+      SP7486 numeric NULL
+      SP7524 numeric NULL
+      SP7487 numeric NULL
+      SP7488 numeric NULL
+      SP10136 numeric NULL
+      SP10915 char 255
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7482 SP7483 SP7484 SP7485 SP7486 SP7524 SP7487 SP7488 SP10136 SP10915
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------ ------- -------
+           M 1     V0 1.000 1     UQ 2300.00 2300.00 1.000 2300.00 2300.00 
+           N 1     GS 1.000 1     GI 560.00 560.00 1.000 560.00 560.00 
+           O 1     VG 1.000 1     V6 2400.00 2400.00 1.000 2400.00 2400.00 
+           P 1     JV 1.000 1     JL 799.00 799.00 1.000 799.00 799.00 
+           Q 1     OP 1.000 1     OF 560.00 560.00 1.000 560.00 560.00 
+      
+      (5 rows affected)
+
+  [DT7540] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7564 char 9
+      SP7565 numeric NULL
+      SP7566 char 9
+      SP7568 numeric NULL
+      SP7569 numeric NULL
+      SP7572 char 9
+      SP7583 numeric NULL
+      SP7620 numeric NULL
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7564 SP7565 SP7566 SP7568 SP7569 SP7572 SP7583 SP7620
+      ----- ------- ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT7676] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP7678 char 13
+      SP7679 char 23
+      TSP7679 char 3
+      SP7680 char 23
+      TSP7680 char 3
+      SP7681 char 23
+      TSP7681 char 3
+      SP7682 numeric NULL
+      SP7683 numeric NULL
+      SP7684 char 60
+      SP7691 char 13
+      SP7696 char 60
+      SP7697 char 15
+      SP7699 datetime NULL
+      
+      (16 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP7678 SP7679 TSP7679 SP7680 TSP7680 SP7681 TSP7681 SP7682 SP7683 SP7684 SP7691 SP7696 SP7697 SP7699
+      ----- ------- ------ ------ ------- ------ ------- ------ ------- ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT773] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP4386 char 30
+      SP4387 char 9
+      SP4388 numeric NULL
+      SP4389 numeric NULL
+      SP4390 char 9
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP4386 SP4387 SP4388 SP4389 SP4390
+      ----- ------- ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [DT844] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      SP854 char 9
+      SP855 char 9
+      SP856 numeric NULL
+      SP1033 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ SP854 SP855 SP856 SP1033
+      ----- ------- ----- ----- ----- ------
+      
+      (0 rows affected)
+
+  [RG10305] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP10306 char 9
+      SP10308 numeric NULL
+      
+      (3 rows affected)
+    Примеры строк:
+      PERIOD SP10306 SP10308
+      ------ ------- -------
+      2008-05-01 00:00:00.000      2 94171.00
+      2008-05-01 00:00:00.000      9 8341.00
+      2008-05-01 00:00:00.000     31 293.00
+      2008-05-01 00:00:00.000     5S 240.00
+      2008-05-01 00:00:00.000     5T 3857.00
+      
+      (5 rows affected)
+
+  [RG10899] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP10900 char 9
+      SP10901 numeric NULL
+      
+      (3 rows affected)
+    Примеры строк:
+      PERIOD SP10900 SP10901
+      ------ ------- -------
+      2019-06-01 00:00:00.000    2C2 303
+      2019-06-01 00:00:00.000    2C3 200
+      2019-06-01 00:00:00.000    2C4 100
+      2019-06-01 00:00:00.000    2C5 400
+      2019-06-01 00:00:00.000    2C7 150
+      
+      (5 rows affected)
+
+  [RG1130] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP2654 char 9
+      SP1131 char 9
+      SP5409 char 9
+      SP3597 char 9
+      SP3601 char 13
+      SP1132 char 13
+      SP1133 numeric NULL
+      SP2655 numeric NULL
+      SP2799 numeric NULL
+      SP3286 numeric NULL
+      SP3665 numeric NULL
+      
+      (12 rows affected)
+    Примеры строк:
+      PERIOD SP2654 SP1131 SP5409 SP3597 SP3601 SP1132 SP1133 SP2655 SP2799 SP3286 SP3665
+      ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      2008-04-01 00:00:00.000      0      I      1      4   C2     3   C2     3 2.00000 379.66000 .00000 68.34000 .00000
+      2008-04-01 00:00:00.000      0      J      1      4   C2     3   C2     3 2.00000 522.03000 .00000 93.97000 .00000
+      2008-04-01 00:00:00.000      0      K      1      4   C2     3   C2     3 2.00000 189.83000 .00000 34.17000 .00000
+      2008-04-01 00:00:00.000      0      L      1      4   C2     3   C2     3 2.00000 522.03000 .00000 93.97000 .00000
+      2008-04-01 00:00:00.000      0      M      1      4   C2     3   C2     3 2.00000 522.03000 .00000 93.97000 .00000
+      
+      (5 rows affected)
+
+  [RG169] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP2671 char 9
+      SP170 char 9
+      SP3810 char 9
+      SP3032 char 9
+      SP3660 char 9
+      SP3208 char 1
+      SP405 char 13
+      SP171 numeric NULL
+      SP4824 numeric NULL
+      
+      (10 rows affected)
+    Примеры строк:
+      PERIOD SP2671 SP170 SP3810 SP3032 SP3660 SP3208 SP405 SP171 SP4824
+      ------ ------ ----- ------ ------ ------ ------ ----- ----- ------
+      2009-05-01 00:00:00.000      0     C9      0      0      1    BE   4L8 4342.17000 .00000
+      2009-06-01 00:00:00.000      0     C9      0      0      1    BE   4L8 4342.17000 .00000
+      2009-07-01 00:00:00.000      0     C9      0      0      1    BE   4L8 4342.17000 .00000
+      2009-08-01 00:00:00.000      0     C9      0      0      1    BE   4L8 4342.17000 .00000
+      2009-09-01 00:00:00.000      0     C9      0      0      1    BE   4L8 4342.17000 .00000
+      
+      (5 rows affected)
+
+  [RG3384] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP7064 char 9
+      SP3385 char 9
+      SP9710 char 9
+      SP3386 numeric NULL
+      
+      (5 rows affected)
+    Примеры строк:
+      PERIOD SP7064 SP3385 SP9710 SP3386
+      ------ ------ ------ ------ ------
+      2008-05-01 00:00:00.000      0      1      1 106902.00
+      2008-06-01 00:00:00.000      0      1      1 682528.12
+      2008-07-01 00:00:00.000      0      1      1 1354715.32
+      2008-08-01 00:00:00.000      0      1      1 2117840.37
+      2008-09-01 00:00:00.000      0      1      1 2663623.50
+      
+      (5 rows affected)
+
+  [RG3623] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP3627 char 13
+      SP3625 char 9
+      SP3677 char 10
+      SP3626 numeric NULL
+      SP5464 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      PERIOD SP3627 SP3625 SP3677 SP3626 SP5464
+      ------ ------ ------ ------ ------ ------
+      2008-04-01 00:00:00.000   C2     3    5OK Товар 1625.51000 10656.00000
+      2008-04-01 00:00:00.000   C2     4    5OK Товар 29944.05000 196299.97000
+      2008-04-01 00:00:00.000   C2     5    5OK Товар 43821.18000 287271.89000
+      2008-04-01 00:00:00.000   C2     6    5OK Товар 1569.10000 10286.03000
+      2008-04-01 00:00:00.000   C2     D    5OK Товар 30783.87000 201805.27000
+      
+      (5 rows affected)
+
+  [RG4333] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP4335 char 9
+      SP4336 char 9
+      SP4340 char 9
+      SP4354 numeric NULL
+      
+      (5 rows affected)
+    Примеры строк:
+      PERIOD SP4335 SP4336 SP4340 SP4354
+      ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RG620] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP5379 char 9
+      SP6919 char 9
+      SP621 char 9
+      SP5350 char 9
+      SP5378 char 13
+      SP10294 char 1
+      SP623 numeric NULL
+      SP10236 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      PERIOD SP5379 SP6919 SP621 SP5350 SP5378 SP10294 SP623 SP10236
+      ------ ------ ------ ----- ------ ------ ------- ----- -------
+      
+      (0 rows affected)
+
+  [RG6856] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP6857 char 9
+      SP6858 numeric NULL
+      SP6859 numeric NULL
+      
+      (4 rows affected)
+    Примеры строк:
+      PERIOD SP6857 SP6858 SP6859
+      ------ ------ ------ ------
+      2008-05-01 00:00:00.000     6N 2527.00 133.00
+      2008-05-01 00:00:00.000     78 3857.00 203.00
+      2008-05-01 00:00:00.000     A3 2394.00 126.00
+      2008-05-01 00:00:00.000     LB 1425.00 75.00
+      2008-05-01 00:00:00.000    15C 1995.00 105.00
+      
+      (5 rows affected)
+
+  [RG7075] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP7076 char 9
+      SP7127 char 9
+      SP7077 char 9
+      SP7078 numeric NULL
+      SP9577 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      PERIOD SP7076 SP7127 SP7077 SP7078 SP9577
+      ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RG7499] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP7500 char 9
+      SP7501 char 9
+      SP7502 char 9
+      SP7503 numeric NULL
+      SP9578 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      PERIOD SP7500 SP7501 SP7502 SP7503 SP9578
+      ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RG7638] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP7640 char 9
+      SP7641 char 9
+      SP7643 numeric NULL
+      
+      (4 rows affected)
+    Примеры строк:
+      PERIOD SP7640 SP7641 SP7643
+      ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RG933] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP2669 char 9
+      SP934 char 9
+      SP3809 char 9
+      SP3211 char 1
+      SP935 char 13
+      SP936 numeric NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      PERIOD SP2669 SP934 SP3809 SP3211 SP935 SP936
+      ------ ------ ----- ------ ------ ----- -----
+      2008-04-01 00:00:00.000      0      4      0 О   C2     3 -10656.00000
+      2008-04-01 00:00:00.000      0      4      0 О   C2     4 -196299.97000
+      2008-04-01 00:00:00.000      0      4      0 О   C2     5 -287271.89000
+      2008-04-01 00:00:00.000      0      4      0 О   C2     6 -10286.03000
+      2008-04-01 00:00:00.000      0      4      0 О   C2     D -201805.27000
+      
+      (5 rows affected)
+
+  [RG9804] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      PERIOD datetime NULL
+      SP9798 char 9
+      SP9799 char 9
+      SP9800 char 9
+      SP9801 char 9
+      SP9802 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      PERIOD SP9798 SP9799 SP9800 SP9801 SP9802
+      ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC10078] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 2
+      DESCR char 40
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10074 char 15
+      SP10075 numeric NULL
+      SP10076 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP10074 SP10075 SP10076
+      ------ -- ---- ----- ------ -------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10093] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10083 char 9
+      SP10084 char 9
+      SP10085 char 9
+      SP10086 numeric NULL
+      SP10087 datetime NULL
+      SP10088 datetime NULL
+      SP10089 numeric NULL
+      SP10090 numeric NULL
+      SP10091 numeric NULL
+      SP10867 numeric NULL
+      
+      (17 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10083 SP10084 SP10085 SP10086 SP10087 SP10088 SP10089 SP10090 SP10091 SP10867
+      ------ -- ---- ----- --------- ------ -------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10098] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10094 char 9
+      SP10095 numeric NULL
+      SP10096 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE PARENTEXT ISMARK VERSTAMP SP10094 SP10095 SP10096
+      ------ -- ---- --------- ------ -------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10311] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 30
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (5 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP
+      ------ -- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC10486] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 3
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC10575] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10577 char 9
+      SP10776 char 9
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10577 SP10776
+      ------ -- ---- ----- --------- ------ -------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10657] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 10
+      DESCR char 50
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10641 char 20
+      SP10642 numeric NULL
+      SP10644 char 9
+      SP10645 char 23
+      TSP10645 char 3
+      SP10646 char 23
+      TSP10646 char 3
+      SP10647 char 23
+      TSP10647 char 3
+      SP10648 char 9
+      SP10649 char 9
+      SP10650 char 200
+      SP10651 numeric NULL
+      SP10652 char 2
+      SP10653 char 20
+      SP10654 char 11
+      SP10655 char 9
+      
+      (23 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP10641 SP10642 SP10644 SP10645 TSP10645 SP10646 TSP10646 SP10647 TSP10647 SP10648 SP10649 SP10650 SP10651 SP10652 SP10653 SP10654 SP10655
+      ------ -- ---- ----- ------ -------- ------- ------- ------- ------- -------- ------- -------- ------- -------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10663] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP
+      ------ -- ---- ----- --------- ------ --------
+      
+      (0 rows affected)
+
+  [SC10696] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10691 datetime NULL
+      SP10692 char 9
+      SP10693 char 9
+      SP10694 numeric NULL
+      SP10690 text 2147483647
+      
+      (12 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10691 SP10692 SP10693 SP10694 SP10690
+      ------ -- ---- ----- --------- ------ -------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10742] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10738 datetime NULL
+      SP10739 char 9
+      SP10740 char 9
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP10738 SP10739 SP10740
+      ------ -- ---- ----- ------ -------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10834] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10830 numeric NULL
+      SP10831 char 255
+      SP10832 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP10830 SP10831 SP10832
+      ------ -- ---- ----- ------ -------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10838] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10835 char 13
+      SP10836 char 255
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10835 SP10836
+      ------ -- ---- ----- --------- ------ -------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10843] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10839 char 9
+      SP10840 char 4
+      SP10841 char 9
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP10839 SP10840 SP10841
+      ------ -- ---- ----- ------ -------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC10846] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10844 char 9
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10844
+      ------ -- ---- ----- --------- ------ -------- -------
+      
+      (0 rows affected)
+
+  [SC10849] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10847 char 13
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10847
+      ------ -- ---- ----- --------- ------ -------- -------
+      
+      (0 rows affected)
+
+  [SC10859] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10850 char 9
+      SP10852 numeric NULL
+      SP10853 datetime NULL
+      SP10854 numeric NULL
+      SP10855 char 10
+      SP10856 numeric NULL
+      SP10857 numeric NULL
+      SP10851 text 2147483647
+      
+      (15 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP10850 SP10852 SP10853 SP10854 SP10855 SP10856 SP10857 SP10851
+      ------ -- ---- ----- --------- ------ -------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC1112] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 24
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP1114 numeric NULL
+      SP1115 datetime NULL
+      SP1116 char 8
+      SP1117 datetime NULL
+      SP1118 numeric NULL
+      SP1119 char 8
+      SP1129 char 9
+      SP1113 text 2147483647
+      
+      (16 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP1114 SP1115 SP1116 SP1117 SP1118 SP1119 SP1129 SP1113
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------
+      1      9      7 000000000000000000000001 <<Комментарий>> 2 0 723 1 2020-10-02 00:00:00.000 17:30:00 2026-06-25 00:00:00.000 0       5 реклама!!!1
+      2      7      0 Вагу  1 0 0 0 1753-01-01 00:00:00.000  1753-01-01 00:00:00.000 0       0 
+      3      2      0 Костинюк  1 0 0 0 1753-01-01 00:00:00.000  1753-01-01 00:00:00.000 0       0 
+      4      4      0 Макляева  1 0 0 0 1753-01-01 00:00:00.000  1753-01-01 00:00:00.000 0       0 
+      5      5      0 Менеджер  1 0 0 0 1753-01-01 00:00:00.000  1753-01-01 00:00:00.000 0       0 
+      
+      (5 rows affected)
+
+  [SC1183] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP1185 char 100
+      SP1189 char 100
+      SP1188 char 9
+      SP1192 char 9
+      SP1186 char 50
+      SP1190 char 50
+      SP1187 char 20
+      SP1191 char 20
+      SP1184 char 20
+      SP1193 numeric NULL
+      SP7405 char 80
+      
+      (18 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP1185 SP1189 SP1188 SP1192 SP1186 SP1190 SP1187 SP1191 SP1184 SP1193 SP7405
+      ------ -- ---- ----- --------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      1      1     1 основной     QT 0 0 ОАО "Промсвязьбанк"  044525555  г. Москва  30101810400000000555  40702810840260684801 1 
+      2      2     1 основной     QQ 0 0 АКБ "Российский капитал"  044583266  Москва  30101810100000000266  40702810700001000765 1 
+      3      3     1 основной     RJ 0 0 "ТКБ" (ЗАО)  044030715  Санкт-Петербург  30101810600000000715  40702810100300003781 1 
+      4      4     1 основной     RP 0 0 Сбербанк России ОАО  044525225  Москва  30101810400000000225  40802810938170005357 1 
+      5      5     1 основной     QY 0 0 ОАО "СБЕРБАНК РОССИИ"  044525225  г. Москва  30101810400000000225  40702810800020008412 1 
+      
+      (5 rows affected)
+
+  [SC13] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 2
+      DESCR char 50
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP2892 datetime NULL
+      SP21 char 20
+      SP2928 char 9
+      SP3779 char 5
+      SP3780 char 8
+      SP3222 char 4
+      SP3917 char 9
+      SP17 char 50
+      SP4861 char 9
+      SP4862 char 9
+      SP6822 numeric NULL
+      SP6964 numeric NULL
+      SP6965 numeric NULL
+      SP7134 char 15
+      SP7519 numeric NULL
+      SP7535 char 60
+      SP9903 char 9
+      SP9915 numeric NULL
+      SP10537 numeric NULL
+      SP10897 char 80
+      SP3781 text 2147483647
+      
+      (27 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP2892 SP21 SP2928 SP3779 SP3780 SP3222 SP3917 SP17 SP4861 SP4862 SP6822 SP6964 SP6965 SP7134 SP7519 SP7535 SP9903 SP9915 SP10537 SP10897 SP3781
+      ------ -- ---- ----- ------ -------- ------ ---- ------ ------ ------ ------ ------ ---- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------- ------
+      1      1  1 ИП Кукушкина Галина Анатольевна 0 1 2008-02-01 00:00:00.000 761000344184     XV   KGA      2 факс(4855) 28-16-66,28-18-87,21-74-01.    14E      0 1 0 0  0 17762700004827 от 30.01.17      1 1 0  
+      2      2  2 ИП Кукушкина Галина Анатольевна 1 0 1753-01-01 00:00:00.000 761000344184     XV   ИП -      0       0      0 1 0 0  0       0 1 0  
+      
+      (2 rows affected)
+
+  [SC131] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 2
+      DESCR char 10
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3767 numeric NULL
+      SP133 char 9
+      SP134 numeric NULL
+      SP3748 char 9
+      SP3558 char 14
+      SP7446 char 14
+      SP7511 numeric NULL
+      
+      (14 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP3767 SP133 SP134 SP3748 SP3558 SP7446 SP7511
+      ------ -- ---- ----- --------- ------ -------- ------ ----- ----- ------ ------ ------ ------
+      1      1  1 шт.      2 0 0 .000      0 1.000      1   .000
+      2      2  1 шт.      3 0 0 .000      0 1.000      1 1  .000
+      3      B  1 пара      I 0 0 .000     24 1.000      5   .000
+      4      Q  1 пара      X 0 0 .000     24 1.000      5   .000
+      5     52  1 пара     59 0 0 .000     24 1.000      5   .000
+      
+      (5 rows affected)
+
+  [SC1414] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP1417 char 30
+      SP1416 char 100
+      SP1420 char 100
+      SP1419 char 9
+      SP1423 char 9
+      SP2933 char 20
+      SP2935 char 30
+      SP1421 char 30
+      SP2938 datetime NULL
+      SP2937 datetime NULL
+      SP1418 char 20
+      SP1422 char 20
+      SP1415 char 20
+      SP2939 char 35
+      SP2934 char 6
+      SP1424 numeric NULL
+      SP2936 char 25
+      SP2929 char 9
+      SP7621 char 100
+      SP10437 numeric NULL
+      SP3786 text 2147483647
+      
+      (28 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP1417 SP1416 SP1420 SP1419 SP1423 SP2933 SP2935 SP1421 SP2938 SP2937 SP1418 SP1422 SP1415 SP2939 SP2934 SP1424 SP2936 SP2929 SP7621 SP10437 SP3786
+      ------ -- ---- ----- --------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      1      1     1 ИП Галочкина Е.В.      1 1 0  Филиал "Рыбинский "КБ "БФГ-Кредит"(ООО)  047885757   Рыбинск  1753-01-01 00:00:00.000 1753-01-01 00:00:00.000 30101810600000000757  40802810820000000390   1     29F ИП Галочкина Елена Валентиновна 0 
+      2      2     2 Основной      1 0 1  КАЛУЖСКОЕ ОТДЕЛЕНИЕ N8608 ПАО СБЕРБАНК Г.КАЛУГА  042908612  Расчетный (текущий) г. Калуга  1753-01-01 00:00:00.000 2016-06-02 00:00:00.000 30101810100000000612  40802810377030021018   1     29F ИП Кукушкина Галина Анатольевна 0 
+      
+      (2 rows affected)
+
+  [SC31] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 64
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3435 char 9
+      SP40 char 32
+      SP6825 char 9
+      SP7281 char 9
+      SP9580 numeric NULL
+      SP9581 numeric NULL
+      SP7366 char 9
+      SP7372 char 9
+      SP10179 char 13
+      SP10529 numeric NULL
+      SP3768 text 2147483647
+      
+      (16 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP SP3435 SP40 SP6825 SP7281 SP9580 SP9581 SP7366 SP7372 SP10179 SP10529 SP3768
+      ------ -- ----- ------ -------- ------ ---- ------ ------ ------ ------ ------ ------ ------- ------- ------
+      1      1 Основной склад 0 0    2ND       0      0 0 0    5OO      0  6EK    1W 0 
+      2      3 Склад Бабушкина 0 0    2ND       0      0 0 0    5OO      0  6EK    1W 0 
+      
+      (2 rows affected)
+
+  [SC3246] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 48
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3255 datetime NULL
+      SP3254 char 56
+      SP3253 char 6
+      SP3252 char 10
+      SP3833 char 50
+      SP5426 char 9
+      SP7410 char 20
+      SP9550 char 14
+      SP9560 char 3
+      SP10911 char 12
+      SP9862 text 2147483647
+      
+      (19 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP3255 SP3254 SP3253 SP3252 SP3833 SP5426 SP7410 SP9550 SP9560 SP10911 SP9862
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------
+      1      1      C 00001 Туркина 2 1 1 2000-12-05 00:00:00.000 УВД г.Рыбинска Ярославской обл. 151903 78 00 Старший продавец      0     Туркина Наталья Сергеевна
+      2      2      C 00002 Макляева 2 1 1 2007-08-09 00:00:00.000 Отдел УФМС России 571089 7806 Продавец      0     
+      3      3      C 00003 Чванов 2 1 1 2007-07-04 00:00:00.000 УФМС России по Ярославской области 569256 7806 Продавец      0     Чванов Сергей Сергеевич
+      4      4      C 00004 Амоев 2 1 1 2006-04-26 00:00:00.000 УВД г.Рыбинска и Рыб.района Ярославской обл. 460701  Продавец      0     Амоев Зураб Резоевич
+      5      5      C 00005 Башуркина 2 1 1 1753-01-01 00:00:00.000    Продавец      0     Башуркина Ольга
+      
+      (5 rows affected)
+
+  [SC3649] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3650 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP SP3650
+      ------ -- ----- ------ -------- ------
+      1      1 Без налога с продаж 0 0 .00
+      
+      (1 rows affected)
+
+  [SC3724] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 81
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3858 datetime NULL
+      SP10333 char 9
+      SP10700 char 9
+      SP10701 numeric NULL
+      SP10702 numeric NULL
+      SP10703 char 9
+      SP10406 text 2147483647
+      
+      (14 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR PARENTEXT ISMARK VERSTAMP SP3858 SP10333 SP10700 SP10701 SP10702 SP10703 SP10406
+      ------ -- ---- ----- --------- ------ -------- ------ ------- ------- ------- ------- ------- -------
+      1      1     1 Без договора (служебный, торг.; для платежей без указания договора)      4 0 0 1753-01-01 00:00:00.000      0      0 .00 0      0 
+      2      2     1 Без договора (служебный, торг.; для платежей без указания договора)      2 0 0 1753-01-01 00:00:00.000      0      0 .00 0      0 
+      3      3     1 Без договора (служебный, торг.; для платежей без указания договора)     77 0 0 1753-01-01 00:00:00.000      0      0 .00 0      0 
+      4      4     1 Без договора (служебный, торг.; для платежей без указания договора)     78 0 0 1753-01-01 00:00:00.000      0      0 .00 0      0 
+      5      5     1 Без договора (служебный, торг.; для платежей без указания договора)     79 0 0 1753-01-01 00:00:00.000      0      0 .00 0      0 
+      
+      (5 rows affected)
+
+  [SC3751] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 3
+      DESCR char 10
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP4487 char 30
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP4487
+      ------ -- ---- ----- ------ -------- ------
+      1      5  пара 0 0 пара
+      2      6  компл. 0 0 компл.
+      3      7   0 0 
+      4      3 166 кг 0 0 килограмм
+      5      4 778 уп. 0 0 упаковка
+      
+      (5 rows affected)
+
+  [SC3760] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 25
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3758 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR ISFOLDER ISMARK VERSTAMP SP3758
+      ------ -- -------- ----- -------- ------ -------- ------
+      1      4      1 Изделие 2 0 0 
+      2      B      0 Категории контрагентов 1 0 0 
+      3      1      0 Категории товаров 1 0 0 
+      4      5      1 Набор 2 0 0 
+      5      8      1 Новинка 2 0 0 
+      
+      (5 rows affected)
+
+  [SC3763] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 1
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3761 char 9
+      SP10476 char 250
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP3761 SP10476
+      ------ -- ----- --------- ------ -------- ------ -------
+      1      I       I 0 0      G L
+      2      J       I 0 0      H Одежда XS,S,M...
+      3      K       J 0 0      G M
+      4      L       J 0 0      H Одежда XS,S,M...
+      5      M       K 0 0      G L
+      
+      (5 rows affected)
+
+  [SC3764] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 1
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3765 char 9
+      SP10182 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP3765 SP10182
+      ------ -- ----- --------- ------ -------- ------ -------
+      1      1       2 0 0      C 
+      2      2       4 0 0      D 
+      3      3       6 0 0      E 
+      4     78      7D 0 0      D 
+      5     72      77 0 0      D 
+      
+      (5 rows affected)
+
+  [SC3769] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 2
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10309 numeric NULL
+      SP3771 text 2147483647
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP10309 SP3771
+      ------ -- ---- ----- ------ -------- ------- ------
+      1      1  1 Скидка 8% 0 0 .00 
+      2      2  2 Скидка 5% 0 0 12000.00 
+      3      3  3 Розничная 0 1 .00 
+      4      4  4 Закупочная 0 0 .00 
+      5      5  5 Скидка 25% 0 0 .00 
+      
+      (5 rows affected)
+
+  [SC3772] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 50
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3787 char 9
+      SP3864 numeric NULL
+      SP6937 numeric NULL
+      SP5314 numeric NULL
+      
+      (10 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP3787 SP3864 SP6937 SP5314
+      ------ -- ----- --------- ------ -------- ------ ------ ------ ------
+      1      G       I 0 0      3 .00 .00 .000
+      2      H       I 0 0      4 .00 .00 .000
+      3      I       J 0 0      3 .00 .00 .000
+      4      J       J 0 0      4 .00 .00 .000
+      5      K       K 0 0      3 .00 .00 .000
+      
+      (5 rows affected)
+
+  [SC4337] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 30
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP4339 char 80
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR ISFOLDER ISMARK VERSTAMP SP4339
+      ------ -- -------- ----- -------- ------ -------- ------
+      
+      (0 rows affected)
+
+  [SC46] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 8
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7313 char 9
+      SP906 char 9
+      SP901 char 9
+      SP937 char 9
+      SP2884 char 9
+      SP7537 char 140
+      SP10480 datetime NULL
+      SP6836 char 60
+      SP3148 datetime NULL
+      SP3149 char 60
+      SP3147 char 14
+      SP3146 char 14
+      SP56 char 20
+      SP3784 char 9
+      SP3919 char 9
+      SP7135 char 15
+      SP7292 char 9
+      SP7408 char 20
+      SP3782 char 9
+      SP3783 char 8
+      SP9209 char 9
+      SP4187 char 9
+      SP6738 char 9
+      SP48 char 200
+      SP6804 numeric NULL
+      SP6834 datetime NULL
+      SP49 char 50
+      SP7055 numeric NULL
+      SP7513 char 14
+      SP10479 char 50
+      SP9861 char 9
+      SP10685 numeric NULL
+      SP10686 char 9
+      SP10793 char 9
+      SP3785 text 2147483647
+      SP10218 text 2147483647
+      SP50 text 2147483647
+      SP3145 text 2147483647
+      SP10689 text 2147483647
+      
+      (47 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP7313 SP906 SP901 SP937 SP2884 SP7537 SP10480 SP6836 SP3148 SP3149 SP3147 SP3146 SP56 SP3784 SP3919 SP7135 SP7292 SP7408 SP3782 SP3783 SP9209 SP4187 SP6738 SP48 SP6804 SP6834 SP49 SP7055 SP7513 SP10479 SP9861 SP10685 SP10686 SP10793 SP3785 SP10218 SP50 SP3145 SP10689
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ----- ----- ----- ------ ------ ------- ------ ------ ------ ------ ------ ---- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ---- ------ ------ ---- ------ ------ ------- ------ ------- ------- ------- ------ ------- ---- ------ -------
+      1      1      0 00000001 Покупатели 1 0 0      0      0      0      0      0  1753-01-01 00:00:00.000  1753-01-01 00:00:00.000          0      0       0       0       0      0      0  0 1753-01-01 00:00:00.000  0        0 0      0      0     
+      2      2      1 00000002 Основной покупатель 2 0 4      0      1      1      1    14D  1753-01-01 00:00:00.000  1753-01-01 00:00:00.000          3      0       0       0       0      0      0 Основной покупатель 0 1753-01-01 00:00:00.000  0        1 1      1      0     
+      3      3      0 00000003 Поставщики 1 0 0      0      0      0      0      0  1753-01-01 00:00:00.000  1753-01-01 00:00:00.000          0      0       0       0       0      0      0  0 1753-01-01 00:00:00.000  0        0 0      0      0     
+      4      4      3 00000004 Пугачев А.М. ИП 2 0 0      0      1      1      1    14D  1753-01-01 00:00:00.000  1753-01-01 00:00:00.000    771900050401      0      0       0       0       0      0      0 ИП Пугачев А.М. 0 1753-01-01 00:00:00.000  0        2 1      1      0    ,105484,,,Москва г,,Парковая 16-я ул,25,2, 
+      5      5      0 00000005 Реализаторы 1 0 0      0      0      0      0      0  1753-01-01 00:00:00.000  1753-01-01 00:00:00.000          0      0       0       0       0      0      0  0 1753-01-01 00:00:00.000  0        0 0      0      0     
+      
+      (5 rows affected)
+
+  [SC4841] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 30
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP4843 numeric NULL
+      SP4845 datetime NULL
+      SP4846 datetime NULL
+      SP4888 char 100
+      SP5065 char 9
+      SP10514 text 2147483647
+      
+      (13 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR ISFOLDER ISMARK VERSTAMP SP4843 SP4845 SP4846 SP4888 SP5065 SP10514
+      ------ -- -------- ----- -------- ------ -------- ------ ------ ------ ------ ------ -------
+      
+      (0 rows affected)
+
+  [SC4889] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 8
+      DESCR char 100
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP4890 char 25
+      SP4891 char 9
+      SP4895 char 9
+      SP6789 char 9
+      SP4897 char 9
+      SP6933 char 60
+      SP4899 char 9
+      SP10517 numeric NULL
+      SP4902 numeric NULL
+      SP4904 char 7
+      SP9555 char 9
+      SP7346 char 9
+      SP4906 char 100
+      SP6914 char 9
+      SP5061 char 9
+      SP7447 char 14
+      SP7202 char 10
+      SP6923 char 9
+      SP9932 char 9
+      SP4910 char 9
+      SP6911 char 9
+      SP10031 char 13
+      SP4912 char 9
+      SP5024 numeric NULL
+      SP6921 char 9
+      SP4914 numeric NULL
+      SP4916 char 14
+      SP10569 numeric NULL
+      SP10914 numeric NULL
+      SP4900 text 2147483647
+      SP9882 text 2147483647
+      
+      (39 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP4890 SP4891 SP4895 SP6789 SP4897 SP6933 SP4899 SP10517 SP4902 SP4904 SP9555 SP7346 SP4906 SP6914 SP5061 SP7447 SP7202 SP6923 SP9932 SP4910 SP6911 SP10031 SP4912 SP5024 SP6921 SP4914 SP4916 SP10569 SP10914 SP4900 SP9882
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------ ------ ------ ------ ------ ------- ------- ------ ------
+      1      1    403 00000001 Услуги 1 0 0       0      0      0      0       0 .000 .000       0      0       0      0        0      0      0      0    0     0      0 0      0 .000  0 0  
+      2      2      1 00000002 Авансовый платеж 2 0 0       1      1      1     J4       1 .000 .000       0      0 Авансовый платеж      C      0      403      0      0      0    0     0      0 1    403 .000  0 0  
+      3      3      1 00000003 Свободная продажа 2 0 0       1      1      1     J4       2 .000 .000       0      0 Своб. продажа      C      0      403      0      0      0    0     0    2QY 1    403 .000 1 0 0  
+      4      I    339 00000007 Щитки  Gamma Flash L L 2 0 0       5      1      1     J2 10124030/280807/0011014      B .000 .000       0      0 Щитки  Gamma Flash L L      3      0      CPJ      0      0      2    0     0    2QX 0      0 .000  0 0  Синтетика
+      5      J    339 00000008 Щитки  Gamma Rete NY M M 2 0 0       5      1      1     J2 10124030/280807/0011014      C .000 .000       0      0 Щитки  Gamma Rete NY M M      3      0      CPJ      0      0      2    0     0    2QX 0      0 .000  0 0  Синтетика
+      
+      (5 rows affected)
+
+  [SC4941] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP4943 char 9
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP4943
+      ------ -- ----- --------- ------ -------- ------
+      
+      (0 rows affected)
+
+  [SC5063] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 100
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      
+      (0 rows affected)
+
+  [SC5222] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 100
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP5224 char 9
+      SP5225 numeric NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP5224 SP5225
+      ------ -- ----- --------- ------ -------- ------ ------
+      
+      (0 rows affected)
+
+  [SC6723] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 60
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP6725 char 9
+      SP6726 numeric NULL
+      SP6727 numeric NULL
+      SP6728 numeric NULL
+      SP6863 char 9
+      SP6864 numeric NULL
+      SP6865 numeric NULL
+      SP6866 char 9
+      SP6867 char 9
+      SP6868 numeric NULL
+      SP6869 numeric NULL
+      
+      (19 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP6725 SP6726 SP6727 SP6728 SP6863 SP6864 SP6865 SP6866 SP6867 SP6868 SP6869
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC6761] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 1
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP6759 char 9
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP6759
+      ------ -- ----- --------- ------ -------- ------
+      
+      (0 rows affected)
+
+  [SC681] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 25
+      PARENTEXT char 9
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP684 numeric NULL
+      SP683 char 9
+      SP5403 char 9
+      SP6712 numeric NULL
+      
+      (12 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR PARENTEXT ISFOLDER ISMARK VERSTAMP SP684 SP683 SP5403 SP6712
+      ------ -- -------- ----- --------- -------- ------ -------- ----- ----- ------ ------
+      
+      (0 rows affected)
+
+  [SC6909] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 60
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (5 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP
+      ------ -- ----- ------ --------
+      1      X  0 0
+      2      8 <> 0 0
+      3     12 Англия 0 0
+      4      D Бангладеш 0 0
+      5     15 Беларусь 0 0
+      
+      (5 rows affected)
+
+  [SC6912] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 60
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ----- -------- ------ --------
+      1     1O      0 " 2 0 0
+      2     1R      0 " 2 0 0
+      3     1U      0 "Верста" 2 0 0
+      4     1M      0 "Мета" 2 0 0
+      5      Y      0 "Росин" 2 0 0
+      
+      (5 rows affected)
+
+  [SC6940] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 25
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ----- -------- ------ --------
+      1      2      0 100% 2 0 0
+      2      B      0 20% 2 0 0
+      3      H      0 25% 2 0 0
+      4      G      0 35% 2 0 0
+      5      7      0 40% 2 0 0
+      
+      (5 rows affected)
+
+  [SC6942] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP6944 char 9
+      SP6945 numeric NULL
+      SP6946 numeric NULL
+      SP6948 numeric NULL
+      
+      (10 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP6944 SP6945 SP6946 SP6948
+      ------ -- ----- --------- ------ -------- ------ ------ ------ ------
+      1      K Закупочная      3 0 0      4 .00 .00 .010
+      2      L Закупочная      4 0 0      4 .00 .00 .010
+      3      Y Закупочная      7 0 0      4 .00 .00 .010
+      4     17 Закупочная      8 0 0      4 .00 .00 .010
+      5     1D Закупочная      9 0 0      4 .00 .00 .010
+      
+      (5 rows affected)
+
+  [SC7052] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7044 char 50
+      SP7045 datetime NULL
+      SP7046 char 15
+      SP7047 char 15
+      SP7048 char 15
+      SP7049 char 50
+      SP7050 char 100
+      SP10485 char 9
+      
+      (14 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP7044 SP7045 SP7046 SP7047 SP7048 SP7049 SP7050 SP10485
+      ------ -- ----- --------- ------ -------- ------ ------ ------ ------ ------ ------ ------ -------
+      
+      (0 rows affected)
+
+  [SC7146] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP10509 text 2147483647
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP SP10509
+      ------ -- ----- ------ -------- -------
+      1      1 Запрет перепроведения РР 0 0 
+      
+      (1 rows affected)
+
+  [SC7148] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 60
+      PARENTEXT char 9
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7178 numeric NULL
+      SP7179 numeric NULL
+      SP7180 numeric NULL
+      SP7181 numeric NULL
+      SP7182 numeric NULL
+      SP7183 numeric NULL
+      SP7188 numeric NULL
+      SP7189 numeric NULL
+      SP10563 numeric NULL
+      
+      (17 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR PARENTEXT ISFOLDER ISMARK VERSTAMP SP7178 SP7179 SP7180 SP7181 SP7182 SP7183 SP7188 SP7189 SP10563
+      ------ -- -------- ----- --------- -------- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------ -------
+      1      B      5 ВалютаКредита      1 2 0 0 0 0 0 0 0 0 0 0 0
+      2      D      5 Глубина      1 2 0 0 0 0 0 0 0 0 0 0 0
+      3      F      0 Документ.РасходнаяНакладная      1 1 0 0 0 0 0 0 0 0 0 0 0
+      4      4      0 Документ.РеализацияРозница      1 1 0 0 0 0 0 1 1 0 0 0 1
+      5      G      0 Документ.РегистрацияСчета_фактуры      1 1 0 0 0 0 0 0 0 0 0 0 0
+      
+      (5 rows affected)
+
+  [SC7293] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7295 char 9
+      SP10878 numeric NULL
+      SP10879 numeric NULL
+      SP10880 numeric NULL
+      SP10881 numeric NULL
+      SP10882 numeric NULL
+      SP10883 char 50
+      SP10884 char 20
+      SP10885 char 50
+      SP10886 char 15
+      SP10887 char 50
+      SP10888 char 50
+      SP10889 char 7
+      
+      (18 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP SP7295 SP10878 SP10879 SP10880 SP10881 SP10882 SP10883 SP10884 SP10885 SP10886 SP10887 SP10888 SP10889
+      ------ -- ----- ------ -------- ------ ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      
+      (0 rows affected)
+
+  [SC7334] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 2
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7330 char 10
+      SP7331 char 9
+      SP7332 char 10
+      SP7359 char 9
+      SP9926 char 13
+      SP10073 char 1
+      SP10133 numeric NULL
+      
+      (13 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP7330 SP7331 SP7332 SP7359 SP9926 SP10073 SP10133
+      ------ -- ---- ----- ------ -------- ------ ------ ------ ------ ------ ------- -------
+      1      1  1 Основная касса 0 0       0       0  6EK    2D  0
+      
+      (1 rows affected)
+
+  [SC7373] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 25
+      PARENTEXT char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7375 char 9
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR PARENTEXT ISMARK VERSTAMP SP7375
+      ------ -- ----- --------- ------ -------- ------
+      
+      (0 rows affected)
+
+  [SC7382] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 9
+      DESCR char 100
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7376 char 20
+      SP7377 char 50
+      SP7379 char 30
+      SP7378 text 2147483647
+      
+      (12 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP7376 SP7377 SP7379 SP7378
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC7459] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      DESCR char 50
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7461 datetime NULL
+      SP7462 char 8
+      SP7463 char 8
+      SP7464 numeric NULL
+      SP10488 char 9
+      SP10329 text 2147483647
+      
+      (11 rows affected)
+    Примеры строк:
+      ROW_ID ID DESCR ISMARK VERSTAMP SP7461 SP7462 SP7463 SP7464 SP10488 SP10329
+      ------ -- ----- ------ -------- ------ ------ ------ ------ ------- -------
+      
+      (0 rows affected)
+
+  [SC7523] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7520 numeric NULL
+      SP7521 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID ISMARK VERSTAMP SP7520 SP7521
+      ------ -- ------ -------- ------ ------
+      
+      (0 rows affected)
+
+  [SC7598] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7605 datetime NULL
+      SP7600 char 13
+      SP7615 char 9
+      SP7601 char 9
+      SP7604 char 9
+      SP7602 numeric NULL
+      SP7719 numeric NULL
+      
+      (11 rows affected)
+    Примеры строк:
+      ROW_ID ID ISMARK VERSTAMP SP7605 SP7600 SP7615 SP7601 SP7604 SP7602 SP7719
+      ------ -- ------ -------- ------ ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC7606] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7607 datetime NULL
+      SP7608 char 13
+      SP7610 char 9
+      SP7611 numeric NULL
+      SP7613 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID ISMARK VERSTAMP SP7607 SP7608 SP7610 SP7611 SP7613
+      ------ -- ------ -------- ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC7658] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 100
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7659 char 141
+      SP7660 char 141
+      SP7661 char 128
+      SP7662 char 128
+      
+      (10 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP7659 SP7660 SP7661 SP7662
+      ------ -- ---- ----- ------ -------- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC7673] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      DESCR char 100
+      PARENTEXT char 9
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP7674 char 100
+      
+      (9 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID DESCR PARENTEXT ISFOLDER ISMARK VERSTAMP SP7674
+      ------ -- -------- ----- --------- -------- ------ -------- ------
+      
+      (0 rows affected)
+
+  [SC838] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 24
+      DESCR char 48
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3232 char 9
+      SP4316 char 9
+      SP5004 char 64
+      SP5005 numeric NULL
+      SP6927 char 9
+      SP7152 char 9
+      SP7305 numeric NULL
+      SP7592 char 9
+      SP7692 datetime NULL
+      SP7693 numeric NULL
+      SP7698 char 50
+      SP7717 numeric NULL
+      SP9545 numeric NULL
+      SP9633 numeric NULL
+      SP9734 char 3
+      SP9735 numeric NULL
+      SP10032 numeric NULL
+      SP10221 char 9
+      SP10283 char 50
+      SP10284 char 50
+      SP10285 char 50
+      SP10314 char 9
+      SP10463 char 9
+      SP10579 char 9
+      SP10621 char 100
+      SP10668 char 100
+      SP10766 numeric NULL
+      SP10792 numeric NULL
+      SP10913 char 12
+      
+      (35 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP3232 SP4316 SP5004 SP5005 SP6927 SP7152 SP7305 SP7592 SP7692 SP7693 SP7698 SP7717 SP9545 SP9633 SP9734 SP9735 SP10032 SP10221 SP10283 SP10284 SP10285 SP10314 SP10463 SP10579 SP10621 SP10668 SP10766 SP10792 SP10913
+      ------ -- ---- ----- ------ -------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+      1      4 Buh Buh 0 0      1      0  0      0      0 0      0 1753-01-01 00:00:00.000 0  0 0 0 012 0 0      0         0      0      0   0 0 
+      2      1 Администратор Администратор 0 0      0      0  0      0      0 0      0 1753-01-01 00:00:00.000 0  0 0 0 012 0 0      0         0      4      0  (нет) 0 0 
+      3      6 Амоев Амоев 0 0      1      0  0      0      0 0      0 1753-01-01 00:00:00.000 0  0 1 0 012 0 0      0         0      4      0  (нет) 0 0 
+      4      A Бахшиева Бахшиева 0 0      1      0  0      0      0 0      0 1753-01-01 00:00:00.000 0  0 1 0 012 0 0      0         0      0      0  (нет) 0 0 
+      5      5 Вагу Вагу С.В. 0 0      1      0  0      0      0 0      0 1753-01-01 00:00:00.000 0  0 1 0 012 0 0      0         0      6      0  (нет) 0 0 761016727802
+      
+      (5 rows affected)
+
+  [SC89] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 3
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP3383 char 12
+      SP3025 char 16
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP3383 SP3025
+      ------ -- ---- ----- ------ -------- ------ ------
+      1      1 810 руб. 0 0  Российский рубль
+      2      2 840 USD 0 0 USD.spl Доллар США
+      
+      (2 rows affected)
+
+  [SC9217] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9235] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      1      1      0 00001 Поступления от покупателей 2 0 0
+      2      2      0 00002 Оплата поставщику 2 0 0
+      
+      (2 rows affected)
+
+  [SC9243] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 60
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9261] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 10
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      
+      (0 rows affected)
+
+  [SC9264] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 10
+      DESCR char 40
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9278] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 60
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9313] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      
+      (0 rows affected)
+
+  [SC9316] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      1      1      0 00001 Поступления и расходы от выбытия иных активов 2 0 0
+      
+      (1 rows affected)
+
+  [SC9327] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 25
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9422] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 10
+      DESCR char 50
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9506] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 5
+      DESCR char 40
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP
+      ------ -- ---- ----- ------ --------
+      
+      (0 rows affected)
+
+  [SC9517] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 4
+      DESCR char 100
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      
+      (0 rows affected)
+
+  [SC9643] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 6
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP9638 char 9
+      SP9639 char 10
+      SP9640 char 9
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE ISMARK VERSTAMP SP9638 SP9639 SP9640
+      ------ -- ---- ------ -------- ------ ------ ------
+      
+      (0 rows affected)
+
+  [SC9744] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 8
+      DESCR char 50
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP9737 char 20
+      SP9742 text 2147483647
+      
+      (10 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP SP9737 SP9742
+      ------ -- -------- ---- ----- -------- ------ -------- ------ ------
+      1      1      0 00000001 Основной покупатель 2 0 0  
+      2      2      0 00000002 Основной поставщик 2 0 0 771900050401 
+      3      3      0 00000003 Основной реализатор 2 0 0  
+      4      4      0 00000004 Частное лицо 2 0 0  
+      5      5      0 00000005 ООО"АРТ-ТВ" 2 0 0 7610073517/761001001 
+      
+      (5 rows affected)
+
+  [SC9996] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      CODE char 3
+      DESCR char 70
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      SP9993 char 9
+      SP9994 char 9
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID CODE DESCR ISMARK VERSTAMP SP9993 SP9994
+      ------ -- ---- ----- ------ -------- ------ ------
+      1      1   1 Не определен 0 0    7Q9     3D
+      2      2   2 Не определен 0 0    7QA     3D
+      
+      (2 rows affected)
+
+  [SC9998] <-- возможно интересна
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 5
+      DESCR char 100
+      ISFOLDER tinyint NULL
+      ISMARK bit NULL
+      VERSTAMP int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE DESCR ISFOLDER ISMARK VERSTAMP
+      ------ -- -------- ---- ----- -------- ------ --------
+      
+      (0 rows affected)
+
+  [(210 rows affected)]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      
+      (0 rows affected)
+    Примеры строк:
+      Msg 208, Level 16, State 1, Server 1CSRV, Line 1
+      Invalid object name '(210 rows affected)'.
+
+  [RA10305]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP10306 char 9
+      SP10308 numeric NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP10306 SP10308
+      ----- ------- ----- ------- ------- -------
+           M 0 6 0      2 2300.00
+           N 0 6 0      2 560.00
+           O 0 6 0      2 2400.00
+           P 0 6 0      2 799.00
+           Q 0 8 0      2 1456.00
+      
+      (5 rows affected)
+
+  [RA10899]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP10900 char 9
+      SP10901 numeric NULL
+      SP10902 char 13
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP10900 SP10901 SP10902
+      ----- ------- ----- ------- ------- ------- -------
+        2RZ8 0 1 0    2ES 100  5S2  2RPS
+        2RZ8 0 2 0    2C2 200  5S2  2RPU
+        2RZ8 0 3 0    2C3 50  5S2  2RPW
+        2RZ8 0 4 0    2C4 100  5S2  2RQ2
+        2RZ9 0 1 0    2C5 400  5S2  2RQ6
+      
+      (5 rows affected)
+
+  [RA1130]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      IDDOCDEF int NULL
+      DATE_TIME_IDDOC char 23
+      SP2654 char 9
+      SP1131 char 9
+      SP5409 char 9
+      SP3597 char 9
+      SP3601 char 13
+      SP1132 char 13
+      SP1133 numeric NULL
+      SP2655 numeric NULL
+      SP2799 numeric NULL
+      SP3286 numeric NULL
+      SP3665 numeric NULL
+      SP2658 numeric NULL
+      SP2804 numeric NULL
+      SP2805 numeric NULL
+      SP3630 numeric NULL
+      SP3027 char 1
+      SP5556 datetime NULL
+      SP10058 char 13
+      
+      (24 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED IDDOCDEF DATE_TIME_IDDOC SP2654 SP1131 SP5409 SP3597 SP3601 SP1132 SP1133 SP2655 SP2799 SP3286 SP3665 SP2658 SP2804 SP2805 SP3630 SP3027 SP5556 SP10058
+      ----- ------- ----- ------- -------- --------------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ -------
+           3 1 17 0 434 200804197579C0     3      0      I      1      4   C2     3   C2     3 2.00000 379.66000 .00000 68.34000 .00000 .00000 .00000 .00000 .00000 З 1753-01-01 00:00:00.000  6EK    1W
+           3 1 32 0 434 200804197579C0     3      1      I      1      4   C2     3   C2     3 2.00000 379.66000 .00000 68.34000 .00000 .00000 .00000 .00000 .00000 З 1753-01-01 00:00:00.000  6EK    1W
+           3 2 18 0 434 200804197579C0     3      0      J      1      4   C2     3   C2     3 2.00000 522.03000 .00000 93.97000 .00000 .00000 .00000 .00000 .00000 З 1753-01-01 00:00:00.000  6EK    1W
+           3 2 33 0 434 200804197579C0     3      1      J      1      4   C2     3   C2     3 2.00000 522.03000 .00000 93.97000 .00000 .00000 .00000 .00000 .00000 З 1753-01-01 00:00:00.000  6EK    1W
+           3 3 19 0 434 200804197579C0     3      0      K      1      4   C2     3   C2     3 2.00000 189.83000 .00000 34.17000 .00000 .00000 .00000 .00000 .00000 З 1753-01-01 00:00:00.000  6EK    1W
+      
+      (5 rows affected)
+
+  [RA169]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      IDDOCDEF int NULL
+      DATE_TIME_IDDOC char 23
+      SP2671 char 9
+      SP170 char 9
+      SP3810 char 9
+      SP3032 char 9
+      SP3660 char 9
+      SP3208 char 1
+      SP405 char 13
+      SP171 numeric NULL
+      SP4824 numeric NULL
+      SP3661 numeric NULL
+      SP3028 char 1
+      SP4576 char 13
+      
+      (18 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED IDDOCDEF DATE_TIME_IDDOC SP2671 SP170 SP3810 SP3032 SP3660 SP3208 SP405 SP171 SP4824 SP3661 SP3028 SP4576
+      ----- ------- ----- ------- -------- --------------- ------ ----- ------ ------ ------ ------ ----- ----- ------ ------ ------ ------
+         4L8 0 35 0 410 20090520B2EULC   4L8      0     C9      0      0      1    BE   4L8 4342.17000 .00000 .00000 Н    0     0
+         72D 0 22 0 410 200909219GGIKG   72D      0     CG      0      0      1    BE   72D 11555.00000 .00000 .00000 Н    0     0
+         72D 0 29 0 410 200909219GGIKG   72D      1     CG      0     L9      1 Т   BE   72D 11555.00000 .00000 .00000 Н    0     0
+         795 0 9 0 410 200909299LFWWG   795      0     CH      0      0      1    BE   795 2980.00000 .00000 .00000 Н    0     0
+         BOE 0 31 0 410 20100511B9LJV4   BOE      0     QM      0      0      1    BE   BOE 11830.00000 .00000 .00000 Н    0     0
+      
+      (5 rows affected)
+
+  [RA3384]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP7064 char 9
+      SP3385 char 9
+      SP9710 char 9
+      SP3386 numeric NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP7064 SP3385 SP9710 SP3386
+      ----- ------- ----- ------- ------ ------ ------ ------
+           M 0 5 0      0      1      1 2300.00
+           N 0 5 0      0      1      1 560.00
+           O 0 5 0      0      1      1 2400.00
+           P 0 5 0      0      1      1 799.00
+           Q 0 7 0      0      1      1 1456.00
+      
+      (5 rows affected)
+
+  [RA3623]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP3627 char 13
+      SP3625 char 9
+      SP3677 char 10
+      SP3626 numeric NULL
+      SP5464 numeric NULL
+      SP3628 char 1
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP3627 SP3625 SP3677 SP3626 SP5464 SP3628
+      ----- ------- ----- ------- ------ ------ ------ ------ ------ ------
+           3 0 49 0   C2     3    5OK Товар 1625.51000 10656.00000 в
+           4 0 472 0   C2     4    5OK Товар 29944.05000 196299.97000 в
+           5 0 589 0   C2     5    5OK Товар 43821.18000 287271.89000 в
+           6 0 91 0   C2     6    5OK Товар 1569.10000 10286.03000 в
+           9 0 679 0   C2     9    5OK Товар 31149.49000 204202.41000 в
+      
+      (5 rows affected)
+
+  [RA4333]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP4335 char 9
+      SP4336 char 9
+      SP4340 char 9
+      SP4354 numeric NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP4335 SP4336 SP4340 SP4354
+      ----- ------- ----- ------- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RA620]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP5379 char 9
+      SP6919 char 9
+      SP621 char 9
+      SP5350 char 9
+      SP5378 char 13
+      SP10294 char 1
+      SP623 numeric NULL
+      SP10236 numeric NULL
+      
+      (12 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP5379 SP6919 SP621 SP5350 SP5378 SP10294 SP623 SP10236
+      ----- ------- ----- ------- ------ ------ ----- ------ ------ ------- ----- -------
+      
+      (0 rows affected)
+
+  [RA6856]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP6857 char 9
+      SP6858 numeric NULL
+      SP6859 numeric NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP6857 SP6858 SP6859
+      ----- ------- ----- ------- ------ ------ ------
+           W 0 10 0     A3 2394.00 126.00
+           W 0 11 0    15C 1995.00 105.00
+           Z 0 7 0     78 3857.00 203.00
+          10 0 7 0    16I 240.00 12.00
+          25 0 7 0    16F 293.00 15.00
+      
+      (5 rows affected)
+
+  [RA7075]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP7076 char 9
+      SP7127 char 9
+      SP7077 char 9
+      SP7078 numeric NULL
+      SP9577 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP7076 SP7127 SP7077 SP7078 SP9577
+      ----- ------- ----- ------- ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RA7499]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP7500 char 9
+      SP7501 char 9
+      SP7502 char 9
+      SP7503 numeric NULL
+      SP9578 numeric NULL
+      
+      (9 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP7500 SP7501 SP7502 SP7503 SP9578
+      ----- ------- ----- ------- ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RA7638]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      IDDOCDEF int NULL
+      DATE_TIME_IDDOC char 23
+      SP7640 char 9
+      SP7641 char 9
+      SP7643 numeric NULL
+      SP7644 char 1
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED IDDOCDEF DATE_TIME_IDDOC SP7640 SP7641 SP7643 SP7644
+      ----- ------- ----- ------- -------- --------------- ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [RA933]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      IDDOCDEF int NULL
+      DATE_TIME_IDDOC char 23
+      SP2669 char 9
+      SP934 char 9
+      SP3809 char 9
+      SP3211 char 1
+      SP935 char 13
+      SP936 numeric NULL
+      SP3029 char 1
+      SP3305 numeric NULL
+      
+      (14 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED IDDOCDEF DATE_TIME_IDDOC SP2669 SP934 SP3809 SP3211 SP935 SP936 SP3029 SP3305
+      ----- ------- ----- ------- -------- --------------- ------ ----- ------ ------ ----- ----- ------ ------
+           3 0 47 1 434 200804197579C0     3      0      4      0 О   C2     3 10656.00000 Н .00000
+           3 0 48 1 434 200804197579C0     3      1      4      0 О   C2     3 10656.00000 Н .00000
+           4 0 470 1 434 200804237579C0     4      0      4      0 О   C2     4 196299.97000 Н .00000
+           4 0 471 1 434 200804237579C0     4      1      4      0 О   C2     4 196299.97000 Н .00000
+           5 0 587 1 434 20080423759EHS     5      0      4      0 О   C2     5 287271.89000 Н .00000
+      
+      (5 rows affected)
+
+  [RA9804]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      IDDOC char 9
+      LINENO_ smallint NULL
+      ACTNO int NULL
+      DEBKRED bit NULL
+      SP9798 char 9
+      SP9799 char 9
+      SP9800 char 9
+      SP9801 char 9
+      SP9802 numeric NULL
+      SP9803 char 9
+      
+      (10 rows affected)
+    Примеры строк:
+      IDDOC LINENO_ ACTNO DEBKRED SP9798 SP9799 SP9800 SP9801 SP9802 SP9803
+      ----- ------- ----- ------- ------ ------ ------ ------ ------ ------
+      
+      (0 rows affected)
+
+  [_1SACCS]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PLANID int NULL
+      SCHKOD char 11
+      SCHIM char 25
+      SCHV bit NULL
+      SCHKOL bit NULL
+      SCHSINGLE bit NULL
+      ISFOLDER bit NULL
+      ISMARK bit NULL
+      LEVEL_ smallint NULL
+      MDID int NULL
+      ACTIVE tinyint NULL
+      VERSTAMP int NULL
+      SC0 int NULL
+      OSC0 tinyint NULL
+      FSC0 tinyint NULL
+      SC1 int NULL
+      OSC1 tinyint NULL
+      FSC1 tinyint NULL
+      SC2 int NULL
+      OSC2 tinyint NULL
+      FSC2 tinyint NULL
+      SP5708 text 2147483647
+      
+      (24 rows affected)
+    Примеры строк:
+      ROW_ID ID PLANID SCHKOD SCHIM SCHV SCHKOL SCHSINGLE ISFOLDER ISMARK LEVEL_ MDID ACTIVE VERSTAMP SC0 OSC0 FSC0 SC1 OSC1 FSC1 SC2 OSC2 FSC2 SP5708
+      ------ -- ------ ------ ----- ---- ------ --------- -------- ------ ------ ---- ------ -------- --- ---- ---- --- ---- ---- --- ---- ---- ------
+      1      1 8300  00. Вспомогательный 0 0 0 0 1 1 7845 3 0 0 0 7 0 0 7 0 0 7 
+      2      2 8300  01. Основные средства 0 0 0 1 1 1 7846 1 0 7805 0 7 0 0 7 0 0 7 
+      3      3 8300  01. 1. ОС в организации 0 0 0 0 1 2 7847 1 0 7805 0 7 0 0 7 0 0 7 
+      4      4 8300  01. 2. Выбытие ОС 0 0 0 0 1 2 7848 1 0 7805 0 7 0 0 7 0 0 7 
+      5      5 8300  02. Амортизация ОС 0 0 0 1 1 1 7849 2 0 7805 0 7 0 0 7 0 0 7 
+      
+      (5 rows affected)
+
+  [_1SACCSEL]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ACCID char 9
+      DOCID char 9
+      DATE_TIME_DOCID char 23
+      NUMBER int NULL
+      CORNO int NULL
+      DT char 1
+      KT char 1
+      
+      (8 rows affected)
+    Примеры строк:
+      ROW_ID ACCID DOCID DATE_TIME_DOCID NUMBER CORNO DT KT
+      ------ ----- ----- --------------- ------ ----- -- --
+      1     1H      3 200804197579C0     3 30 0 * 
+      2     1K      3 200804197579C0     3 30 0 * 
+      3     1V      3 200804197579C0     3 2 0 * 
+      4     1V      3 200804197579C0     3 5 0 * 
+      5     1V      3 200804197579C0     3 8 0 * 
+      
+      (5 rows affected)
+
+  [_1SBKTTL]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      DATE datetime NULL
+      ACCID char 9
+      CURRID char 9
+      KIND char 1
+      OBDT1 numeric NULL
+      OBKT1 numeric NULL
+      OBDT2 numeric NULL
+      OBKT2 numeric NULL
+      OBDT3 numeric NULL
+      OBKT3 numeric NULL
+      SD numeric NULL
+      FLAGS tinyint NULL
+      SP7843 char 9
+      SC0 char 9
+      VSC0 int NULL
+      OSC0 tinyint NULL
+      SC1 char 9
+      VSC1 int NULL
+      OSC1 tinyint NULL
+      SC2 char 9
+      VSC2 int NULL
+      OSC2 tinyint NULL
+      
+      (22 rows affected)
+    Примеры строк:
+      DATE ACCID CURRID KIND OBDT1 OBKT1 OBDT2 OBKT2 OBDT3 OBKT3 SD FLAGS SP7843 SC0 VSC0 OSC0 SC1 VSC1 OSC1 SC2 VSC2 OSC2
+      ---- ----- ------ ---- ----- ----- ----- ----- ----- ----- -- ----- ------ --- ---- ---- --- ---- ---- --- ---- ----
+      2008-04-01 00:00:00.000     1K      0 1 .00000 .00000 .00000 .00000 5567.92000 5567.92000 .00000 0      1     77 7796 0      0 7822 0  0 0
+      2008-04-01 00:00:00.000     1W      0 1 379.66000 .00000 .00000 .00000 .00000 .00000 .00000 2      1      I 7802 0      1 7798 0  0 0
+      2008-04-01 00:00:00.000     1W      0 1 522.03000 .00000 .00000 .00000 .00000 .00000 .00000 2      1      J 7802 0      1 7798 0  0 0
+      2008-04-01 00:00:00.000     1W      0 1 189.83000 .00000 .00000 .00000 .00000 .00000 .00000 2      1      K 7802 0      1 7798 0  0 0
+      2008-04-01 00:00:00.000     1W      0 1 522.03000 .00000 .00000 .00000 .00000 .00000 .00000 2      1      L 7802 0      1 7798 0  0 0
+      
+      (5 rows affected)
+
+  [_1SBKTTLC]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      DATE datetime NULL
+      ACCDTID char 9
+      ACCKTID char 9
+      CURRID char 9
+      KIND char 1
+      OB1 numeric NULL
+      OB2 numeric NULL
+      OB3 numeric NULL
+      DTFLAGS tinyint NULL
+      KTFLAGS tinyint NULL
+      SP7843 char 9
+      
+      (11 rows affected)
+    Примеры строк:
+      DATE ACCDTID ACCKTID CURRID KIND OB1 OB2 OB3 DTFLAGS KTFLAGS SP7843
+      ---- ------- ------- ------ ---- --- --- --- ------- ------- ------
+      2008-04-01 00:00:00.000     1K     33      0 1 .00000 .00000 5567.92000 0 0      1
+      2008-04-01 00:00:00.000     1W     33      0 1 598575.45000 845642.76000 261844.38000 2 0      1
+      2008-04-01 00:00:00.000     43     1K      0 1 .00000 .00000 5567.92000 0 0      1
+      2008-04-01 00:00:00.000     1W     33      0 1 706319.16000 997858.33000 308558.26000 2 0      2
+      2008-04-01 00:00:00.000     1X     66      0 1 .00000 .00000 4875.65000 2 0      2
+      
+      (5 rows affected)
+
+  [_1SCONNECT]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      CONNECTUUID char 36
+      
+      (1 rows affected)
+    Примеры строк:
+      CONNECTUUID
+      -----------
+      36AF695F-76B2-4624-9BDB-F7BA279DA048
+      
+      (1 rows affected)
+
+  [_1SCONST]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      OBJID char 9
+      ID int NULL
+      DATE datetime NULL
+      VALUE varchar 255
+      DOCID char 9
+      TIME int NULL
+      ACTNO int NULL
+      LINENO_ smallint NULL
+      TVALUE char 3
+      
+      (10 rows affected)
+    Примеры строк:
+      ROW_ID OBJID ID DATE VALUE DOCID TIME ACTNO LINENO_ TVALUE
+      ------ ----- -- ---- ----- ----- ---- ----- ------- ------
+      1      0 940 1753-01-01 00:00:00.000      2      0 0 0 0 
+      2      0 6876 1753-01-01 00:00:00.000 0      0 0 0 0 
+      3      0 116 1753-01-01 00:00:00.000      1      0 0 0 0 
+      4      0 6753 1753-01-01 00:00:00.000 0      0 0 0 0 
+      5      0 272 1753-01-01 00:00:00.000      1      0 0 0 0 
+      
+      (5 rows affected)
+
+  [_1SCORENT]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ACCDT char 9
+      ACCKT char 9
+      DESCR char 50
+      DTCODE char 11
+      KTCODE char 11
+      PLANID int NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID ACCDT ACCKT DESCR DTCODE KTCODE PLANID
+      ------ ----- ----- ----- ------ ------ ------
+      
+      (0 rows affected)
+
+  [_1SCRDOC]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      MDID int NULL
+      PARENTVAL char 23
+      CHILD_DATE_TIME_IDDOC char 23
+      CHILDID char 9
+      FLAGS tinyint NULL
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID MDID PARENTVAL CHILD_DATE_TIME_IDDOC CHILDID FLAGS
+      ------ ---- --------- --------------------- ------- -----
+      1 5083 B1 2I6     1 20080703B2VCQ8   10M    10M 1
+      2 5083 B1 2I6     1 2008070499WBHC   10I    10I 1
+      3 5083 B1 2I6     1 200807049BQJQO   10K    10K 1
+      4 5083 B1 2I6     1 200808129RHW4G   11W    11W 1
+      5 5083 B1 2I6     1 200808149JHTR4   10N    10N 1
+      
+      (5 rows affected)
+
+  [_1SDNLOCK]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      DNPREFIX char 28
+      DOCNO char 24
+      
+      (2 rows affected)
+    Примеры строк:
+      DNPREFIX DOCNO
+      -------- -----
+            74902026 KGA0001560
+      
+      (1 rows affected)
+
+  [_1SENTRY]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      DOCID char 9
+      NUMBER int NULL
+      CORNO int NULL
+      DATE_TIME_DOCID char 23
+      ACCDTID char 9
+      ACCKTID char 9
+      SUM_ numeric NULL
+      CURRID char 9
+      CURSUM numeric NULL
+      AMOUNT numeric NULL
+      PROVKIND char 1
+      ACTIVE char 1
+      DTFLAGS tinyint NULL
+      KTFLAGS tinyint NULL
+      DOCLINENO int NULL
+      SP7843 char 9
+      SP7844 char 50
+      DTSC0 char 9
+      VDTSC0 int NULL
+      ODTSC0 tinyint NULL
+      DTSC1 char 9
+      VDTSC1 int NULL
+      ODTSC1 tinyint NULL
+      DTSC2 char 9
+      VDTSC2 int NULL
+      ODTSC2 tinyint NULL
+      KTSC0 char 9
+      VKTSC0 int NULL
+      OKTSC0 tinyint NULL
+      KTSC1 char 9
+      VKTSC1 int NULL
+      OKTSC1 tinyint NULL
+      KTSC2 char 9
+      VKTSC2 int NULL
+      OKTSC2 tinyint NULL
+      
+      (36 rows affected)
+    Примеры строк:
+      ROW_ID DOCID NUMBER CORNO DATE_TIME_DOCID ACCDTID ACCKTID SUM_ CURRID CURSUM AMOUNT PROVKIND ACTIVE DTFLAGS KTFLAGS DOCLINENO SP7843 SP7844 DTSC0 VDTSC0 ODTSC0 DTSC1 VDTSC1 ODTSC1 DTSC2 VDTSC2 ODTSC2 KTSC0 VKTSC0 OKTSC0 KTSC1 VKTSC1 OKTSC1 KTSC2 VKTSC2 OKTSC2
+      ------ ----- ------ ----- --------------- ------- ------- ---- ------ ------ ------ -------- ------ ------- ------- --------- ------ ------ ----- ------ ------ ----- ------ ------ ----- ------ ------ ----- ------ ------ ----- ------ ------ ----- ------ ------
+      4757      3 0 0 200804197579C0     3     1W     33 448.00000      0 .00000 2.000   2 0 0      2 Оприходованы ТМЦ      I 7802 0      1 7798 0  0 0      4 7796 0      1 7791 0  0 0
+      4758      3 1 0 200804197579C0     3     1W     33 379.66000      0 .00000 2.000   2 0 0      1 Оприходованы ТМЦ      I 7802 0      1 7798 0  0 0      4 7796 0      1 7791 0  0 0
+      4759      3 2 0 200804197579C0     3     1W     33 616.00000      0 .00000 2.000   2 0 0      2 Оприходованы ТМЦ      J 7802 0      1 7798 0  0 0      4 7796 0      1 7791 0  0 0
+      4760      3 3 0 200804197579C0     3     1W     33 522.03000      0 .00000 2.000   2 0 0      1 Оприходованы ТМЦ      J 7802 0      1 7798 0  0 0      4 7796 0      1 7791 0  0 0
+      4761      3 4 0 200804197579C0     3     1W     33 224.00000      0 .00000 2.000   2 0 0      2 Оприходованы ТМЦ      K 7802 0      1 7798 0  0 0      4 7796 0      1 7791 0  0 0
+      
+      (5 rows affected)
+
+  [_1SJOURN]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      IDJOURNAL int NULL
+      IDDOC char 9
+      IDDOCDEF int NULL
+      APPCODE smallint NULL
+      DATE_TIME_IDDOC char 23
+      DNPREFIX char 18
+      DOCNO char 10
+      CLOSED tinyint NULL
+      ISMARK bit NULL
+      ACTCNT int NULL
+      VERSTAMP int NULL
+      RF620 bit NULL
+      RF1130 bit NULL
+      RF169 bit NULL
+      RF933 bit NULL
+      RF3623 bit NULL
+      RF3384 bit NULL
+      RF4333 bit NULL
+      RF6856 bit NULL
+      RF7075 bit NULL
+      RF7499 bit NULL
+      RF7638 bit NULL
+      RF9804 bit NULL
+      RF10305 bit NULL
+      RF10899 bit NULL
+      SP1005 char 9
+      SP1006 char 9
+      SP1151 numeric NULL
+      SP2653 numeric NULL
+      SP7756 datetime NULL
+      DS3644 tinyint NULL
+      DS7455 tinyint NULL
+      
+      (33 rows affected)
+    Примеры строк:
+      ROW_ID IDJOURNAL IDDOC IDDOCDEF APPCODE DATE_TIME_IDDOC DNPREFIX DOCNO CLOSED ISMARK ACTCNT VERSTAMP RF620 RF1130 RF169 RF933 RF3623 RF3384 RF4333 RF6856 RF7075 RF7499 RF7638 RF9804 RF10305 RF10899 SP1005 SP1006 SP1151 SP2653 SP7756 DS3644 DS7455
+      ------ --------- ----- -------- ------- --------------- -------- ----- ------ ------ ------ -------- ----- ------ ----- ----- ------ ------ ------ ------ ------ ------ ------ ------ ------- ------- ------ ------ ------ ------ ------ ------ ------
+      1 0    AJ6 3538 1 20080622985Y40   AJ6       35382008 RYB0000170 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0      1      4 0 0 2010-03-18 00:00:00.000 0 0
+      2 0    AJ7 3538 1 20080702A1TZ6O   AJ7       35382008 RYB0000171 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0      1      4 0 0 2010-03-18 00:00:00.000 0 0
+      3 0    2E5 3538 1 20080703B2ZN1S   2E5       35382008 RYB0000087 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0      1      4 0 0 2008-12-18 00:00:00.000 0 0
+      4 0    348 3538 1 20080703B31S7K   348       35382008 RYB0000151 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0      1      4 0 0 2009-02-20 00:00:00.000 0 0
+      5 0    2EN 3538 1 20080704B2P4YO   2EN       35382008 RYB0000090 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0      1      4 0 0 2008-12-19 00:00:00.000 0 0
+      
+      (5 rows affected)
+
+  [_1SOPER]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      DOCID char 9
+      DATE_TIME_DOCID char 23
+      DESCR char 50
+      SUM_ numeric NULL
+      ACTIVE char 1
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID DOCID DATE_TIME_DOCID DESCR SUM_ ACTIVE
+      ------ ----- --------------- ----- ---- ------
+      1   1KSE 20140415A7QDSG  1KSE Перемещение ТМЦ 112334.69 
+      2   1KSH 20140415AB8ETS  1KSH Перемещение ТМЦ 150241.23 
+      3   1KSK 20140415ADGKMO  1KSK Перемещение ТМЦ 50507.81 
+      4   1KSR 201404165B7CXC  1KSR Перемещение ТМЦ 278184.99 
+      5   1KSZ 201404166RI2PC  1KSZ Перемещение ТМЦ 198687.03 
+      
+      (5 rows affected)
+
+  [_1SSBSEL]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      SBKINDID int NULL
+      VAL char 9
+      DOCID char 9
+      DATE_TIME_DOCID char 23
+      NUMBER int NULL
+      CORNO int NULL
+      
+      (7 rows affected)
+    Примеры строк:
+      ROW_ID SBKINDID VAL DOCID DATE_TIME_DOCID NUMBER CORNO
+      ------ -------- --- ----- --------------- ------ -----
+      
+      (0 rows affected)
+
+  [_1SSTREAM]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ID int NULL
+      DATE_TIME_DOCID char 23
+      
+      (2 rows affected)
+    Примеры строк:
+      ID DATE_TIME_DOCID
+      -- ---------------
+      3644 20080611B07RDC    8N
+      7455 20080611B07RDC    8N
+      
+      (2 rows affected)
+
+  [_1SSYSTEM]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      CURDATE datetime NULL
+      CURTIME int NULL
+      EVENTIDTA char 9
+      DBSIGN char 3
+      DBSETUUID char 36
+      SNAPSHPER char 1
+      ACCDATE datetime NULL
+      FLAGS int NULL
+      
+      (8 rows affected)
+    Примеры строк:
+      CURDATE CURTIME EVENTIDTA DBSIGN DBSETUUID SNAPSHPER ACCDATE FLAGS
+      ------- ------- --------- ------ --------- --------- ------- -----
+      2026-06-26 00:00:00.000 389210000   3V60  00000000-0000-0000-0000-000000000000 M 2008-04-01 00:00:00.000 0
+      
+      (1 rows affected)
+
+  [_1STOPER]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      ROW_ID int NULL
+      ID char 9
+      PARENTID char 9
+      CODE char 80
+      ISFOLDER tinyint NULL
+      TMPLINFO text 2147483647
+      
+      (6 rows affected)
+    Примеры строк:
+      ROW_ID ID PARENTID CODE ISFOLDER TMPLINFO
+      ------ -- -------- ---- -------- --------
+      
+      (0 rows affected)
+
+  [_1SUIDCTL]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      TYPEID int NULL
+      MAXID char 9
+      
+      (2 rows affected)
+    Примеры строк:
+      TYPEID MAXID
+      ------ -----
+      0   3V60
+      13      2
+      31      3
+      46    4B2
+      89      2
+      
+      (5 rows affected)
+
+  [_1SUSERS]
+    Колонки:
+      COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH
+      ----------- --------- ------------------------
+      USRSCNT smallint NULL
+      NETCHGCN int NULL
+      
+      (2 rows affected)
+    Примеры строк:
+      USRSCNT NETCHGCN
+      ------- --------
+      1 10
+      
+      (1 rows affected)
