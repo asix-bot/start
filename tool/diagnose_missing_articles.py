@@ -27,6 +27,7 @@ from main import (
     CONFIG_PATH,
     export_base_dbf,
     export_base_sql,
+    extract_size,
 )
 
 
@@ -37,6 +38,17 @@ def split_suffix(article, suffixes):
         if suffix and article.endswith(suffix):
             return article[: -len(suffix)], suffix
     return article, None
+
+
+def split_size(raw_article):
+    # Артикул товара с размерными вариантами выглядит как "100-37" (см.
+    # main.py: extract_size + "-{размер}"). Возвращает (базовый_артикул,
+    # размер_или_None).
+    if "-" in raw_article:
+        base, _, size = raw_article.rpartition("-")
+        if base and size:
+            return base, size
+    return raw_article, None
 
 
 def run(articles_to_check):
@@ -63,6 +75,8 @@ def run(articles_to_check):
             print("{0}: не удалось определить базу по суффиксу".format(article))
             continue
 
+        base_article, requested_size = split_size(raw_article)
+
         base_cfg = bases_by_suffix[suffix]
         base_name = base_cfg["name"]
 
@@ -84,14 +98,20 @@ def run(articles_to_check):
         found_id = None
         found_name = None
         for item_id, info in item_by_id.items():
-            if str(info.get("article", "")).strip() == raw_article:
-                found_id = item_id
-                found_name = info.get("name", "")
-                break
+            if str(info.get("article", "")).strip() != base_article:
+                continue
+            name = info.get("name", "")
+            actual_size = extract_size(name)
+            if requested_size is not None:
+                if actual_size != requested_size:
+                    continue
+            found_id = item_id
+            found_name = name
+            break
 
         if found_id is None:
-            print("{0} (база {1}, артикул-источник '{2}'): НЕ НАЙДЕН в items_table".format(
-                article, base_name, raw_article
+            print("{0} (база {1}, артикул-источник '{2}', размер '{3}'): НЕ НАЙДЕН в items_table".format(
+                article, base_name, base_article, requested_size
             ))
         else:
             raw_stock = stock_by_id.get(found_id, "<нет строк в stock_table>")

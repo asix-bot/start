@@ -30,6 +30,7 @@ avg_cost_table/sale_price_table - НЕОБЯЗАТЕЛЬНЫ. Если не за
 
 import csv
 import json
+import re
 import sys
 import time
 from datetime import datetime
@@ -41,6 +42,15 @@ from github_publish import push_files
 from sqlcmd_client import run_query
 
 CONFIG_PATH = Path(__file__).parent / "config.json"
+
+# Размер товара зашит как текст внутри названия, например "...р.37" или
+# "...р.47/48" - вытаскиваем его, чтобы добавить к артикулу как "-37".
+SIZE_PATTERN = re.compile(r"\bр\.\s*([0-9]+(?:[/\-][0-9]+)*)", re.UNICODE)
+
+
+def extract_size(name):
+    match = SIZE_PATTERN.search(name or "")
+    return match.group(1) if match else None
 
 
 def load_config():
@@ -119,12 +129,16 @@ def export_base_dbf(base_cfg, encoding):
 
     id_field = base_cfg["items_id_field"]
     article_field = base_cfg["items_article_field"]
+    fallback_field = base_cfg.get("items_article_fallback_field")
     name_field = base_cfg.get("items_name_field")
 
     item_by_id = {}
     for row in items:
+        article_value = str(row.get(article_field, "")).strip()
+        if not article_value and fallback_field:
+            article_value = str(row.get(fallback_field, "")).strip()
         item_by_id[row[id_field]] = {
-            "article": row.get(article_field, ""),
+            "article": article_value,
             "name": row.get(name_field, "") if name_field else "",
         }
 
@@ -220,9 +234,12 @@ def export_base_sql(base_cfg, sql_auth):
 
     id_field = base_cfg["items_id_field"]
     article_field = base_cfg["items_article_field"]
+    fallback_field = base_cfg.get("items_article_fallback_field")
     name_field = base_cfg.get("items_name_field")
 
     select_cols = [id_field, article_field]
+    if fallback_field:
+        select_cols.append(fallback_field)
     if name_field:
         select_cols.append(name_field)
     query = "SELECT {0} FROM {1}".format(", ".join(select_cols), base_cfg["items_table"])
@@ -234,7 +251,12 @@ def export_base_sql(base_cfg, sql_auth):
             continue
         item_id = row[0].strip()
         article = row[1].strip()
-        name = row[2].strip() if name_field and len(row) > 2 else ""
+        next_idx = 2
+        if fallback_field:
+            if not article and len(row) > next_idx:
+                article = row[next_idx].strip()
+            next_idx += 1
+        name = row[next_idx].strip() if name_field and len(row) > next_idx else ""
         item_by_id[item_id] = {"article": article, "name": name}
 
     stock_by_id = read_sql_latest_period_map(
@@ -304,9 +326,14 @@ def export_base(base_cfg, default_encoding, sql_auth, exclude_zero_stock=False):
             # в config.json, только если эта разница тебе не важна и
             # нужен компактный файл без нулевых остатков.
             continue
+        size = extract_size(item_info.get("name", ""))
+        if size:
+            article_out = "{0}{1}-{2}".format(raw_article, suffix, size)
+        else:
+            article_out = "{0}{1}".format(raw_article, suffix)
         out_rows.append(
             {
-                "article": "{0}{1}".format(raw_article, suffix),
+                "article": article_out,
                 "name": str(item_info.get("name", "")).strip(),
                 "stock": stock_value,
                 "avg_cost": avg_cost_by_id.get(item_id, ""),

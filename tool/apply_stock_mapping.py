@@ -5,13 +5,22 @@ sql_database/suffix/verified.
 
 Найдено по анализу report.txt и diagnose_stock.py (структура одинаковая
 у всех 4 баз):
-  - Товары: SC4889 (ID, CODE=артикул, DESCR=название)
+  - Товары: SC4889 (ID, артикул, DESCR=название)
   - Остаток: RG1130 - периодический регистр 1С 7.7, берётся сумма по
     самому позднему PERIOD для каждого товара (см. read_dbf_latest_period_map
     и read_sql_latest_period_map в main.py)
   - На каждый период есть ДВЕ строки с одинаковым количеством, отличающиеся
     только полем SP2654 (параллельный учёт, например БУ/НУ) - чтобы не
     задвоить остаток, оставляем только SP2654='0'.
+
+Артикул - НЕ CODE (это внутренний код конкретного размера/варианта, не
+совпадающий с человеческим артикулом). Реальный "человеческий" артикул
+лежит в SP4890 - он ОДИН на товар вне зависимости от размера (найдено
+find_article_field.py: 15 разных CODE одной модели имеют одинаковое
+SP4890). main.py сам добавляет размер (вытащенный из DESCR регэкспом
+"р.NN") через тире, например "100ш-37". Если SP4890 пустое (товар без
+размерных вариантов) - используется CODE как запасной вариант
+(items_article_fallback_field).
 
 Себестоимость/цена продажи (avg_cost_table/sale_price_table) очищаются -
 они пока не найдены, main.py относится к ним как к опциональным и не
@@ -33,7 +42,8 @@ from pathlib import Path
 CONFIG_PATH = Path(__file__).parent / "config.json"
 
 FIELD_MAPPING = {
-    "items_article_field": "CODE",
+    "items_article_field": "SP4890",
+    "items_article_fallback_field": "CODE",
     "items_id_field": "ID",
     "items_name_field": "DESCR",
     "stock_item_field": "SP1131",
