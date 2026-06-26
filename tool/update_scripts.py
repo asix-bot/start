@@ -48,6 +48,7 @@ SYNCED_FILES = (
     "setup.bat",
     "continue_from_step6.bat",
     "enable_tls12.bat",
+    "recheck_shishina.bat",
     "config.example.json",
 )
 
