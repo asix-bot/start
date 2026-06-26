@@ -77,47 +77,76 @@ pause
 
 :: ------------------------------------------------------------------
 echo.
-echo [Шаг 4/5] Пути и суффиксы для 4 баз 1С 7.7.
-echo Для каждой базы укажи путь к папке с DBF-файлами и суффикс,
-echo который нужно добавлять к артикулу товаров этой базы.
-echo Пример пути: C:\Bases\Base1   Пример суффикса: -B1
+echo [Шаг 4/5] Тип, расположение и суффиксы для 4 баз 1С 7.7.
+echo Для каждой базы нужно указать:
+echo   - тип: D = обычные DBF-файлы, S = база на SQL Server
+echo   - для DBF: путь к папке, где лежат .DBF файлы базы
+echo   - для SQL: имя сервера и имя базы данных
+echo     подсказка - смотри в 1С: Конфигуратор -^> Администрирование -^>
+echo     Администрирование информационной базы, поля Сервер баз данных
+echo     и База данных. Пример сервера: SQLSRV01 или SQLSRV01\SQLEXPRESS
+echo   - суффикс, который нужно добавлять к артикулу товаров этой базы
+echo Пример пути DBF: C:\Bases\Base1   Пример суффикса: -B1
 echo.
-set "BASE1="
-set "BASE2="
-set "BASE3="
-set "BASE4="
-set "SUF1="
-set "SUF2="
-set "SUF3="
-set "SUF4="
-set /p BASE1=Путь к базе 1:
+
+set "TYPE1="
+set "LOC1_1="
+set "LOC1_2=NONE"
+set /p TYPE1=Тип базы 1 D-DBF S-SQL:
+if /i "%TYPE1%"=="S" (
+    set /p LOC1_1=Имя SQL-сервера для базы 1:
+    set /p LOC1_2=Имя базы данных SQL для базы 1:
+) else (
+    set /p LOC1_1=Путь к папке с DBF-файлами базы 1:
+)
 set /p SUF1=Суффикс для базы 1:
-set /p BASE2=Путь к базе 2:
+
+set "TYPE2="
+set "LOC2_1="
+set "LOC2_2=NONE"
+set /p TYPE2=Тип базы 2 D-DBF S-SQL:
+if /i "%TYPE2%"=="S" (
+    set /p LOC2_1=Имя SQL-сервера для базы 2:
+    set /p LOC2_2=Имя базы данных SQL для базы 2:
+) else (
+    set /p LOC2_1=Путь к папке с DBF-файлами базы 2:
+)
 set /p SUF2=Суффикс для базы 2:
-set /p BASE3=Путь к базе 3:
+
+set "TYPE3="
+set "LOC3_1="
+set "LOC3_2=NONE"
+set /p TYPE3=Тип базы 3 D-DBF S-SQL:
+if /i "%TYPE3%"=="S" (
+    set /p LOC3_1=Имя SQL-сервера для базы 3:
+    set /p LOC3_2=Имя базы данных SQL для базы 3:
+) else (
+    set /p LOC3_1=Путь к папке с DBF-файлами базы 3:
+)
 set /p SUF3=Суффикс для базы 3:
-set /p BASE4=Путь к базе 4:
+
+set "TYPE4="
+set "LOC4_1="
+set "LOC4_2=NONE"
+set /p TYPE4=Тип базы 4 D-DBF S-SQL:
+if /i "%TYPE4%"=="S" (
+    set /p LOC4_1=Имя SQL-сервера для базы 4:
+    set /p LOC4_2=Имя базы данных SQL для базы 4:
+) else (
+    set /p LOC4_1=Путь к папке с DBF-файлами базы 4:
+)
 set /p SUF4=Суффикс для базы 4:
 
 echo.
-echo Проверка путей...
-set "BASES_OK=1"
-if not exist "%BASE1%" (echo   НЕ НАЙДЕН: %BASE1% & set "BASES_OK=0")
-if not exist "%BASE2%" (echo   НЕ НАЙДЕН: %BASE2% & set "BASES_OK=0")
-if not exist "%BASE3%" (echo   НЕ НАЙДЕН: %BASE3% & set "BASES_OK=0")
-if not exist "%BASE4%" (echo   НЕ НАЙДЕН: %BASE4% & set "BASES_OK=0")
-
-if "%BASES_OK%"=="0" (
-    echo.
-    echo Один или несколько путей не найдены. Проверь и запусти файл заново.
-    pause
-    exit /b 1
-)
-echo Все 4 пути найдены.
+echo Если среди баз есть хотя бы одна SQL - укажи общий логин и пароль
+echo SQL Server, через который будут читаться все SQL-базы.
+set "SQLUSER=sa"
+set /p SQLUSER=Логин SQL Server, Enter для sa:
+set /p SQLPASS=Пароль SQL Server:
 
 echo.
-echo Записываю пути и суффиксы в config.json...
-python update_config.py "%BASE1%" "%SUF1%" "%BASE2%" "%SUF2%" "%BASE3%" "%SUF3%" "%BASE4%" "%SUF4%"
+echo Записываю настройки в config.json...
+python update_config.py "%TYPE1%" "%LOC1_1%" "%LOC1_2%" "%SUF1%" "%TYPE2%" "%LOC2_1%" "%LOC2_2%" "%SUF2%" "%TYPE3%" "%LOC3_1%" "%LOC3_2%" "%SUF3%" "%TYPE4%" "%LOC4_1%" "%LOC4_2%" "%SUF4%" "%SQLUSER%" "%SQLPASS%"
 if errorlevel 1 (
     echo.
     echo ОШИБКА при обновлении config.json. Проверь сообщение выше.
@@ -128,12 +157,12 @@ pause
 
 :: ------------------------------------------------------------------
 echo.
-echo [Шаг 5/5] Запуск разведчика структуры баз explore_dbf.py...
-echo Это покажет, какие таблицы и поля есть в каждой базе, и сохранит
-echo report.txt локально, а также запушит его в GitHub если в
+echo [Шаг 5/5] Запуск разведчика структуры баз explore.py...
+echo Это покажет, какие таблицы и поля есть в каждой базе DBF и SQL,
+echo и сохранит report.txt локально, а также запушит его в GitHub если в
 echo config.json уже указан токен.
 echo.
-python explore_dbf.py "%BASE1%" "%BASE2%" "%BASE3%" "%BASE4%"
+python explore.py
 if errorlevel 1 (
     echo.
     echo Разведчик завершился с ошибкой. Прочитай сообщение выше.

@@ -32,7 +32,10 @@ REPO_SUBFOLDER = "tool"
 
 SYNCED_FILES = (
     "main.py",
+    "explore.py",
     "explore_dbf.py",
+    "explore_sql.py",
+    "sqlcmd_client.py",
     "github_publish.py",
     "update_config.py",
     "merge_field_mapping.py",

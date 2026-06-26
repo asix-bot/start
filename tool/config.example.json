@@ -28,11 +28,11 @@
       "avg_cost_value_field": "SEBEST",
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
-      "sale_price_value_field": "CENA"
+      "sale_price_value_field": "CENA",
+      "type": "dbf"
     },
     {
       "name": "Base2",
-      "path": "C:\\Bases\\Base2",
       "suffix": "-B2",
       "items_table": "SC41.DBF",
       "items_article_field": "ARTICUL",
@@ -46,7 +46,10 @@
       "avg_cost_value_field": "SEBEST",
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
-      "sale_price_value_field": "CENA"
+      "sale_price_value_field": "CENA",
+      "type": "sql",
+      "sql_server": "SQLSRV01\\SQLEXPRESS",
+      "sql_database": "1c77_base2"
     },
     {
       "name": "Base3",
@@ -64,7 +67,8 @@
       "avg_cost_value_field": "SEBEST",
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
-      "sale_price_value_field": "CENA"
+      "sale_price_value_field": "CENA",
+      "type": "dbf"
     },
     {
       "name": "Base4",
@@ -82,7 +86,12 @@
       "avg_cost_value_field": "SEBEST",
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
-      "sale_price_value_field": "CENA"
+      "sale_price_value_field": "CENA",
+      "type": "dbf"
     }
-  ]
+  ],
+  "sql_auth": {
+    "user": "sa",
+    "password": "ВСТАВЬ_СЮДА_ПАРОЛЬ_SQL"
+  }
 }
