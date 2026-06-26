@@ -34,11 +34,12 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 
 ENCODING = "cp866"
 SAMPLE_ROWS = 5
+SAMPLE_ROWS_INTERESTING = 30
 
 # Таблицы 1С 7.7, в которых обычно есть смысл искать артикул/остаток/цену.
 # Это не жёсткое правило (конфигурация нестандартная), но помогает быстрее
 # найти нужное среди десятков DBF-файлов.
-INTERESTING_HINTS = ("SC", "RG", "1SC", "DH", "DT")
+INTERESTING_HINTS = ("SC", "RG", "RA", "1SC", "DH", "DT")
 
 
 def looks_interesting(filename):
@@ -68,16 +69,18 @@ def explore_base(base_path, out_lines, encoding=ENCODING):
             out_lines.append("\n  [{0}] -- ошибка открытия: {1}".format(dbf_path.name, exc))
             continue
 
-        marker = " <-- возможно интересна" if looks_interesting(dbf_path.name) else ""
+        interesting = looks_interesting(dbf_path.name)
+        marker = " <-- возможно интересна" if interesting else ""
         out_lines.append("\n  [{0}] записей: {1}{2}".format(dbf_path.name, len(table), marker))
         field_descriptions = []
         for f in table.fields:
             field_descriptions.append("{0}({1}{2})".format(f.name, f.type, f.length))
         out_lines.append("    Поля: {0}".format(", ".join(field_descriptions)))
 
+        sample_rows = SAMPLE_ROWS_INTERESTING if interesting else SAMPLE_ROWS
         try:
             records = iter(table)
-            for i in range(SAMPLE_ROWS):
+            for i in range(sample_rows):
                 row = next(records)
                 out_lines.append("    Пример {0}: {1}".format(i + 1, dict(row)))
         except StopIteration:

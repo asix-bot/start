@@ -14,9 +14,10 @@ from sqlcmd_client import run_query_raw
 
 # Те же подсказки по именам таблиц, что и в explore_dbf.py - в SQL-версии
 # 1С 7.7 обычно сохраняет те же имена таблиц, что и в DBF-версии.
-INTERESTING_HINTS = ("SC", "RG", "1SC", "DH", "DT")
+INTERESTING_HINTS = ("SC", "RG", "RA", "1SC", "DH", "DT")
 
 SAMPLE_ROWS = 5
+SAMPLE_ROWS_INTERESTING = 30
 
 
 def looks_interesting(table_name):
@@ -71,7 +72,8 @@ def explore_base_sql(base_cfg, sql_auth, out_lines):
     table_names.sort(key=lambda n: (not looks_interesting(n), n))
 
     for table_name in table_names:
-        marker = " <-- возможно интересна" if looks_interesting(table_name) else ""
+        interesting = looks_interesting(table_name)
+        marker = " <-- возможно интересна" if interesting else ""
         out_lines.append("\n  [{0}]{1}".format(table_name, marker))
 
         columns_query = (
@@ -81,7 +83,8 @@ def explore_base_sql(base_cfg, sql_auth, out_lines):
         columns_output = run_query_raw(server, database, user, password, columns_query)
         out_lines.append("    Колонки:\n" + indent(columns_output, "      "))
 
-        sample_query = "SELECT TOP {0} * FROM [{1}]".format(SAMPLE_ROWS, table_name)
+        sample_count = SAMPLE_ROWS_INTERESTING if interesting else SAMPLE_ROWS
+        sample_query = "SELECT TOP {0} * FROM [{1}]".format(sample_count, table_name)
         sample_output = run_query_raw(server, database, user, password, sample_query)
         out_lines.append("    Примеры строк:\n" + indent(sample_output, "      "))
 
