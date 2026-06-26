@@ -42,7 +42,7 @@ def main():
         sys.exit("Индекс базы должен быть от 1 до 4, получено: {0}".format(index))
 
     source_path = CONFIG_PATH if CONFIG_PATH.exists() else EXAMPLE_PATH
-    config = json.loads(source_path.read_text(encoding="utf-8"))
+    config = json.loads(open(str(source_path), encoding="utf-8").read())
 
     bases = config["bases"]
     if len(bases) < index:
@@ -61,7 +61,7 @@ def main():
         base_cfg.pop("sql_server", None)
         base_cfg.pop("sql_database", None)
 
-    CONFIG_PATH.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
+    open(str(CONFIG_PATH), "w", encoding="utf-8").write(json.dumps(config, ensure_ascii=False, indent=2))
     print("config.json обновлён для базы {0} ({1}): {2}".format(index, base_cfg["name"], CONFIG_PATH))
 
 

@@ -48,7 +48,7 @@ def load_config():
             "Не найден {0}.\n"
             "Скопируй config.example.json в config.json и заполни своими значениями.".format(CONFIG_PATH)
         )
-    return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    return json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
 
 
 # ---------------------------------------------------------------------------
@@ -210,7 +210,7 @@ def write_csv(rows, csv_path):
 
 def write_log(log_lines, log_path):
     log_path.parent.mkdir(parents=True, exist_ok=True)
-    log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+    open(str(log_path), "w", encoding="utf-8").write("\n".join(log_lines) + "\n")
 
 
 def main():

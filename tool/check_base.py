@@ -48,7 +48,7 @@ def main():
     if not CONFIG_PATH.exists():
         sys.exit("Не найден {0}.".format(CONFIG_PATH))
 
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
     bases = config["bases"]
     if len(bases) < index:
         sys.exit("В config.json только {0} баз(ы), а запрошен индекс {1}.".format(len(bases), index))
@@ -117,20 +117,20 @@ def main():
     print(report_text)
 
     base_cfg["verified"] = True
-    CONFIG_PATH.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
+    open(str(CONFIG_PATH), "w", encoding="utf-8").write(json.dumps(config, ensure_ascii=False, indent=2))
 
     if LOCAL_REPORT_PATH.exists():
-        existing = LOCAL_REPORT_PATH.read_text(encoding="utf-8")
+        existing = open(str(LOCAL_REPORT_PATH), encoding="utf-8").read()
     else:
         existing = ""
     updated_report = existing + ("\n" if existing else "") + report_text
-    LOCAL_REPORT_PATH.write_text(updated_report, encoding="utf-8")
+    open(str(LOCAL_REPORT_PATH), "w", encoding="utf-8").write(updated_report)
 
     github_cfg = config.get("github")
     if github_cfg and github_cfg.get("token") and "ВСТАВЬ_СЮДА" not in github_cfg["token"]:
         repo_report_path = Path(github_cfg["repo_path"]) / "report.txt"
         repo_report_path.parent.mkdir(parents=True, exist_ok=True)
-        repo_report_path.write_text(updated_report, encoding="utf-8")
+        open(str(repo_report_path), "w", encoding="utf-8").write(updated_report)
         push_files(github_cfg, ["report.txt"], "Отчёт о структуре базы {0}".format(base_cfg["name"]))
     else:
         print("github.token не заполнен - report.txt сохранён только локально.")

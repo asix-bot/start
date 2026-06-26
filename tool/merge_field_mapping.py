@@ -67,7 +67,7 @@ def main():
     if not CONFIG_PATH.exists():
         sys.exit("Не найден {0}. Сначала запусти setup.bat хотя бы до шага 4.".format(CONFIG_PATH))
 
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
     github_cfg = config["github"]
 
     repo_path = Path(github_cfg["repo_path"])
@@ -90,7 +90,7 @@ def main():
             "Сначала нужно, чтобы он был туда запушен с сопоставлением таблиц/полей.".format(mapping_path)
         )
 
-    mapping_list = json.loads(mapping_path.read_text(encoding="utf-8"))
+    mapping_list = json.loads(open(str(mapping_path), encoding="utf-8").read())
     mapping_by_name = {}
     for entry in mapping_list:
         if "name" in entry:
@@ -110,7 +110,7 @@ def main():
                 base_cfg[field] = entry[field]
         updated += 1
 
-    CONFIG_PATH.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
+    open(str(CONFIG_PATH), "w", encoding="utf-8").write(json.dumps(config, ensure_ascii=False, indent=2))
     print("Обновлено сопоставление полей для {0} баз(ы). config.json сохранён.".format(updated))
 
 

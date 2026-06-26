@@ -30,7 +30,7 @@ def main():
     if not CONFIG_PATH.exists():
         sys.exit("Не найден {0}. Сначала запусти setup.bat хотя бы до шага 4.".format(CONFIG_PATH))
 
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
     sql_auth = config.get("sql_auth", {})
 
     out_lines = []
@@ -50,14 +50,14 @@ def main():
     print(report)
 
     report_path = Path(__file__).parent / "report.txt"
-    report_path.write_text(report, encoding="utf-8")
+    open(str(report_path), "w", encoding="utf-8").write(report)
     print("\n\nОтчёт также сохранён в {0}".format(report_path))
 
     github_cfg = config.get("github")
     if github_cfg and github_cfg.get("token") and "ВСТАВЬ_СЮДА" not in github_cfg["token"]:
         repo_report_path = Path(github_cfg["repo_path"]) / "report.txt"
         repo_report_path.parent.mkdir(parents=True, exist_ok=True)
-        repo_report_path.write_text(report, encoding="utf-8")
+        open(str(repo_report_path), "w", encoding="utf-8").write(report)
         push_files(github_cfg, ["report.txt"], "Отчёт о структуре баз 1С (explore)")
     else:
         print("github.token не заполнен - report.txt не публикуется в GitHub.")

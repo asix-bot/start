@@ -32,7 +32,7 @@ def main():
     if not CONFIG_PATH.exists():
         sys.exit(1)
 
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
     bases = config.get("bases", [])
     if len(bases) < index:
         sys.exit(1)
