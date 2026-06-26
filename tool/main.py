@@ -10,16 +10,17 @@
   - "sql" - данные читаются из SQL Server через sqlcmd.exe (поля
     "sql_server"/"sql_database", логин/пароль - в config["sql_auth"]).
 
-В обоих случаях имена таблиц/полей (items_table, stock_table и т.д.)
-означают одно и то же - либо имя DBF-файла, либо имя таблицы в SQL Server.
+Остаток считается из периодического регистра 1С 7.7 (например RG1130.DBF) -
+для каждого товара берётся СУММА значений за САМЫЙ ПОЗДНИЙ период (в 1С 7.7
+такие регистры хранят уже накопленный остаток на конец периода, а не сырые
+движения, поэтому суммировать все строки за всю историю не нужно - только
+строки с максимальным PERIOD для этого товара).
 
-Каждый запуск:
-  1. Читает items/stock/price таблицы каждой базы.
-  2. Соединяет их по внутреннему ID товара.
-  3. К артикулу добавляет суффикс этой базы (например "00123" + "-B1" = "00123-B1").
-  4. Складывает строки всех баз в один CSV (полная перезапись файла - это снэпшот
-     на момент запуска, а не история).
-  5. Коммитит и пушит файл в репозиторий на GitHub через git с токеном.
+avg_cost_table/sale_price_table - НЕОБЯЗАТЕЛЬНЫ. Если не заданы или при
+чтении возникла ошибка - в CSV просто будут пустые значения для этой базы,
+остальной экспорт (артикул+остаток) не блокируется. Это сделано специально,
+чтобы можно было запустить экспорт остатков, не дожидаясь, пока найдётся
+точная таблица себестоимости/цены.
 
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
@@ -74,6 +75,25 @@ def read_dbf_value_map(base_path, table_name, item_field, value_field, encoding)
     return result
 
 
+def read_dbf_latest_period_map(base_path, table_name, item_field, period_field, value_field, encoding):
+    """Для каждого товара берёт сумму value_field по строкам с максимальным
+    period_field - так получается актуальный остаток из периодического
+    регистра 1С 7.7 (RGxxxx.DBF), а не сумма движений за всю историю."""
+    latest_period = {}
+    for row in read_dbf_table(base_path, table_name, encoding):
+        item = row[item_field]
+        period = row[period_field]
+        if item not in latest_period or period > latest_period[item]:
+            latest_period[item] = period
+
+    result = {}
+    for row in read_dbf_table(base_path, table_name, encoding):
+        item = row[item_field]
+        if row[period_field] == latest_period.get(item):
+            result[item] = result.get(item, 0) + (row[value_field] or 0)
+    return result
+
+
 def export_base_dbf(base_cfg, encoding):
     base_path = Path(base_cfg["path"])
 
@@ -90,23 +110,40 @@ def export_base_dbf(base_cfg, encoding):
             "name": row.get(name_field, "") if name_field else "",
         }
 
-    stock_by_id = read_dbf_value_map(
-        base_path, base_cfg["stock_table"], base_cfg["stock_item_field"], base_cfg["stock_qty_field"], encoding
-    )
-    sale_price_by_id = read_dbf_value_map(
+    stock_by_id = read_dbf_latest_period_map(
         base_path,
-        base_cfg["sale_price_table"],
-        base_cfg["sale_price_item_field"],
-        base_cfg["sale_price_value_field"],
+        base_cfg["stock_table"],
+        base_cfg["stock_item_field"],
+        base_cfg.get("stock_period_field", "PERIOD"),
+        base_cfg["stock_qty_field"],
         encoding,
     )
-    avg_cost_by_id = read_dbf_value_map(
-        base_path,
-        base_cfg["avg_cost_table"],
-        base_cfg["avg_cost_item_field"],
-        base_cfg["avg_cost_value_field"],
-        encoding,
-    )
+
+    sale_price_by_id = {}
+    if base_cfg.get("sale_price_table"):
+        try:
+            sale_price_by_id = read_dbf_value_map(
+                base_path,
+                base_cfg["sale_price_table"],
+                base_cfg["sale_price_item_field"],
+                base_cfg["sale_price_value_field"],
+                encoding,
+            )
+        except Exception:
+            sale_price_by_id = {}
+
+    avg_cost_by_id = {}
+    if base_cfg.get("avg_cost_table"):
+        try:
+            avg_cost_by_id = read_dbf_value_map(
+                base_path,
+                base_cfg["avg_cost_table"],
+                base_cfg["avg_cost_item_field"],
+                base_cfg["avg_cost_value_field"],
+                encoding,
+            )
+        except Exception:
+            avg_cost_by_id = {}
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
@@ -117,6 +154,23 @@ def export_base_dbf(base_cfg, encoding):
 
 def read_sql_value_map(server, database, user, password, table, item_field, value_field):
     query = "SELECT {0}, {1} FROM {2}".format(item_field, value_field, table)
+    rows = run_query(server, database, user, password, query)
+    result = {}
+    for row in rows:
+        if len(row) < 2:
+            continue
+        result[row[0].strip()] = row[1].strip()
+    return result
+
+
+def read_sql_latest_period_map(server, database, user, password, table, item_field, period_field, value_field):
+    """SQL-аналог read_dbf_latest_period_map - сумма value_field по строкам
+    с максимальным period_field для каждого товара."""
+    query = (
+        "SELECT t1.{0}, SUM(t1.{1}) FROM {2} t1 "
+        "WHERE t1.{3} = (SELECT MAX(t2.{3}) FROM {2} t2 WHERE t2.{0} = t1.{0}) "
+        "GROUP BY t1.{0}"
+    ).format(item_field, value_field, table, period_field)
     rows = run_query(server, database, user, password, query)
     result = {}
     for row in rows:
@@ -151,18 +205,31 @@ def export_base_sql(base_cfg, sql_auth):
         name = row[2].strip() if name_field and len(row) > 2 else ""
         item_by_id[item_id] = {"article": article, "name": name}
 
-    stock_by_id = read_sql_value_map(
+    stock_by_id = read_sql_latest_period_map(
         server, database, user, password,
-        base_cfg["stock_table"], base_cfg["stock_item_field"], base_cfg["stock_qty_field"],
+        base_cfg["stock_table"], base_cfg["stock_item_field"],
+        base_cfg.get("stock_period_field", "PERIOD"), base_cfg["stock_qty_field"],
     )
-    sale_price_by_id = read_sql_value_map(
-        server, database, user, password,
-        base_cfg["sale_price_table"], base_cfg["sale_price_item_field"], base_cfg["sale_price_value_field"],
-    )
-    avg_cost_by_id = read_sql_value_map(
-        server, database, user, password,
-        base_cfg["avg_cost_table"], base_cfg["avg_cost_item_field"], base_cfg["avg_cost_value_field"],
-    )
+
+    sale_price_by_id = {}
+    if base_cfg.get("sale_price_table"):
+        try:
+            sale_price_by_id = read_sql_value_map(
+                server, database, user, password,
+                base_cfg["sale_price_table"], base_cfg["sale_price_item_field"], base_cfg["sale_price_value_field"],
+            )
+        except Exception:
+            sale_price_by_id = {}
+
+    avg_cost_by_id = {}
+    if base_cfg.get("avg_cost_table"):
+        try:
+            avg_cost_by_id = read_sql_value_map(
+                server, database, user, password,
+                base_cfg["avg_cost_table"], base_cfg["avg_cost_item_field"], base_cfg["avg_cost_value_field"],
+            )
+        except Exception:
+            avg_cost_by_id = {}
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 

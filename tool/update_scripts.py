@@ -39,6 +39,7 @@ SYNCED_FILES = (
     "check_base.py",
     "is_base_verified.py",
     "reset_base.py",
+    "apply_stock_mapping.py",
     "github_publish.py",
     "update_config.py",
     "merge_field_mapping.py",
