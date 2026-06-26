@@ -272,7 +272,7 @@ def export_base_sql(base_cfg, sql_auth):
 # Общая склейка результатов (не зависит от типа базы)
 # ---------------------------------------------------------------------------
 
-def export_base(base_cfg, default_encoding, sql_auth):
+def export_base(base_cfg, default_encoding, sql_auth, exclude_zero_stock=False):
     base_type = base_cfg.get("type", "dbf")
     suffix = base_cfg.get("suffix", "")
 
@@ -289,9 +289,20 @@ def export_base(base_cfg, default_encoding, sql_auth):
             continue
         stock_value = stock_by_id.get(item_id, 0)
         try:
-            if float(stock_value) <= 0:
-                continue
+            stock_value = float(stock_value)
         except (TypeError, ValueError):
+            stock_value = 0
+        if stock_value < 0:
+            # Отрицательный остаток - явная ошибка учёта, приводим к 0.
+            stock_value = 0
+        if exclude_zero_stock and stock_value <= 0:
+            # По умолчанию (exclude_zero_stock=False) строка с нулевым
+            # остатком всё равно попадает в CSV как stock=0 - так
+            # потребитель файла может отличить "товар существует, но
+            # распродан" от "артикул вообще не существует в системе"
+            # (полное отсутствие строки). Включи exclude_zero_stock=true
+            # в config.json, только если эта разница тебе не важна и
+            # нужен компактный файл без нулевых остатков.
             continue
         out_rows.append(
             {
@@ -332,6 +343,7 @@ def main():
     config = load_config()
     encoding = config.get("encoding", "cp866")
     sql_auth = config.get("sql_auth", {})
+    exclude_zero_stock = config.get("exclude_zero_stock", False)
 
     all_rows = []
     log_lines = ["Запуск экспорта: {0:%Y-%m-%d %H:%M:%S}".format(run_started_at)]
@@ -344,19 +356,31 @@ def main():
         print("Читаю базу {0} [{1}] ({2})...".format(base_cfg["name"], base_type, location))
         base_started_at = time.perf_counter()
         try:
-            rows = export_base(base_cfg, encoding, sql_auth)
+            rows = export_base(base_cfg, encoding, sql_auth, exclude_zero_stock)
         except Exception as exc:
             elapsed = time.perf_counter() - base_started_at
             print("  Ошибка при чтении базы {0}: {1}".format(base_cfg["name"], exc))
             log_lines.append("{0}: ОШИБКА за {1:.2f} сек - {2}".format(base_cfg["name"], elapsed, exc))
             continue
         elapsed = time.perf_counter() - base_started_at
-        print("  Найдено товаров: {0} за {1:.2f} сек".format(len(rows), elapsed))
-        log_lines.append("{0}: {1} товаров за {2:.2f} сек".format(base_cfg["name"], len(rows), elapsed))
+        zero_stock_count = sum(1 for r in rows if float(r["stock"]) == 0)
+        print("  Найдено товаров: {0} за {1:.2f} сек (из них с нулевым остатком: {2})".format(
+            len(rows), elapsed, zero_stock_count
+        ))
+        log_lines.append("{0}: {1} товаров за {2:.2f} сек (с нулевым остатком: {3})".format(
+            base_cfg["name"], len(rows), elapsed, zero_stock_count
+        ))
         all_rows.extend(rows)
 
     total_elapsed = (datetime.now() - run_started_at).total_seconds()
-    log_lines.append("Итого товаров: {0}".format(len(all_rows)))
+    total_zero = sum(1 for r in all_rows if float(r["stock"]) == 0)
+    log_lines.append("Итого товаров: {0} (из них с нулевым остатком: {1})".format(len(all_rows), total_zero))
+    log_lines.append(
+        "Режим: {0}".format(
+            "нулевые остатки ИСКЛЮЧЕНЫ из CSV (exclude_zero_stock=true)" if exclude_zero_stock
+            else "нулевые остатки включены в CSV строкой stock=0"
+        )
+    )
     log_lines.append("Общее время выполнения: {0:.2f} сек".format(total_elapsed))
 
     github_cfg = config["github"]

@@ -41,6 +41,7 @@ SYNCED_FILES = (
     "reset_base.py",
     "apply_stock_mapping.py",
     "diagnose_stock.py",
+    "diagnose_missing_articles.py",
     "github_publish.py",
     "update_config.py",
     "update_scripts.py",
