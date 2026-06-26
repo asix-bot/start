@@ -41,7 +41,10 @@ def push_files(github_cfg, file_paths_in_repo, commit_message):
     auth_url = repo_url.replace("https://", "https://{0}@".format(token), 1)
 
     if not (repo_path / ".git").exists():
-        repo_path.mkdir(parents=True, exist_ok=True)
+        try:
+            repo_path.mkdir(parents=True)
+        except FileExistsError:
+            pass
         run(["git", "init"], repo_path)
         run(["git", "remote", "add", "origin", repo_url], repo_path)
         run(["git", "checkout", "-b", branch], repo_path)

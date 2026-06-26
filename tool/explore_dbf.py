@@ -107,7 +107,10 @@ def main():
         github_cfg = config.get("github")
         if github_cfg and github_cfg.get("token") and "ВСТАВЬ_СЮДА" not in github_cfg["token"]:
             repo_report_path = Path(github_cfg["repo_path"]) / "report.txt"
-            repo_report_path.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                repo_report_path.parent.mkdir(parents=True)
+            except FileExistsError:
+                pass
             open(str(repo_report_path), "w", encoding="utf-8").write(report)
             push_files(github_cfg, ["report.txt"], "Отчёт о структуре баз 1С (explore_dbf)")
         else:

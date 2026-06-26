@@ -199,7 +199,10 @@ def export_base(base_cfg, encoding, sql_auth):
 
 
 def write_csv(rows, csv_path):
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        csv_path.parent.mkdir(parents=True)
+    except FileExistsError:
+        pass
     with csv_path.open("w", newline="", encoding="utf-8-sig") as f:
         writer = csv.DictWriter(
             f, fieldnames=["article", "name", "stock", "avg_cost", "sale_price", "base"]
@@ -209,7 +212,10 @@ def write_csv(rows, csv_path):
 
 
 def write_log(log_lines, log_path):
-    log_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        log_path.parent.mkdir(parents=True)
+    except FileExistsError:
+        pass
     open(str(log_path), "w", encoding="utf-8").write("\n".join(log_lines) + "\n")
 
 

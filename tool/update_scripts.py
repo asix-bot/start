@@ -109,7 +109,10 @@ def main():
                 local_file = local_dir / remote_file.name
                 if local_file.exists() and filecmp.cmp(str(remote_file), str(local_file), shallow=False):
                     continue
-                local_dir.mkdir(parents=True, exist_ok=True)
+                try:
+                    local_dir.mkdir(parents=True)
+                except FileExistsError:
+                    pass
                 shutil.copyfile(str(remote_file), str(local_file))
                 updated.append("{0}/{1}".format(dirname, remote_file.name))
 

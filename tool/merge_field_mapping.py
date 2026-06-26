@@ -77,7 +77,10 @@ def main():
     auth_url = repo_url.replace("https://", "https://{0}@".format(token), 1)
 
     if not (repo_path / ".git").exists():
-        repo_path.mkdir(parents=True, exist_ok=True)
+        try:
+            repo_path.mkdir(parents=True)
+        except FileExistsError:
+            pass
         run(["git", "clone", "-b", branch, auth_url, str(repo_path)])
     else:
         run(["git", "checkout", branch], repo_path)
