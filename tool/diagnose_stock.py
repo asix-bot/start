@@ -52,28 +52,27 @@ def main():
         user = sql_auth["user"]
         password = sql_auth["password"]
 
-        find_id_query = "SELECT {0} FROM {1} WHERE {2}='{3}'".format(
-            base_cfg["items_id_field"], base_cfg["items_table"], base_cfg["items_article_field"], article
-        )
-        print("--- ищем ID товара ---")
-        id_output = run_query_raw(server, database, user, password, find_id_query)
-        print(id_output)
-
-        item_id_lines = [
-            line.strip() for line in id_output.splitlines()
-            if line.strip() and line.strip().lower() != base_cfg["items_id_field"].lower()
-            and not line.strip().startswith("-") and "rows affected" not in line.lower()
-        ]
-        if not item_id_lines:
-            sys.exit("Товар с артикулом {0} не найден.".format(article))
-        item_id = item_id_lines[0]
-        print("Найден ID: '{0}'".format(item_id))
-
-        print("\n--- все строки stock_table для этого ID, без агрегации ---")
-        all_rows_query = "SELECT * FROM {0} WHERE {1}='{2}' ORDER BY {3}".format(
-            base_cfg["stock_table"], base_cfg["stock_item_field"], item_id,
+        # Важно: ID товара в 1С хранится с ведущими пробелами (например
+        # '      D11'), поэтому НЕЛЬЗЯ доставать его текстом через sqlcmd
+        # и подставлять обратно в следующий запрос - .strip() при разборе
+        # текстового вывода теряет эти пробелы, и второй запрос находит 0
+        # строк. Поэтому делаем всё ОДНИМ запросом через JOIN, не вынимая
+        # ID товара в Python вообще.
+        all_rows_query = (
+            "SELECT s.* FROM {0} s "
+            "INNER JOIN {1} i ON i.{2} = s.{3} "
+            "WHERE LTRIM(RTRIM(i.{4})) = '{5}' "
+            "ORDER BY s.{6}"
+        ).format(
+            base_cfg["stock_table"],
+            base_cfg["items_table"],
+            base_cfg["items_id_field"],
+            base_cfg["stock_item_field"],
+            base_cfg["items_article_field"],
+            article,
             base_cfg.get("stock_period_field", "PERIOD"),
         )
+        print("--- все строки stock_table для этого товара, без агрегации ---")
         print(run_query_raw(server, database, user, password, all_rows_query))
     else:
         base_path = Path(base_cfg["path"])
