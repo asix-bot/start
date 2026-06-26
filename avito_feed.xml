@@ -1006,7 +1006,11 @@
   <Brand>НИЗ</Brand>
   <SetType>Автоинструмент</SetType>
   <WholesaleType>Нет</WholesaleType>
-  <ToolSetComplectation>Ключи гаечные, Отвёртки, Трещотка, Биты, Пассатижи</ToolSetComplectation>
+  <ToolSetComplectation>Ключи гаечные</ToolSetComplectation>
+  <ToolSetComplectation>Отвёртки</ToolSetComplectation>
+  <ToolSetComplectation>Трещотка</ToolSetComplectation>
+  <ToolSetComplectation>Биты</ToolSetComplectation>
+  <ToolSetComplectation>Пассатижи</ToolSetComplectation>
   <Quantity>57</Quantity>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2248з/ozon_1.jpg"/>
@@ -1029,7 +1033,13 @@
   <Condition>Новое</Condition>
   <Brand>Вихрь</Brand>
   <SetType>Автоинструмент</SetType>
-  <ToolSetComplectation>Биты, Клещи, Ключи гаечные, Ключи имбусовые (шестигранные), Отвёртки, Рукоять для бит, Трещотка</ToolSetComplectation>
+  <ToolSetComplectation>Биты</ToolSetComplectation>
+  <ToolSetComplectation>Клещи</ToolSetComplectation>
+  <ToolSetComplectation>Ключи гаечные</ToolSetComplectation>
+  <ToolSetComplectation>Ключи имбусовые (шестигранные)</ToolSetComplectation>
+  <ToolSetComplectation>Отвёртки</ToolSetComplectation>
+  <ToolSetComplectation>Рукоять для бит</ToolSetComplectation>
+  <ToolSetComplectation>Трещотка</ToolSetComplectation>
   <Quantity>151</Quantity>
   <WholesaleType>Нет</WholesaleType>
     <Images>
