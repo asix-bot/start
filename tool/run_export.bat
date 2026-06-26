@@ -27,3 +27,7 @@ if errorlevel 1 (
 )
 
 echo [%date% %time%] Готово.
+
+if /i not "%~1"=="/silent" (
+    pause
+)

@@ -29,9 +29,9 @@ set "SCRIPT_DIR=%~dp0"
 set "TASK_NAME_HOURLY=1C Export to GitHub (hourly)"
 set "TASK_NAME_STARTUP=1C Export to GitHub (on startup)"
 
-schtasks /create /tn "%TASK_NAME_HOURLY%" /tr "\"%SCRIPT_DIR%run_export.bat\"" /sc hourly /f
+schtasks /create /tn "%TASK_NAME_HOURLY%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc hourly /f
 set "HOURLY_RC=%ERRORLEVEL%"
-schtasks /create /tn "%TASK_NAME_STARTUP%" /tr "\"%SCRIPT_DIR%run_export.bat\"" /sc onstart /delay 0001:00 /ru SYSTEM /f
+schtasks /create /tn "%TASK_NAME_STARTUP%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc onstart /delay 0001:00 /ru SYSTEM /f
 set "STARTUP_RC=%ERRORLEVEL%"
 
 if "%HOURLY_RC%"=="0" if "%STARTUP_RC%"=="0" (
