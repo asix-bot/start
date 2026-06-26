@@ -77,7 +77,7 @@ pause
 
 :: ------------------------------------------------------------------
 echo.
-echo [Шаг 4/5] Тип, расположение и суффиксы для 4 баз 1С 7.7.
+echo [Шаг 4/5] Базы 1С 7.7 - по одной, с проверкой каждой сразу.
 echo Для каждой базы нужно указать:
 echo   - тип: D = обычные DBF-файлы, S = база на SQL Server
 echo   - для DBF: путь к папке, где лежат .DBF файлы базы
@@ -85,99 +85,138 @@ echo   - для SQL: имя сервера и имя базы данных
 echo     подсказка - смотри в 1С: Конфигуратор -^> Администрирование -^>
 echo     Администрирование информационной базы, поля Сервер баз данных
 echo     и База данных. Пример сервера: SQLSRV01 или SQLSRV01\SQLEXPRESS
-echo   - суффикс, который нужно добавлять к артикулу товаров этой базы
-echo Пример пути DBF: C:\Bases\Base1   Пример суффикса: -B1
+echo После ввода данных скрипт сразу проверит, что база реально читается -
+echo если нет, спросит данные этой же базы заново, остальные базы не тронет.
 echo.
 
+set "SQLUSER=sa"
+set /p SQLUSER=Логин SQL Server общий для всех SQL-баз, Enter для sa:
+set /p SQLPASS=Пароль SQL Server:
+
+:BASE1_INPUT
+echo.
+echo --- База 1 из 4: Шишина ---
 set "TYPE1="
 set "LOC1_1="
 set "LOC1_2=NONE"
-set /p TYPE1=Тип базы 1 D-DBF S-SQL:
+set /p TYPE1=Тип базы Шишина D-DBF S-SQL:
 if /i "%TYPE1%"=="S" (
-    set /p LOC1_1=Имя SQL-сервера для базы 1:
-    set /p LOC1_2=Имя базы данных SQL для базы 1:
+    set /p LOC1_1=Имя SQL-сервера для базы Шишина:
+    set /p LOC1_2=Имя базы данных SQL для базы Шишина:
 ) else (
-    set /p LOC1_1=Путь к папке с DBF-файлами базы 1:
+    set /p LOC1_1=Путь к папке с DBF-файлами базы Шишина:
 )
-set /p SUF1=Суффикс для базы 1:
+python update_config.py 1 "%TYPE1%" "%LOC1_1%" "%LOC1_2%" "%SQLUSER%" "%SQLPASS%"
+if errorlevel 1 (
+    echo ОШИБКА при записи config.json. Введи данные базы Шишина заново.
+    goto BASE1_INPUT
+)
+echo Проверяю базу Шишина...
+python check_base.py 1
+if errorlevel 1 (
+    echo.
+    echo Проверка базы Шишина не прошла. Прочитай сообщение выше,
+    echo поправь данные и попробуй снова.
+    pause
+    goto BASE1_INPUT
+)
+echo База Шишина проверена успешно.
+pause
 
+:BASE2_INPUT
+echo.
+echo --- База 2 из 4: Киселев ---
 set "TYPE2="
 set "LOC2_1="
 set "LOC2_2=NONE"
-set /p TYPE2=Тип базы 2 D-DBF S-SQL:
+set /p TYPE2=Тип базы Киселев D-DBF S-SQL:
 if /i "%TYPE2%"=="S" (
-    set /p LOC2_1=Имя SQL-сервера для базы 2:
-    set /p LOC2_2=Имя базы данных SQL для базы 2:
+    set /p LOC2_1=Имя SQL-сервера для базы Киселев:
+    set /p LOC2_2=Имя базы данных SQL для базы Киселев:
 ) else (
-    set /p LOC2_1=Путь к папке с DBF-файлами базы 2:
+    set /p LOC2_1=Путь к папке с DBF-файлами базы Киселев:
 )
-set /p SUF2=Суффикс для базы 2:
+python update_config.py 2 "%TYPE2%" "%LOC2_1%" "%LOC2_2%" "%SQLUSER%" "%SQLPASS%"
+if errorlevel 1 (
+    echo ОШИБКА при записи config.json. Введи данные базы Киселев заново.
+    goto BASE2_INPUT
+)
+echo Проверяю базу Киселев...
+python check_base.py 2
+if errorlevel 1 (
+    echo.
+    echo Проверка базы Киселев не прошла. Прочитай сообщение выше,
+    echo поправь данные и попробуй снова.
+    pause
+    goto BASE2_INPUT
+)
+echo База Киселев проверена успешно.
+pause
 
+:BASE3_INPUT
+echo.
+echo --- База 3 из 4: Захарина ---
 set "TYPE3="
 set "LOC3_1="
 set "LOC3_2=NONE"
-set /p TYPE3=Тип базы 3 D-DBF S-SQL:
+set /p TYPE3=Тип базы Захарина D-DBF S-SQL:
 if /i "%TYPE3%"=="S" (
-    set /p LOC3_1=Имя SQL-сервера для базы 3:
-    set /p LOC3_2=Имя базы данных SQL для базы 3:
+    set /p LOC3_1=Имя SQL-сервера для базы Захарина:
+    set /p LOC3_2=Имя базы данных SQL для базы Захарина:
 ) else (
-    set /p LOC3_1=Путь к папке с DBF-файлами базы 3:
+    set /p LOC3_1=Путь к папке с DBF-файлами базы Захарина:
 )
-set /p SUF3=Суффикс для базы 3:
+python update_config.py 3 "%TYPE3%" "%LOC3_1%" "%LOC3_2%" "%SQLUSER%" "%SQLPASS%"
+if errorlevel 1 (
+    echo ОШИБКА при записи config.json. Введи данные базы Захарина заново.
+    goto BASE3_INPUT
+)
+echo Проверяю базу Захарина...
+python check_base.py 3
+if errorlevel 1 (
+    echo.
+    echo Проверка базы Захарина не прошла. Прочитай сообщение выше,
+    echo поправь данные и попробуй снова.
+    pause
+    goto BASE3_INPUT
+)
+echo База Захарина проверена успешно.
+pause
 
+:BASE4_INPUT
+echo.
+echo --- База 4 из 4: Кукушкина ---
 set "TYPE4="
 set "LOC4_1="
 set "LOC4_2=NONE"
-set /p TYPE4=Тип базы 4 D-DBF S-SQL:
+set /p TYPE4=Тип базы Кукушкина D-DBF S-SQL:
 if /i "%TYPE4%"=="S" (
-    set /p LOC4_1=Имя SQL-сервера для базы 4:
-    set /p LOC4_2=Имя базы данных SQL для базы 4:
+    set /p LOC4_1=Имя SQL-сервера для базы Кукушкина:
+    set /p LOC4_2=Имя базы данных SQL для базы Кукушкина:
 ) else (
-    set /p LOC4_1=Путь к папке с DBF-файлами базы 4:
+    set /p LOC4_1=Путь к папке с DBF-файлами базы Кукушкина:
 )
-set /p SUF4=Суффикс для базы 4:
-
-echo.
-echo Если среди баз есть хотя бы одна SQL - укажи общий логин и пароль
-echo SQL Server, через который будут читаться все SQL-базы.
-set "SQLUSER=sa"
-set /p SQLUSER=Логин SQL Server, Enter для sa:
-set /p SQLPASS=Пароль SQL Server:
-
-echo.
-echo Записываю настройки в config.json...
-python update_config.py "%TYPE1%" "%LOC1_1%" "%LOC1_2%" "%SUF1%" "%TYPE2%" "%LOC2_1%" "%LOC2_2%" "%SUF2%" "%TYPE3%" "%LOC3_1%" "%LOC3_2%" "%SUF3%" "%TYPE4%" "%LOC4_1%" "%LOC4_2%" "%SUF4%" "%SQLUSER%" "%SQLPASS%"
+python update_config.py 4 "%TYPE4%" "%LOC4_1%" "%LOC4_2%" "%SQLUSER%" "%SQLPASS%"
+if errorlevel 1 (
+    echo ОШИБКА при записи config.json. Введи данные базы Кукушкина заново.
+    goto BASE4_INPUT
+)
+echo Проверяю базу Кукушкина...
+python check_base.py 4
 if errorlevel 1 (
     echo.
-    echo ОШИБКА при обновлении config.json. Проверь сообщение выше.
+    echo Проверка базы Кукушкина не прошла. Прочитай сообщение выше,
+    echo поправь данные и попробуй снова.
     pause
-    exit /b 1
+    goto BASE4_INPUT
 )
-pause
-
-:: ------------------------------------------------------------------
-echo.
-echo [Шаг 5/5] Запуск разведчика структуры баз explore.py...
-echo Это покажет, какие таблицы и поля есть в каждой базе DBF и SQL,
-echo и сохранит report.txt локально, а также запушит его в GitHub если в
-echo config.json уже указан токен.
-echo.
-python explore.py
-if errorlevel 1 (
-    echo.
-    echo Разведчик завершился с ошибкой. Прочитай сообщение выше.
-    pause
-    exit /b 1
-)
-echo.
-echo Готово. Файл report.txt создан рядом с этим bat-файлом
-echo и если настроено запушен в репозиторий на GitHub.
+echo База Кукушкина проверена успешно.
 pause
 
 :: ------------------------------------------------------------------
 echo.
 echo ============================================================
-echo  Готово! report.txt опубликован в репозитории GitHub.
+echo  Готово! Все 4 базы проверены, report.txt опубликован в репозитории.
 echo.
 echo  Дальше: сообщи в чат, что report.txt готов в репозитории -
 echo  по нему подготовят bases_mapping.json с сопоставлением таблиц/полей

@@ -36,6 +36,7 @@ SYNCED_FILES = (
     "explore_dbf.py",
     "explore_sql.py",
     "sqlcmd_client.py",
+    "check_base.py",
     "github_publish.py",
     "update_config.py",
     "merge_field_mapping.py",

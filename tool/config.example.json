@@ -13,9 +13,9 @@
   "encoding": "cp866",
   "bases": [
     {
-      "name": "Base1",
+      "name": "Шишина",
       "path": "C:\\Bases\\Base1",
-      "suffix": "-B1",
+      "suffix": "ш",
       "items_table": "SC41.DBF",
       "items_article_field": "ARTICUL",
       "items_id_field": "ID",
@@ -32,8 +32,8 @@
       "type": "dbf"
     },
     {
-      "name": "Base2",
-      "suffix": "-B2",
+      "name": "Киселев",
+      "suffix": "ки",
       "items_table": "SC41.DBF",
       "items_article_field": "ARTICUL",
       "items_id_field": "ID",
@@ -52,9 +52,9 @@
       "sql_database": "1c77_base2"
     },
     {
-      "name": "Base3",
+      "name": "Захарина",
       "path": "C:\\Bases\\Base3",
-      "suffix": "-B3",
+      "suffix": "з",
       "items_table": "SC41.DBF",
       "items_article_field": "ARTICUL",
       "items_id_field": "ID",
@@ -71,9 +71,9 @@
       "type": "dbf"
     },
     {
-      "name": "Base4",
+      "name": "Кукушкина",
       "path": "C:\\Bases\\Base4",
-      "suffix": "-B4",
+      "suffix": "ку",
       "items_table": "SC41.DBF",
       "items_article_field": "ARTICUL",
       "items_id_field": "ID",
