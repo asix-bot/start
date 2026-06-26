@@ -15,7 +15,7 @@ if not exist "%PYTHON%" (
 )
 
 if "%~1"=="" (
-    echo Использование: find_article_field.py <индекс_базы 1-4> <число1> [число2 ...]
+    echo Использование: find_article_field.py - индекс_базы 1-4, число1 [число2 ...]
     echo Пример: find_article_field.py 1 100
     pause
     exit /b 1

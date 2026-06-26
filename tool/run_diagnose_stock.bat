@@ -15,7 +15,7 @@ if not exist "%PYTHON%" (
 )
 
 if "%~1"=="" (
-    echo Использование: diagnose_stock.py <индекс_базы 1-4> <артикул_без_суффикса>
+    echo Использование: diagnose_stock.py - индекс_базы 1-4, артикул_без_суффикса
     echo Пример: diagnose_stock.py 3 38520
     pause
     exit /b 1
