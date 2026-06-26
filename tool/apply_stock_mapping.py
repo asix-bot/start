@@ -3,11 +3,15 @@
 остатка (артикул+остаток) во ВСЕ базы - не трогая type/path/sql_server/
 sql_database/suffix/verified.
 
-Найдено по анализу report.txt (структура одинаковая у всех 4 баз):
+Найдено по анализу report.txt и diagnose_stock.py (структура одинаковая
+у всех 4 баз):
   - Товары: SC4889 (ID, CODE=артикул, DESCR=название)
   - Остаток: RG1130 - периодический регистр 1С 7.7, берётся сумма по
     самому позднему PERIOD для каждого товара (см. read_dbf_latest_period_map
     и read_sql_latest_period_map в main.py)
+  - На каждый период есть ДВЕ строки с одинаковым количеством, отличающиеся
+    только полем SP2654 (параллельный учёт, например БУ/НУ) - чтобы не
+    задвоить остаток, оставляем только SP2654='0'.
 
 Себестоимость/цена продажи (avg_cost_table/sale_price_table) очищаются -
 они пока не найдены, main.py относится к ним как к опциональным и не
@@ -35,6 +39,8 @@ FIELD_MAPPING = {
     "stock_item_field": "SP1131",
     "stock_qty_field": "SP1133",
     "stock_period_field": "PERIOD",
+    "stock_extra_filter_field": "SP2654",
+    "stock_extra_filter_value": "0",
 }
 
 

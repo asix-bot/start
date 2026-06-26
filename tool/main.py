@@ -75,15 +75,20 @@ def read_dbf_value_map(base_path, table_name, item_field, value_field, encoding)
     return result
 
 
-def read_dbf_latest_period_map(base_path, table_name, item_field, period_field, value_field, encoding):
+def read_dbf_latest_period_map(
+    base_path, table_name, item_field, period_field, value_field, encoding,
+    extra_filter_field=None, extra_filter_value=None,
+):
     """Для каждого товара берёт сумму value_field по строкам с максимальным
     period_field - так получается остаток за самый свежий период из
     периодического регистра 1С 7.7 (RGxxxx.DBF).
 
-    В некоторых базах одна и та же строка физически встречается в DBF
-    дважды (известная проблема старых 1С 7.7 баз) - чтобы не задвоить
-    остаток, перед суммированием убираем полные дубликаты строк (когда
-    у двух строк совпадают абсолютно все поля)."""
+    В этом регистре на каждый период есть ДВЕ строки с одинаковым
+    количеством, отличающиеся только дополнительным измерением (например
+    параллельный учёт БУ/НУ) - extra_filter_field/extra_filter_value
+    позволяет оставить только одну из них и не задвоить остаток.
+    Дополнительно убираем полные дубликаты строк на случай, если они
+    всё же встречаются физически дважды."""
     latest_period = {}
     for row in read_dbf_table(base_path, table_name, encoding):
         item = row[item_field]
@@ -96,6 +101,8 @@ def read_dbf_latest_period_map(base_path, table_name, item_field, period_field, 
     for row in read_dbf_table(base_path, table_name, encoding):
         item = row[item_field]
         if row[period_field] != latest_period.get(item):
+            continue
+        if extra_filter_field and str(row.get(extra_filter_field, "")).strip() != str(extra_filter_value).strip():
             continue
         row_key = tuple(sorted((k, str(v)) for k, v in row.items()))
         if row_key in seen_rows:
@@ -128,6 +135,8 @@ def export_base_dbf(base_cfg, encoding):
         base_cfg.get("stock_period_field", "PERIOD"),
         base_cfg["stock_qty_field"],
         encoding,
+        base_cfg.get("stock_extra_filter_field"),
+        base_cfg.get("stock_extra_filter_value"),
     )
 
     sale_price_by_id = {}
@@ -174,16 +183,26 @@ def read_sql_value_map(server, database, user, password, table, item_field, valu
     return result
 
 
-def read_sql_latest_period_map(server, database, user, password, table, item_field, period_field, value_field):
+def read_sql_latest_period_map(
+    server, database, user, password, table, item_field, period_field, value_field,
+    extra_filter_field=None, extra_filter_value=None,
+):
     """SQL-аналог read_dbf_latest_period_map - сумма value_field по строкам
-    с максимальным period_field для каждого товара. SELECT DISTINCT убирает
-    полные дубликаты строк (известная проблема старых 1С 7.7 баз), чтобы
-    остаток не задваивался."""
+    с максимальным period_field для каждого товара. На каждый период в этом
+    регистре есть ДВЕ строки с одинаковым количеством, отличающиеся только
+    дополнительным измерением (например параллельный учёт БУ/НУ) -
+    extra_filter_field/extra_filter_value оставляет только одну из них.
+    SELECT DISTINCT дополнительно убирает полные дубликаты строк, если они
+    всё же встречаются физически дважды."""
+    base_query = "SELECT DISTINCT * FROM {0}".format(table)
+    if extra_filter_field:
+        base_query += " WHERE LTRIM(RTRIM({0})) = '{1}'".format(extra_filter_field, extra_filter_value)
+
     query = (
-        "SELECT t1.{0}, SUM(t1.{1}) FROM (SELECT DISTINCT * FROM {2}) t1 "
-        "WHERE t1.{3} = (SELECT MAX(t2.{3}) FROM {2} t2 WHERE t2.{0} = t1.{0}) "
+        "SELECT t1.{0}, SUM(t1.{1}) FROM ({2}) t1 "
+        "WHERE t1.{3} = (SELECT MAX(t2.{3}) FROM {4} t2 WHERE t2.{0} = t1.{0}) "
         "GROUP BY t1.{0}"
-    ).format(item_field, value_field, table, period_field)
+    ).format(item_field, value_field, base_query, period_field, table)
     rows = run_query(server, database, user, password, query)
     result = {}
     for row in rows:
@@ -222,6 +241,8 @@ def export_base_sql(base_cfg, sql_auth):
         server, database, user, password,
         base_cfg["stock_table"], base_cfg["stock_item_field"],
         base_cfg.get("stock_period_field", "PERIOD"), base_cfg["stock_qty_field"],
+        base_cfg.get("stock_extra_filter_field"),
+        base_cfg.get("stock_extra_filter_value"),
     )
 
     sale_price_by_id = {}
