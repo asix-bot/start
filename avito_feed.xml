@@ -1385,4 +1385,22 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4450ки/user_photo.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>5184ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Коврик гимнастический BODY Form BF-YM04 183*61*1,2</Title>
+    <Description><![CDATA[]]></Description>
+    <Price>1350</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Фитнес и тренажёры</GoodsType>
+  <FitnessType>Аксессуары для фитнеса</FitnessType>
+  <GoodsSubType>Коврики</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_3.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
