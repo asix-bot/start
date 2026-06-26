@@ -19,6 +19,7 @@
 """
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -29,6 +30,26 @@ from github_publish import push_files
 CONFIG_PATH = Path(__file__).parent / "config.json"
 LOCAL_REPORT_PATH = Path(__file__).parent / "report.txt"
 ERROR_LOG_PATH = Path(__file__).parent / "last_check_error.txt"
+
+SECTION_START_TEMPLATE = "##### REPORT_SECTION_START: {0} #####"
+SECTION_END_TEMPLATE = "##### REPORT_SECTION_END: {0} #####"
+
+
+def replace_section(existing_report, base_name, new_section_body):
+    """Заменяет в накопительном report.txt раздел конкретной базы (если он там
+    уже был от прошлой проверки) на новый, вместо того чтобы дублировать его
+    при повторных проверках одной и той же базы."""
+    start_marker = SECTION_START_TEMPLATE.format(base_name)
+    end_marker = SECTION_END_TEMPLATE.format(base_name)
+    new_section = "{0}\n{1}\n{2}".format(start_marker, new_section_body, end_marker)
+
+    pattern = re.compile(re.escape(start_marker) + ".*?" + re.escape(end_marker), re.DOTALL)
+    if pattern.search(existing_report):
+        return pattern.sub(new_section, existing_report).strip()
+
+    if existing_report:
+        return existing_report.strip() + "\n\n" + new_section
+    return new_section
 
 FAILURE_MARKERS = (
     "Не найдено ни одного .DBF файла",
@@ -139,7 +160,7 @@ def main():
         existing = open(str(LOCAL_REPORT_PATH), encoding="utf-8-sig").read()
     else:
         existing = ""
-    updated_report = existing + ("\n" if existing else "") + report_text
+    updated_report = replace_section(existing, base_cfg["name"], report_text)
     open(str(LOCAL_REPORT_PATH), "w", encoding="utf-8").write(updated_report)
 
     github_cfg = config.get("github")
