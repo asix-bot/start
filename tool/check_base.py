@@ -107,7 +107,7 @@ def main():
         if not base_path.exists():
             fail("Путь не найден для базы {0}: {1}".format(base_cfg["name"], base_path))
         try:
-            explore_base_dbf(base_path, out_lines)
+            explore_base_dbf(base_path, out_lines, base_cfg.get("encoding", "cp866"))
         except Exception as exc:
             fail("Ошибка чтения DBF для базы {0}: {1}".format(base_cfg["name"], exc))
 

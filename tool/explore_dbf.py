@@ -46,9 +46,9 @@ def looks_interesting(filename):
     return any(name.startswith(h) for h in INTERESTING_HINTS)
 
 
-def explore_base(base_path, out_lines):
+def explore_base(base_path, out_lines, encoding=ENCODING):
     separator = "=" * 80
-    out_lines.append("\n{0}\nБАЗА: {1}\n{0}".format(separator, base_path))
+    out_lines.append("\n{0}\nБАЗА: {1} (кодировка {2})\n{0}".format(separator, base_path, encoding))
 
     dbf_files = sorted(base_path.glob("*.DBF")) + sorted(base_path.glob("*.dbf"))
     if not dbf_files:
@@ -63,7 +63,7 @@ def explore_base(base_path, out_lines):
 
     for dbf_path in dbf_files:
         try:
-            table = DBF(str(dbf_path), encoding=ENCODING, ignore_missing_memofile=True)
+            table = DBF(str(dbf_path), encoding=encoding, ignore_missing_memofile=True)
         except Exception as exc:
             out_lines.append("\n  [{0}] -- ошибка открытия: {1}".format(dbf_path.name, exc))
             continue

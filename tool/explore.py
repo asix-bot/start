@@ -41,7 +41,7 @@ def main():
             if base_type == "sql":
                 explore_base_sql(base_cfg, sql_auth, out_lines)
             else:
-                explore_base_dbf(Path(base_cfg["path"]), out_lines)
+                explore_base_dbf(Path(base_cfg["path"]), out_lines, base_cfg.get("encoding", "cp866"))
         except Exception as exc:
             out_lines.append("\nБАЗА {0}: ОШИБКА при разведке - {1}".format(base_cfg["name"], exc))
             print("  Ошибка: {0}".format(exc))

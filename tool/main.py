@@ -171,13 +171,14 @@ def export_base_sql(base_cfg, sql_auth):
 # Общая склейка результатов (не зависит от типа базы)
 # ---------------------------------------------------------------------------
 
-def export_base(base_cfg, encoding, sql_auth):
+def export_base(base_cfg, default_encoding, sql_auth):
     base_type = base_cfg.get("type", "dbf")
     suffix = base_cfg.get("suffix", "")
 
     if base_type == "sql":
         item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_sql(base_cfg, sql_auth)
     else:
+        encoding = base_cfg.get("encoding", default_encoding)
         item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_dbf(base_cfg, encoding)
 
     out_rows = []

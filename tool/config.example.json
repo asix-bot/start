@@ -29,7 +29,8 @@
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
       "sale_price_value_field": "CENA",
-      "type": "dbf"
+      "type": "dbf",
+      "encoding": "cp866"
     },
     {
       "name": "Киселев",
@@ -49,7 +50,8 @@
       "sale_price_value_field": "CENA",
       "type": "sql",
       "sql_server": "SQLSRV01\\SQLEXPRESS",
-      "sql_database": "1c77_base2"
+      "sql_database": "1c77_base2",
+      "encoding": "cp866"
     },
     {
       "name": "Захарина",
@@ -68,7 +70,8 @@
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
       "sale_price_value_field": "CENA",
-      "type": "dbf"
+      "type": "dbf",
+      "encoding": "cp866"
     },
     {
       "name": "Кукушкина",
@@ -87,7 +90,8 @@
       "sale_price_table": "SC42.DBF",
       "sale_price_item_field": "PARENTEXT",
       "sale_price_value_field": "CENA",
-      "type": "dbf"
+      "type": "dbf",
+      "encoding": "cp866"
     }
   ],
   "sql_auth": {
