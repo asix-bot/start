@@ -103,7 +103,7 @@ def main():
     print("\n\nОтчёт также сохранён в {0}".format(report_path))
 
     if CONFIG_PATH.exists():
-        config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
+        config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
         github_cfg = config.get("github")
         if github_cfg and github_cfg.get("token") and "ВСТАВЬ_СЮДА" not in github_cfg["token"]:
             repo_report_path = Path(github_cfg["repo_path"]) / "report.txt"

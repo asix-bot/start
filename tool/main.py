@@ -48,7 +48,7 @@ def load_config():
             "Не найден {0}.\n"
             "Скопируй config.example.json в config.json и заполни своими значениями.".format(CONFIG_PATH)
         )
-    return json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
+    return json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
 
 
 # ---------------------------------------------------------------------------

@@ -42,7 +42,7 @@ def main():
         sys.exit("Индекс базы должен быть от 1 до 4, получено: {0}".format(index))
 
     source_path = CONFIG_PATH if CONFIG_PATH.exists() else EXAMPLE_PATH
-    config = json.loads(open(str(source_path), encoding="utf-8").read())
+    config = json.loads(open(str(source_path), encoding="utf-8-sig").read())
 
     bases = config["bases"]
     if len(bases) < index:

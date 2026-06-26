@@ -67,7 +67,7 @@ def main():
     if not CONFIG_PATH.exists():
         sys.exit("Не найден {0}. Сначала запусти setup.bat хотя бы до шага 4.".format(CONFIG_PATH))
 
-    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
     github_cfg = config["github"]
 
     repo_path = Path(github_cfg["repo_path"])
@@ -93,7 +93,7 @@ def main():
             "Сначала нужно, чтобы он был туда запушен с сопоставлением таблиц/полей.".format(mapping_path)
         )
 
-    mapping_list = json.loads(open(str(mapping_path), encoding="utf-8").read())
+    mapping_list = json.loads(open(str(mapping_path), encoding="utf-8-sig").read())
     mapping_by_name = {}
     for entry in mapping_list:
         if "name" in entry:

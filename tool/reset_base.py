@@ -28,7 +28,7 @@ def main():
     if not CONFIG_PATH.exists():
         sys.exit("Не найден {0}.".format(CONFIG_PATH))
 
-    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8").read())
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
     bases = config["bases"]
     if len(bases) < index:
         sys.exit("В config.json только {0} баз(ы), а запрошен индекс {1}.".format(len(bases), index))
