@@ -34,7 +34,7 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 
 ENCODING = "cp866"
 SAMPLE_ROWS = 5
-SAMPLE_ROWS_INTERESTING = 30
+SAMPLE_ROWS_INTERESTING = 60
 
 # Таблицы 1С 7.7, в которых обычно есть смысл искать артикул/остаток/цену.
 # Это не жёсткое правило (конфигурация нестандартная), но помогает быстрее
@@ -78,13 +78,21 @@ def explore_base(base_path, out_lines, encoding=ENCODING):
         out_lines.append("    Поля: {0}".format(", ".join(field_descriptions)))
 
         sample_rows = SAMPLE_ROWS_INTERESTING if interesting else SAMPLE_ROWS
+        total_records = len(table)
+        # Для больших "интересных" таблиц берём записи равномерно по всей
+        # таблице (а не только первые N) - так в выборку попадают разные
+        # документы/периоды (и приходы, и расходы), а не только самые старые
+        # записи подряд.
+        stride = max(1, total_records // sample_rows) if interesting and total_records > sample_rows else 1
         try:
-            records = iter(table)
-            for i in range(sample_rows):
-                row = next(records)
-                out_lines.append("    Пример {0}: {1}".format(i + 1, dict(row)))
-        except StopIteration:
-            pass
+            shown = 0
+            for i, row in enumerate(table):
+                if i % stride != 0:
+                    continue
+                shown += 1
+                out_lines.append("    Пример {0}: {1}".format(shown, dict(row)))
+                if shown >= sample_rows:
+                    break
         except Exception as exc:
             out_lines.append("    Ошибка чтения строк: {0}".format(exc))
 

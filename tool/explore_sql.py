@@ -17,7 +17,7 @@ from sqlcmd_client import run_query_raw
 INTERESTING_HINTS = ("SC", "RG", "RA", "1SC", "DH", "DT")
 
 SAMPLE_ROWS = 5
-SAMPLE_ROWS_INTERESTING = 30
+SAMPLE_ROWS_INTERESTING = 60
 
 
 def looks_interesting(table_name):
@@ -84,7 +84,11 @@ def explore_base_sql(base_cfg, sql_auth, out_lines):
         out_lines.append("    Колонки:\n" + indent(columns_output, "      "))
 
         sample_count = SAMPLE_ROWS_INTERESTING if interesting else SAMPLE_ROWS
-        sample_query = "SELECT TOP {0} * FROM [{1}]".format(sample_count, table_name)
+        # Для интересных таблиц берём случайные строки по всей таблице (NEWID()),
+        # а не просто первые N - так попадают разные документы/периоды
+        # (и приходы, и расходы), а не только самые старые записи подряд.
+        order_clause = "ORDER BY NEWID()" if interesting else ""
+        sample_query = "SELECT TOP {0} * FROM [{1}] {2}".format(sample_count, table_name, order_clause)
         sample_output = run_query_raw(server, database, user, password, sample_query)
         out_lines.append("    Примеры строк:\n" + indent(sample_output, "      "))
 
