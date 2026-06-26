@@ -10,7 +10,7 @@
     "commit_author_email": "bot@example.com",
     "log_path_in_repo": "export_log.txt"
   },
-  "encoding": "cp866",
+  "encoding": "cp1251",
   "bases": [
     {
       "name": "Шишина",
@@ -30,7 +30,7 @@
       "sale_price_item_field": "PARENTEXT",
       "sale_price_value_field": "CENA",
       "type": "dbf",
-      "encoding": "cp866"
+      "encoding": "cp1251"
     },
     {
       "name": "Киселев",
@@ -51,7 +51,7 @@
       "type": "sql",
       "sql_server": "SQLSRV01\\SQLEXPRESS",
       "sql_database": "1c77_base2",
-      "encoding": "cp866"
+      "encoding": "cp1251"
     },
     {
       "name": "Захарина",
@@ -71,7 +71,7 @@
       "sale_price_item_field": "PARENTEXT",
       "sale_price_value_field": "CENA",
       "type": "dbf",
-      "encoding": "cp866"
+      "encoding": "cp1251"
     },
     {
       "name": "Кукушкина",
@@ -91,7 +91,7 @@
       "sale_price_item_field": "PARENTEXT",
       "sale_price_value_field": "CENA",
       "type": "dbf",
-      "encoding": "cp866"
+      "encoding": "cp1251"
     }
   ],
   "sql_auth": {
