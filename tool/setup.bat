@@ -1,5 +1,6 @@
 @echo off
 chcp 866 >nul
+cd /d "%~dp0"
 setlocal enabledelayedexpansion
 
 set "PYTHON=C:\Python34\python.exe"
