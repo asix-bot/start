@@ -40,6 +40,7 @@ SYNCED_FILES = (
     "is_base_verified.py",
     "reset_base.py",
     "apply_stock_mapping.py",
+    "diagnose_stock.py",
     "github_publish.py",
     "update_config.py",
     "update_scripts.py",
