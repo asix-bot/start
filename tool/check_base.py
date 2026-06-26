@@ -28,12 +28,31 @@ from github_publish import push_files
 
 CONFIG_PATH = Path(__file__).parent / "config.json"
 LOCAL_REPORT_PATH = Path(__file__).parent / "report.txt"
+ERROR_LOG_PATH = Path(__file__).parent / "last_check_error.txt"
 
 FAILURE_MARKERS = (
     "Не найдено ни одного .DBF файла",
     "Не удалось получить список таблиц",
     "Не найдено ни одной пользовательской таблицы",
 )
+
+MAX_CONSOLE_LINES = 25
+
+
+def fail(message_text):
+    """Печатает короткую версию ошибки в консоль (полный текст - в файл), завершает с кодом 1."""
+    open(str(ERROR_LOG_PATH), "w", encoding="utf-8").write(message_text)
+
+    lines = message_text.splitlines()
+    if len(lines) > MAX_CONSOLE_LINES:
+        shown = lines[:MAX_CONSOLE_LINES]
+        print("\n".join(shown))
+        print("... обрезано, всего строк: {0}".format(len(lines)))
+        print("Полный текст ошибки сохранён в {0}".format(ERROR_LOG_PATH))
+    else:
+        print(message_text)
+
+    sys.exit(1)
 
 
 def main():
@@ -73,48 +92,45 @@ def main():
         except Exception as exc:
             exc_text = str(exc)
             if "Login failed" in exc_text or "18456" in exc_text:
-                print(
+                fail(
                     "ОШИБКА ЛОГИНА/ПАРОЛЯ SQL Server для базы {0} (пользователь '{1}'):\n{2}".format(
                         base_cfg["name"], sql_auth.get("user"), exc_text
                     )
                 )
             else:
-                print("Ошибка подключения к SQL Server: {0}".format(exc_text))
-            sys.exit(1)
+                fail("Ошибка подключения к SQL Server для базы {0}: {1}".format(base_cfg["name"], exc_text))
     else:
         base_path_raw = base_cfg.get("path", "")
         if not base_path_raw:
-            print("Не задан путь для базы {0}.".format(base_cfg["name"]))
-            sys.exit(1)
+            fail("Не задан путь для базы {0}.".format(base_cfg["name"]))
         base_path = Path(base_path_raw)
         if not base_path.exists():
-            print("Путь не найден: {0}".format(base_path))
-            sys.exit(1)
+            fail("Путь не найден для базы {0}: {1}".format(base_cfg["name"], base_path))
         try:
             explore_base_dbf(base_path, out_lines)
         except Exception as exc:
-            print("Ошибка чтения DBF: {0}".format(exc))
-            sys.exit(1)
+            fail("Ошибка чтения DBF для базы {0}: {1}".format(base_cfg["name"], exc))
 
     report_text = "\n".join(out_lines)
 
     if "Login failed" in report_text or "18456" in report_text:
-        print(
-            "ОШИБКА ЛОГИНА/ПАРОЛЯ SQL Server для базы {0} (пользователь '{1}'):".format(
-                base_cfg["name"], sql_auth.get("user")
+        fail(
+            "ОШИБКА ЛОГИНА/ПАРОЛЯ SQL Server для базы {0} (пользователь '{1}'):\n{2}".format(
+                base_cfg["name"], sql_auth.get("user"), report_text
             )
         )
-        print(report_text)
-        sys.exit(1)
 
     for marker in FAILURE_MARKERS:
         if marker in report_text:
-            print("Проверка базы {0} не прошла:".format(base_cfg["name"]))
-            print(report_text)
-            sys.exit(1)
+            fail("Проверка базы {0} не прошла:\n{1}".format(base_cfg["name"], report_text))
 
     print("База {0} проверена успешно.".format(base_cfg["name"]))
-    print(report_text)
+    report_lines = report_text.splitlines()
+    if len(report_lines) > MAX_CONSOLE_LINES:
+        print("\n".join(report_lines[:MAX_CONSOLE_LINES]))
+        print("... обрезано, всего строк: {0}. Полный отчёт - в report.txt.".format(len(report_lines)))
+    else:
+        print(report_text)
 
     base_cfg["verified"] = True
     open(str(CONFIG_PATH), "w", encoding="utf-8").write(json.dumps(config, ensure_ascii=False, indent=2))

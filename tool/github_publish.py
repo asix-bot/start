@@ -63,5 +63,22 @@ def push_files(github_cfg, file_paths_in_repo, commit_message):
         return
 
     run(["git", "commit", "-m", commit_message], repo_path)
-    run(["git", "push", auth_url, branch], repo_path)
+
+    push_retries = 5
+    pushed = False
+    for attempt in range(push_retries):
+        if run_ok(["git", "push", auth_url, branch], repo_path):
+            pushed = True
+            break
+        print(
+            "Push отклонён (скорее всего, в репозиторий в это же время пишет другой "
+            "процесс) - подтягиваю изменения и пробую снова, попытка {0} из {1}...".format(
+                attempt + 1, push_retries
+            )
+        )
+        run(["git", "pull", auth_url, branch], repo_path)
+
+    if not pushed:
+        sys.exit("Не удалось запушить в GitHub после {0} попыток.".format(push_retries))
+
     print("Успешно запушено в GitHub.")
