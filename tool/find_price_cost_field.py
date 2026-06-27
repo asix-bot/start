@@ -125,13 +125,20 @@ def find_item_full_row_sql(server, database, user, password, items_table, id_fie
 
 
 def list_dbf_rg_tables(base_path):
-    return sorted(set(p.stem.upper() for p in base_path.glob("RG*.DBF") if p.stem.upper().startswith("RG")))
+    # RG* - периодические регистры накопления (остатки на конец периода).
+    # RA* - регистры движений документов (приход/расход с суммами по каждому
+    # документу) - именно тут может быть цена/себестоимость конкретной
+    # поставки, а не агрегированный остаток.
+    names = set()
+    for prefix in ("RG", "RA"):
+        names.update(p.stem.upper() for p in base_path.glob("{0}*.DBF".format(prefix)) if p.stem.upper().startswith(prefix))
+    return sorted(names)
 
 
 def list_sql_rg_tables(server, database, user, password):
     output = run_query_raw(
         server, database, user, password,
-        "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%'",
+        "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%' OR TABLE_NAME LIKE 'RA%'",
     )
     names = []
     for line in output.splitlines():
@@ -141,7 +148,23 @@ def list_sql_rg_tables(server, database, user, password):
     return names
 
 
+def _numeric_fields(row_items):
+    result = []
+    for field_name, value in row_items:
+        try:
+            result.append((field_name, float(str(value).strip().replace(",", "."))))
+        except (TypeError, ValueError):
+            continue
+    return result
+
+
 def scan_dbf_table_for_item(base_path, table_name, encoding, item_id, price, cost):
+    """Ищет совпадение и напрямую (поле = цена/себестоимость), и как
+    отношение "сумма / количество" - в регистрах движений документов (RA*)
+    цена/себестоимость часто хранится как ИТОГОВАЯ сумма по строке, а не
+    цена за единицу, поэтому делим каждое числовое поле на каждое другое
+    числовое поле той же строки (похожее на количество) и сравниваем
+    результат с искомым значением."""
     table = read_dbf_table(base_path, table_name, encoding)
     matches = []
     for row in table:
@@ -151,6 +174,16 @@ def scan_dbf_table_for_item(base_path, table_name, encoding, item_id, price, cos
         for field_name, value in row.items():
             if close_enough(value, price) or close_enough(value, cost):
                 matches.append((field_name, value, dict(row)))
+        numeric = _numeric_fields(row.items())
+        for sum_field, sum_value in numeric:
+            for qty_field, qty_value in numeric:
+                if sum_field == qty_field or qty_value in (0, 0.0):
+                    continue
+                unit_value = sum_value / qty_value
+                if close_enough(unit_value, price) or close_enough(unit_value, cost):
+                    matches.append((
+                        "{0}/{1}".format(sum_field, qty_field), unit_value, dict(row)
+                    ))
     return matches
 
 
@@ -164,6 +197,15 @@ def scan_sql_table_for_item(server, database, user, password, table_name, item_i
         for value in row:
             if close_enough(value, price) or close_enough(value, cost):
                 matches.append((table_name, row))
+                continue
+        numeric = _numeric_fields(list(enumerate(row)))
+        for sum_idx, sum_value in numeric:
+            for qty_idx, qty_value in numeric:
+                if sum_idx == qty_idx or qty_value in (0, 0.0):
+                    continue
+                unit_value = sum_value / qty_value
+                if close_enough(unit_value, price) or close_enough(unit_value, cost):
+                    matches.append((table_name, row))
     return matches
 
 
