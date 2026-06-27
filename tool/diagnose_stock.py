@@ -78,21 +78,24 @@ def run(index, article):
         encoding = base_cfg.get("encoding", config.get("encoding", "cp866"))
 
         items = read_dbf_table(base_path, base_cfg["items_table"], encoding)
-        item_id = None
+        item_ids = []
         for row in items:
             if str(row.get(base_cfg["items_article_field"], "")).strip() == article:
-                item_id = row[base_cfg["items_id_field"]]
-                break
-        if item_id is None:
+                item_ids.append(row[base_cfg["items_id_field"]])
+        if not item_ids:
             sys.exit("Товар с артикулом {0} не найден.".format(article))
-        print("Найден ID: '{0}'".format(item_id))
+        # Артикул (SP4890) общий на ВСЕ размерные варианты одной модели -
+        # под одним article может быть несколько разных товаров (ID),
+        # поэтому берём ВСЕ совпадения, а не только первый.
+        print("Найдены ID товаров ({0} шт.): {1}".format(len(item_ids), item_ids))
 
-        print("\n--- все строки stock_table для этого ID, без агрегации ---")
+        print("\n--- все строки stock_table для этих ID, без агрегации ---")
         stock = read_dbf_table(base_path, base_cfg["stock_table"], encoding)
         item_field = base_cfg["stock_item_field"]
+        item_id_set = set(item_ids)
         count = 0
         for row in stock:
-            if row[item_field] == item_id:
+            if row[item_field] in item_id_set:
                 count += 1
                 print(count, dict(row))
         print("\nВсего найдено строк:", count)
