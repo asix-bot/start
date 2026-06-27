@@ -27,6 +27,7 @@ from main import (
     CONFIG_PATH,
     export_base_dbf,
     export_base_sql,
+    extract_free_text_tag,
     extract_size,
 )
 
@@ -101,9 +102,11 @@ def run(articles_to_check):
             if str(info.get("article", "")).strip() != base_article:
                 continue
             name = info.get("name", "")
-            actual_size = extract_size(name)
             if requested_size is not None:
-                if actual_size != requested_size:
+                # Хвост может быть либо явным размером ("Размер:"), либо
+                # текстом в скобках, приклеенным только при коллизии
+                # артикулов (см. main.export_base) - проверяем оба варианта.
+                if extract_size(name) != requested_size and extract_free_text_tag(name) != requested_size:
                     continue
             found_id = item_id
             found_name = name

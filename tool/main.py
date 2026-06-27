@@ -90,10 +90,25 @@ def _slugify_characteristic(text):
 
 
 def extract_size(name):
+    """Явный размер из характеристики "Размер" (текст "р.NN" в DESCR).
+    Это надёжный сигнал - применяем его к артикулу всегда, даже если товар
+    единственный в своей модели (например partner_sources)."""
     name = name or ""
     match = SIZE_PATTERN.search(name)
     if match:
         return match.group(1)
+    return None
+
+
+def extract_free_text_tag(name):
+    """Последний текст в скобках в конце названия (цвет/материал/габариты/
+    номер модели - НЕ обязательно размер). В отличие от extract_size() это
+    ненадёжный сигнал: товар с единственным вариантом тоже может иметь
+    скобки в названии (например "(металл)", "(синий)") без какого-либо
+    реального размерного варианта. Поэтому не приклеиваем это к артикулу
+    всегда - используем только как один из способов различить КОЛЛИЗИЮ
+    артикулов (см. export_base), когда explicit-размера нет."""
+    name = name or ""
     match = TRAILING_PAREN_PATTERN.search(name)
     if match:
         slug = _slugify_characteristic(match.group(1))
@@ -383,6 +398,10 @@ def export_base(base_cfg, default_encoding, sql_auth, exclude_zero_stock=False):
         if size:
             article_out = "{0}{1}-{2}".format(raw_article, suffix, size)
         else:
+            # Скобки в названии (если есть) НЕ приклеиваем сюда - они часто
+            # не размер (цвет/материал/модель), см. extract_free_text_tag().
+            # Их используем только ниже, если этот артикул реально
+            # коллизирует с другим товаром.
             article_out = "{0}{1}".format(raw_article, suffix)
         out_rows.append(
             {
@@ -401,15 +420,38 @@ def export_base(base_cfg, default_encoding, sql_auth, exclude_zero_stock=False):
     # нескольких разных товаров, например цвета одной модели), несколько
     # разных внутренних товаров 1С могут получить ОДИНАКОВЫЙ итоговый
     # артикул - они бы перезатирали друг друга у любого потребителя,
-    # читающего CSV в словарь по артикулу. Различаем такие дубликаты
-    # внутренним кодом товара (CODE/ID).
+    # читающего CSV в словарь по артикулу. Различаем такие дубликаты:
+    # сначала пробуем текст в скобках (цвет/материал/модель - см.
+    # extract_free_text_tag), если он сам уникален внутри коллизирующей
+    # группы; иначе - внутренним кодом товара (CODE/ID). Скобки НЕ
+    # приклеиваются, если коллизии нет - товар с единственным вариантом
+    # получает чистый базовый артикул, даже если в названии есть скобки.
     article_counts = {}
     for row in out_rows:
         article_counts[row["article"]] = article_counts.get(row["article"], 0) + 1
+
+    collision_groups = {}
     for row in out_rows:
         if article_counts[row["article"]] > 1:
-            disambiguator = row["_disambiguator"] or str(row["_item_id"]).strip()
-            row["article"] = "{0}-{1}".format(row["article"], disambiguator)
+            collision_groups.setdefault(row["article"], []).append(row)
+
+    for rows in collision_groups.values():
+        tag_counts = {}
+        tags = {}
+        for row in rows:
+            tag = extract_free_text_tag(row["name"])
+            tags[id(row)] = tag
+            if tag:
+                tag_counts[tag] = tag_counts.get(tag, 0) + 1
+        for row in rows:
+            tag = tags[id(row)]
+            if tag and tag_counts[tag] == 1:
+                row["article"] = "{0}-{1}".format(row["article"], tag)
+            else:
+                disambiguator = row["_disambiguator"] or str(row["_item_id"]).strip()
+                row["article"] = "{0}-{1}".format(row["article"], disambiguator)
+
+    for row in out_rows:
         del row["_item_id"]
         del row["_disambiguator"]
     return out_rows
