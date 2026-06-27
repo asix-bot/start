@@ -64,15 +64,20 @@ def read_dbf_table(base_path, table_name, encoding):
     return DBF(str(table_path), encoding=encoding, ignore_missing_memofile=True)
 
 
-def find_item_id_dbf(base_path, items_table, encoding, article_field, fallback_field, id_field, base_article):
+def find_all_item_ids_dbf(base_path, items_table, encoding, article_field, fallback_field, id_field, base_article):
+    """Артикул (SP4890) общий на ВСЕ размерные варианты одной модели - значит
+    под одним base_article может быть несколько разных товаров (разных
+    размеров). Возвращает список (item_id, row) для каждого совпадения, а не
+    только первого - иначе можно случайно проверить не тот размер."""
     table = read_dbf_table(base_path, items_table, encoding)
+    results = []
     for row in table:
         value = str(row.get(article_field, "")).strip()
         if not value and fallback_field:
             value = str(row.get(fallback_field, "")).strip()
         if value == base_article:
-            return row[id_field], dict(row)
-    return None, None
+            results.append((row[id_field], dict(row)))
+    return results
 
 
 def list_sql_columns(server, database, user, password, table_name):
@@ -88,12 +93,15 @@ def list_sql_columns(server, database, user, password, table_name):
     return names
 
 
-def find_item_id_sql(server, database, user, password, items_table, article_field, fallback_field, id_field, base_article):
+def find_all_item_ids_sql(server, database, user, password, items_table, article_field, fallback_field, id_field, base_article):
+    """Аналог find_all_item_ids_dbf - SP4890 общий на все размерные варианты,
+    под одним base_article может быть несколько разных товаров."""
     cols = [id_field, article_field]
     if fallback_field:
         cols.append(fallback_field)
     query = "SELECT {0} FROM {1}".format(", ".join(cols), items_table)
     rows = run_query(server, database, user, password, query)
+    results = []
     for row in rows:
         if len(row) < 2:
             continue
@@ -101,8 +109,8 @@ def find_item_id_sql(server, database, user, password, items_table, article_fiel
         if not article and fallback_field and len(row) > 2:
             article = row[2].strip()
         if article == base_article:
-            return row[0].strip()
-    return None
+            results.append(row[0].strip())
+    return results
 
 
 def find_item_full_row_sql(server, database, user, password, items_table, id_field, item_id):
@@ -188,65 +196,77 @@ def run(article, price, cost):
         database = base_cfg["sql_database"]
         user = sql_auth["user"]
         password = sql_auth["password"]
-        item_id = find_item_id_sql(server, database, user, password, base_cfg["items_table"], article_field, fallback_field, id_field, base_article)
-        if not item_id:
+        item_ids = find_all_item_ids_sql(server, database, user, password, base_cfg["items_table"], article_field, fallback_field, id_field, base_article)
+        if not item_ids:
             sys.exit("Товар с артикулом '{0}' не найден в items_table".format(base_article))
-        print("ID товара: '{0}'".format(item_id))
-
-        catalog_row, catalog_columns = find_item_full_row_sql(server, database, user, password, base_cfg["items_table"], id_field, item_id)
-        if catalog_row:
-            print("Строка карточки товара ({0}): {1}".format(base_cfg["items_table"], catalog_row))
-            for idx, value in enumerate(catalog_row):
-                if close_enough(value, price) or close_enough(value, cost):
-                    col_name = catalog_columns[idx] if idx < len(catalog_columns) else "?"
-                    print("  СОВПАДЕНИЕ В КАРТОЧКЕ: колонка #{0} ('{1}') = '{2}'".format(idx, col_name, value))
+        print("Найдено товаров с этим базовым артикулом (разные размеры/варианты): {0}".format(len(item_ids)))
 
         rg_tables = list_sql_rg_tables(server, database, user, password)
         print("Найдено RG-таблиц: {0}".format(len(rg_tables)))
+
         any_match = False
-        for table_name in rg_tables:
-            try:
-                matches = scan_sql_table_for_item(server, database, user, password, table_name, item_id, price, cost)
-            except Exception as exc:
-                print("  {0}: ошибка чтения - {1}".format(table_name, exc))
-                continue
-            if matches:
-                any_match = True
-                print("\n--- {0}: найдены строки с товаром И числом близким к цене/себестоимости ---".format(table_name))
-                for _, row in matches:
-                    print("  {0}".format(row))
+        for item_id in item_ids:
+            print("\n=== Вариант ID='{0}' ===".format(item_id))
+            catalog_row, catalog_columns = find_item_full_row_sql(server, database, user, password, base_cfg["items_table"], id_field, item_id)
+            if catalog_row:
+                print("Строка карточки товара ({0}): {1}".format(base_cfg["items_table"], catalog_row))
+                for idx, value in enumerate(catalog_row):
+                    if close_enough(value, price) or close_enough(value, cost):
+                        col_name = catalog_columns[idx] if idx < len(catalog_columns) else "?"
+                        any_match = True
+                        print("  СОВПАДЕНИЕ В КАРТОЧКЕ: колонка #{0} ('{1}') = '{2}'".format(idx, col_name, value))
+
+            for table_name in rg_tables:
+                try:
+                    matches = scan_sql_table_for_item(server, database, user, password, table_name, item_id, price, cost)
+                except Exception as exc:
+                    print("  {0}: ошибка чтения - {1}".format(table_name, exc))
+                    continue
+                if matches:
+                    any_match = True
+                    print("--- {0}: найдены строки с товаром И числом близким к цене/себестоимости ---".format(table_name))
+                    for _, row in matches:
+                        print("  {0}".format(row))
         if not any_match:
-            print("\nНи в одной RG-таблице не найдено строки с этим товаром и подходящим числом.")
+            print("\nНи в карточке, ни в одной RG-таблице ни для одного варианта не найдено подходящего числа.")
     else:
         base_path = Path(base_cfg["path"])
         encoding = base_cfg.get("encoding", default_encoding)
-        item_id, item_row = find_item_id_dbf(base_path, base_cfg["items_table"], encoding, article_field, fallback_field, id_field, base_article)
-        if not item_id:
+        items = find_all_item_ids_dbf(base_path, base_cfg["items_table"], encoding, article_field, fallback_field, id_field, base_article)
+        if not items:
             sys.exit("Товар с артикулом '{0}' не найден в items_table".format(base_article))
-        print("ID товара: '{0}'".format(item_id))
-        print("Строка карточки товара: {0}".format(item_row))
+        print("Найдено товаров с этим базовым артикулом (разные размеры/варианты): {0}".format(len(items)))
 
         rg_tables = list_dbf_rg_tables(base_path)
         print("Найдено RG-таблиц: {0}".format(len(rg_tables)))
+
         any_match = False
-        for table_name in rg_tables:
-            try:
-                matches = scan_dbf_table_for_item(base_path, table_name + ".DBF", encoding, item_id, price, cost)
-            except Exception as exc:
-                print("  {0}: ошибка чтения - {1}".format(table_name, exc))
-                continue
-            if matches:
-                any_match = True
-                print("\n--- {0}: найдены поля с числом близким к цене/себестоимости ---".format(table_name))
-                seen_rows = set()
-                for field_name, value, row in matches:
-                    row_key = tuple(sorted((k, str(v)) for k, v in row.items()))
-                    marker = "  поле '{0}'='{1}' | строка: {2}".format(field_name, value, row)
-                    if row_key not in seen_rows:
-                        seen_rows.add(row_key)
-                        print(marker)
+        for item_id, item_row in items:
+            print("\n=== Вариант ID='{0}' ===".format(item_id))
+            print("Строка карточки товара: {0}".format(item_row))
+            for field_name, value in item_row.items():
+                if close_enough(value, price) or close_enough(value, cost):
+                    any_match = True
+                    print("  СОВПАДЕНИЕ В КАРТОЧКЕ: поле '{0}' = '{1}'".format(field_name, value))
+
+            for table_name in rg_tables:
+                try:
+                    matches = scan_dbf_table_for_item(base_path, table_name + ".DBF", encoding, item_id, price, cost)
+                except Exception as exc:
+                    print("  {0}: ошибка чтения - {1}".format(table_name, exc))
+                    continue
+                if matches:
+                    any_match = True
+                    print("--- {0}: найдены поля с числом близким к цене/себестоимости ---".format(table_name))
+                    seen_rows = set()
+                    for field_name, value, row in matches:
+                        row_key = tuple(sorted((k, str(v)) for k, v in row.items()))
+                        marker = "  поле '{0}'='{1}' | строка: {2}".format(field_name, value, row)
+                        if row_key not in seen_rows:
+                            seen_rows.add(row_key)
+                            print(marker)
         if not any_match:
-            print("\nНи в одной RG-таблице не найдено строки с этим товаром и подходящим числом.")
+            print("\nНи в карточке, ни в одной RG-таблице ни для одного варианта не найдено подходящего числа.")
 
 
 def main():
