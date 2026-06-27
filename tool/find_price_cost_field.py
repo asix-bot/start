@@ -75,6 +75,19 @@ def find_item_id_dbf(base_path, items_table, encoding, article_field, fallback_f
     return None, None
 
 
+def list_sql_columns(server, database, user, password, table_name):
+    output = run_query_raw(
+        server, database, user, password,
+        "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='{0}'".format(table_name),
+    )
+    names = []
+    for line in output.splitlines():
+        line = line.strip()
+        if line and line not in ("COLUMN_NAME",) and not line.startswith("-"):
+            names.append(line)
+    return names
+
+
 def find_item_id_sql(server, database, user, password, items_table, article_field, fallback_field, id_field, base_article):
     cols = [id_field, article_field]
     if fallback_field:
@@ -90,6 +103,17 @@ def find_item_id_sql(server, database, user, password, items_table, article_fiel
         if article == base_article:
             return row[0].strip()
     return None
+
+
+def find_item_full_row_sql(server, database, user, password, items_table, id_field, item_id):
+    columns = list_sql_columns(server, database, user, password, items_table)
+    query = "SELECT * FROM {0} WHERE LTRIM(RTRIM(CAST({1} AS NVARCHAR(50)))) = '{2}'".format(
+        items_table, id_field, item_id
+    )
+    rows = run_query(server, database, user, password, query)
+    if not rows:
+        return None, []
+    return rows[0], columns
 
 
 def list_dbf_rg_tables(base_path):
@@ -168,6 +192,14 @@ def run(article, price, cost):
         if not item_id:
             sys.exit("Товар с артикулом '{0}' не найден в items_table".format(base_article))
         print("ID товара: '{0}'".format(item_id))
+
+        catalog_row, catalog_columns = find_item_full_row_sql(server, database, user, password, base_cfg["items_table"], id_field, item_id)
+        if catalog_row:
+            print("Строка карточки товара ({0}): {1}".format(base_cfg["items_table"], catalog_row))
+            for idx, value in enumerate(catalog_row):
+                if close_enough(value, price) or close_enough(value, cost):
+                    col_name = catalog_columns[idx] if idx < len(catalog_columns) else "?"
+                    print("  СОВПАДЕНИЕ В КАРТОЧКЕ: колонка #{0} ('{1}') = '{2}'".format(idx, col_name, value))
 
         rg_tables = list_sql_rg_tables(server, database, user, password)
         print("Найдено RG-таблиц: {0}".format(len(rg_tables)))
