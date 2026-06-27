@@ -1403,4 +1403,30 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_3.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>4124ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Гантель разборная MB BARBELL Atlet 26.5 кг</Title>
+    <Description><![CDATA[Наборная обрезиненная гантель 26.5 кг. Отлично подойдет тем, кто хочет привести себя в форму. Удобный состав блинов позволит плавно изменять нагрузку. ]]></Description>
+    <Price>9360</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Фитнес и тренажёры</GoodsType>
+  <FitnessType>Силовые тренажёры и инвентарь</FitnessType>
+  <GoodsSubType>Гантели</GoodsSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <Complect>Гантель</Complect>
+  <Construction>Разборная</Construction>
+  <Weight>26.5</Weight>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_5.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_6.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_7.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_8.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
