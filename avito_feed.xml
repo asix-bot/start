@@ -1758,4 +1758,24 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/3762з/ozon_9.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>8693з</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Бензиновый триммер Huter GGT 1300S</Title>
+    <Description><![CDATA[Бензиновый триммер Huter GGT 1300S предназначен для уборки травы и небольших кустарников на дачных и приусадебных участках. Оснащён двухтактным двигателем мощностью 1,3 кВт (1,7 л.с.) с верхним расположением, что позволяет косить даже влажную траву. Триммер имеет разборную штангу для удобного хранения и транспортировки, велосипедную рукоять для широкого замаха и удобного управления, а также систему антивибрации для комфортной работы. В комплекте поставляется леска толщиной 2,4 мм и трёхлопастной нож, плечевой ремень. Прозрачный топливный бак упрощает контроль уровня топлива.]]></Description>
+    <Price>9800</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Для сада и дачи</GoodsType>
+  <ProductGardenType>Садовая техника</ProductGardenType>
+  <GardenEquipmentSubType>Триммеры</GardenEquipmentSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <Brand>Huter</Brand>
+  <Model>GGT 1300S</Model>
+  <TrimmerType>Бензиновый</TrimmerType>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8693з/ozon_1.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
