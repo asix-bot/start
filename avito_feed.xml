@@ -1475,4 +1475,22 @@ Compact LX Синий NEW станет отличным выбором для л
 
     </Images>
   </Ad>
+  <Ad>
+    <Id>3525ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Велотренажер Evo Fitness Ametist</Title>
+    <Description><![CDATA[Магнитный вертикальный велотренажер Evo Fitness Ametist предназначен для кардиотренировок в домашних условиях. Рассчитан на пользователей весом до 140 кг.]]></Description>
+    <Price>25200</Price>
+  <Category>Спорт и отдых</Category>
+  <GoodsType>Фитнес и тренажёры</GoodsType>
+  <FitnessType>Кардиотренажёры</FitnessType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <TrainerType>Велотренажёр</TrainerType>
+  <Location>Для дома</Location>
+  <Brand>Evo Fitness</Brand>
+  <Condition>Новое</Condition>
+    <Images>
+
+    </Images>
+  </Ad>
 </Ads>
