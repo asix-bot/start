@@ -1690,4 +1690,24 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/9310з/ozon_1.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>7483з</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Мотокультиватор Huter GMC-6.8 70/5/21</Title>
+    <Description><![CDATA[Бензиновый мотокультиватор Huter GMC-6.8 предназначен для возделывания земли на больших приусадебных участках и небольших фермерских хозяйствах. Оснащён мощным четырёхтактным двигателем 6,8 л.с., который уверенно справляется даже с тяжёлыми суглинистыми почвами. Максимальная ширина обработки составляет 90 см при использовании шести фрез, глубина — до 30 см. Имеет две скорости (вперёд и назад), транспортировочное колесо, защитный щиток и съёмную рукоять для удобного хранения. Система защиты от низкого уровня масла предохраняет двигатель от повреждений. Топливный бак объёмом 3,6 л позволяет реже прерываться на дозаправку.]]></Description>
+    <Price>34500</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Для сада и дачи</GoodsType>
+  <ProductGardenType>Садовая техника</ProductGardenType>
+  <GardenEquipmentSubType>Мотоблоки, культиваторы</GardenEquipmentSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <ProductType>Культиватор</ProductType>
+  <Brand>Huter</Brand>
+  <EngineType>Бензиновый</EngineType>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7483з/ozon_1.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
