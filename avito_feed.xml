@@ -1456,4 +1456,23 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1777ки/ozon_9.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>1307ки</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Бинокль Bushnell 16x50</Title>
+    <Description><![CDATA[Бинокль Bushnell 16x50 — мощный оптический прибор с призмой Porro, разработанный для охоты и наблюдения на больших расстояниях. Обеспечивает 16-кратное увеличение и диаметр объектива 50 мм, что гарантирует яркое и чёткое изображение. Произведён в США под брендом Bushnell — одним из ведущих мировых производителей оптики.]]></Description>
+    <Price>7160</Price>
+  <Category>Охота и рыбалка</Category>
+  <EquipmentType>Охота</EquipmentType>
+  <EquipmentSubType>Монокуляры, бинокли, дальномеры</EquipmentSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <ProductType>Бинокль</ProductType>
+  <Brand>Bushnell</Brand>
+  <DeviceFeature>Призменный</DeviceFeature>
+  <Purpose>Охотничий</Purpose>
+    <Images>
+
+    </Images>
+  </Ad>
 </Ads>
