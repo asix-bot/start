@@ -1533,4 +1533,26 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/9045ки/ozon_9.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>1200з</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Двигатель LIFAN 182F 4-такт., 11 л.с. (На мотоблок</Title>
+    <Description><![CDATA[Бензиновый четырёхтактный одноцилиндровый двигатель Lifan 182F разработан специально для установки на мотоблок АГРО. Обладает рабочим объёмом 337 куб. см, максимальной мощностью 11 л.с. и горизонтальным расположением коленчатого вала, что упрощает монтаж на сельскохозяйственную технику. Работает на бензине АИ-92, оснащён электронной системой зажигания, ручным стартом и системой декомпрессии для лёгкого запуска. Воздушное охлаждение позволяет эксплуатировать двигатель даже в жаркую погоду. Отличается компактными размерами, небольшим весом и простотой в обслуживании.]]></Description>
+    <Price>28700</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Инструменты</GoodsType>
+  <ToolType>Силовая, строительная техника и комплектующие</ToolType>
+  <ToolSubType>Двигатели и моторы</ToolSubType>
+  <DeviceType>Бензиновые двигатели</DeviceType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_1.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_2.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_3.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_4.jpg"/>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_5.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
