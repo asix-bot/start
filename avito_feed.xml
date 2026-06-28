@@ -1670,4 +1670,24 @@ Compact LX Синий NEW станет отличным выбором для л
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19857ки/ozon_9.jpg"/>
     </Images>
   </Ad>
+  <Ad>
+    <Id>9310з</Id>
+    <Address>Ярославская область, Рыбинск, улица Герцена, 39, 152934</Address>
+    <Title>Культиватор бензиновый ASILAK SL-51</Title>
+    <Description><![CDATA[Бензиновый культиватор ASILAK SL-51 предназначен для обработки и культивации почвы на приусадебных участках и огородах. Оснащён 4-тактным двигателем мощностью 5 л.с. с объёмом 161 см³ и червячным редуктором. Регулируемый сошник позволяет подбирать глубину культивации до 24 см, а съёмные секции фрез дают возможность изменять ширину обработки. Для удобства предусмотрены резиновые накладки на рукоятках, дополнительная ручка для переноски и складное транспортировочное колесо. В комплект входят диски защиты растений и дополнительные защитные щитки.]]></Description>
+    <Price>22990</Price>
+  <Category>Ремонт и строительство</Category>
+  <GoodsType>Для сада и дачи</GoodsType>
+  <ProductGardenType>Садовая техника</ProductGardenType>
+  <GardenEquipmentSubType>Мотоблоки, культиваторы</GardenEquipmentSubType>
+  <AdType>Товар приобретен на продажу</AdType>
+  <Condition>Новое</Condition>
+  <ProductType>Культиватор</ProductType>
+  <Brand>ASILAK</Brand>
+  <EngineType>Бензиновый</EngineType>
+  <WholesaleType>Нет</WholesaleType>
+    <Images>
+    <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/9310з/ozon_1.jpg"/>
+    </Images>
+  </Ad>
 </Ads>
