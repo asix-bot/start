@@ -22,6 +22,14 @@ avg_cost_table/sale_price_table - НЕОБЯЗАТЕЛЬНЫ. Если не за
 чтобы можно было запустить экспорт остатков, не дожидаясь, пока найдётся
 точная таблица себестоимости/цены.
 
+Чтение цены/себестоимости (DT3580/DT434) проходит по ВСЕЙ истории документов
+и ощутимо нагружает сервер 1С - поэтому пересчитывается не каждый запуск, а
+раз в price_cache_max_age_hours (по умолчанию 24 часа, см. config.json),
+между пересчётами значения берутся из локального price_cache.json (не
+пушится в git - живёт рядом со скриптом, не в repo_path). Остаток при этом
+всё равно читается и пушится каждый час как раньше - кэш касается только
+цены/себестоимости.
+
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
 Запуск:
@@ -33,7 +41,7 @@ import json
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from dbfread import DBF
@@ -42,6 +50,39 @@ from github_publish import push_files
 from sqlcmd_client import run_query
 
 CONFIG_PATH = Path(__file__).parent / "config.json"
+
+# Расчёт цены/себестоимости читает ВСЮ историю документов (DT3580/DT434,
+# годы накопленных строк) - это ощутимая нагрузка на сервер 1С, а сама
+# цена/себестоимость почти никогда не меняется за час. Поэтому пересчёт
+# идёт не каждый запуск, а раз в PRICE_CACHE_MAX_AGE_HOURS (настраивается
+# через config["price_cache_max_age_hours"]) - между пересчётами берём
+# значения из локального кэша (price_cache.json, не пушится в git).
+PRICE_CACHE_PATH = Path(__file__).parent / "price_cache.json"
+DEFAULT_PRICE_CACHE_MAX_AGE_HOURS = 24
+
+
+def load_price_cache():
+    if not PRICE_CACHE_PATH.exists():
+        return {}
+    try:
+        return json.loads(open(str(PRICE_CACHE_PATH), encoding="utf-8").read())
+    except (ValueError, OSError):
+        return {}
+
+
+def save_price_cache(cache):
+    open(str(PRICE_CACHE_PATH), "w", encoding="utf-8").write(json.dumps(cache, ensure_ascii=False, indent=2))
+
+
+def is_price_cache_fresh(cache, base_name, max_age_hours):
+    entry = cache.get(base_name)
+    if not entry or "computed_at" not in entry:
+        return False
+    try:
+        computed_at = datetime.strptime(entry["computed_at"], "%Y-%m-%dT%H:%M:%S")
+    except ValueError:
+        return False
+    return datetime.now() - computed_at < timedelta(hours=max_age_hours)
 
 # Размер товара зашит как текст внутри названия. Два варианта (по схеме
 # МойСклад - см. ТЗ_аномалия_остатков.md, раздел 4):
@@ -208,7 +249,7 @@ def read_dbf_latest_period_map(
     return result
 
 
-def export_base_dbf(base_cfg, encoding):
+def export_base_dbf(base_cfg, encoding, compute_prices=True):
     base_path = Path(base_cfg["path"])
 
     items = read_dbf_table(base_path, base_cfg["items_table"], encoding)
@@ -242,14 +283,14 @@ def export_base_dbf(base_cfg, encoding):
     )
 
     doc_date_map = {}
-    if base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table"):
+    if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
         try:
             doc_date_map = read_dbf_doc_date_map(base_path, base_cfg["stock_table"], encoding)
         except Exception:
             doc_date_map = {}
 
     sale_price_by_id = {}
-    if base_cfg.get("sale_price_table"):
+    if compute_prices and base_cfg.get("sale_price_table"):
         try:
             sale_price_by_id = read_dbf_latest_doc_value_map(
                 base_path,
@@ -264,7 +305,7 @@ def export_base_dbf(base_cfg, encoding):
             sale_price_by_id = {}
 
     avg_cost_by_id = {}
-    if base_cfg.get("avg_cost_table"):
+    if compute_prices and base_cfg.get("avg_cost_table"):
         try:
             avg_cost_by_id = read_dbf_latest_doc_value_map(
                 base_path,
@@ -353,7 +394,7 @@ def read_sql_latest_period_map(
     return result
 
 
-def export_base_sql(base_cfg, sql_auth):
+def export_base_sql(base_cfg, sql_auth, compute_prices=True):
     server = base_cfg["sql_server"]
     database = base_cfg["sql_database"]
     user = sql_auth["user"]
@@ -398,14 +439,14 @@ def export_base_sql(base_cfg, sql_auth):
     )
 
     doc_date_map = {}
-    if base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table"):
+    if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
         try:
             doc_date_map = read_sql_doc_date_map(server, database, user, password, base_cfg["stock_table"])
         except Exception:
             doc_date_map = {}
 
     sale_price_by_id = {}
-    if base_cfg.get("sale_price_table"):
+    if compute_prices and base_cfg.get("sale_price_table"):
         try:
             sale_price_by_id = read_sql_latest_doc_value_map(
                 server, database, user, password,
@@ -416,7 +457,7 @@ def export_base_sql(base_cfg, sql_auth):
             sale_price_by_id = {}
 
     avg_cost_by_id = {}
-    if base_cfg.get("avg_cost_table"):
+    if compute_prices and base_cfg.get("avg_cost_table"):
         try:
             avg_cost_by_id = read_sql_latest_doc_value_map(
                 server, database, user, password,
@@ -433,15 +474,39 @@ def export_base_sql(base_cfg, sql_auth):
 # Общая склейка результатов (не зависит от типа базы)
 # ---------------------------------------------------------------------------
 
-def export_base(base_cfg, default_encoding, sql_auth, exclude_zero_stock=False):
+def export_base(
+    base_cfg, default_encoding, sql_auth, exclude_zero_stock=False,
+    price_cache=None, price_cache_max_age_hours=DEFAULT_PRICE_CACHE_MAX_AGE_HOURS,
+):
     base_type = base_cfg.get("type", "dbf")
     suffix = base_cfg.get("suffix", "")
+    base_name = base_cfg["name"]
+    if price_cache is None:
+        price_cache = {}
+
+    cache_fresh = is_price_cache_fresh(price_cache, base_name, price_cache_max_age_hours)
+    compute_prices = not cache_fresh
 
     if base_type == "sql":
-        item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_sql(base_cfg, sql_auth)
+        item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_sql(
+            base_cfg, sql_auth, compute_prices=compute_prices
+        )
     else:
         encoding = base_cfg.get("encoding", default_encoding)
-        item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_dbf(base_cfg, encoding)
+        item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_dbf(
+            base_cfg, encoding, compute_prices=compute_prices
+        )
+
+    if compute_prices:
+        price_cache[base_name] = {
+            "computed_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+            "avg_cost_by_id": avg_cost_by_id,
+            "sale_price_by_id": sale_price_by_id,
+        }
+    else:
+        cached_entry = price_cache.get(base_name, {})
+        avg_cost_by_id = cached_entry.get("avg_cost_by_id", {})
+        sale_price_by_id = cached_entry.get("sale_price_by_id", {})
 
     out_rows = []
     for item_id, item_info in item_by_id.items():
@@ -555,6 +620,8 @@ def main():
     encoding = config.get("encoding", "cp866")
     sql_auth = config.get("sql_auth", {})
     exclude_zero_stock = config.get("exclude_zero_stock", False)
+    price_cache_max_age_hours = config.get("price_cache_max_age_hours", DEFAULT_PRICE_CACHE_MAX_AGE_HOURS)
+    price_cache = load_price_cache()
 
     all_rows = []
     log_lines = ["Запуск экспорта: {0:%Y-%m-%d %H:%M:%S}".format(run_started_at)]
@@ -567,7 +634,10 @@ def main():
         print("Читаю базу {0} [{1}] ({2})...".format(base_cfg["name"], base_type, location))
         base_started_at = time.perf_counter()
         try:
-            rows = export_base(base_cfg, encoding, sql_auth, exclude_zero_stock)
+            rows = export_base(
+                base_cfg, encoding, sql_auth, exclude_zero_stock,
+                price_cache=price_cache, price_cache_max_age_hours=price_cache_max_age_hours,
+            )
         except Exception as exc:
             elapsed = time.perf_counter() - base_started_at
             print("  Ошибка при чтении базы {0}: {1}".format(base_cfg["name"], exc))
@@ -582,6 +652,8 @@ def main():
             base_cfg["name"], len(rows), elapsed, zero_stock_count
         ))
         all_rows.extend(rows)
+
+    save_price_cache(price_cache)
 
     total_elapsed = (datetime.now() - run_started_at).total_seconds()
     total_zero = sum(1 for r in all_rows if float(r["stock"]) == 0)
