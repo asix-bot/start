@@ -219,11 +219,17 @@ def derive_doc_date_table(stock_table_name, override=None):
     return name
 
 
-def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", date_field="DATE"):
+def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", date_field="DATE_TIME_IDDOC"):
     """IDDOC -> DATE из регистра движений (RAxxxx.DBF - парный к stock_table,
     см. derive_doc_date_table). Нужно, чтобы найти САМЫЙ ПОЗДНИЙ документ для
     товара в других таблицах (цена/себестоимость), которые сами по себе дату
-    не хранят надёжно."""
+    не хранят надёжно.
+
+    ПРОВЕРЕНО НЕ ДЛЯ ВСЕХ типов документов: регистр движений содержит
+    приходные накладные (DT434), но не обязательно расходные счета (DT3580) -
+    если документ туда не попал, date_field для него просто не найдётся, и
+    read_dbf_latest_doc_value_map ниже использует запасной вариант (любое
+    найденное значение) вместо пропуска товара."""
     result = {}
     for row in read_dbf_table(base_path, table_name, encoding):
         doc = row.get(doc_field)
@@ -236,16 +242,28 @@ def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", da
 def read_dbf_latest_doc_value_map(base_path, table_name, item_field, value_field, doc_field, doc_date_map, encoding):
     """Для каждого товара берёт value_field из строки с САМЫМ ПОЗДНИМ
     документом (по doc_date_map) - например цену/себестоимость из последней
-    накладной, а не из первой попавшейся строки."""
+    накладной. Если для документа дата не нашлась (например тип документа не
+    отражается в регистре движений, как иногда бывает с расходными счетами) -
+    строка всё равно используется как запасной вариант (чтобы поле не
+    осталось пустым), но с низшим приоритетом - датированная строка всегда
+    замещает недатированную."""
     best_date = {}
     result = {}
     for row in read_dbf_table(base_path, table_name, encoding):
         item = row[item_field]
         date = doc_date_map.get(row.get(doc_field))
-        if date is None:
+        has_date = date is not None
+        if item not in best_date:
+            best_date[item] = (has_date, date)
+            result[item] = row[value_field]
             continue
-        if item not in best_date or date > best_date[item]:
-            best_date[item] = date
+        prev_has_date, prev_date = best_date[item]
+        if has_date and (not prev_has_date or date > prev_date):
+            best_date[item] = (has_date, date)
+            result[item] = row[value_field]
+        elif not has_date and not prev_has_date:
+            # Нет даты ни у текущей, ни у предыдущей строки - берём
+            # последнюю встреченную как лучший доступный вариант.
             result[item] = row[value_field]
     return result
 
@@ -365,8 +383,8 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
 # SQL Server (через sqlcmd.exe)
 # ---------------------------------------------------------------------------
 
-def read_sql_doc_date_map(server, database, user, password, table, doc_field="IDDOC", date_field="DATE"):
-    """SQL-аналог read_dbf_doc_date_map - IDDOC -> DATE из stock_table."""
+def read_sql_doc_date_map(server, database, user, password, table, doc_field="IDDOC", date_field="DATE_TIME_IDDOC"):
+    """SQL-аналог read_dbf_doc_date_map - IDDOC -> DATE из регистра движений (RAxxxx)."""
     query = "SELECT DISTINCT {0}, {1} FROM {2}".format(doc_field, date_field, table)
     rows = run_query(server, database, user, password, query)
     result = {}
@@ -382,9 +400,13 @@ def read_sql_doc_date_map(server, database, user, password, table, doc_field="ID
 
 def read_sql_latest_doc_value_map(server, database, user, password, table, item_field, value_field, doc_field, doc_date_map):
     """SQL-аналог read_dbf_latest_doc_value_map - для каждого товара берёт
-    value_field из строки с САМЫМ ПОЗДНИМ документом (по дате из stock_table).
-    Сравнение дат идёт как строк ('YYYY-MM-DD...') - формат sqlcmd для
-    datetime сортируется лексикографически так же, как по времени."""
+    value_field из строки с САМЫМ ПОЗДНИМ документом (по дате из регистра
+    движений). Сравнение дат идёт как строк ('YYYY-MM-DD...') - формат
+    sqlcmd для datetime сортируется лексикографически так же, как по
+    времени. Если для документа дата не нашлась (некоторые типы документов,
+    например расходные счета, могут не отражаться в регистре движений) -
+    строка используется как запасной вариант с низшим приоритетом, а не
+    пропускается - иначе поле осталось бы пустым для всех товаров."""
     query = "SELECT {0}, {1}, {2} FROM {3}".format(item_field, value_field, doc_field, table)
     rows = run_query(server, database, user, password, query)
     best_date = {}
@@ -396,10 +418,16 @@ def read_sql_latest_doc_value_map(server, database, user, password, table, item_
         value = row[1].strip()
         doc = row[2].strip()
         date = doc_date_map.get(doc)
-        if not date:
+        has_date = bool(date)
+        if item not in best_date:
+            best_date[item] = (has_date, date)
+            result[item] = value
             continue
-        if item not in best_date or date > best_date[item]:
-            best_date[item] = date
+        prev_has_date, prev_date = best_date[item]
+        if has_date and (not prev_has_date or date > prev_date):
+            best_date[item] = (has_date, date)
+            result[item] = value
+        elif not has_date and not prev_has_date:
             result[item] = value
     return result
 
