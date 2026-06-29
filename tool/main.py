@@ -649,7 +649,18 @@ def main():
     exclude_zero_stock = config.get("exclude_zero_stock", False)
     price_recalc_window_start = config.get("price_recalc_window_start", DEFAULT_PRICE_RECALC_WINDOW_START)
     price_recalc_window_end = config.get("price_recalc_window_end", DEFAULT_PRICE_RECALC_WINDOW_END)
-    price_cache = load_price_cache()
+
+    force_price_recalc = "--force-price-recalc" in sys.argv
+    if force_price_recalc:
+        # Для ручной проверки прямо сейчас, не дожидаясь вечернего окна -
+        # игнорируем и кэш, и окно времени, пересчитываем цену/себестоимость
+        # для всех баз в этом запуске независимо от текущего часа.
+        print("--force-price-recalc: окно времени и кэш цены/себестоимости игнорируются на этот запуск.")
+        price_cache = {}
+        price_recalc_window_start = "00:00"
+        price_recalc_window_end = "23:59"
+    else:
+        price_cache = load_price_cache()
 
     all_rows = []
     log_lines = ["Запуск экспорта: {0:%Y-%m-%d %H:%M:%S}".format(run_started_at)]

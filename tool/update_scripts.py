@@ -56,6 +56,7 @@ SYNCED_FILES = (
     "update_scripts.py",
     "update_all.bat",
     "run_export.bat",
+    "run_export_force_prices.bat",
     "setup.bat",
     "setup_schedule.bat",
     "enable_tls12.bat",
