@@ -172,8 +172,11 @@ def list_dbf_rg_tables(base_path):
     # SC* - справочники, включая ПОДЧИНЁННЫЕ (например "Цены номенклатуры" -
     # подчинённый справочник, привязанный и к товару, и к типу цены из
     # справочника "Типы цен" - именно там может лежать текущая цена).
+    # 1S* - служебные таблицы 1С (1SCONST - периодические константы с полем
+    # OBJID, которое МОЖЕТ ссылаться на объект/товар - редкий, но известный
+    # способ привязать произвольное значение к объекту в 1С 7.7).
     names = set()
-    for prefix in ("RG", "RA", "DT", "DH", "SC"):
+    for prefix in ("RG", "RA", "DT", "DH", "SC", "1S"):
         names.update(p.stem.upper() for p in base_path.glob("{0}*.DBF".format(prefix)) if p.stem.upper().startswith(prefix))
     return sorted(names)
 
@@ -182,7 +185,7 @@ def list_sql_rg_tables(server, database, user, password):
     output = run_query_raw(
         server, database, user, password,
         "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%' OR TABLE_NAME LIKE 'RA%' "
-        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%' OR TABLE_NAME LIKE 'SC%'",
+        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%' OR TABLE_NAME LIKE 'SC%' OR TABLE_NAME LIKE '1S%'",
     )
     names = []
     for line in output.splitlines():
