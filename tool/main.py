@@ -205,31 +205,27 @@ def read_dbf_table(base_path, table_name, encoding):
     return DBF(str(table_path), encoding=encoding, ignore_missing_memofile=True)
 
 
-def derive_doc_date_table(stock_table_name, override=None):
-    """stock_table (RGxxxx) - это ИТОГОВЫЙ периодический регистр, в нём НЕТ
-    IDDOC/DATE. Даты движений хранятся в ПАРНОМ регистре движений RAxxxx с
-    тем же числовым суффиксом (RG1130 <-> RA1130) - его и нужно читать для
-    дат документов. override (doc_date_table в config.json) позволяет
-    указать таблицу явно, если соответствие RG->RA для какой-то базы другое."""
-    if override:
-        return override
-    name = stock_table_name
-    if name.upper().startswith("RG"):
-        return "RA" + name[2:]
+# 1SJOURN - служебный ГЛОБАЛЬНЫЙ журнал документов 1С 7.7: содержит IDDOC и
+# DATE для ВСЕХ типов документов (счетов, накладных и т.д.), в отличие от
+# регистра движений RAxxxx, который покрывает только те документы, что
+# реально подвинули остаток (расходные счета туда не всегда попадают - из-за
+# этого даты для DT3580/цены продажи раньше не находились). Имя таблицы
+# одно и то же для всех баз (генерируется самой 1С), поэтому не привязано к
+# stock_table и не требует отдельной настройки в config.json.
+DEFAULT_DOC_DATE_TABLE = "1SJOURN"
+
+
+def doc_date_table_name(base_cfg, override=None):
+    name = override or base_cfg.get("doc_date_table") or DEFAULT_DOC_DATE_TABLE
+    if base_cfg.get("type", "dbf") == "dbf" and not name.upper().endswith(".DBF"):
+        name += ".DBF"
     return name
 
 
-def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", date_field="DATE_TIME_IDDOC"):
-    """IDDOC -> DATE из регистра движений (RAxxxx.DBF - парный к stock_table,
-    см. derive_doc_date_table). Нужно, чтобы найти САМЫЙ ПОЗДНИЙ документ для
-    товара в других таблицах (цена/себестоимость), которые сами по себе дату
-    не хранят надёжно.
-
-    ПРОВЕРЕНО НЕ ДЛЯ ВСЕХ типов документов: регистр движений содержит
-    приходные накладные (DT434), но не обязательно расходные счета (DT3580) -
-    если документ туда не попал, date_field для него просто не найдётся, и
-    read_dbf_latest_doc_value_map ниже использует запасной вариант (любое
-    найденное значение) вместо пропуска товара."""
+def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", date_field="DATE"):
+    """IDDOC -> DATE из глобального журнала документов 1SJOURN. Нужно, чтобы
+    найти САМЫЙ ПОЗДНИЙ документ для товара в других таблицах (цена/
+    себестоимость), которые сами по себе дату не хранят надёжно."""
     result = {}
     for row in read_dbf_table(base_path, table_name, encoding):
         doc = row.get(doc_field)
@@ -341,8 +337,7 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
     doc_date_map = {}
     if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
         try:
-            doc_date_table = derive_doc_date_table(base_cfg["stock_table"], base_cfg.get("doc_date_table"))
-            doc_date_map = read_dbf_doc_date_map(base_path, doc_date_table, encoding)
+            doc_date_map = read_dbf_doc_date_map(base_path, doc_date_table_name(base_cfg), encoding)
         except Exception:
             doc_date_map = {}
 
@@ -383,8 +378,8 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
 # SQL Server (через sqlcmd.exe)
 # ---------------------------------------------------------------------------
 
-def read_sql_doc_date_map(server, database, user, password, table, doc_field="IDDOC", date_field="DATE_TIME_IDDOC"):
-    """SQL-аналог read_dbf_doc_date_map - IDDOC -> DATE из регистра движений (RAxxxx)."""
+def read_sql_doc_date_map(server, database, user, password, table, doc_field="IDDOC", date_field="DATE"):
+    """SQL-аналог read_dbf_doc_date_map - IDDOC -> DATE из глобального журнала документов 1SJOURN."""
     query = "SELECT DISTINCT {0}, {1} FROM {2}".format(doc_field, date_field, table)
     rows = run_query(server, database, user, password, query)
     result = {}
@@ -508,8 +503,7 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
     doc_date_map = {}
     if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
         try:
-            doc_date_table = derive_doc_date_table(base_cfg["stock_table"], base_cfg.get("doc_date_table"))
-            doc_date_map = read_sql_doc_date_map(server, database, user, password, doc_date_table)
+            doc_date_map = read_sql_doc_date_map(server, database, user, password, doc_date_table_name(base_cfg))
         except Exception:
             doc_date_map = {}
 
