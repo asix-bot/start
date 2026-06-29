@@ -44,14 +44,47 @@ def split_suffix(article, suffixes):
     return article, None
 
 
+def _parse_candidates(raw):
+    """Число может храниться по-разному: "2220", "2220.00", "2220,00",
+    с разделителем тысяч (пробел или точка/запятая) - "2 220.00",
+    "2.220,00" (европейский формат, точка=тысячи, запятая=дробная часть).
+    Возвращает ВСЕ разумные интерпретации строки как числа, без удаления
+    дробной части (целое число без разделителя - это тоже валидный случай,
+    str(value_str) уже его покрывает без изменений)."""
+    text = str(raw).strip()
+    if not text:
+        return []
+    candidates = set()
+    no_space = text.replace(" ", "").replace("\xa0", "")
+    for variant in (text, no_space):
+        # Простая запятая как дробный разделитель: "1350,00" -> "1350.00"
+        candidates.add(variant.replace(",", "."))
+        # Точка как разделитель тысяч, запятая как дробная часть:
+        # "2.220,00" -> убрать точки, запятую сделать дробной.
+        if "." in variant and "," in variant:
+            candidates.add(variant.replace(".", "").replace(",", "."))
+        # Точка как разделитель тысяч без дробной части: "2.220" -> "2220"
+        candidates.add(variant.replace(".", ""))
+    results = []
+    for candidate in candidates:
+        try:
+            results.append(float(candidate))
+        except (TypeError, ValueError):
+            continue
+    return results
+
+
 def close_enough(value_str, target):
     if target is None:
         return False
-    try:
-        value = float(str(value_str).strip().replace(",", "."))
-    except (TypeError, ValueError):
-        return False
-    return abs(value - target) <= TOLERANCE
+    for value in _parse_candidates(value_str):
+        if abs(value - target) <= TOLERANCE:
+            return True
+        # Возможное хранение в другом масштабе (копейки вместо рублей и т.п.).
+        for scale in (100.0, 1000.0, 0.01, 0.001):
+            if abs(value - target * scale) <= TOLERANCE * scale:
+                return True
+    return False
 
 
 def read_dbf_table(base_path, table_name, encoding):
