@@ -1,13 +1,13 @@
 """
-Точечная диагностика: проверяет, есть ли в stock_table (RG1130) строки с
-заданным IDDOC - чтобы понять, можно ли по этому полю связать DT3580/DT434
-(цена/себестоимость) с датой документа из stock_table.
+Точечная диагностика: проверяет, есть ли в РЕГИСТРЕ ДВИЖЕНИЙ (RAxxxx - парный
+к stock_table RGxxxx по тому же числовому суффиксу) строки с заданным IDDOC -
+чтобы понять, можно ли по этому полю связать DT3580/DT434 (цена/себестоимость)
+с датой документа.
 
-Нужно, потому что main.py пытается взять дату документа из stock_table по
-IDDOC, но если там лежат ДРУГИЕ номера документов (например внутренний
-"приходный ордер" склада, а не сам "Счёт"/накладная) - совпадений не будет
-и цена/себестоимость останутся пустыми, даже если сама таблица DT3580/DT434
-найдена правильно.
+stock_table (RGxxxx) - это ИТОГОВЫЙ периодический регистр, в нём НЕТ полей
+IDDOC/DATE (это уже проверено - "Invalid column name 'IDDOC'"). main.py
+берёт даты из ПАРНОГО регистра движений (derive_doc_date_table в main.py:
+RG1130 -> RA1130) - этот скрипт проверяет именно его.
 
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
@@ -29,6 +29,13 @@ from sqlcmd_client import run_query_raw
 CONFIG_PATH = Path(__file__).parent / "config.json"
 
 
+def derive_doc_date_table(stock_table_name):
+    name = stock_table_name
+    if name.upper().startswith("RG"):
+        return "RA" + name[2:]
+    return name
+
+
 def read_dbf_table(base_path, table_name, encoding):
     table_path = base_path / table_name
     if not table_path.exists():
@@ -42,9 +49,11 @@ def read_dbf_table(base_path, table_name, encoding):
 def run(index, iddocs):
     config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
     base_cfg = config["bases"][index - 1]
-    print("База: {0} ({1}), stock_table={2}, avg_cost_table={3}, sale_price_table={4}".format(
+    doc_date_table = derive_doc_date_table(base_cfg["stock_table"])
+    print("База: {0} ({1}), stock_table={2}, doc_date_table(RA)={3}, avg_cost_table={4}, sale_price_table={5}".format(
         base_cfg["name"], base_cfg.get("type", "dbf"),
-        base_cfg.get("stock_table"), base_cfg.get("avg_cost_table"), base_cfg.get("sale_price_table"),
+        base_cfg.get("stock_table"), doc_date_table,
+        base_cfg.get("avg_cost_table"), base_cfg.get("sale_price_table"),
     ))
 
     if base_cfg.get("type", "dbf") == "sql":
@@ -55,8 +64,8 @@ def run(index, iddocs):
         password = sql_auth["password"]
 
         for iddoc in iddocs:
-            print("\n--- stock_table ({0}): строки с IDDOC='{1}' ---".format(base_cfg["stock_table"], iddoc))
-            query = "SELECT * FROM {0} WHERE LTRIM(RTRIM(IDDOC)) = '{1}'".format(base_cfg["stock_table"], iddoc)
+            print("\n--- doc_date_table ({0}): строки с IDDOC='{1}' ---".format(doc_date_table, iddoc))
+            query = "SELECT * FROM {0} WHERE LTRIM(RTRIM(IDDOC)) = '{1}'".format(doc_date_table, iddoc)
             print(run_query_raw(server, database, user, password, query))
 
             for table_key in ("avg_cost_table", "sale_price_table"):
@@ -69,11 +78,12 @@ def run(index, iddocs):
     else:
         base_path = Path(base_cfg["path"])
         encoding = base_cfg.get("encoding", config.get("encoding", "cp866"))
+        doc_date_table_file = doc_date_table if doc_date_table.upper().endswith(".DBF") else doc_date_table + ".DBF"
 
         for iddoc in iddocs:
-            print("\n--- stock_table ({0}): строки с IDDOC='{1}' ---".format(base_cfg["stock_table"], iddoc))
+            print("\n--- doc_date_table ({0}): строки с IDDOC='{1}' ---".format(doc_date_table_file, iddoc))
             count = 0
-            for row in read_dbf_table(base_path, base_cfg["stock_table"], encoding):
+            for row in read_dbf_table(base_path, doc_date_table_file, encoding):
                 if str(row.get("IDDOC", "")).strip() == iddoc.strip():
                     count += 1
                     print(dict(row))
@@ -100,7 +110,7 @@ def main():
     iddocs = sys.argv[2:]
 
     log_filename = "check_doc_join_log.txt"
-    commit_message = "Диагностика связи IDDOC между stock_table и DT-таблицами (база {0})".format(index)
+    commit_message = "Диагностика связи IDDOC между регистром движений (RA) и DT-таблицами (база {0})".format(index)
     run_with_log(log_filename, commit_message, lambda: run(index, iddocs))
 
 

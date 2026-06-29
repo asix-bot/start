@@ -205,11 +205,25 @@ def read_dbf_table(base_path, table_name, encoding):
     return DBF(str(table_path), encoding=encoding, ignore_missing_memofile=True)
 
 
+def derive_doc_date_table(stock_table_name, override=None):
+    """stock_table (RGxxxx) - это ИТОГОВЫЙ периодический регистр, в нём НЕТ
+    IDDOC/DATE. Даты движений хранятся в ПАРНОМ регистре движений RAxxxx с
+    тем же числовым суффиксом (RG1130 <-> RA1130) - его и нужно читать для
+    дат документов. override (doc_date_table в config.json) позволяет
+    указать таблицу явно, если соответствие RG->RA для какой-то базы другое."""
+    if override:
+        return override
+    name = stock_table_name
+    if name.upper().startswith("RG"):
+        return "RA" + name[2:]
+    return name
+
+
 def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", date_field="DATE"):
-    """IDDOC -> DATE из таблицы документов (например stock_table, RGxxxx.DBF -
-    там кроме остатка уже лежит дата каждого движения). Нужно, чтобы найти
-    САМЫЙ ПОЗДНИЙ документ для товара в других таблицах (цена/себестоимость),
-    которые сами по себе дату не хранят надёжно."""
+    """IDDOC -> DATE из регистра движений (RAxxxx.DBF - парный к stock_table,
+    см. derive_doc_date_table). Нужно, чтобы найти САМЫЙ ПОЗДНИЙ документ для
+    товара в других таблицах (цена/себестоимость), которые сами по себе дату
+    не хранят надёжно."""
     result = {}
     for row in read_dbf_table(base_path, table_name, encoding):
         doc = row.get(doc_field)
@@ -309,7 +323,8 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
     doc_date_map = {}
     if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
         try:
-            doc_date_map = read_dbf_doc_date_map(base_path, base_cfg["stock_table"], encoding)
+            doc_date_table = derive_doc_date_table(base_cfg["stock_table"], base_cfg.get("doc_date_table"))
+            doc_date_map = read_dbf_doc_date_map(base_path, doc_date_table, encoding)
         except Exception:
             doc_date_map = {}
 
@@ -465,7 +480,8 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
     doc_date_map = {}
     if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
         try:
-            doc_date_map = read_sql_doc_date_map(server, database, user, password, base_cfg["stock_table"])
+            doc_date_table = derive_doc_date_table(base_cfg["stock_table"], base_cfg.get("doc_date_table"))
+            doc_date_map = read_sql_doc_date_map(server, database, user, password, doc_date_table)
         except Exception:
             doc_date_map = {}
 
