@@ -11,6 +11,8 @@
     "log_path_in_repo": "export_log.txt"
   },
   "encoding": "cp1251",
+  "price_recalc_window_start": "19:00",
+  "price_recalc_window_end": "23:59",
   "bases": [
     {
       "name": "Шишина",

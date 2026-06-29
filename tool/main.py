@@ -24,11 +24,12 @@ avg_cost_table/sale_price_table - НЕОБЯЗАТЕЛЬНЫ. Если не за
 
 Чтение цены/себестоимости (DT3580/DT434) проходит по ВСЕЙ истории документов
 и ощутимо нагружает сервер 1С - поэтому пересчитывается не каждый запуск, а
-раз в price_cache_max_age_hours (по умолчанию 24 часа, см. config.json),
-между пересчётами значения берутся из локального price_cache.json (не
-пушится в git - живёт рядом со скриптом, не в repo_path). Остаток при этом
-всё равно читается и пушится каждый час как раньше - кэш касается только
-цены/себестоимости.
+РАЗ В СУТКИ и только в окне price_recalc_window_start..price_recalc_window_end
+(по умолчанию 19:00-23:59 - время, когда магазин не работает, см.
+config.json). В остальное время суток значения берутся из локального
+price_cache.json (не пушится в git - живёт рядом со скриптом, не в
+repo_path). Остаток при этом всё равно читается и пушится каждый час как
+раньше - окно касается только цены/себестоимости.
 
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
@@ -41,7 +42,7 @@ import json
 import re
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 from dbfread import DBF
@@ -52,13 +53,16 @@ from sqlcmd_client import run_query
 CONFIG_PATH = Path(__file__).parent / "config.json"
 
 # Расчёт цены/себестоимости читает ВСЮ историю документов (DT3580/DT434,
-# годы накопленных строк) - это ощутимая нагрузка на сервер 1С, а сама
-# цена/себестоимость почти никогда не меняется за час. Поэтому пересчёт
-# идёт не каждый запуск, а раз в PRICE_CACHE_MAX_AGE_HOURS (настраивается
-# через config["price_cache_max_age_hours"]) - между пересчётами берём
-# значения из локального кэша (price_cache.json, не пушится в git).
+# годы накопленных строк) - это ощутимая нагрузка на сервер 1С. Магазин не
+# работает вечером, поэтому пересчёт разрешён только РАЗ В СУТКИ и только
+# внутри окна price_recalc_window_start..price_recalc_window_end (по
+# умолчанию 19:00-23:59, настраивается в config.json) - первый часовой
+# запуск, попавший в это окно, считает свежие значения, остальные запуски
+# (в том числе все остальные часы суток) берут значения из локального
+# кэша (price_cache.json, не пушится в git - живёт рядом со скриптом).
 PRICE_CACHE_PATH = Path(__file__).parent / "price_cache.json"
-DEFAULT_PRICE_CACHE_MAX_AGE_HOURS = 24
+DEFAULT_PRICE_RECALC_WINDOW_START = "19:00"
+DEFAULT_PRICE_RECALC_WINDOW_END = "23:59"
 
 
 def load_price_cache():
@@ -74,15 +78,35 @@ def save_price_cache(cache):
     open(str(PRICE_CACHE_PATH), "w", encoding="utf-8").write(json.dumps(cache, ensure_ascii=False, indent=2))
 
 
-def is_price_cache_fresh(cache, base_name, max_age_hours):
+def _parse_hhmm(text):
+    hours, minutes = text.split(":")
+    return int(hours), int(minutes)
+
+
+def should_recompute_prices_now(cache, base_name, window_start, window_end, now=None):
+    """True только если ТЕКУЩЕЕ время внутри окна [window_start, window_end]
+    (формат "HH:MM") И для этой базы пересчёт ещё не делался СЕГОДНЯ внутри
+    этого окна - то есть ровно один раз в сутки, в вечернее время простоя
+    магазина, а не на каждый часовой запуск."""
+    now = now or datetime.now()
+    start_h, start_m = _parse_hhmm(window_start)
+    end_h, end_m = _parse_hhmm(window_end)
+    current_minutes = now.hour * 60 + now.minute
+    start_minutes = start_h * 60 + start_m
+    end_minutes = end_h * 60 + end_m
+    if not (start_minutes <= current_minutes <= end_minutes):
+        return False
+
     entry = cache.get(base_name)
     if not entry or "computed_at" not in entry:
-        return False
+        return True
     try:
         computed_at = datetime.strptime(entry["computed_at"], "%Y-%m-%dT%H:%M:%S")
     except ValueError:
-        return False
-    return datetime.now() - computed_at < timedelta(hours=max_age_hours)
+        return True
+    computed_minutes = computed_at.hour * 60 + computed_at.minute
+    already_done_today = computed_at.date() == now.date() and computed_minutes >= start_minutes
+    return not already_done_today
 
 # Размер товара зашит как текст внутри названия. Два варианта (по схеме
 # МойСклад - см. ТЗ_аномалия_остатков.md, раздел 4):
@@ -476,7 +500,9 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
 
 def export_base(
     base_cfg, default_encoding, sql_auth, exclude_zero_stock=False,
-    price_cache=None, price_cache_max_age_hours=DEFAULT_PRICE_CACHE_MAX_AGE_HOURS,
+    price_cache=None,
+    price_recalc_window_start=DEFAULT_PRICE_RECALC_WINDOW_START,
+    price_recalc_window_end=DEFAULT_PRICE_RECALC_WINDOW_END,
 ):
     base_type = base_cfg.get("type", "dbf")
     suffix = base_cfg.get("suffix", "")
@@ -484,8 +510,9 @@ def export_base(
     if price_cache is None:
         price_cache = {}
 
-    cache_fresh = is_price_cache_fresh(price_cache, base_name, price_cache_max_age_hours)
-    compute_prices = not cache_fresh
+    compute_prices = should_recompute_prices_now(
+        price_cache, base_name, price_recalc_window_start, price_recalc_window_end
+    )
 
     if base_type == "sql":
         item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id = export_base_sql(
@@ -620,7 +647,8 @@ def main():
     encoding = config.get("encoding", "cp866")
     sql_auth = config.get("sql_auth", {})
     exclude_zero_stock = config.get("exclude_zero_stock", False)
-    price_cache_max_age_hours = config.get("price_cache_max_age_hours", DEFAULT_PRICE_CACHE_MAX_AGE_HOURS)
+    price_recalc_window_start = config.get("price_recalc_window_start", DEFAULT_PRICE_RECALC_WINDOW_START)
+    price_recalc_window_end = config.get("price_recalc_window_end", DEFAULT_PRICE_RECALC_WINDOW_END)
     price_cache = load_price_cache()
 
     all_rows = []
@@ -636,7 +664,9 @@ def main():
         try:
             rows = export_base(
                 base_cfg, encoding, sql_auth, exclude_zero_stock,
-                price_cache=price_cache, price_cache_max_age_hours=price_cache_max_age_hours,
+                price_cache=price_cache,
+                price_recalc_window_start=price_recalc_window_start,
+                price_recalc_window_end=price_recalc_window_end,
             )
         except Exception as exc:
             elapsed = time.perf_counter() - base_started_at
