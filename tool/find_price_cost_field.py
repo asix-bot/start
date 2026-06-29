@@ -160,10 +160,12 @@ def find_item_full_row_sql(server, database, user, password, items_table, id_fie
 def list_dbf_rg_tables(base_path):
     # RG* - периодические регистры накопления (остатки на конец периода).
     # RA* - регистры движений документов (приход/расход с суммами по каждому
-    # документу) - именно тут может быть цена/себестоимость конкретной
-    # поставки, а не агрегированный остаток.
+    # документу).
+    # DT* - табличная часть документов (строки счетов/накладных - именно
+    # тут чаще всего лежит цена за единицу прямо в строке документа).
+    # DH* - заголовки документов (на случай, если цена хранится не в строке).
     names = set()
-    for prefix in ("RG", "RA"):
+    for prefix in ("RG", "RA", "DT", "DH"):
         names.update(p.stem.upper() for p in base_path.glob("{0}*.DBF".format(prefix)) if p.stem.upper().startswith(prefix))
     return sorted(names)
 
@@ -171,7 +173,8 @@ def list_dbf_rg_tables(base_path):
 def list_sql_rg_tables(server, database, user, password):
     output = run_query_raw(
         server, database, user, password,
-        "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%' OR TABLE_NAME LIKE 'RA%'",
+        "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%' OR TABLE_NAME LIKE 'RA%' "
+        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%'",
     )
     names = []
     for line in output.splitlines():
