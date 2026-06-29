@@ -22,9 +22,24 @@ SP4890). main.py сам добавляет размер (вытащенный и
 размерных вариантов) - используется CODE как запасной вариант
 (items_article_fallback_field).
 
-Себестоимость/цена продажи (avg_cost_table/sale_price_table) очищаются -
-они пока не найдены, main.py относится к ним как к опциональным и не
-блокирует экспорт артикул+остаток из-за их отсутствия.
+Себестоимость/цена продажи найдены через find_price_cost_field.py (перебор
+по известному значению из независимой базы, проверено на товарах "100ш" и
+"7132з"):
+  - Цена продажи: DT3580 (табличная часть расходных документов/счетов) -
+    SP3586=товар, SP3591=цена за единицу.
+  - Себестоимость: DT434 (табличная часть приходных накладных) -
+    SP448=товар, SP451=себестоимость за единицу из этой поставки.
+  - И там, и там IDDOC - номер документа. main.py берёт строку с САМЫМ
+    ПОЗДНИМ документом для каждого товара (дата документа подтягивается из
+    stock_table, где она уже есть) - то есть себестоимость именно "по
+    последней поставке", как и просили, а не средняя по всем поставкам.
+
+Поля DT3580/DT434 проверены на базах Шишина (DBF) и Захарина (SQL) - для
+Киселева/Кукушкиной предполагается та же структура (общая для всех 4 баз
+конфигурация 1С), но это не перепроверено отдельно. Если коды полей там
+отличаются, main.py просто не найдёт совпадений и оставит avg_cost/
+sale_price пустыми для той базы (как и раньше) - экспорт артикул+остаток
+не блокируется.
 
 Имя таблицы пишется с расширением .DBF для DBF-баз и без расширения для
 SQL-баз (соответствует тому, как main.py их использует).
@@ -51,6 +66,12 @@ FIELD_MAPPING = {
     "stock_period_field": "PERIOD",
     "stock_extra_filter_field": "SP2654",
     "stock_extra_filter_value": "0",
+    "avg_cost_item_field": "SP448",
+    "avg_cost_value_field": "SP451",
+    "avg_cost_doc_field": "IDDOC",
+    "sale_price_item_field": "SP3586",
+    "sale_price_value_field": "SP3591",
+    "sale_price_doc_field": "IDDOC",
 }
 
 
@@ -65,21 +86,15 @@ def main():
         is_dbf = base_cfg.get("type", "dbf") == "dbf"
         base_cfg["items_table"] = "SC4889.DBF" if is_dbf else "SC4889"
         base_cfg["stock_table"] = "RG1130.DBF" if is_dbf else "RG1130"
+        base_cfg["avg_cost_table"] = "DT434.DBF" if is_dbf else "DT434"
+        base_cfg["sale_price_table"] = "DT3580.DBF" if is_dbf else "DT3580"
         for key, value in FIELD_MAPPING.items():
             base_cfg[key] = value
-
-        base_cfg.pop("avg_cost_table", None)
-        base_cfg.pop("avg_cost_item_field", None)
-        base_cfg.pop("avg_cost_value_field", None)
-        base_cfg.pop("sale_price_table", None)
-        base_cfg.pop("sale_price_item_field", None)
-        base_cfg.pop("sale_price_value_field", None)
 
         updated.append(base_cfg.get("name", "?"))
 
     open(str(CONFIG_PATH), "w", encoding="utf-8").write(json.dumps(config, ensure_ascii=False, indent=2))
-    print("Сопоставление товаров/остатка применено для баз: " + ", ".join(updated))
-    print("avg_cost_table/sale_price_table очищены (пока не настроены).")
+    print("Сопоставление товаров/остатка/цены/себестоимости применено для баз: " + ", ".join(updated))
 
 
 if __name__ == "__main__":

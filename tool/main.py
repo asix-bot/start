@@ -140,11 +140,34 @@ def read_dbf_table(base_path, table_name, encoding):
     return DBF(str(table_path), encoding=encoding, ignore_missing_memofile=True)
 
 
-def read_dbf_value_map(base_path, table_name, item_field, value_field, encoding):
-    table = read_dbf_table(base_path, table_name, encoding)
+def read_dbf_doc_date_map(base_path, table_name, encoding, doc_field="IDDOC", date_field="DATE"):
+    """IDDOC -> DATE из таблицы документов (например stock_table, RGxxxx.DBF -
+    там кроме остатка уже лежит дата каждого движения). Нужно, чтобы найти
+    САМЫЙ ПОЗДНИЙ документ для товара в других таблицах (цена/себестоимость),
+    которые сами по себе дату не хранят надёжно."""
     result = {}
-    for row in table:
-        result[row[item_field]] = row[value_field]
+    for row in read_dbf_table(base_path, table_name, encoding):
+        doc = row.get(doc_field)
+        date = row.get(date_field)
+        if doc is not None and date is not None:
+            result[doc] = date
+    return result
+
+
+def read_dbf_latest_doc_value_map(base_path, table_name, item_field, value_field, doc_field, doc_date_map, encoding):
+    """Для каждого товара берёт value_field из строки с САМЫМ ПОЗДНИМ
+    документом (по doc_date_map) - например цену/себестоимость из последней
+    накладной, а не из первой попавшейся строки."""
+    best_date = {}
+    result = {}
+    for row in read_dbf_table(base_path, table_name, encoding):
+        item = row[item_field]
+        date = doc_date_map.get(row.get(doc_field))
+        if date is None:
+            continue
+        if item not in best_date or date > best_date[item]:
+            best_date[item] = date
+            result[item] = row[value_field]
     return result
 
 
@@ -218,14 +241,23 @@ def export_base_dbf(base_cfg, encoding):
         base_cfg.get("stock_extra_filter_value"),
     )
 
+    doc_date_map = {}
+    if base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table"):
+        try:
+            doc_date_map = read_dbf_doc_date_map(base_path, base_cfg["stock_table"], encoding)
+        except Exception:
+            doc_date_map = {}
+
     sale_price_by_id = {}
     if base_cfg.get("sale_price_table"):
         try:
-            sale_price_by_id = read_dbf_value_map(
+            sale_price_by_id = read_dbf_latest_doc_value_map(
                 base_path,
                 base_cfg["sale_price_table"],
                 base_cfg["sale_price_item_field"],
                 base_cfg["sale_price_value_field"],
+                base_cfg.get("sale_price_doc_field", "IDDOC"),
+                doc_date_map,
                 encoding,
             )
         except Exception:
@@ -234,11 +266,13 @@ def export_base_dbf(base_cfg, encoding):
     avg_cost_by_id = {}
     if base_cfg.get("avg_cost_table"):
         try:
-            avg_cost_by_id = read_dbf_value_map(
+            avg_cost_by_id = read_dbf_latest_doc_value_map(
                 base_path,
                 base_cfg["avg_cost_table"],
                 base_cfg["avg_cost_item_field"],
                 base_cfg["avg_cost_value_field"],
+                base_cfg.get("avg_cost_doc_field", "IDDOC"),
+                doc_date_map,
                 encoding,
             )
         except Exception:
@@ -251,14 +285,42 @@ def export_base_dbf(base_cfg, encoding):
 # SQL Server (через sqlcmd.exe)
 # ---------------------------------------------------------------------------
 
-def read_sql_value_map(server, database, user, password, table, item_field, value_field):
-    query = "SELECT {0}, {1} FROM {2}".format(item_field, value_field, table)
+def read_sql_doc_date_map(server, database, user, password, table, doc_field="IDDOC", date_field="DATE"):
+    """SQL-аналог read_dbf_doc_date_map - IDDOC -> DATE из stock_table."""
+    query = "SELECT DISTINCT {0}, {1} FROM {2}".format(doc_field, date_field, table)
     rows = run_query(server, database, user, password, query)
     result = {}
     for row in rows:
         if len(row) < 2:
             continue
-        result[row[0].strip()] = row[1].strip()
+        doc = row[0].strip()
+        date = row[1].strip()
+        if doc and date:
+            result[doc] = date
+    return result
+
+
+def read_sql_latest_doc_value_map(server, database, user, password, table, item_field, value_field, doc_field, doc_date_map):
+    """SQL-аналог read_dbf_latest_doc_value_map - для каждого товара берёт
+    value_field из строки с САМЫМ ПОЗДНИМ документом (по дате из stock_table).
+    Сравнение дат идёт как строк ('YYYY-MM-DD...') - формат sqlcmd для
+    datetime сортируется лексикографически так же, как по времени."""
+    query = "SELECT {0}, {1}, {2} FROM {3}".format(item_field, value_field, doc_field, table)
+    rows = run_query(server, database, user, password, query)
+    best_date = {}
+    result = {}
+    for row in rows:
+        if len(row) < 3:
+            continue
+        item = row[0].strip()
+        value = row[1].strip()
+        doc = row[2].strip()
+        date = doc_date_map.get(doc)
+        if not date:
+            continue
+        if item not in best_date or date > best_date[item]:
+            best_date[item] = date
+            result[item] = value
     return result
 
 
@@ -335,12 +397,20 @@ def export_base_sql(base_cfg, sql_auth):
         base_cfg.get("stock_extra_filter_value"),
     )
 
+    doc_date_map = {}
+    if base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table"):
+        try:
+            doc_date_map = read_sql_doc_date_map(server, database, user, password, base_cfg["stock_table"])
+        except Exception:
+            doc_date_map = {}
+
     sale_price_by_id = {}
     if base_cfg.get("sale_price_table"):
         try:
-            sale_price_by_id = read_sql_value_map(
+            sale_price_by_id = read_sql_latest_doc_value_map(
                 server, database, user, password,
                 base_cfg["sale_price_table"], base_cfg["sale_price_item_field"], base_cfg["sale_price_value_field"],
+                base_cfg.get("sale_price_doc_field", "IDDOC"), doc_date_map,
             )
         except Exception:
             sale_price_by_id = {}
@@ -348,9 +418,10 @@ def export_base_sql(base_cfg, sql_auth):
     avg_cost_by_id = {}
     if base_cfg.get("avg_cost_table"):
         try:
-            avg_cost_by_id = read_sql_value_map(
+            avg_cost_by_id = read_sql_latest_doc_value_map(
                 server, database, user, password,
                 base_cfg["avg_cost_table"], base_cfg["avg_cost_item_field"], base_cfg["avg_cost_value_field"],
+                base_cfg.get("avg_cost_doc_field", "IDDOC"), doc_date_map,
             )
         except Exception:
             avg_cost_by_id = {}
