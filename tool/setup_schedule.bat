@@ -37,7 +37,9 @@ rem /rl HIGHEST - права администратора (нужно для устойчивой работы под SYSTEM).
 schtasks /delete /tn "%TASK_NAME_HOURLY%" /f >nul 2>&1
 schtasks /delete /tn "%TASK_NAME_STARTUP%" /f >nul 2>&1
 
-schtasks /create /tn "%TASK_NAME_HOURLY%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc hourly /ru SYSTEM /rl HIGHEST /f
+rem /st 00:55:00 - якорь времени: задача стартует в чч:55 и повторяется
+rem каждый час от этой точки (09:55, 10:55, 11:55 и так далее).
+schtasks /create /tn "%TASK_NAME_HOURLY%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc hourly /st 00:55:00 /ru SYSTEM /rl HIGHEST /f
 set "HOURLY_RC=%ERRORLEVEL%"
 schtasks /create /tn "%TASK_NAME_STARTUP%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc onstart /delay 0001:00 /ru SYSTEM /rl HIGHEST /f
 set "STARTUP_RC=%ERRORLEVEL%"
