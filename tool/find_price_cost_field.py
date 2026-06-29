@@ -15,14 +15,19 @@ items_table, а во всех RG-регистрах базы (где может 
 строки регистров, где этот ID встречается в любом поле, и смотрим, есть ли
 в той же строке число, близкое к искомой цене/себестоимости.
 
+Перебор идёт по таблицам RG*/RA*/DT*/DH*/SC* (включая ПОДЧИНЁННЫЕ справочники,
+например возможный "Цены номенклатуры" - подчинён Номенклатуре и ссылается
+на справочник "Типы цен").
+
 Совместимо с Python 3.4: без f-строк, без современных аннотаций типов.
 
+Можно передать НЕСКОЛЬКО артикулов за один запуск (один пуш в GitHub).
+
 Использование:
-    python find_price_cost_field.py <артикул_с_суффиксом> <цена> [себестоимость]
+    python find_price_cost_field.py артикул1:цена1[:себестоимость1] [артикул2:цена2 ...]
 
 Пример:
-    python find_price_cost_field.py 100ш 2220 1350
-    python find_price_cost_field.py 7132з 6190 4739.17
+    python find_price_cost_field.py 100ш:2220:1350 941ш:2360 22ш:3720
 """
 
 import json
@@ -164,8 +169,11 @@ def list_dbf_rg_tables(base_path):
     # DT* - табличная часть документов (строки счетов/накладных - именно
     # тут чаще всего лежит цена за единицу прямо в строке документа).
     # DH* - заголовки документов (на случай, если цена хранится не в строке).
+    # SC* - справочники, включая ПОДЧИНЁННЫЕ (например "Цены номенклатуры" -
+    # подчинённый справочник, привязанный и к товару, и к типу цены из
+    # справочника "Типы цен" - именно там может лежать текущая цена).
     names = set()
-    for prefix in ("RG", "RA", "DT", "DH"):
+    for prefix in ("RG", "RA", "DT", "DH", "SC"):
         names.update(p.stem.upper() for p in base_path.glob("{0}*.DBF".format(prefix)) if p.stem.upper().startswith(prefix))
     return sorted(names)
 
@@ -174,7 +182,7 @@ def list_sql_rg_tables(server, database, user, password):
     output = run_query_raw(
         server, database, user, password,
         "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%' OR TABLE_NAME LIKE 'RA%' "
-        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%'",
+        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%' OR TABLE_NAME LIKE 'SC%'",
     )
     names = []
     for line in output.splitlines():
@@ -270,8 +278,7 @@ def scan_sql_table_for_item(server, database, user, password, table_name, item_i
     return matches
 
 
-def run(article, price, cost):
-    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
+def run_one(config, article, price, cost):
     bases = config["bases"]
     suffixes = [b.get("suffix", "") for b in bases]
     default_encoding = config.get("encoding", "cp866")
@@ -372,17 +379,42 @@ def run(article, price, cost):
             print("\nНи в карточке, ни в одной RG-таблице ни для одного варианта не найдено подходящего числа.")
 
 
+def run(specs):
+    """specs - список строк "артикул:цена" или "артикул:цена:себестоимость" -
+    позволяет проверить сразу несколько товаров за один запуск/один пуш в
+    GitHub, а не гонять скрипт по одному."""
+    config = json.loads(open(str(CONFIG_PATH), encoding="utf-8-sig").read())
+    for spec in specs:
+        parts = spec.split(":")
+        if len(parts) < 2:
+            print("\n{0}: пропущено - формат должен быть артикул:цена[:себестоимость]".format(spec))
+            continue
+        article = parts[0]
+        try:
+            price = float(parts[1])
+            cost = float(parts[2]) if len(parts) > 2 and parts[2] else None
+        except ValueError:
+            print("\n{0}: не число в цене/себестоимости".format(spec))
+            continue
+        print("\n{0}\n### {1} ###".format("#" * 70, spec))
+        try:
+            run_one(config, article, price, cost)
+        except SystemExit as exc:
+            print(exc.code)
+        except Exception as exc:
+            print("ОШИБКА: {0}".format(exc))
+
+
 def main():
-    if len(sys.argv) < 3:
-        sys.exit("Использование: python find_price_cost_field.py <артикул> <цена> [себестоимость]")
+    if len(sys.argv) < 2:
+        sys.exit(
+            "Использование: python find_price_cost_field.py артикул:цена[:себестоимость] [артикул2:цена2 ...]"
+        )
 
-    article = sys.argv[1]
-    price = float(sys.argv[2])
-    cost = float(sys.argv[3]) if len(sys.argv) > 3 else None
-
+    specs = sys.argv[1:]
     log_filename = "find_price_cost_field_log.txt"
-    commit_message = "Поиск поля цены/себестоимости для артикула {0}".format(article)
-    run_with_log(log_filename, commit_message, lambda: run(article, price, cost))
+    commit_message = "Поиск поля цены/себестоимости ({0} артикулов)".format(len(specs))
+    run_with_log(log_filename, commit_message, lambda: run(specs))
 
 
 if __name__ == "__main__":

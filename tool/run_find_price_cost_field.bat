@@ -15,8 +15,8 @@ if not exist "%PYTHON%" (
 )
 
 if "%~1"=="" (
-    echo Использование: find_price_cost_field.py артикул цена себестоимость-опционально
-    echo Пример: find_price_cost_field.py 100ш 2220 1350
+    echo Использование: артикул1:цена1:себестоимость1 артикул2:цена2 и так далее
+    echo Пример: find_price_cost_field.py 100ш:2220:1350 941ш:2360
     pause
     exit /b 1
 )
