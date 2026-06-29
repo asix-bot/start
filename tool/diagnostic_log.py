@@ -38,6 +38,7 @@ def run_with_log(log_filename, commit_message, work_fn):
     real_stdout = sys.stdout
     sys.stdout = _Tee(real_stdout, buf)
     pending_exit = None
+    pending_error = None
     try:
         work_fn()
     except SystemExit as exc:
@@ -45,8 +46,18 @@ def run_with_log(log_filename, commit_message, work_fn):
         # скриптах. Сохраняем лог в любом случае, потом перевыбрасываем,
         # чтобы код возврата bat-файла остался правильным (errorlevel 1).
         pending_exit = exc
+    except Exception as exc:
+        # Любая другая ошибка (например MemoryError при сканировании
+        # огромной таблицы) - тоже сохраняем и пушим всё, что успело
+        # накопиться в выводе до падения, а не теряем результат целиком.
+        pending_error = exc
     finally:
         sys.stdout = real_stdout
+
+    if pending_error is not None:
+        error_text = "\nСКРИПТ ЗАВЕРШИЛСЯ С ОШИБКОЙ: {0}: {1}".format(type(pending_error).__name__, pending_error)
+        print(error_text)
+        buf.write(error_text + "\n")
 
     if pending_exit is not None and isinstance(pending_exit.code, str):
         # sys.exit("текст") обычно сам печатает текст в stderr при обычном
@@ -82,4 +93,6 @@ def run_with_log(log_filename, commit_message, work_fn):
 
     if pending_exit is not None:
         sys.exit(pending_exit.code)
+    if pending_error is not None:
+        sys.exit(1)
     return pushed

@@ -223,7 +223,32 @@ def scan_dbf_table_for_item(base_path, table_name, encoding, item_id, price, cos
     return matches
 
 
+MAX_SQL_SCAN_ROWS = 20000
+
+
+def sql_table_row_count(server, database, user, password, table_name):
+    rows = run_query(server, database, user, password, "SELECT COUNT(*) FROM {0}".format(table_name))
+    if rows and rows[0]:
+        try:
+            return int(rows[0][0].strip())
+        except (ValueError, IndexError):
+            pass
+    return None
+
+
 def scan_sql_table_for_item(server, database, user, password, table_name, item_id, price, cost):
+    # sqlcmd_client.run_query буферизует ВЕСЬ вывод в памяти (subprocess
+    # .communicate()) - на очень большой таблице (сотни тысяч+ строк,
+    # например многолетняя история документов) это может уронить процесс
+    # MemoryError. Пропускаем такие таблицы с предупреждением, а не падаем.
+    row_count = sql_table_row_count(server, database, user, password, table_name)
+    if row_count is not None and row_count > MAX_SQL_SCAN_ROWS:
+        raise RuntimeError(
+            "таблица слишком большая для полного сканирования ({0} строк > {1}) - пропущена".format(
+                row_count, MAX_SQL_SCAN_ROWS
+            )
+        )
+
     query = "SELECT * FROM {0}".format(table_name)
     rows = run_query(server, database, user, password, query)
     matches = []
