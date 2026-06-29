@@ -231,50 +231,50 @@ def scan_dbf_table_for_item(base_path, table_name, encoding, item_id, price, cos
     return matches
 
 
-MAX_SQL_SCAN_ROWS = 20000
+SQL_SCAN_CHUNK_SIZE = 5000
+MAX_SQL_SCAN_ROWS = 500000
 
 
-def sql_table_row_count(server, database, user, password, table_name):
-    rows = run_query(server, database, user, password, "SELECT COUNT(*) FROM {0}".format(table_name))
-    if rows and rows[0]:
-        try:
-            return int(rows[0][0].strip())
-        except (ValueError, IndexError):
-            pass
-    return None
+def _scan_row_for_match(table_name, row, item_id, price, cost, matches):
+    if item_id not in [str(v).strip() for v in row]:
+        return
+    for value in row:
+        if close_enough(value, price) or close_enough(value, cost):
+            matches.append((table_name, row))
+            break
+    numeric = _numeric_fields(list(enumerate(row)))
+    for sum_idx, sum_value in numeric:
+        for qty_idx, qty_value in numeric:
+            if sum_idx == qty_idx or qty_value in (0, 0.0):
+                continue
+            unit_value = sum_value / qty_value
+            if close_enough(unit_value, price) or close_enough(unit_value, cost):
+                matches.append((table_name, row))
 
 
 def scan_sql_table_for_item(server, database, user, password, table_name, item_id, price, cost):
-    # sqlcmd_client.run_query буферизует ВЕСЬ вывод в памяти (subprocess
-    # .communicate()) - на очень большой таблице (сотни тысяч+ строк,
-    # например многолетняя история документов) это может уронить процесс
-    # MemoryError. Пропускаем такие таблицы с предупреждением, а не падаем.
-    row_count = sql_table_row_count(server, database, user, password, table_name)
-    if row_count is not None and row_count > MAX_SQL_SCAN_ROWS:
-        raise RuntimeError(
-            "таблица слишком большая для полного сканирования ({0} строк > {1}) - пропущена".format(
-                row_count, MAX_SQL_SCAN_ROWS
-            )
-        )
-
-    query = "SELECT * FROM {0}".format(table_name)
-    rows = run_query(server, database, user, password, query)
+    """Читает таблицу СТРАНИЦАМИ по SQL_SCAN_CHUNK_SIZE строк (OFFSET/FETCH),
+    а не одним запросом "SELECT * FROM table" - на таблицах с сотнями тысяч/
+    миллионами строк (многолетняя история документов) одиночный большой
+    запрос переполняет память (subprocess.communicate() буферизует весь
+    вывод сразу). Постраничное чтение держит в памяти только одну страницу
+    за раз, поэтому может пройти ВСЮ таблицу (до MAX_SQL_SCAN_ROWS суммарно),
+    а не обрывается/пропускается целиком."""
     matches = []
-    for row in rows:
-        if item_id not in [str(v).strip() for v in row]:
-            continue
-        for value in row:
-            if close_enough(value, price) or close_enough(value, cost):
-                matches.append((table_name, row))
-                continue
-        numeric = _numeric_fields(list(enumerate(row)))
-        for sum_idx, sum_value in numeric:
-            for qty_idx, qty_value in numeric:
-                if sum_idx == qty_idx or qty_value in (0, 0.0):
-                    continue
-                unit_value = sum_value / qty_value
-                if close_enough(unit_value, price) or close_enough(unit_value, cost):
-                    matches.append((table_name, row))
+    offset = 0
+    while offset < MAX_SQL_SCAN_ROWS:
+        query = (
+            "SELECT * FROM {0} ORDER BY (SELECT NULL) "
+            "OFFSET {1} ROWS FETCH NEXT {2} ROWS ONLY"
+        ).format(table_name, offset, SQL_SCAN_CHUNK_SIZE)
+        rows = run_query(server, database, user, password, query)
+        if not rows:
+            break
+        for row in rows:
+            _scan_row_for_match(table_name, row, item_id, price, cost, matches)
+        offset += SQL_SCAN_CHUNK_SIZE
+        if len(rows) < SQL_SCAN_CHUNK_SIZE:
+            break
     return matches
 
 
