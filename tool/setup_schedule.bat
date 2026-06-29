@@ -29,9 +29,17 @@ set "SCRIPT_DIR=%~dp0"
 set "TASK_NAME_HOURLY=1C Export to GitHub (hourly)"
 set "TASK_NAME_STARTUP=1C Export to GitHub (on startup)"
 
-schtasks /create /tn "%TASK_NAME_HOURLY%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc hourly /f
+rem /ru SYSTEM - чтобы задачи срабатывали ДАЖЕ если никто не залогинен в
+rem Windows (без /ru SYSTEM Task Scheduler привязывает задачу к интерактивному
+rem входу текущего пользователя - после перезагрузки без логина она просто
+rem не запускается, хотя в списке задач выглядит "включённой").
+rem /rl HIGHEST - права администратора (нужно для устойчивой работы под SYSTEM).
+schtasks /delete /tn "%TASK_NAME_HOURLY%" /f >nul 2>&1
+schtasks /delete /tn "%TASK_NAME_STARTUP%" /f >nul 2>&1
+
+schtasks /create /tn "%TASK_NAME_HOURLY%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc hourly /ru SYSTEM /rl HIGHEST /f
 set "HOURLY_RC=%ERRORLEVEL%"
-schtasks /create /tn "%TASK_NAME_STARTUP%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc onstart /delay 0001:00 /ru SYSTEM /f
+schtasks /create /tn "%TASK_NAME_STARTUP%" /tr "\"%SCRIPT_DIR%run_export.bat\" /silent" /sc onstart /delay 0001:00 /ru SYSTEM /rl HIGHEST /f
 set "STARTUP_RC=%ERRORLEVEL%"
 
 if "%HOURLY_RC%"=="0" if "%STARTUP_RC%"=="0" (
