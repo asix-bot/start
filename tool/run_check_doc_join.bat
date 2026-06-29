@@ -15,8 +15,8 @@ if not exist "%PYTHON%" (
 )
 
 if "%~2"=="" (
-    echo Использование: check_doc_join.py индекс_базы-1-4 IDDOC1 IDDOC2 и так далее
-    echo Пример: check_doc_join.py 3 2LWI 34AE
+    echo Использование: check_doc_join.py индекс_базы-1-4 артикул_без_суффикса
+    echo Пример: check_doc_join.py 1 20
     pause
     exit /b 1
 )
