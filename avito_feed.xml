@@ -2283,6 +2283,7 @@ Li-Ion
   <PrivodType>Редуктор</PrivodType>
   <Condition>Новое</Condition>
   <GearboxType>Червячный</GearboxType>
+  <StepsNumber>Двухступенчатый</StepsNumber>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/721з/oldsite_0.jpg"/>
     </Images>
@@ -2533,6 +2534,7 @@ Max частота вращения шпинделя: 9000 об/мин
   <EngineType>Электрический</EngineType>
   <CompressorPressure>7</CompressorPressure>
   <CompressorPower>150</CompressorPower>
+  <CompressorType>Поршневой</CompressorType>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/9019з/oldsite_0.jpg"/>
     </Images>
