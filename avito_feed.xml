@@ -2032,7 +2032,7 @@ Li-Ion
   <ToolSubType>Дрели и шуруповёрты</ToolSubType>
   <AdType>Товар приобретен на продажу</AdType>
   <Brand>WORTEX</Brand>
-  <Model>DR 1323</Model>
+  <Model>DR 1323 2F</Model>
   <WholesaleType>Нет</WholesaleType>
   <Condition>Новое</Condition>
     <Images>
@@ -2068,7 +2068,7 @@ Li-Ion
   <Condition>Новое</Condition>
   <Brand>ECO</Brand>
   <ReceiverPresence>Есть</ReceiverPresence>
-  <Volume>50</Volume>
+  <Volume>50 л</Volume>
   <CompressorUnitType>Поршневой</CompressorUnitType>
   <LubricantType>Масляный</LubricantType>
   <WholesaleType>Нет</WholesaleType>
@@ -2157,7 +2157,7 @@ Li-Ion
   <Condition>Новое</Condition>
   <Brand>ECO</Brand>
   <ReceiverPresence>Есть</ReceiverPresence>
-  <Volume>50</Volume>
+  <Volume>50 л</Volume>
   <CompressorUnitType>Поршневой</CompressorUnitType>
   <LubricantType>Безмасляный</LubricantType>
   <WholesaleType>Нет</WholesaleType>
