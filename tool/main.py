@@ -301,6 +301,41 @@ def read_dbf_latest_period_map(
     return result
 
 
+# Цена продажи в этой конфигурации 1С 7.7 НЕ хранится готовым числом - она
+# считается на лету как "себестоимость * (1 + наценка%/100) * (1 - скидка%/100)".
+# Сам процент наценки/скидки лежит в подчинённом справочнике "Цены номенклатуры"
+# (найдено через перебор по размеру таблицы - PARENTEXT=товар, DESCR=название
+# типа цены вроде "Розничная", и два процентных поля). Это надёжнее, чем
+# DT3580 (история конкретных прошлых продаж - может быть очень устаревшей).
+def read_dbf_price_markup_map(base_path, table_name, encoding, parent_field, descr_field, type_name, markup_field, discount_field):
+    result = {}
+    for row in read_dbf_table(base_path, table_name, encoding):
+        if str(row.get(descr_field, "")).strip() != type_name:
+            continue
+        item = row.get(parent_field)
+        try:
+            markup = float(row.get(markup_field) or 0)
+            discount = float(row.get(discount_field) or 0)
+        except (TypeError, ValueError):
+            continue
+        result[item] = (markup, discount)
+    return result
+
+
+def apply_price_markup(avg_cost_by_id, markup_by_id):
+    result = {}
+    for item, (markup, discount) in markup_by_id.items():
+        cost = avg_cost_by_id.get(item)
+        if cost is None:
+            continue
+        try:
+            cost = float(cost)
+        except (TypeError, ValueError):
+            continue
+        result[item] = cost * (1 + markup / 100.0) * (1 - discount / 100.0)
+    return result
+
+
 def export_base_dbf(base_cfg, encoding, compute_prices=True):
     base_path = Path(base_cfg["path"])
 
@@ -371,6 +406,23 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
         except Exception:
             avg_cost_by_id = {}
 
+    if compute_prices and base_cfg.get("price_markup_table"):
+        try:
+            markup_by_id = read_dbf_price_markup_map(
+                base_path,
+                base_cfg["price_markup_table"],
+                encoding,
+                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
+                base_cfg.get("price_markup_descr_field", "DESCR"),
+                base_cfg.get("price_markup_type_name", "Розничная"),
+                base_cfg.get("price_markup_percent_field"),
+                base_cfg.get("price_discount_percent_field"),
+            )
+            computed = apply_price_markup(avg_cost_by_id, markup_by_id)
+            sale_price_by_id.update(computed)
+        except Exception:
+            pass
+
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
 
@@ -424,6 +476,28 @@ def read_sql_latest_doc_value_map(server, database, user, password, table, item_
             result[item] = value
         elif not has_date and not prev_has_date:
             result[item] = value
+    return result
+
+
+def read_sql_price_markup_map(server, database, user, password, table, parent_field, descr_field, type_name, markup_field, discount_field):
+    """SQL-аналог read_dbf_price_markup_map - фильтр по DESCR делается СЕРВЕРНОЙ
+    стороной (WHERE), а не вытягиванием всей таблицы (она может быть в районе
+    100к+ строк - один тип цены на товар после фильтра кратно меньше)."""
+    query = "SELECT {0}, {1}, {2} FROM {3} WHERE LTRIM(RTRIM({4})) = '{5}'".format(
+        parent_field, markup_field, discount_field, table, descr_field, type_name
+    )
+    rows = run_query(server, database, user, password, query)
+    result = {}
+    for row in rows:
+        if len(row) < 3:
+            continue
+        item = row[0].strip()
+        try:
+            markup = float(row[1].strip().replace(",", "."))
+            discount = float(row[2].strip().replace(",", "."))
+        except (ValueError, IndexError):
+            continue
+        result[item] = (markup, discount)
     return result
 
 
@@ -528,6 +602,22 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
             )
         except Exception:
             avg_cost_by_id = {}
+
+    if compute_prices and base_cfg.get("price_markup_table"):
+        try:
+            markup_by_id = read_sql_price_markup_map(
+                server, database, user, password,
+                base_cfg["price_markup_table"],
+                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
+                base_cfg.get("price_markup_descr_field", "DESCR"),
+                base_cfg.get("price_markup_type_name", "Розничная"),
+                base_cfg.get("price_markup_percent_field"),
+                base_cfg.get("price_discount_percent_field"),
+            )
+            computed = apply_price_markup(avg_cost_by_id, markup_by_id)
+            sale_price_by_id.update(computed)
+        except Exception:
+            pass
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
