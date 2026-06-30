@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-06-30T10:20:22">
+<yml_catalog date="2026-06-30T11:27:05">
   <shop>
     <name>Магазин Старт</name>
     <company>Магазин Старт</company>
@@ -110,6 +110,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11961ки/ozon_6.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11961ки/ozon_7.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11961ки/user_photo.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11961ки/oldsite_8.jpg</picture>
         <price>7850.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -255,6 +256,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_8.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/ozon_9.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/user_photo.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/11931ки/oldsite_10.jpg</picture>
         <price>2390.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -328,6 +330,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_1.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_2.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/ozon_3.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/5184ки/oldsite_3.jpeg</picture>
         <price>1350.00</price>
         <currencyId>RUR</currencyId>
         <count>10</count>
@@ -549,6 +552,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/ozon_3.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/ozon_4.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/user_photo.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8330ки/oldsite_5.jpg</picture>
         <price>1570.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -1234,6 +1238,7 @@
         <vendorCode>7483з</vendorCode>
         <categoryId>19</categoryId>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7483з/ozon_1.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7483з/oldsite_1.png</picture>
         <price>34500.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -1423,6 +1428,7 @@ Cейф соответствует (по заключению НИЦ «Охра�
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12052ки/ozon_7.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12052ки/ozon_8.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12052ки/ozon_9.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12052ки/oldsite_9.jpg</picture>
         <price>26990.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -1445,6 +1451,7 @@ Cейф соответствует (по заключению НИЦ «Охра�
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12053ки/ozon_5.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12053ки/ozon_6.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12053ки/ozon_7.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/12053ки/oldsite_7.jpg</picture>
         <price>26790.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
