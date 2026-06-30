@@ -104,8 +104,9 @@ def run(index, table_name, article):
             columns = []
             for line in cols_output.splitlines():
                 line = line.strip()
-                if line and line not in ("COLUMN_NAME",) and not line.startswith("-"):
-                    columns.append(line)
+                if not line or line in ("COLUMN_NAME",) or line.startswith("-") or "affected" in line:
+                    continue
+                columns.append(line)
             conditions = " OR ".join(
                 "LTRIM(RTRIM(CAST({0} AS NVARCHAR(50)))) = '{1}'".format(c, item_id) for c in columns
             )
