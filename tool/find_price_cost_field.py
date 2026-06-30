@@ -274,6 +274,25 @@ def _scan_row_for_match(table_name, row, item_id, price, cost, matches):
                 matches.append((table_name, row))
 
 
+# _1SCONST (периодические реквизиты справочников в 1С 7.7 - в этой версии
+# платформы НЕТ периодических регистров сведений, поэтому история значений
+# вроде цены хранится именно тут) - поле OBJID = ID элемента справочника
+# (товара). Таблица может быть ОГРОМНОЙ (миллионы строк на базе с тысячами
+# товаров) - постраничный перебор с лимитом MAX_SQL_SCAN_ROWS мог не
+# дойти до нужного товара. Для этой конкретной таблицы фильтруем по OBJID
+# прямо на сервере - быстро и без ограничения по количеству строк.
+CONST_TABLE_NAMES = ("1SCONST", "_1SCONST")
+
+
+def scan_sql_const_table_for_item(server, database, user, password, table_name, item_id, price, cost):
+    query = "SELECT * FROM {0} WHERE LTRIM(RTRIM(OBJID)) = '{1}'".format(table_name, item_id)
+    rows = run_query(server, database, user, password, query)
+    matches = []
+    for row in rows:
+        _scan_row_for_match(table_name, row, item_id, price, cost, matches)
+    return matches
+
+
 def scan_sql_table_for_item(server, database, user, password, table_name, item_id, price, cost):
     """Читает таблицу СТРАНИЦАМИ по SQL_SCAN_CHUNK_SIZE строк (OFFSET/FETCH),
     а не одним запросом "SELECT * FROM table" - на таблицах с сотнями тысяч/
@@ -282,6 +301,9 @@ def scan_sql_table_for_item(server, database, user, password, table_name, item_i
     вывод сразу). Постраничное чтение держит в памяти только одну страницу
     за раз, поэтому может пройти ВСЮ таблицу (до MAX_SQL_SCAN_ROWS суммарно),
     а не обрывается/пропускается целиком."""
+    if table_name.upper() in CONST_TABLE_NAMES:
+        return scan_sql_const_table_for_item(server, database, user, password, table_name, item_id, price, cost)
+
     matches = []
     offset = 0
     while offset < MAX_SQL_SCAN_ROWS:
