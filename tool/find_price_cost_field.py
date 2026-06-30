@@ -79,6 +79,15 @@ def _parse_candidates(raw):
     return results
 
 
+# НДС (20% и старая ставка 18%/10%) и проценты скидок, найденные в
+# справочнике "Типы цен" (SC3769: "Скидка 8%", "Скидка 5%", "Скидка 25%" и
+# т.п.) - на случай, если итоговая цена нигде не хранится готовым числом, а
+# вычисляется из БАЗОВОЙ цены на лету (база * множитель). Проверяем оба
+# направления (умножить и поделить), чтобы поймать как "цена без скидки"
+# в базе при известной цене СО скидкой, так и наоборот.
+_RATE_MULTIPLIERS = (1.20, 1.18, 1.10, 0.92, 0.95, 0.75, 0.80, 0.85, 0.90)
+
+
 def close_enough(value_str, target):
     if target is None:
         return False
@@ -88,6 +97,13 @@ def close_enough(value_str, target):
         # Возможное хранение в другом масштабе (копейки вместо рублей и т.п.).
         for scale in (100.0, 1000.0, 0.01, 0.001):
             if abs(value - target * scale) <= TOLERANCE * scale:
+                return True
+        # Возможное хранение БАЗОВОЙ цены/себестоимости без НДС или скидки -
+        # искомое число получается из найденного умножением/делением.
+        for rate in _RATE_MULTIPLIERS:
+            if abs(value - target * rate) <= TOLERANCE * rate:
+                return True
+            if abs(value - target / rate) <= TOLERANCE / rate:
                 return True
     return False
 
@@ -330,6 +346,7 @@ def run_one(config, article, price, cost):
                         print("  СОВПАДЕНИЕ В КАРТОЧКЕ: колонка #{0} ('{1}') = '{2}'".format(idx, col_name, value))
 
             for table_name in rg_tables:
+                print("  сканирую {0}...".format(table_name))
                 try:
                     matches = scan_sql_table_for_item(server, database, user, password, table_name, item_id, price, cost)
                 except Exception as exc:
@@ -363,6 +380,7 @@ def run_one(config, article, price, cost):
                     print("  СОВПАДЕНИЕ В КАРТОЧКЕ: поле '{0}' = '{1}'".format(field_name, value))
 
             for table_name in rg_tables:
+                print("  сканирую {0}...".format(table_name))
                 try:
                     matches = scan_dbf_table_for_item(base_path, table_name + ".DBF", encoding, item_id, price, cost)
                 except Exception as exc:
