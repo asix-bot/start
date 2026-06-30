@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-06-30T09:12:58">
+<yml_catalog date="2026-06-30T10:20:22">
   <shop>
     <name>Магазин Старт</name>
     <company>Магазин Старт</company>
@@ -72,6 +72,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7397ки/ozon_7.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7397ки/ozon_8.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7397ки/ozon_9.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/7397ки/oldsite_5.jpg</picture>
         <price>7160.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -133,6 +134,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_6.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_7.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/ozon_8.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/4124ки/oldsite_8.jpg</picture>
         <price>9360.00</price>
         <currencyId>RUR</currencyId>
         <count>2</count>
@@ -506,6 +508,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_3.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_4.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/ozon_5.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/1200з/oldsite_5.png</picture>
         <price>28700.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -567,6 +570,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2118ки/ozon_4.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2118ки/ozon_5.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2118ки/ozon_6.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2118ки/oldsite_6.jpeg</picture>
         <price>1730.00</price>
         <currencyId>RUR</currencyId>
         <count>3</count>
@@ -649,6 +653,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/521ки/ozon_1.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/521ки/ozon_2.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/521ки/ozon_3.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/521ки/oldsite_3.jpg</picture>
         <price>1200.00</price>
         <currencyId>RUR</currencyId>
         <count>2</count>
@@ -666,6 +671,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2349ки/ozon_2.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2349ки/ozon_3.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2349ки/ozon_4.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/2349ки/oldsite_4.jpg</picture>
         <price>1230.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -707,6 +713,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/ozon_4.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/ozon_5.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/user_photo.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/19574ки/oldsite_6.jpg</picture>
         <price>2320.00</price>
         <currencyId>RUR</currencyId>
         <count>9</count>
@@ -754,6 +761,7 @@
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/3617ки/ozon_2.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/3617ки/ozon_3.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/3617ки/user_photo.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/3617ки/oldsite_4.jpg</picture>
         <price>1780.00</price>
         <currencyId>RUR</currencyId>
         <count>4</count>
@@ -1107,6 +1115,7 @@
         <categoryId>26</categoryId>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/10855ки/ozon_1.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/10855ки/user_photo.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/10855ки/oldsite_2.jpg</picture>
         <price>14990.00</price>
         <currencyId>RUR</currencyId>
         <count>6</count>
@@ -1147,6 +1156,7 @@
         <vendorCode>9310з</vendorCode>
         <categoryId>19</categoryId>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/9310з/ozon_1.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/9310з/oldsite_1.jpg</picture>
         <price>22990.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -1467,6 +1477,7 @@ Compact LX Синий NEW станет отличным выбором для л
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/18681ки/ozon_7.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/18681ки/ozon_8.jpg</picture>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/18681ки/ozon_9.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/18681ки/oldsite_9.png</picture>
         <price>48720.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
@@ -1578,6 +1589,7 @@ Compact LX Синий NEW станет отличным выбором для л
         <vendorCode>8676ки</vendorCode>
         <categoryId>15</categoryId>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8676ки/ozon_1.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8676ки/oldsite_1.jpg</picture>
         <price>5700.00</price>
         <currencyId>RUR</currencyId>
         <count>3</count>
@@ -1670,6 +1682,7 @@ Compact LX Синий NEW станет отличным выбором для л
         <vendorCode>8693з</vendorCode>
         <categoryId>19</categoryId>
         <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8693з/ozon_1.jpg</picture>
+        <picture>https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/8693з/oldsite_1.jpg</picture>
         <price>9800.00</price>
         <currencyId>RUR</currencyId>
         <count>1</count>
