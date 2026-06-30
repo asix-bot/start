@@ -2282,6 +2282,7 @@ Li-Ion
   <GoodsPromType>Приводное</GoodsPromType>
   <PrivodType>Редуктор</PrivodType>
   <Condition>Новое</Condition>
+  <GearboxType>Червячный</GearboxType>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/721з/oldsite_0.jpg"/>
     </Images>
@@ -2444,7 +2445,7 @@ Max частота вращения шпинделя: 9000 об/мин
   <AdType>Товар приобретен на продажу</AdType>
   <Condition>Новое</Condition>
   <Brand>WORTEX</Brand>
-  <Model>BD 1815</Model>
+  <Model>BD 1815 2F</Model>
   <WholesaleType>Нет</WholesaleType>
     <Images>
     <Image url="https://raw.githubusercontent.com/asix-bot/start/main/avito_photos/826з/oldsite_0.jpg"/>
@@ -2528,7 +2529,7 @@ Max частота вращения шпинделя: 9000 об/мин
   <GoodsPromType>Насосы и компрессоры</GoodsPromType>
   <NasosType>Компрессоры</NasosType>
   <Condition>Новое</Condition>
-  <CompressorBrand>KE</CompressorBrand>
+  <CompressorBrand>Airline</CompressorBrand>
   <EngineType>Электрический</EngineType>
   <CompressorPressure>7</CompressorPressure>
   <CompressorPower>150</CompressorPower>
