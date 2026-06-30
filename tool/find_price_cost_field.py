@@ -200,8 +200,11 @@ def list_dbf_rg_tables(base_path):
 def list_sql_rg_tables(server, database, user, password):
     output = run_query_raw(
         server, database, user, password,
+        # _1S* - в SQL-версии служебные таблицы 1С идут с префиксом подчёркивания
+        # (например _1SCONST), а не просто 1S* как в DBF.
         "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'RG%' OR TABLE_NAME LIKE 'RA%' "
-        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%' OR TABLE_NAME LIKE 'SC%' OR TABLE_NAME LIKE '1S%'",
+        "OR TABLE_NAME LIKE 'DT%' OR TABLE_NAME LIKE 'DH%' OR TABLE_NAME LIKE 'SC%' "
+        "OR TABLE_NAME LIKE '1S%' OR TABLE_NAME LIKE '_1S%'",
     )
     names = []
     for line in output.splitlines():
