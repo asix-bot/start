@@ -117,7 +117,7 @@ def main():
         base_cfg["avg_cost_table"] = "DT434.DBF" if is_dbf else "DT434"
         base_cfg["sale_price_table"] = "DT3580.DBF" if is_dbf else "DT3580"
         base_cfg["price_markup_table"] = "SC3772.DBF" if is_dbf else "SC3772"
-        base_cfg["price_const_table"] = "1SCONST.DBF" if is_dbf else "1SCONST"
+        base_cfg["price_const_table"] = "1SCONST.DBF" if is_dbf else "_1SCONST"
         for key, value in FIELD_MAPPING.items():
             base_cfg[key] = value
 
