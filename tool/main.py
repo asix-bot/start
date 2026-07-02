@@ -301,12 +301,64 @@ def read_dbf_latest_period_map(
     return result
 
 
-# Цена продажи в этой конфигурации 1С 7.7 НЕ хранится готовым числом - она
-# считается на лету как "себестоимость * (1 + наценка%/100) * (1 - скидка%/100)".
-# Сам процент наценки/скидки лежит в подчинённом справочнике "Цены номенклатуры"
-# (найдено через перебор по размеру таблицы - PARENTEXT=товар, DESCR=название
-# типа цены вроде "Розничная", и два процентных поля). Это надёжнее, чем
-# DT3580 (история конкретных прошлых продаж - может быть очень устаревшей).
+# Цена продажи хранится в 1SCONST как периодический реквизит записей справочника
+# "Цены номенклатуры" (SC3772). Константа ID='2WV' — поле "Цена" (найдено
+# прямым сравнением с локальной базой на Шишиной: 42/43 артикулов точное
+# совпадение, медиана расхождения 0.00%). OBJID в 1SCONST = ID записи SC3772
+# (не ID товара). SC3772.PARENTEXT = ID товара, SC3772.DESCR = тип цены.
+# Для товаров с нулевой себестоимостью (подарены поставщиком) формула
+# себестоимость*наценка даёт 0, а прямая цена из 1SCONST корректна.
+# Наценочная формула остаётся как ЗАПАСНОЙ вариант для баз где 1SCONST недоступен.
+def read_dbf_price_from_const(base_path, sc3772_table, const_table, encoding,
+                               parent_field, descr_field, type_name, const_id_field="2WV"):
+    """Читает фактическую розничную цену из 1SCONST.DBF через SC3772.
+    SC3772: PARENTEXT=item_id, DESCR=тип цены. 1SCONST: OBJID=sc3772_entry_id,
+    ID=const_id_field, VALUE=цена. Берётся самая свежая ненулевая запись."""
+    # Шаг 1: SC3772 -> sc3772_entry_id -> item_id (только для нужного типа цены)
+    sc3772_to_item = {}
+    for row in read_dbf_table(base_path, sc3772_table, encoding):
+        if str(row.get(descr_field, "")).strip() != type_name:
+            continue
+        sc_id = str(row.get("ID", "")).strip()
+        item_id = str(row.get(parent_field, "")).strip()
+        if sc_id and item_id:
+            sc3772_to_item[sc_id] = item_id
+
+    if not sc3772_to_item:
+        return {}
+
+    # Шаг 2: 1SCONST -> sc3772_entry_id -> (date, price), берём самую свежую
+    price_by_sc3772 = {}
+    for row in read_dbf_table(base_path, const_table, encoding):
+        objid = str(row.get("OBJID", "")).strip()
+        if objid not in sc3772_to_item:
+            continue
+        if str(row.get("ID", "")).strip() != const_id_field:
+            continue
+        val = str(row.get("VALUE", "")).strip()
+        try:
+            price = float(val)
+        except (TypeError, ValueError):
+            continue
+        if price <= 0:
+            continue
+        date = row.get("DATE")
+        prev = price_by_sc3772.get(objid)
+        if prev is None or (date is not None and (prev[0] is None or date > prev[0])):
+            price_by_sc3772[objid] = (date, price)
+
+    # Шаг 3: sc3772_entry_id -> item_id -> price (при конфликте — свежее)
+    result = {}
+    result_date = {}
+    for sc_id, (date, price) in price_by_sc3772.items():
+        item_id = sc3772_to_item[sc_id]
+        prev_date = result_date.get(item_id)
+        if prev_date is None or (date is not None and (prev_date is None or date > prev_date)):
+            result[item_id] = price
+            result_date[item_id] = date
+    return result
+
+
 def read_dbf_price_markup_map(base_path, table_name, encoding, parent_field, descr_field, type_name, markup_field, discount_field):
     result = {}
     for row in read_dbf_table(base_path, table_name, encoding):
@@ -407,6 +459,26 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
             avg_cost_by_id = {}
 
     if compute_prices and base_cfg.get("price_markup_table"):
+        type_name = base_cfg.get("price_markup_type_name", "Розничная")
+        # Приоритет: прямая цена из 1SCONST (точная, не зависит от себестоимости)
+        const_table_name = base_cfg.get("price_const_table", "1SCONST.DBF")
+        const_id_field = base_cfg.get("price_const_id", "2WV")
+        try:
+            direct_prices = read_dbf_price_from_const(
+                base_path,
+                base_cfg["price_markup_table"],
+                const_table_name,
+                encoding,
+                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
+                base_cfg.get("price_markup_descr_field", "DESCR"),
+                type_name,
+                const_id_field,
+            )
+            sale_price_by_id.update(direct_prices)
+        except Exception:
+            pass
+
+        # Запасной вариант: наценка от себестоимости (для баз без 1SCONST или с нулевым 2WV)
         try:
             markup_by_id = read_dbf_price_markup_map(
                 base_path,
@@ -414,12 +486,15 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
                 encoding,
                 base_cfg.get("price_markup_parent_field", "PARENTEXT"),
                 base_cfg.get("price_markup_descr_field", "DESCR"),
-                base_cfg.get("price_markup_type_name", "Розничная"),
+                type_name,
                 base_cfg.get("price_markup_percent_field"),
                 base_cfg.get("price_discount_percent_field"),
             )
             computed = apply_price_markup(avg_cost_by_id, markup_by_id)
-            sale_price_by_id.update(computed)
+            # Только для товаров БЕЗ прямой цены из 1SCONST
+            for item_id, price in computed.items():
+                if item_id not in sale_price_by_id:
+                    sale_price_by_id[item_id] = price
         except Exception:
             pass
 
@@ -476,6 +551,47 @@ def read_sql_latest_doc_value_map(server, database, user, password, table, item_
             result[item] = value
         elif not has_date and not prev_has_date:
             result[item] = value
+    return result
+
+
+def read_sql_price_from_const(server, database, user, password, sc3772_table, const_table,
+                               parent_field, descr_field, type_name, const_id_field="2WV"):
+    """SQL-аналог read_dbf_price_from_const.
+    JOIN SC3772 с 1SCONST через ID/OBJID, фильтр по DESCR и ID константы,
+    берём строку с максимальной DATE для каждого товара."""
+    query = (
+        "SELECT sc.{parent}, const.VALUE, const.DATE "
+        "FROM {sc3772} sc "
+        "JOIN {const} const ON LTRIM(RTRIM(const.OBJID)) = LTRIM(RTRIM(sc.ID)) "
+        "WHERE LTRIM(RTRIM(sc.{descr})) = '{type}' "
+        "AND LTRIM(RTRIM(const.ID)) = '{cid}' "
+        "AND ISNUMERIC(LTRIM(RTRIM(const.VALUE))) = 1 "
+        "AND CAST(LTRIM(RTRIM(const.VALUE)) AS FLOAT) > 0"
+    ).format(
+        parent=parent_field, sc3772=sc3772_table, const=const_table,
+        descr=descr_field, type=type_name, cid=const_id_field,
+    )
+    rows = run_query(server, database, user, password, query)
+
+    # Берём самую свежую дату для каждого товара
+    result = {}
+    result_date = {}
+    for row in rows:
+        if len(row) < 2:
+            continue
+        item_id = row[0].strip()
+        val = row[1].strip().replace(",", ".")
+        date_str = row[2].strip() if len(row) > 2 else ""
+        try:
+            price = float(val)
+        except (TypeError, ValueError):
+            continue
+        if price <= 0:
+            continue
+        prev_date = result_date.get(item_id)
+        if prev_date is None or date_str > prev_date:
+            result[item_id] = price
+            result_date[item_id] = date_str
     return result
 
 
@@ -604,18 +720,39 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
             avg_cost_by_id = {}
 
     if compute_prices and base_cfg.get("price_markup_table"):
+        type_name = base_cfg.get("price_markup_type_name", "Розничная")
+        const_table_name = base_cfg.get("price_const_table", "1SCONST")
+        const_id_field = base_cfg.get("price_const_id", "2WV")
+        # Приоритет: прямая цена из 1SCONST
+        try:
+            direct_prices = read_sql_price_from_const(
+                server, database, user, password,
+                base_cfg["price_markup_table"],
+                const_table_name,
+                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
+                base_cfg.get("price_markup_descr_field", "DESCR"),
+                type_name,
+                const_id_field,
+            )
+            sale_price_by_id.update(direct_prices)
+        except Exception:
+            pass
+
+        # Запасной вариант: наценка от себестоимости
         try:
             markup_by_id = read_sql_price_markup_map(
                 server, database, user, password,
                 base_cfg["price_markup_table"],
                 base_cfg.get("price_markup_parent_field", "PARENTEXT"),
                 base_cfg.get("price_markup_descr_field", "DESCR"),
-                base_cfg.get("price_markup_type_name", "Розничная"),
+                type_name,
                 base_cfg.get("price_markup_percent_field"),
                 base_cfg.get("price_discount_percent_field"),
             )
             computed = apply_price_markup(avg_cost_by_id, markup_by_id)
-            sale_price_by_id.update(computed)
+            for item_id, price in computed.items():
+                if item_id not in sale_price_by_id:
+                    sale_price_by_id[item_id] = price
         except Exception:
             pass
 
