@@ -96,10 +96,6 @@ FIELD_MAPPING = {
     "price_markup_type_name": "Розничная",
     "price_markup_percent_field": "SP3864",
     "price_discount_percent_field": "SP6937",
-    # Прямая цена из 1SCONST (ID=2WV) через SC3772 — точнее формулы наценки,
-    # работает в том числе для товаров с нулевой себестоимостью (подарки).
-    # price_const_table по умолчанию в main.py: "1SCONST.DBF" для DBF, "1SCONST" для SQL.
-    "price_const_id": "2WV",
 }
 
 
@@ -118,6 +114,9 @@ def main():
         base_cfg["sale_price_table"] = "DT3580.DBF" if is_dbf else "DT3580"
         base_cfg["price_markup_table"] = "SC3772.DBF" if is_dbf else "SC3772"
         base_cfg["price_const_table"] = "1SCONST.DBF" if is_dbf else "_1SCONST"
+        # В DBF ID хранится как base-36 строка, в SQL - как десятичное число
+        # 2WV (base-36) = 2*36^2 + 32*36 + 31 = 3775 (decimal)
+        base_cfg["price_const_id"] = "2WV" if is_dbf else "3775"
         for key, value in FIELD_MAPPING.items():
             base_cfg[key] = value
 
