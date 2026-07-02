@@ -45,18 +45,23 @@ def run(index):
     print("SC3772={0}, 1SCONST={1}, const_id={2}, type_name={3}".format(
         sc3772_table, const_table, const_id, type_name))
 
+    def bracket(t):
+        return "[{0}]".format(t) if t and t[0].isdigit() else t
+
+    sc3772_b = bracket(sc3772_table)
+    const_b = bracket(const_table)
+
     # Шаг 1: найти все уникальные const ID в 1SCONST для объектов SC3772
-    # (чтобы найти правильный ID поля Цена)
     print("\n--- Шаг 1: уникальные const ID в 1SCONST для SC3772 объектов ---")
     id_query = (
-        "SELECT DISTINCT LTRIM(RTRIM(const.ID)) as CID, COUNT(*) as CNT, "
-        "MIN(LTRIM(RTRIM(const.VALUE))) as SAMPLE_VAL "
+        "SELECT LTRIM(RTRIM(c.ID)) as CID, COUNT(*) as CNT, "
+        "MIN(LTRIM(RTRIM(c.VALUE))) as SAMPLE_VAL "
         "FROM {sc3772} sc "
-        "JOIN {const} const ON LTRIM(RTRIM(const.OBJID)) = LTRIM(RTRIM(sc.ID)) "
+        "JOIN {const} c ON LTRIM(RTRIM(c.OBJID)) = LTRIM(RTRIM(sc.ID)) "
         "WHERE LTRIM(RTRIM(sc.{descr})) = N'{type}' "
-        "GROUP BY LTRIM(RTRIM(const.ID)) "
+        "GROUP BY LTRIM(RTRIM(c.ID)) "
         "ORDER BY CNT DESC"
-    ).format(sc3772=sc3772_table, const=const_table, descr=descr_field, type=type_name)
+    ).format(sc3772=sc3772_b, const=const_b, descr=descr_field, type=type_name)
 
     id_rows = run_query(server, database, user, password, id_query)
     print("Найдено уникальных const ID: {0}".format(len(id_rows)))
@@ -67,20 +72,20 @@ def run(index):
             r[2] if len(r) > 2 else "?",
         ))
 
-    # Шаг 2: для каждого числового const ID показать пример значения
+    # Шаг 2: const ID с числовыми ненулевыми значениями
     print("\n--- Шаг 2: const ID с числовыми значениями > 0 ---")
     num_query = (
-        "SELECT DISTINCT LTRIM(RTRIM(const.ID)) as CID, "
-        "MAX(CAST(LTRIM(RTRIM(const.VALUE)) AS FLOAT)) as MAX_VAL, "
+        "SELECT LTRIM(RTRIM(c.ID)) as CID, "
+        "MAX(CAST(LTRIM(RTRIM(c.VALUE)) AS FLOAT)) as MAX_VAL, "
         "COUNT(*) as CNT "
         "FROM {sc3772} sc "
-        "JOIN {const} const ON LTRIM(RTRIM(const.OBJID)) = LTRIM(RTRIM(sc.ID)) "
+        "JOIN {const} c ON LTRIM(RTRIM(c.OBJID)) = LTRIM(RTRIM(sc.ID)) "
         "WHERE LTRIM(RTRIM(sc.{descr})) = N'{type}' "
-        "AND ISNUMERIC(LTRIM(RTRIM(const.VALUE))) = 1 "
-        "AND CAST(LTRIM(RTRIM(const.VALUE)) AS FLOAT) > 0 "
-        "GROUP BY LTRIM(RTRIM(const.ID)) "
+        "AND ISNUMERIC(LTRIM(RTRIM(c.VALUE))) = 1 "
+        "AND CAST(LTRIM(RTRIM(c.VALUE)) AS FLOAT) > 0 "
+        "GROUP BY LTRIM(RTRIM(c.ID)) "
         "ORDER BY CNT DESC"
-    ).format(sc3772=sc3772_table, const=const_table, descr=descr_field, type=type_name)
+    ).format(sc3772=sc3772_b, const=const_b, descr=descr_field, type=type_name)
 
     try:
         num_rows = run_query(server, database, user, password, num_query)
@@ -97,15 +102,15 @@ def run(index):
     # Шаг 3: основной запрос с текущим const_id
     print("\n--- Шаг 3: основной запрос (const_id={0}) ---".format(const_id))
     query = (
-        "SELECT sc.{parent}, const.VALUE, const.DATE "
+        "SELECT sc.{parent}, c.VALUE, c.DATE "
         "FROM {sc3772} sc "
-        "JOIN {const} const ON LTRIM(RTRIM(const.OBJID)) = LTRIM(RTRIM(sc.ID)) "
+        "JOIN {const} c ON LTRIM(RTRIM(c.OBJID)) = LTRIM(RTRIM(sc.ID)) "
         "WHERE LTRIM(RTRIM(sc.{descr})) = N'{type}' "
-        "AND LTRIM(RTRIM(const.ID)) = '{cid}' "
-        "AND ISNUMERIC(LTRIM(RTRIM(const.VALUE))) = 1 "
-        "AND CAST(LTRIM(RTRIM(const.VALUE)) AS FLOAT) > 0"
+        "AND LTRIM(RTRIM(c.ID)) = '{cid}' "
+        "AND ISNUMERIC(LTRIM(RTRIM(c.VALUE))) = 1 "
+        "AND CAST(LTRIM(RTRIM(c.VALUE)) AS FLOAT) > 0"
     ).format(
-        parent=parent_field, sc3772=sc3772_table, const=const_table,
+        parent=parent_field, sc3772=sc3772_b, const=const_b,
         descr=descr_field, type=type_name, cid=const_id,
     )
     rows = run_query(server, database, user, password, query)

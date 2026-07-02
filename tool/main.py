@@ -554,21 +554,31 @@ def read_sql_latest_doc_value_map(server, database, user, password, table, item_
     return result
 
 
+def _sql_bracket(table_name):
+    """Оборачивает имя таблицы в квадратные скобки если оно начинается с цифры
+    (SQL Server не принимает такие имена без экранирования)."""
+    if table_name and table_name[0].isdigit():
+        return "[{0}]".format(table_name)
+    return table_name
+
+
 def read_sql_price_from_const(server, database, user, password, sc3772_table, const_table,
                                parent_field, descr_field, type_name, const_id_field="2WV"):
     """SQL-аналог read_dbf_price_from_const.
     JOIN SC3772 с 1SCONST через ID/OBJID, фильтр по DESCR и ID константы,
     берём строку с максимальной DATE для каждого товара."""
     query = (
-        "SELECT sc.{parent}, const.VALUE, const.DATE "
+        "SELECT sc.{parent}, c.VALUE, c.DATE "
         "FROM {sc3772} sc "
-        "JOIN {const} const ON LTRIM(RTRIM(const.OBJID)) = LTRIM(RTRIM(sc.ID)) "
-        "WHERE LTRIM(RTRIM(sc.{descr})) = '{type}' "
-        "AND LTRIM(RTRIM(const.ID)) = '{cid}' "
-        "AND ISNUMERIC(LTRIM(RTRIM(const.VALUE))) = 1 "
-        "AND CAST(LTRIM(RTRIM(const.VALUE)) AS FLOAT) > 0"
+        "JOIN {const} c ON LTRIM(RTRIM(c.OBJID)) = LTRIM(RTRIM(sc.ID)) "
+        "WHERE LTRIM(RTRIM(sc.{descr})) = N'{type}' "
+        "AND LTRIM(RTRIM(c.ID)) = '{cid}' "
+        "AND ISNUMERIC(LTRIM(RTRIM(c.VALUE))) = 1 "
+        "AND CAST(LTRIM(RTRIM(c.VALUE)) AS FLOAT) > 0"
     ).format(
-        parent=parent_field, sc3772=sc3772_table, const=const_table,
+        parent=parent_field,
+        sc3772=_sql_bracket(sc3772_table),
+        const=_sql_bracket(const_table),
         descr=descr_field, type=type_name, cid=const_id_field,
     )
     rows = run_query(server, database, user, password, query)
