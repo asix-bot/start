@@ -148,8 +148,53 @@ def main():
             print("Обновлены файлы: " + ", ".join(updated))
         else:
             print("Все скрипты уже актуальны, обновлений нет.")
+
+        # Применяем config_patch.json если он есть в репо
+        patch_file = tool_dir / "config_patch.json"
+        if patch_file.exists():
+            _apply_config_patch(str(patch_file), str(CONFIG_PATH))
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+def _apply_config_patch(patch_path, config_path):
+    """Применяет патч полей из config_patch.json к config.json.
+    Патч добавляет/обновляет только указанные поля — пути, токены и
+    прочие credentials не трогаются, если их нет в патч-файле."""
+    try:
+        patch = json.loads(open(patch_path, encoding="utf-8-sig").read())
+    except Exception as e:
+        print("Не удалось прочитать config_patch.json: {0}".format(e))
+        return
+
+    if not patch.get("bases"):
+        return
+
+    try:
+        config = json.loads(open(config_path, encoding="utf-8-sig").read())
+    except Exception as e:
+        print("Не удалось прочитать config.json для патча: {0}".format(e))
+        return
+
+    changed = []
+    bases_by_name = {b["name"]: b for b in config.get("bases", [])}
+    for base_name, fields in patch["bases"].items():
+        if base_name not in bases_by_name:
+            continue
+        base_cfg = bases_by_name[base_name]
+        for key, val in fields.items():
+            if base_cfg.get(key) != val:
+                base_cfg[key] = val
+                changed.append("{0}.{1}".format(base_name, key))
+
+    if not changed:
+        print("config_patch.json: всё уже актуально, изменений нет.")
+        return
+
+    open(config_path, "w", encoding="utf-8").write(
+        json.dumps(config, ensure_ascii=False, indent=2)
+    )
+    print("config.json обновлён через патч: " + ", ".join(changed))
 
 
 if __name__ == "__main__":
