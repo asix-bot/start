@@ -460,7 +460,6 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
 
     if compute_prices and base_cfg.get("price_markup_table"):
         type_name = base_cfg.get("price_markup_type_name", "Розничная")
-        # Приоритет: прямая цена из 1SCONST (точная, не зависит от себестоимости)
         const_table_name = base_cfg.get("price_const_table", "1SCONST.DBF")
         const_id_field = base_cfg.get("price_const_id", "2WV")
         try:
@@ -475,27 +474,12 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
                 const_id_field,
             )
             sale_price_by_id.update(direct_prices)
-        except Exception:
-            pass
-
-        # Запасной вариант: наценка от себестоимости — для товаров без прямой цены.
-        try:
-            markup_by_id = read_dbf_price_markup_map(
-                base_path,
-                base_cfg["price_markup_table"],
-                encoding,
-                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
-                base_cfg.get("price_markup_descr_field", "DESCR"),
-                type_name,
-                base_cfg.get("price_markup_percent_field"),
-                base_cfg.get("price_discount_percent_field"),
-            )
-            computed = apply_price_markup(avg_cost_by_id, markup_by_id)
-            for item_id, price in computed.items():
-                if item_id not in sale_price_by_id:
-                    sale_price_by_id[item_id] = price
-        except Exception:
-            pass
+            print("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
+                base_cfg.get("name", "?"), len(direct_prices), const_id_field))
+        except Exception as e:
+            import traceback
+            print("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
+                base_cfg.get("name", "?"), e, traceback.format_exc()))
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
@@ -732,7 +716,6 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
         type_name = base_cfg.get("price_markup_type_name", "Розничная")
         const_table_name = base_cfg.get("price_const_table", "1SCONST")
         const_id_field = base_cfg.get("price_const_id", "2WV")
-        # Приоритет: прямая цена из 1SCONST
         try:
             direct_prices = read_sql_price_from_const(
                 server, database, user, password,
@@ -744,26 +727,12 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
                 const_id_field,
             )
             sale_price_by_id.update(direct_prices)
-        except Exception:
-            pass
-
-        # Запасной вариант: наценка от себестоимости — для товаров без прямой цены.
-        try:
-            markup_by_id = read_sql_price_markup_map(
-                server, database, user, password,
-                base_cfg["price_markup_table"],
-                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
-                base_cfg.get("price_markup_descr_field", "DESCR"),
-                type_name,
-                base_cfg.get("price_markup_percent_field"),
-                base_cfg.get("price_discount_percent_field"),
-            )
-            computed = apply_price_markup(avg_cost_by_id, markup_by_id)
-            for item_id, price in computed.items():
-                if item_id not in sale_price_by_id:
-                    sale_price_by_id[item_id] = price
-        except Exception:
-            pass
+            print("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
+                base_cfg.get("name", "?"), len(direct_prices), const_id_field))
+        except Exception as e:
+            import traceback
+            print("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
+                base_cfg.get("name", "?"), e, traceback.format_exc()))
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
