@@ -44,6 +44,8 @@ SYNCED_FILES = (
     "diagnose_stock.py",
     "diagnose_stock_anomaly.py",
     "diagnose_missing_articles.py",
+    "diagnose_shishina_prices.py",
+    "diagnose_1sconst_raw.py",
     "find_article_field.py",
     "find_price_cost_field.py",
     "check_doc_join.py",
