@@ -478,27 +478,24 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
         except Exception:
             pass
 
-        # Запасной вариант: наценка от себестоимости — только если 1SCONST НЕ задан.
-        # Когда price_const_id задан, 1SCONST — источник истины; markup-формула
-        # даёт неверные цены для товаров у которых нет записи в SC3772.
-        if not base_cfg.get("price_const_id"):
-            try:
-                markup_by_id = read_dbf_price_markup_map(
-                    base_path,
-                    base_cfg["price_markup_table"],
-                    encoding,
-                    base_cfg.get("price_markup_parent_field", "PARENTEXT"),
-                    base_cfg.get("price_markup_descr_field", "DESCR"),
-                    type_name,
-                    base_cfg.get("price_markup_percent_field"),
-                    base_cfg.get("price_discount_percent_field"),
-                )
-                computed = apply_price_markup(avg_cost_by_id, markup_by_id)
-                for item_id, price in computed.items():
-                    if item_id not in sale_price_by_id:
-                        sale_price_by_id[item_id] = price
-            except Exception:
-                pass
+        # Запасной вариант: наценка от себестоимости — для товаров без прямой цены.
+        try:
+            markup_by_id = read_dbf_price_markup_map(
+                base_path,
+                base_cfg["price_markup_table"],
+                encoding,
+                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
+                base_cfg.get("price_markup_descr_field", "DESCR"),
+                type_name,
+                base_cfg.get("price_markup_percent_field"),
+                base_cfg.get("price_discount_percent_field"),
+            )
+            computed = apply_price_markup(avg_cost_by_id, markup_by_id)
+            for item_id, price in computed.items():
+                if item_id not in sale_price_by_id:
+                    sale_price_by_id[item_id] = price
+        except Exception:
+            pass
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
@@ -750,24 +747,23 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
         except Exception:
             pass
 
-        # Запасной вариант: наценка от себестоимости — только если 1SCONST НЕ задан.
-        if not base_cfg.get("price_const_id"):
-            try:
-                markup_by_id = read_sql_price_markup_map(
-                    server, database, user, password,
-                    base_cfg["price_markup_table"],
-                    base_cfg.get("price_markup_parent_field", "PARENTEXT"),
-                    base_cfg.get("price_markup_descr_field", "DESCR"),
-                    type_name,
-                    base_cfg.get("price_markup_percent_field"),
-                    base_cfg.get("price_discount_percent_field"),
-                )
-                computed = apply_price_markup(avg_cost_by_id, markup_by_id)
-                for item_id, price in computed.items():
-                    if item_id not in sale_price_by_id:
-                        sale_price_by_id[item_id] = price
-            except Exception:
-                pass
+        # Запасной вариант: наценка от себестоимости — для товаров без прямой цены.
+        try:
+            markup_by_id = read_sql_price_markup_map(
+                server, database, user, password,
+                base_cfg["price_markup_table"],
+                base_cfg.get("price_markup_parent_field", "PARENTEXT"),
+                base_cfg.get("price_markup_descr_field", "DESCR"),
+                type_name,
+                base_cfg.get("price_markup_percent_field"),
+                base_cfg.get("price_discount_percent_field"),
+            )
+            computed = apply_price_markup(avg_cost_by_id, markup_by_id)
+            for item_id, price in computed.items():
+                if item_id not in sale_price_by_id:
+                    sale_price_by_id[item_id] = price
+        except Exception:
+            pass
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
 
