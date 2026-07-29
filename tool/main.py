@@ -480,6 +480,15 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
             sale_price_by_id.update(direct_prices)
             _price_diag.append("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
                 base_cfg.get("name", "?"), len(direct_prices), const_id_field))
+            # Диагностика конкретных артикулов
+            art_to_id = {str(v.get("article", "")).strip(): k for k, v in item_by_id.items()}
+            for _dart in ("941", "22", "76", "840", "27"):
+                _iid = art_to_id.get(_dart)
+                if _iid:
+                    _dp = direct_prices.get(_iid, "НЕТ")
+                    _sp = sale_price_by_id.get(_iid, "НЕТ")
+                    _price_diag.append("[диаг] арт={0} id={1} 1SCONST={2} итого={3}".format(
+                        _dart, _iid, _dp, _sp))
         except Exception as e:
             import traceback
             _price_diag.append("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
