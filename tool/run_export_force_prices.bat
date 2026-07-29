@@ -6,32 +6,31 @@ set "PYTHON=C:\Python34\python.exe"
 
 if not exist "%PYTHON%" (
     echo.
-    echo �訡��: �� ������ Python �� ��� %PYTHON%
-    echo ���ࠢ� ���� � ��ப� set "PYTHON=..." � ��砫� �⮣� 䠩��.
+    echo Error: Python not found at %PYTHON%
+    echo Fix PYTHON= path at the top of this file.
     echo.
     pause
     exit /b 1
 )
 
-echo ��� ����� �ਭ㤨⥫쭮 �����⠥� 業�/ᥡ��⮨����� ��אַ ᥩ��,
-echo �� ��������� ���୥�� ���� 19:00-23:59 - ��� ࠧ���� �஢�ન.
+echo Force-recalc: ignoring price window and cache.
 echo.
-echo [%date% %time%] �஢���� ���������� �ਯ⮢ �� GitHub...
+echo [%date% %time%] Updating scripts from GitHub...
 %PYTHON% update_scripts.py
 if errorlevel 1 (
-    echo [%date% %time%] �� 㤠���� �������� �ਯ��, �த����� � ⥪�騬� 䠩����.
+    echo [%date% %time%] Script update failed, continuing with current files.
 )
 
-echo [%date% %time%] ����⠥� ��-�������-⨯ price_cache.json...
+echo [%date% %time%] Deleting price_cache.json...
 if exist price_cache.json del price_cache.json
 
-echo [%date% %time%] ����᪠� ��ᯮ�� �� 1� � GitHub (� �ਭ㤨⥫�� ������⮬ 業�)...
+echo [%date% %time%] Running export with forced price recalc...
 %PYTHON% main.py --force-price-recalc
 if errorlevel 1 (
-    echo [%date% %time%] main.py �����訫�� � �訡���.
+    echo [%date% %time%] main.py failed.
     pause
     exit /b 1
 )
 
-echo [%date% %time%] ��⮢�.
+echo [%date% %time%] Done.
 pause
