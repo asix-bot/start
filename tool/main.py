@@ -64,6 +64,10 @@ PRICE_CACHE_PATH = Path(__file__).parent / "price_cache.json"
 DEFAULT_PRICE_RECALC_WINDOW_START = "19:00"
 DEFAULT_PRICE_RECALC_WINDOW_END = "23:59"
 
+# Буфер диагностических сообщений о ценах — заполняется из export_base_dbf/sql,
+# вычитывается в main() и добавляется в log_lines для пуша в репо.
+_price_diag = []
+
 
 def load_price_cache():
     if not PRICE_CACHE_PATH.exists():
@@ -474,11 +478,11 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
                 const_id_field,
             )
             sale_price_by_id.update(direct_prices)
-            print("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
+            _price_diag.append("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
                 base_cfg.get("name", "?"), len(direct_prices), const_id_field))
         except Exception as e:
             import traceback
-            print("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
+            _price_diag.append("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
                 base_cfg.get("name", "?"), e, traceback.format_exc()))
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
@@ -727,11 +731,11 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
                 const_id_field,
             )
             sale_price_by_id.update(direct_prices)
-            print("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
+            _price_diag.append("[цены] {0}: 1SCONST вернул {1} цен (ID={2})".format(
                 base_cfg.get("name", "?"), len(direct_prices), const_id_field))
         except Exception as e:
             import traceback
-            print("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
+            _price_diag.append("[цены] {0}: ОШИБКА чтения 1SCONST: {1}\n{2}".format(
                 base_cfg.get("name", "?"), e, traceback.format_exc()))
 
     return item_by_id, stock_by_id, avg_cost_by_id, sale_price_by_id
@@ -942,6 +946,8 @@ def main():
         log_lines.append("{0}: {1} товаров за {2:.2f} сек (с нулевым остатком: {3})".format(
             base_cfg["name"], len(rows), elapsed, zero_stock_count
         ))
+        while _price_diag:
+            log_lines.append(_price_diag.pop(0))
         all_rows.extend(rows)
 
     save_price_cache(price_cache)
