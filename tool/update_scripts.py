@@ -59,6 +59,7 @@ SYNCED_FILES = (
     "run_find_price_cost_field.bat",
     "run_check_doc_join.bat",
     "check_price_from_const.py",
+    "check_941_price.py",
     "run_check_price_from_const.bat",
     "run_list_all_tables.bat",
     "run_dump_table_for_item.bat",
