@@ -250,7 +250,7 @@ def read_dbf_latest_doc_value_map(base_path, table_name, item_field, value_field
     best_date = {}
     result = {}
     for row in read_dbf_table(base_path, table_name, encoding):
-        item = row[item_field]
+        item = str(row[item_field]).strip()
         date = doc_date_map.get(row.get(doc_field))
         has_date = date is not None
         if item not in best_date:
@@ -284,7 +284,7 @@ def read_dbf_latest_period_map(
     всё же встречаются физически дважды."""
     latest_period = {}
     for row in read_dbf_table(base_path, table_name, encoding):
-        item = row[item_field]
+        item = str(row[item_field]).strip()
         period = row[period_field]
         if item not in latest_period or period > latest_period[item]:
             latest_period[item] = period
@@ -292,7 +292,7 @@ def read_dbf_latest_period_map(
     result = {}
     seen_rows = set()
     for row in read_dbf_table(base_path, table_name, encoding):
-        item = row[item_field]
+        item = str(row[item_field]).strip()
         if row[period_field] != latest_period.get(item):
             continue
         if extra_filter_field and str(row.get(extra_filter_field, "")).strip() != str(extra_filter_value).strip():
@@ -408,7 +408,7 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
         fallback_value = str(row.get(fallback_field, "")).strip() if fallback_field else ""
         if not article_value:
             article_value = fallback_value
-        item_by_id[row[id_field]] = {
+        item_by_id[str(row[id_field]).strip()] = {
             "article": article_value,
             "name": row.get(name_field, "") if name_field else "",
             "disambiguator": fallback_value,
