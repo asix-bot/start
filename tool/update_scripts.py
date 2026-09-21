@@ -59,7 +59,6 @@ SYNCED_FILES = (
     "run_find_price_cost_field.bat",
     "run_check_doc_join.bat",
     "check_price_from_const.py",
-    "check_941_price.py",
     "run_check_price_from_const.bat",
     "run_list_all_tables.bat",
     "run_dump_table_for_item.bat",
@@ -70,6 +69,8 @@ SYNCED_FILES = (
     "update_all.bat",
     "run_export.bat",
     "run_export_force_prices.bat",
+    "cleanup_temp.bat",
+    "setup_cleanup_schedule.bat",
     "setup.bat",
     "setup_schedule.bat",
     "enable_tls12.bat",
@@ -156,6 +157,9 @@ def main():
         patch_file = tool_dir / "config_patch.json"
         if patch_file.exists():
             _apply_config_patch(str(patch_file), str(CONFIG_PATH))
+
+        # Регистрируем задачу чистки Temp в планировщике Windows (если платформа Windows)
+        _ensure_cleanup_task(SCRIPT_DIR)
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
@@ -198,6 +202,42 @@ def _apply_config_patch(patch_path, config_path):
         json.dumps(config, ensure_ascii=False, indent=2)
     )
     print("config.json обновлён через патч: " + ", ".join(changed))
+
+
+def _ensure_cleanup_task(script_dir):
+    """Регистрирует задачу ежедневной чистки Temp в планировщике Windows."""
+    if sys.platform != "win32":
+        return
+    task_name = "1C Cleanup Temp (daily)"
+    bat_path = str(script_dir / "cleanup_temp.bat")
+    if not (script_dir / "cleanup_temp.bat").exists():
+        return
+    # Проверяем - уже есть задача?
+    check = subprocess.Popen(
+        ["schtasks", "/query", "/tn", task_name],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    )
+    check.communicate()
+    if check.returncode == 0:
+        return  # уже зарегистрирована
+    reg = subprocess.Popen(
+        [
+            "schtasks", "/create",
+            "/tn", task_name,
+            "/tr", '"{0}"'.format(bat_path),
+            "/sc", "daily",
+            "/st", "03:00:00",
+            "/ru", "SYSTEM",
+            "/rl", "HIGHEST",
+            "/f",
+        ],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    )
+    reg.communicate()
+    if reg.returncode == 0:
+        print("Задача '{0}' зарегистрирована (ежедневно в 03:00).".format(task_name))
+    else:
+        print("Не удалось зарегистрировать задачу чистки Temp (нужны права администратора).")
 
 
 if __name__ == "__main__":
