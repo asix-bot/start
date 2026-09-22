@@ -60,7 +60,7 @@ def fresh_clone(repo_path, branch, repo_url, auth_url):
     tmp_clone = repo_path.parent / (repo_path.name + "_fresh_clone_tmp")
     if tmp_clone.exists():
         rmtree(str(tmp_clone))
-    run(["git", "clone", "-b", branch, auth_url, str(tmp_clone)])
+    run(["git", "clone", "--depth", "1", "-b", branch, auth_url, str(tmp_clone)])
 
     if repo_path.exists():
         for item in repo_path.iterdir():
