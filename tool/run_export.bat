@@ -14,6 +14,10 @@ if not exist "%PYTHON%" (
 )
 
 echo [%date% %time%] Проверяю обновления скриптов из GitHub...
+:: Kill any stale python process from previous run
+taskkill /f /im python.exe >nul 2>&1
+timeout /t 3 /nobreak >nul
+
 %PYTHON% update_scripts.py
 if errorlevel 1 (
     echo [%date% %time%] Не удалось обновить скрипты, продолжаю с текущими версиями.
