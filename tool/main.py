@@ -404,6 +404,8 @@ def export_base_dbf(base_cfg, encoding, compute_prices=True):
 
     item_by_id = {}
     for row in items:
+        if str(row.get("ISMARK", "")).strip() == "*":
+            continue
         article_value = str(row.get(article_field, "")).strip()
         fallback_value = str(row.get(fallback_field, "")).strip() if fallback_field else ""
         if not article_value:
@@ -668,7 +670,7 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
         select_cols.append(fallback_field)
     if name_field:
         select_cols.append(name_field)
-    query = "SELECT {0} FROM {1}".format(", ".join(select_cols), base_cfg["items_table"])
+    query = "SELECT {0} FROM {1} WHERE LTRIM(RTRIM(ISMARK)) <> '*'".format(", ".join(select_cols), base_cfg["items_table"])
     rows = run_query(server, database, user, password, query)
 
     item_by_id = {}
