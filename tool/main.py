@@ -654,6 +654,36 @@ def read_sql_latest_period_map(
     return result
 
 
+def read_sql_ra_stock_map(
+    server, database, user, password, ra_table, item_field, value_field,
+    extra_filter_field=None, extra_filter_value=None,
+):
+    """Читает текущий остаток из оперативного регистра движений (RA-таблица).
+    В отличие от RG (итогового регистра, обновляемого при закрытии периода),
+    RA содержит все движения в реальном времени: DEBKRED=0 приход (+),
+    DEBKRED=1 расход (-). Остаток = SUM приход - SUM расход по всем движениям.
+    Используется когда RG устарел (периоды не закрывались)."""
+    where = ""
+    if extra_filter_field:
+        where = " WHERE LTRIM(RTRIM({0})) = '{1}'".format(extra_filter_field, extra_filter_value)
+    query = (
+        "SELECT {0}, SUM(CASE WHEN DEBKRED = 0 THEN {1} ELSE -{1} END) "
+        "FROM {2}{3} "
+        "GROUP BY {0} "
+        "HAVING SUM(CASE WHEN DEBKRED = 0 THEN {1} ELSE -{1} END) > 0"
+    ).format(item_field, value_field, ra_table, where)
+    rows = run_query(server, database, user, password, query)
+    result = {}
+    for row in rows:
+        if len(row) < 2:
+            continue
+        try:
+            result[row[0].strip()] = float(row[1])
+        except (TypeError, ValueError):
+            pass
+    return result
+
+
 def export_base_sql(base_cfg, sql_auth, compute_prices=True):
     server = base_cfg["sql_server"]
     database = base_cfg["sql_database"]
@@ -690,13 +720,32 @@ def export_base_sql(base_cfg, sql_auth, compute_prices=True):
         name = row[next_idx].strip() if name_field and len(row) > next_idx else ""
         item_by_id[item_id] = {"article": article, "name": name, "disambiguator": fallback_value}
 
-    stock_by_id = read_sql_latest_period_map(
-        server, database, user, password,
-        base_cfg["stock_table"], base_cfg["stock_item_field"],
-        base_cfg.get("stock_period_field", "PERIOD"), base_cfg["stock_qty_field"],
-        base_cfg.get("stock_extra_filter_field"),
-        base_cfg.get("stock_extra_filter_value"),
-    )
+    # Пробуем читать остатки из оперативного регистра движений (RA-таблица):
+    # RA обновляется при каждом документе, RG — только при закрытии периода.
+    # Имя RA-таблицы = имя RG-таблицы с заменой префикса RG→RA.
+    rg_table = base_cfg["stock_table"]
+    ra_table = "RA" + rg_table[2:] if rg_table.upper().startswith("RG") else None
+    stock_by_id = {}
+    if ra_table:
+        try:
+            stock_by_id = read_sql_ra_stock_map(
+                server, database, user, password,
+                ra_table, base_cfg["stock_item_field"], base_cfg["stock_qty_field"],
+                base_cfg.get("stock_extra_filter_field"),
+                base_cfg.get("stock_extra_filter_value"),
+            )
+            print("  Остатки: {0} товаров из {1} (оперативный регистр)".format(len(stock_by_id), ra_table))
+        except Exception as e:
+            print("  RA-таблица {0} недоступна ({1}), читаю из RG".format(ra_table, e))
+            stock_by_id = {}
+    if not stock_by_id:
+        stock_by_id = read_sql_latest_period_map(
+            server, database, user, password,
+            rg_table, base_cfg["stock_item_field"],
+            base_cfg.get("stock_period_field", "PERIOD"), base_cfg["stock_qty_field"],
+            base_cfg.get("stock_extra_filter_field"),
+            base_cfg.get("stock_extra_filter_value"),
+        )
 
     doc_date_map = {}
     if compute_prices and (base_cfg.get("sale_price_table") or base_cfg.get("avg_cost_table")):
